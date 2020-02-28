@@ -1,8 +1,8 @@
-const functions = require('firebase-functions');
+/**
+ * @author Simphiwe Zulu
+ * @description This file contains all the function calls that will be uploaded to Cloud
+ *              Functions.
+ */
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+const functions = require('firebase-functions');
+const signup = require('./signup');
