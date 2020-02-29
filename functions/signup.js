@@ -23,7 +23,13 @@ exports.signup = functions.https.onCall((data, context) => {
 });
 
 /* ================================== Local Functions ================================= */
-
+/**
+ * Creates a new user account and returns a promise when complete
+ * @param {string} email
+ * @param {string} fname
+ * @param {string} lname
+ * @param {string} password
+ */
 function createNewUser(email, fname, lname, password) {
 	return admin
 		.auth()
@@ -39,6 +45,10 @@ function createNewUser(email, fname, lname, password) {
 		});
 }
 
+/**
+ * Returns a custom user claim object based on the account type chosen
+ * @param {string} acc_type
+ */
 function createUserClaimObject(acc_type) {
 	var claim = {
 		student: false,
