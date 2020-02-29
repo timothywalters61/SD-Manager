@@ -11,7 +11,11 @@ const functions = require('firebase-functions');
 
 /* ===================================== Exports ====================================== */
 
+/**
+ * Creates a new user account and document in the users collection
+ */
 exports.signup = functions.https.onCall((data, context) => {
+	// get variables from data object
 	var acc_type = data.ac;
 	var email = data.em;
 	var fname = data.fn;
@@ -20,7 +24,24 @@ exports.signup = functions.https.onCall((data, context) => {
 	var university_id = data.un_id;
 	var university = data.un;
 
-	return createNewUser(email, fname, lname, password);
+	return createNewUser(email, fname, lname, password)
+		.then(value => {
+			var doc = createUserDocObject(
+				acc_type,
+				email,
+				fname,
+				lname,
+				university,
+				university_id
+			);
+			return {
+				result: writeToUserDocument(doc, value.uid),
+				uid: value.uid
+			};
+		})
+		.then(result => {
+			return setUserClaimObject(acc_type, result.uid);
+		});
 });
 
 /* ================================== Local Functions ================================= */
@@ -47,10 +68,11 @@ function createNewUser(email, fname, lname, password) {
 }
 
 /**
- * Returns a custom user claim object based on the account type chosen
+ * Sets the Custom User Claims object of a user specified by uid
  * @param {string} acc_type
+ * @param {string} uid
  */
-function createUserClaimObject(acc_type) {
+function setUserClaimObject(acc_type, uid) {
 	var claim = {
 		student: false,
 		tutor: false,
@@ -67,7 +89,7 @@ function createUserClaimObject(acc_type) {
 		return Promise.reject(errors.invalidCustomClaim);
 	}
 
-	return claim;
+	return admin.auth().setCustomUserClaims(uid, claim);
 }
 
 /**
@@ -99,6 +121,12 @@ function createUserDocObject(
 	return data;
 }
 
-function writeTouserDocument(data, uid) {
+/**
+ * creates a new document in the users collection in the database.
+ * Returns a promise with the document metadata upon completion.
+ * @param {string} data
+ * @param {string} uid
+ */
+function writeToUserDocument(data, uid) {
 	return docs.createDoc('users/' + uid, data);
 }
