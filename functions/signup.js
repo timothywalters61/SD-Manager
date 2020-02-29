@@ -5,8 +5,9 @@
  */
 
 const admin = require('firebase-admin');
-const functions = require('firebase-functions');
+const docs = require('./docs');
 const errors = require('./errors');
+const functions = require('firebase-functions');
 
 /* ===================================== Exports ====================================== */
 
@@ -67,4 +68,37 @@ function createUserClaimObject(acc_type) {
 	}
 
 	return claim;
+}
+
+/**
+ * Returns a data object that will be used in a user's document in the
+ * database
+ * @param {string} acc_type
+ * @param {string} email
+ * @param {string} fname
+ * @param {string} lname
+ * @param {string} university
+ * @param {string} university_id
+ */
+function createUserDocObject(
+	acc_type,
+	email,
+	fname,
+	lname,
+	university,
+	university_id
+) {
+	var data = {
+		acc_type: acc_type,
+		email: email,
+		fname: fname,
+		lname: lname,
+		university: university,
+		university_id: university_id
+	};
+	return data;
+}
+
+function writeTouserDocument(data, uid) {
+	return docs.createDoc('users/' + uid, data);
 }
