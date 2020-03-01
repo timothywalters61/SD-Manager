@@ -29,7 +29,14 @@ function getPathname() {
 }
 
 /* ============================ Event Handlers ============================ */
-
+/**
+ * Displays an alert with error details from an error object
+ * @param {object} error
+ */
+function onError(error) {
+	console.error(error);
+	alert('Error!\n' + 'Code: ' + error.code + '\nMessage: ' + error.message);
+}
 /* =============================== Setters ================================ */
 /**
  * Sets the background colour of the DOM element specified to the colour specified
