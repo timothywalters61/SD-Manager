@@ -43,14 +43,16 @@ label {
 	text-align: left;
 }
 
-.signup-box input {
+.signup-box input,
+select {
 	width: 100%;
 	margin-bottom: 20px;
 }
 
 .signup-box input[type='text'],
 input[type='password'],
-input[type='email'] {
+input[type='email'],
+select {
 	border: none;
 	border-bottom: 1px solid #fff;
 	background: transparent;
