@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SCRUM Login</title>
+    <!--<script src="auth.js"></script>-->
+</head>
+
+<body>
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB1akwPd-xOMCgU9_Bc6OqdTObTp10Sb5k",
+            authDomain: "scrum-manager-91e13.firebaseapp.com",
+            databaseURL: "https://scrum-manager-91e13.firebaseio.com",
+            projectId: "scrum-manager-91e13",
+            storageBucket: "scrum-manager-91e13.appspot.com",
+            messagingSenderId: "332929508306",
+            appId: "1:332929508306:web:5f1773dc956813db641e0b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function getUser() {
+
+            var username = document.getElementById("tfUsername").value;
+            var password = document.getElementById("tfPassword").value;
+
+            if (username.includes(".") || username.includes("#") || username.includes("$") || username.includes("[") || username.includes("]") || username.length === 0) {
+                console.log("username cannot contain .#$[] or be empty");
+            } else {
+                firebase.database().ref('Users/' + username).once("value").then(function (snapshot) {
+                    var user = snapshot.val();
+                    console.log(user);
+                    if (user != null) {
+                        console.log(user.password);
+                        console.log(password);
+                        if (user.password == password) {
+                            console.log("Correct Password");
+                            document.location.href = "welcome.html";
+                        } else {
+                            console.log("Incorrect Password");
+                        }
+                    } else {
+                        console.log("User Does Not Exist");
+                    }
+                });
+            }
+        }
+
+    </script>
+
+    <h1>SCRUM Login</h1>
+
+    <form>
+        <label for="username">Username: </label>
+        <input type="text" id="tfUsername" name="username">
+        <br><br>
+
+        <label for="password">Password : </label>
+        <input type="password" id="tfPassword" name="password">
+    </form>
+
+    <button type="button" onclick="getUser()">Login</button>
+
+    <p> Don't have an account? Click Here to Sign Up </p>
+
+    <p> <a href="signup.html">Sign Up Here </a>
+    </p>
+
+</body>
+
+</html>
