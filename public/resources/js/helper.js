@@ -65,3 +65,22 @@ function validateAccType(id) {
 	var val = getSelectElementValue(id);
 	return val == 'student' || val == 'tutor' || val == 'lecturer';
 }
+
+/**
+ * Returns true if email is valid
+ * @param {Element} email
+ */
+function validateEmail(email) {
+	var val = '';
+	if (typeof email == 'string') {
+		val = getElementValue(email);
+	} else {
+		val = email.value;
+	}
+	var atindex = val.indexOf('@');
+	var dotindex = val.lastIndexOf('.');
+
+	return (
+		!val == '' && validateString(val) && atindex > 0 && dotindex > atindex
+	);
+}
