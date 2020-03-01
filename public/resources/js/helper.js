@@ -63,7 +63,15 @@ function setElementValue(id, val) {
 function setPathname(pathname) {
 	location.pathname = pathname;
 }
+/* =============================== Showwers ================================ */
 
+/**
+ * Sets the display value of a DOM element to 'block'
+ * @param {String} id
+ */
+function showBlockElement(id) {
+	document.getElementById(id).style.display = 'block';
+}
 /* ================================ Validators ============================= */
 
 /**
