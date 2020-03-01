@@ -37,6 +37,15 @@ function onError(error) {
 	console.error(error);
 	alert('Error!\n' + 'Code: ' + error.code + '\nMessage: ' + error.message);
 }
+/* =============================== Hiders ================================ */
+/**
+ * Hides DOM Element
+ * @param {String} id
+ */
+function hideElement(id) {
+	document.getElementById(id).style.display = 'none';
+}
+
 /* =============================== Setters ================================ */
 /**
  * Sets the background colour of the DOM element specified to the colour specified
@@ -92,7 +101,7 @@ function showInlineElement(id) {
 
 /**
  * Returns true if the value selected in the element is in the list of options
- * @param {*} id
+ * @param {string} id
  */
 function validateAccType(id) {
 	var val = getSelectElementValue(id);
