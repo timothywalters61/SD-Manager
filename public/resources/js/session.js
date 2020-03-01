@@ -16,9 +16,17 @@ function userCheck() {
 			// No user is signed in.
 			var path = getPathname(); // the name of the current page
 			// check if the current page isn't the home page or sign up page
-			if (path != 'signup.html' || path != 'index.html') {
+			if (path != 'index.html') {
 				// user is not is the correct section
+				setPathname('index.html');
 			}
 		}
 	});
+}
+/**
+ * Sends user to their dashboard according to their access level
+ * @param {string} ac
+ */
+function sendToDashboard(ac) {
+	setPathname(ac + '.html');
 }
