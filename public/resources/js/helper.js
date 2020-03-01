@@ -5,6 +5,24 @@
 
 /* =============================== Getters ================================ */
 /**
+ * Returns a String with the user's custom claim
+ * @param {admin.auth.UserRecord} user
+ */
+function getCustomUserClaim(user) {
+	var customClaims = user.customClaims;
+
+	if (customClaims.student) {
+		return 'student';
+	} else if (customClaims.tutor) {
+		return 'tutor';
+	} else if (customClaims.lecturer) {
+		return 'lecturer';
+	} else {
+		return '';
+	}
+}
+
+/**
  * Returns the value of the element specified by id
  * @param {String} id
  */
