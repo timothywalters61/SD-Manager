@@ -4,13 +4,12 @@
  */
 
 /**
- * Shows the sign up block and hides the rest
+ * Shows the home block and hides the rest
  */
-function showSignUp() {
-	hideElement('home');
+function showHome() {
 	hideElement('login');
-	showBlockElement('signup-form');
-	showBlockElement('signup');
+	hideElement('signup');
+	showBlockElement('home');
 }
 
 /**
@@ -21,4 +20,14 @@ function showLogin() {
 	hideElement('signup');
 	showBlockElement('login-form');
 	showBlockElement('login');
+}
+
+/**
+ * Shows the sign up block and hides the rest
+ */
+function showSignUp() {
+	hideElement('home');
+	hideElement('login');
+	showBlockElement('signup-form');
+	showBlockElement('signup');
 }
