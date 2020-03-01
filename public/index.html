@@ -6,9 +6,18 @@
 		<link rel="stylesheet" href="resources/css/index.css" />
 		<title>SD Manager</title>
 	</head>
-	<body>
+	<body onload="userCheck()">
 		<div id="home" class="">
 			<!--Home Section-->
+			<!--
+				Make sure to include a nav bar with links to the login section and sign up section of
+				the home page.
+				
+				- The onclick function to show the login section is:
+						showLogin()
+				- The onclick function to show the sign up section is:
+						showSignUp()
+			-->
 		</div>
 		<div id="login" class="signup-box">
 			<!--Login section-->
@@ -28,10 +37,12 @@
 					class=""
 					placeholder="Enter Password"
 				/>
-				<button id="login-button" class="signup-btn">Login</button>
+				<button id="login-button" class="signup-btn" onclick="login()">
+					Login
+				</button>
 				<p>
 					Don't have an account?
-					<a href="signup.html" onclick="">Sign up</a>
+					<a href="" onclick="showSignUp()">Sign up</a>
 				</p>
 			</div>
 		</div>
@@ -96,8 +107,17 @@
 					class=""
 					placeholder="Enter University Number"
 				/>
-				<button id="signup-button" class="signup-btn">Sign Up</button>
-				<p>Already have an account? <a href="#" onclick="">Login</a></p>
+				<button
+					id="signup-button"
+					class="signup-btn"
+					onclick="signup()"
+				>
+					Sign Up
+				</button>
+				<p>
+					Already have an account?
+					<a href="#" onclick="showLogin()">Login</a>
+				</p>
 			</div>
 		</div>
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -111,5 +131,13 @@
 
 		<!-- Initialize Firebase -->
 		<script src="/__/firebase/init.js"></script>
+		<script src="resources/js/firebase.init.js"></script>
+		<script src="resources/js/helper.js"></script>
+		<script src="resources/js/index.js"></script>
+		<script src="resources/js/login.events.js"></script>
+		<script src="resources/js/login.js"></script>
+		<script src="resources/js/session.js"></script>
+		<script src="resources/js/signup.events.js"></script>
+		<script src="resources/js/signup.js"></script>
 	</body>
 </html>
