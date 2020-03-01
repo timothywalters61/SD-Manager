@@ -23,6 +23,12 @@ function userCheck() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
+			var claim = getCustomUserClaim(user);
+			var path = getPathname();
+
+			if (path != 'index.html' && !path.includes(claim)) {
+				sendToDashboard(claim);
+			}
 		} else {
 			// No user is signed in.
 			var path = getPathname(); // the name of the current page
