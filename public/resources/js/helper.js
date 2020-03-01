@@ -67,16 +67,11 @@ function validateAccType(id) {
 }
 
 /**
- * Returns true if email is valid
- * @param {Element} email
+ * Returns true if email address in the input element is valid
+ * @param {string} id
  */
-function validateEmail(email) {
-	var val = '';
-	if (typeof email == 'string') {
-		val = getElementValue(email);
-	} else {
-		val = email.value;
-	}
+function validateEmail(id) {
+	var val = getElementValue(id);
 	var atindex = val.indexOf('@');
 	var dotindex = val.lastIndexOf('.');
 
@@ -87,12 +82,20 @@ function validateEmail(email) {
 
 /**
  * Returns true if both elements are valid and have the same value
- * @param {Element} pass
- * @param {Element} repass
+ * @param {string} pass
+ * @param {string} repass
  */
 function validatePass(pass, repass) {
-	pval = pass.value;
-	rval = repass.value;
+	pval = getElementValue(pass);
+	rval = getElementValue(repass);
 
 	return validateString(rval) && validateString(pval) && pval == rval;
+}
+
+/**
+ * Returns true if 'str' is valid
+ * @param {String} str
+ */
+function validateString(str) {
+	return str.length > 0;
 }
