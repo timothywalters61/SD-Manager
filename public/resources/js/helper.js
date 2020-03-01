@@ -13,6 +13,15 @@ function getElementValue(id) {
 }
 
 /**
+ * Returns the selected option's value of a select element specified by id
+ * @param {string} id
+ */
+function getSelectElementValue(id) {
+	var el = document.getElementById(id);
+	return el.options[el.selectedIndex].value;
+}
+
+/**
  * Returns the current URL pathname
  */
 function getPathname() {
