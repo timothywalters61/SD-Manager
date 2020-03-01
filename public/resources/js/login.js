@@ -4,6 +4,22 @@
  */
 
 /**
+ * Logs the user into their account
+ */
+function login() {
+	if (loginValidate()) {
+		var em = getElementValue('login-em');
+		var pa = document.getElementById('login-pass').value;
+		auth.signInWithEmailAndPassword(em, pa)
+			.then(() => {
+				alert('Login Successful');
+				userCheck();
+			})
+			.catch(onError);
+	}
+}
+
+/**
  * Returns true if the login form has been filled in correctly. Changes colour of the
  * input element if value is invalid.
  */
