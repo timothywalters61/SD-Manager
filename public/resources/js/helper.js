@@ -29,6 +29,14 @@ function getPathname() {
 }
 
 /* =============================== Setters ================================ */
+/**
+ * Sets the background colour of the DOM element specified to the colour specified
+ * @param {String} id
+ * @param {String} colour
+ */
+function setBackgroundColour(id, colour) {
+	document.getElementById(id).style.background = colour;
+}
 
 /**
  * Sets the value of the element specified by id to val
