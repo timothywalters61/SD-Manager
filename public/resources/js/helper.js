@@ -80,6 +80,14 @@ function showBlockElement(id) {
 function showInlineBlockElement(id) {
 	document.getElementById(id).style.display = 'inline-block';
 }
+
+/**
+ * Sets the display value of a EOM Element to 'inline'
+ * @param {String} id
+ */
+function showInlineElement(id) {
+	document.getElementById(id).style.display = 'inline';
+}
 /* ================================ Validators ============================= */
 
 /**
