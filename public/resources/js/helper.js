@@ -28,6 +28,8 @@ function getPathname() {
 	return location.pathname;
 }
 
+/* ============================ Event Handlers ============================ */
+
 /* =============================== Setters ================================ */
 /**
  * Sets the background colour of the DOM element specified to the colour specified
