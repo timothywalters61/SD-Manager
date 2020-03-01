@@ -11,7 +11,7 @@ ids.forEach((id, index) => {
 		// 13 is the "Enter" key on the keyboard
 		if (event.keyCode == 13) {
 			event.preventDefault(); // cancel the default action
-			document.getElementById('signup-button-next').click(); // trigger the button element
+			document.getElementById('login-button').click(); // trigger the button element
 		}
 	});
 });
