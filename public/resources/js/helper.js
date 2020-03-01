@@ -46,3 +46,14 @@ function setElementValue(id, val) {
 function setPathname(pathname) {
 	location.pathname = pathname;
 }
+
+/* ================================ Validators ============================= */
+
+/**
+ * Returns true if the value selected in the element is in the list of options
+ * @param {*} id
+ */
+function validateAccType(id) {
+	var val = getSelectElementValue(id);
+	return val == 'student' || val == 'tutor' || val == 'lecturer';
+}
