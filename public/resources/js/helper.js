@@ -72,6 +72,14 @@ function setPathname(pathname) {
 function showBlockElement(id) {
 	document.getElementById(id).style.display = 'block';
 }
+
+/**
+ * Sets the display value of a DOM Element to 'inline-block'
+ * @param {String} id
+ */
+function showInlineBlockElement(id) {
+	document.getElementById(id).style.display = 'inline-block';
+}
 /* ================================ Validators ============================= */
 
 /**
