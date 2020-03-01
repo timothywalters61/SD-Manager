@@ -84,3 +84,15 @@ function validateEmail(email) {
 		!val == '' && validateString(val) && atindex > 0 && dotindex > atindex
 	);
 }
+
+/**
+ * Returns true if both elements are valid and have the same value
+ * @param {Element} pass
+ * @param {Element} repass
+ */
+function validatePass(pass, repass) {
+	pval = pass.value;
+	rval = repass.value;
+
+	return validateString(rval) && validateString(pval) && pval == rval;
+}
