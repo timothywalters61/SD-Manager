@@ -5,7 +5,9 @@
  */
 
 const signup = require('./signup');
+const admin = require('firebase-admin');
 
+admin.initializeApp();
 /* =============================== Sign Up =================================== */
 exports.signup = signup.signup;
 exports.createUserDocument = signup.createUserDocument;
