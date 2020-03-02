@@ -10,6 +10,28 @@ const errors = require('./errors');
 const functions = require('firebase-functions');
 
 /* ===================================== Exports ====================================== */
+exports.createNewUserDocument = functions.https.onCall((data, context) => {
+	// get variables from data object
+	var acc_type = data.ac;
+	var email = data.em;
+	var fname = data.fn;
+	var lname = data.ln;
+	var university_id = data.un_id;
+	var university = data.un;
+	var uid = context.uid;
+
+	var data = createUserDocObject(
+		acc_type,
+		email,
+		fname,
+		lname,
+		university,
+		university_id
+	);
+	return writeToUserDocument(data, uid).then(value => {
+		return setUserClaimObject(acc_type, uid);
+	});
+});
 
 /**
  * Creates a new user account and document in the users collection
