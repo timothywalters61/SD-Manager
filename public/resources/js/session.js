@@ -31,14 +31,6 @@ function userCheck() {
 			}
 		} else {
 			// No user is signed in.
-			var path = getPathname(); // the name of the current page
-			// check if the current page isn't the home page or sign up page
-			if (path != 'index.html') {
-				// user is not is the correct section
-				setPathname('index.html');
-			} else {
-				showHome();
-			}
 		}
 	});
 }
