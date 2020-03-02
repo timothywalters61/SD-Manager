@@ -33,48 +33,35 @@ function signup() {
  */
 function validateSignUp() {
 	var valid = true;
-	var ids = [
-		'signup-ac',
-		'signup-em',
-		'signup-fn',
-		'signup-ln',
-		'signup-un',
-		'signup-un-id',
-		'signup-pa',
-		'signup-co-pa'
-	]; // array of all the element ids that are in the signup form
 
-	// iterates through the array checking if all element values are valid
-	ids.forEach((id, index) => {
-		if (index == 0) {
-			// validate type of account
-			if (!validateAccType(id)) {
-				valid = false;
-				setBackgroundColour(id, '#f08080');
-				continue;
-			}
-		} else if (index == 1) {
-			// validate email address
-			if (!validateEmail(id)) {
-				valid = false;
-				setBackgroundColour(id, '#f08080');
-			}
-		} else if (index == 7) {
-			// validate passwords
-			if (!validatePass(ids[index - 1], id)) {
-				valid = false;
-				setBackgroundColour(id, '#f08080');
-				setBackgroundColour(id, '#f08080');
-			}
-		} else {
-			// check if element has a value
-			var val = getElementValue(id);
-			if (!validateString(val)) {
-				valid = false;
-				setBackgroundColour(id, '#f08080');
-			}
-		}
-	});
-
+	if (!validateAccType('signup-ac')) {
+		valid = false;
+		setBackgroundColour('signup-ac', '#f08080');
+	}
+	if (!validateString(getElementValue('signup-fn'))) {
+		valid = false;
+		setBackgroundColour('signup-fn', '#f08080');
+	}
+	if (!validateString(getElementValue('signup-ln'))) {
+		valid = false;
+		setBackgroundColour('signup-ln', '#f08080');
+	}
+	if (!validateEmail('signup-em')) {
+		valid = false;
+		setBackgroundColour('signup-em', '#f08080');
+	}
+	if (!validateString(getElementValue('signup-un'))) {
+		valid = false;
+		setBackgroundColour('signup-un', '#f08080');
+	}
+	if (!validateString(getElementValue('signup-un-id'))) {
+		valid = false;
+		setBackgroundColour('signup-un-id', '#f08080');
+	}
+	if (validatePass('signup-pa', 'signup-co-pa')) {
+		valid = false;
+		setBackgroundColour('signup-pa', '#f08080');
+		setBackgroundColour('signup-co-pa', '#f08080');
+	}
 	return valid;
 }
