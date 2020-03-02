@@ -3,6 +3,10 @@
  *              objects to be returned to the front end.
  */
 
+exports.onError = error => {
+	return Promise.reject(error);
+};
+
 exports.invalidCustomClaim = () => {
 	var error = {
 		code: 'failed-precondition',
