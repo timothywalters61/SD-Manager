@@ -8,3 +8,4 @@ const signup = require('./signup');
 
 /* =============================== Sign Up =================================== */
 exports.signup = signup.signup;
+exports.createNewUserDocument = signup.createNewUserDocument;
