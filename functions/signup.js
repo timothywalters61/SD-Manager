@@ -10,7 +10,7 @@ const errors = require('./errors');
 const functions = require('firebase-functions');
 
 /* ===================================== Exports ====================================== */
-exports.createNewUserDocument = functions.https.onCall((data, context) => {
+exports.createUserDocument = functions.https.onCall((data, context) => {
 	// get variables from data object
 	var acc_type = data.ac;
 	var email = data.em;
