@@ -17,13 +17,22 @@ function signup() {
 			pa: getElementValue('signup-pa')
 		};
 
-		var createUser = functions.httpsCallable('signup');
-		createUser(data)
-			.then(value => {
-				alert('Account successfully created.');
-				sendToDashboard(data.ac);
+		// create user
+		auth.createUserWithEmailAndPassword(data.em, data.pa)
+			.then(() => {
+				// create user document
+				var createUserDoc = functions.httpsCallable(
+					'createUserDocument'
+				); // cloud function instance
+				createUserDoc(data)
+					.then(() => {
+						// go to next screen
+						alert('Success');
+						sendToDashboard(data.ac);
+					})
+					.catch(onError);
 			})
-			.catch(onError());
+			.catch(onError);
 	}
 }
 
