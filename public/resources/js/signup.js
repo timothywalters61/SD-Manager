@@ -70,7 +70,7 @@ function validateSignUp() {
 		valid = false;
 		setBackgroundColour('signup-un-id', '#f08080');
 	}
-	if (validatePass('signup-pa', 'signup-co-pa')) {
+	if (!validatePass('signup-pa', 'signup-co-pa')) {
 		valid = false;
 		setBackgroundColour('signup-pa', '#f08080');
 		setBackgroundColour('signup-co-pa', '#f08080');
