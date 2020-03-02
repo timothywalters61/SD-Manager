@@ -18,7 +18,7 @@ exports.createUserDocument = functions.https.onCall((data, context) => {
 	var lname = data.ln;
 	var university_id = data.un_id;
 	var university = data.un;
-	var uid = context.uid;
+	var uid = context.auth.uid;
 
 	var data = createUserDocObject(
 		acc_type,
@@ -28,7 +28,10 @@ exports.createUserDocument = functions.https.onCall((data, context) => {
 		university,
 		university_id
 	);
+	console.log('Creating user document...');
 	return writeToUserDocument(data, uid).then(value => {
+		console.log('Document created...');
+		console.log('Setting custom user claim object...');
 		return setUserClaimObject(acc_type, uid);
 	});
 });
