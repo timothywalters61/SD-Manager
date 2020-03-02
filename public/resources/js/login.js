@@ -7,9 +7,9 @@
  * Logs the user into their account
  */
 function login() {
-	if (loginValidate()) {
+	if (validateLogin()) {
 		var em = getElementValue('login-em');
-		var pa = document.getElementById('login-pass').value;
+		var pa = getElementValue('login-pa');
 		auth.signInWithEmailAndPassword(em, pa)
 			.then(() => {
 				alert('Login Successful');
