@@ -4,5 +4,7 @@
  *              Functions.
  */
 
-const functions = require('firebase-functions');
 const signup = require('./signup');
+
+/* =============================== Sign Up =================================== */
+exports.signup = signup.signup;
