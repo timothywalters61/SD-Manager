@@ -16,11 +16,13 @@ function signup() {
 			un_id: getElementValue('signup-un-id'),
 			pa: getElementValue('signup-pa')
 		};
+		console.log('Creating account...');
 
 		// create user
 		auth.createUserWithEmailAndPassword(data.em, data.pa)
 			.then(() => {
 				// create user document
+				console.log('Creating user document...');
 				var createUserDoc = functions.httpsCallable(
 					'createUserDocument'
 				); // cloud function instance
@@ -42,6 +44,7 @@ function signup() {
  */
 function validateSignUp() {
 	var valid = true;
+	console.log('Validating...');
 
 	if (!validateAccType('signup-ac')) {
 		valid = false;
@@ -72,5 +75,7 @@ function validateSignUp() {
 		setBackgroundColour('signup-pa', '#f08080');
 		setBackgroundColour('signup-co-pa', '#f08080');
 	}
+
+	console.log('Validated...');
 	return valid;
 }
