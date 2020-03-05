@@ -4,6 +4,14 @@
  */
 
 /**
+ * Enables the onclick function of an element
+ * @param {string} id
+ */
+function enableElement(id) {
+	document.getElementById(id).disabled = false;
+}
+
+/**
  * Disables the onclick function of an element
  * @param {string} id
  */
