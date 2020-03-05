@@ -6,6 +6,7 @@
  * Creates a new account
  */
 function signup() {
+	disableElement('signup-button');
 	if (validateSignUp()) {
 		var data = {
 			ac: getSelectElementValue('signup-ac'),
@@ -36,6 +37,7 @@ function signup() {
 			})
 			.catch(onError);
 	}
+	enableElement('signup-button');
 }
 
 /**
