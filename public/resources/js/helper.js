@@ -3,6 +3,14 @@
  *              the code.
  */
 
+/**
+ * Disables the onclick function of an element
+ * @param {string} id
+ */
+function disableElement(id) {
+	document.getElementById(id).disabled = true;
+}
+
 /* =============================== Getters ================================ */
 /**
  * Returns a String with the user's custom claim
