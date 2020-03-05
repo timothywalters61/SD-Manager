@@ -7,16 +7,18 @@
  * Logs the user into their account
  */
 function login() {
+	disableElement('login-button');
 	if (validateLogin()) {
 		var em = getElementValue('login-em');
 		var pa = getElementValue('login-pa');
 		auth.signInWithEmailAndPassword(em, pa)
 			.then(() => {
 				alert('Login Successful');
-				userCheck();
+				sendToDashboard('tutor');
 			})
 			.catch(onError);
 	}
+	enableElement('login-button');
 }
 
 /**
