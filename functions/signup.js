@@ -99,17 +99,14 @@ function createNewUser(email, fname, lname, password) {
  */
 function setUserClaimObject(acc_type, uid) {
 	var claim = {
-		student: false,
-		tutor: false,
-		lecturer: false
+		developer: false,
+		client: false
 	};
 
-	if (acc_type == 'student') {
-		claim.student = true;
-	} else if (acc_type == 'tutor') {
-		claim.tutor = true;
-	} else if (acc_type == 'lecturer') {
-		claim.lecturer = true;
+	if (acc_type == 'developer') {
+		claim.developer = true;
+	} else if (acc_type == 'client') {
+		claim.client = true;
 	} else {
 		return Promise.reject(errors.invalidCustomClaim);
 	}
