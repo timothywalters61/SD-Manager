@@ -26,18 +26,21 @@ function signup() {
 				var createUserDoc = functions.httpsCallable(
 					'createUserDocument'
 				); // cloud function instance
-				createUserDoc(data)
-					.then(() => {
-						// go to next screen
-						alert('Success');
-						sendToDashboard(data.ac);
-					})
-					.catch(onError);
+				return createUserDoc(data);
 			})
-			.catch(onError);
+			.then(() => {
+				// go to next screen
+				alert('Success');
+				sendToDashboard(data.ac);
+				console.log('Button enabled');
+				enableElement('signup-button');
+			})
+			.catch(error => {
+				onError(error);
+				console.log('Button enabled');
+				enableElement('signup-button');
+			});
 	}
-	console.log('Button enabled');
-	enableElement('signup-button');
 }
 
 /**
