@@ -16,18 +16,9 @@ exports.createUserDocument = functions.https.onCall((data, context) => {
 	var email = data.em;
 	var fname = data.fn;
 	var lname = data.ln;
-	var university_id = data.un_id;
-	var university = data.un;
 	var uid = context.auth.uid;
 
-	var data = createUserDocObject(
-		acc_type,
-		email,
-		fname,
-		lname,
-		university,
-		university_id
-	);
+	var data = createUserDocObject(acc_type, email, fname, lname);
 	console.log('Creating user document...');
 	return writeToUserDocument(data, uid).then(value => {
 		console.log('Document created...');
@@ -46,19 +37,10 @@ exports.signup = functions.https.onCall((data, context) => {
 	var fname = data.fn;
 	var lname = data.ln;
 	var password = data.pa;
-	var university_id = data.un_id;
-	var university = data.un;
 
 	return createNewUser(email, fname, lname, password)
 		.then(value => {
-			var doc = createUserDocObject(
-				acc_type,
-				email,
-				fname,
-				lname,
-				university,
-				university_id
-			);
+			var doc = createUserDocObject(acc_type, email, fname, lname);
 			return {
 				result: writeToUserDocument(doc, value.uid),
 				uid: value.uid
@@ -121,24 +103,13 @@ function setUserClaimObject(acc_type, uid) {
  * @param {string} email
  * @param {string} fname
  * @param {string} lname
- * @param {string} university
- * @param {string} university_id
  */
-function createUserDocObject(
-	acc_type,
-	email,
-	fname,
-	lname,
-	university,
-	university_id
-) {
+function createUserDocObject(acc_type, email, fname, lname) {
 	var data = {
 		acc_type: acc_type,
 		email: email,
 		fname: fname,
-		lname: lname,
-		university: university,
-		university_id: university_id
+		lname: lname
 	};
 	return data;
 }
