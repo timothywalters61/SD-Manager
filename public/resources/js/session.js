@@ -21,16 +21,27 @@ function logout() {
  */
 function userCheck() {
 	firebase.auth().onAuthStateChanged(function(user) {
+		console.log(user);
 		if (user) {
 			// User is signed in.
-			var claim = getCustomUserClaim(user);
-			var path = getPathname();
-
-			if (path != 'index.html' && !path.includes(claim)) {
-				sendToDashboard(claim);
-			}
+			user.getIdTokenResult().then(idTokenResult => {
+				var claim = idTokenResult.claims;
+				var pathname = getPathname();
+				if (!pathname.includes('client') && claim.client) {
+					sendToDashboard('client');
+					return;
+				} else if (!pathname.includes('developer') && claim.developer) {
+					sendToDashboard('developer');
+					return;
+				}
+			});
 		} else {
 			// No user is signed in.
+			var pathname = getPathname();
+			if (pathname != '/' || !pathname.includes('index.html')) {
+				setPathname('index.html');
+				return;
+			}
 		}
 	});
 }
