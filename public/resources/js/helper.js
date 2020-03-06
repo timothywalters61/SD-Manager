@@ -27,12 +27,10 @@ function disableElement(id) {
 function getCustomUserClaim(user) {
 	var customClaims = user.customClaims;
 
-	if (customClaims.student) {
-		return 'student';
-	} else if (customClaims.tutor) {
-		return 'tutor';
-	} else if (customClaims.lecturer) {
-		return 'lecturer';
+	if (customClaims.client) {
+		return 'client';
+	} else if (customClaims.developer) {
+		return 'developer';
 	} else {
 		return '';
 	}
@@ -139,7 +137,7 @@ function showInlineElement(id) {
  */
 function validateAccType(id) {
 	var val = getSelectElementValue(id);
-	return val == 'student' || val == 'tutor' || val == 'lecturer';
+	return val == 'client' || val == 'developer';
 }
 
 /**
