@@ -7,6 +7,7 @@
  */
 function signup() {
 	disableElement('signup-button');
+	console.log('Button Disabled');
 	if (validateSignUp()) {
 		var data = {
 			ac: getSelectElementValue('signup-ac'),
@@ -35,6 +36,7 @@ function signup() {
 			})
 			.catch(onError);
 	}
+	console.log('Button enabled');
 	enableElement('signup-button');
 }
 
