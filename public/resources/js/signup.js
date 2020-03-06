@@ -13,8 +13,6 @@ function signup() {
 			em: getElementValue('signup-em'),
 			fn: getElementValue('signup-fn'),
 			ln: getElementValue('signup-ln'),
-			un: getElementValue('signup-un'),
-			un_id: getElementValue('signup-un-id'),
 			pa: getElementValue('signup-pa')
 		};
 		console.log('Creating account...');
@@ -64,14 +62,7 @@ function validateSignUp() {
 		valid = false;
 		setBackgroundColour('signup-em', '#f08080');
 	}
-	if (!validateString(getElementValue('signup-un'))) {
-		valid = false;
-		setBackgroundColour('signup-un', '#f08080');
-	}
-	if (!validateString(getElementValue('signup-un-id'))) {
-		valid = false;
-		setBackgroundColour('signup-un-id', '#f08080');
-	}
+
 	if (!validatePass('signup-pa', 'signup-co-pa')) {
 		valid = false;
 		setBackgroundColour('signup-pa', '#f08080');
