@@ -1,60 +1,12 @@
-#mu-hero {
-	background-color: #0091ea;
-	display: inline;
-	float: left;
-	width: 100%;
-}
-
-.navbar {
-	padding: 20px 0;
+#navbar {
+	background: #0091ea;
 	position: relative;
-	display: -ms-flexbox;
+	top: 20px;
+	border-radius: 5px;
+	padding: 0.4em 2em;
+	height: 60px;
+	margin: auto;
 	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
-	-ms-flex-align: center;
+	-webkit-box-align: center;
 	align-items: center;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	padding: 0.5rem 1rem;
-}
-
-.navbar-brand {
-	display: inline-block;
-	padding-top: 0.3125rem;
-	padding-bottom: 0.3125rem;
-	margin-right: 1rem;
-	font-size: 1.25rem;
-	line-height: inherit;
-	white-space: nowrap;
-}
-
-.navbar-expand-lg {
-	-ms-flex-direction: row;
-	flex-direction: row;
-	-ms-flex-wrap: nowrap;
-	flex-wrap: nowrap;
-	-ms-flex-pack: start;
-	justify-content: flex-start;
-}
-
-.navbar-expand-lg .navbar-collapse {
-	display: -ms-flexbox !important;
-	display: flex !important;
-}
-
-.navbar-collapse {
-	-ms-flex-preferred-size: 100%;
-	flex-basis: 100%;
-	-ms-flex-align: center;
-	align-items: center;
-}
-
-.navbar-nav {
-	display: block;
-	text-align: right;
-	width: 100%;
-	padding-left: 0;
-	margin-bottom: 0;
-	list-style: none;
 }
