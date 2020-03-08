@@ -4,3 +4,16 @@
 	float: left;
 	width: 100%;
 }
+
+.navbar {
+	padding: 20px 0;
+}
+
+.navbar-expand-lg {
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+}
