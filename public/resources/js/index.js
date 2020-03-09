@@ -42,4 +42,9 @@ function showSignUp() {
 	hideElement('login');
 	showBlockElement('signup-form');
 	showBlockElement('signup');
+	addElementClass('nav-item-signup', 'current');
+	removeElementClass('nav-item-about', 'current');
+	removeElementClass('nav-item-contact', 'current');
+	removeElementClass('nav-item-login', 'current');
+	removeElementClass('nav-item-signup', 'current');
 }
