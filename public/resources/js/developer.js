@@ -19,3 +19,21 @@ function showMain() {
 	removeElementClass('nav-item-profile', 'current');
 	addElementClass('logo', 'current');
 }
+
+/**
+ * Shows the nofitications section of the web page
+ */
+function showNotifications() {
+	hideElement('developer-main');
+	hideElement('developer-messages');
+	hideElement('developer-scrum');
+	hideElement('developer-projects');
+	hideElement('developer-profile');
+	showBlockElement('developer-notifcations');
+	removeElementClass('nav-item-projects', 'current');
+	removeElementClass('nav-item-messages', 'current');
+	removeElementClass('logo', 'current');
+	removeElementClass('nav-item-git', 'current');
+	removeElementClass('nav-item-profile', 'current');
+	addElementClass('nav-item-notifications', 'current');
+}
