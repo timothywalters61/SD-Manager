@@ -12,6 +12,11 @@ function showHome() {
 	hideElement('login');
 	hideElement('signup');
 	showBlockElement('home');
+	addElementClass('nav-item-home', 'current');
+	removeElementClass('nav-item-about', 'current');
+	removeElementClass('nav-item-contact', 'current');
+	removeElementClass('nav-item-login', 'current');
+	removeElementClass('nav-item-signup', 'current');
 }
 
 /**
