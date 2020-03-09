@@ -17,6 +17,7 @@ function showMain() {
 	removeElementClass('nav-item-notifications', 'current');
 	removeElementClass('nav-item-git', 'current');
 	removeElementClass('nav-item-profile', 'current');
+	removeElementClass('nav-item-scrum', 'current');
 	addElementClass('logo', 'current');
 }
 
@@ -34,6 +35,7 @@ function showNotifications() {
 	removeElementClass('nav-item-messages', 'current');
 	removeElementClass('logo', 'current');
 	removeElementClass('nav-item-git', 'current');
+	removeElementClass('nav-item-scrum', 'current');
 	removeElementClass('nav-item-profile', 'current');
 	addElementClass('nav-item-notifications', 'current');
 }
@@ -53,5 +55,25 @@ function showMessages() {
 	removeElementClass('nav-item-notifications', 'current');
 	removeElementClass('nav-item-git', 'current');
 	removeElementClass('nav-item-profile', 'current');
+	removeElementClass('nav-item-scrum', 'current');
 	addElementClass('nav-item-messages', 'current');
+}
+
+/**
+ * Shows the Scrum section of the page
+ */
+function showScrum() {
+	hideElement('developer-notifications');
+	hideElement('developer-messages');
+	hideElement('developer-main');
+	hideElement('developer-projects');
+	hideElement('developer-profile');
+	showBlockElement('developer-scrum');
+	removeElementClass('nav-item-projects', 'current');
+	removeElementClass('nav-item-messages', 'current');
+	removeElementClass('nav-item-notifications', 'current');
+	removeElementClass('nav-item-git', 'current');
+	removeElementClass('nav-item-profile', 'current');
+	removeElementClass('logo', 'current');
+	addElementClass('nav-item-scrum', 'current');
 }
