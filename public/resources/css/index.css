@@ -1,10 +1,11 @@
 @import url('signup.css');
+@import url('header.css');
 
 a {
 	text-decoration: none;
 }
 
-.body {
+body {
 	font-family: 'Raleway', sans-serif;
 	color: #666666;
 	font-size: 16px;
@@ -49,6 +50,26 @@ a {
 
 .mr-auto {
 	margin-right: auto !important;
+}
+
+.pos-relative {
+	position: relative;
+}
+
+.no-text-decor {
+	text-decoration: none;
+}
+
+.text-al-right {
+	text-align: right;
+}
+
+.text-al-center {
+	text-align: center;
+}
+
+.text-al-left {
+	text-align: left;
 }
 
 ul li {
