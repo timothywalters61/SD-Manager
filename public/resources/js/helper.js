@@ -6,17 +6,17 @@
 /* ================================ Adders ================================ */
 /**
  * Adds class cl to the class list of the element specified by id
- * @param {string} id
- * @param {string} cl
+ * @param {String} id
+ * @param {String} cl
  */
-function addClass(id, cl) {
+function addElementClass(id, cl) {
 	document.getElementById(id).classList.add(cl);
 }
 
 /* =============================== Enablers ================================ */
 /**
  * Enables the onclick function of an element
- * @param {string} id
+ * @param {String} id
  */
 function enableElement(id) {
 	document.getElementById(id).disabled = false;
@@ -25,7 +25,7 @@ function enableElement(id) {
 /* ================================ Diasblers ================================ */
 /**
  * Disables the onclick function of an element
- * @param {string} id
+ * @param {String} id
  */
 function disableElement(id) {
 	document.getElementById(id).disabled = true;
@@ -58,7 +58,7 @@ function getElementValue(id) {
 
 /**
  * Returns the selected option's value of a select element specified by id
- * @param {string} id
+ * @param {String} id
  */
 function getSelectElementValue(id) {
 	var el = document.getElementById(id);
@@ -75,7 +75,7 @@ function getPathname() {
 /* ============================ Event Handlers ============================ */
 /**
  * Displays an alert with error details from an error object
- * @param {object} error
+ * @param {Object} error
  */
 function onError(error) {
 	console.error(error);
@@ -93,10 +93,10 @@ function hideElement(id) {
 /* =============================== Removers =============================== */
 /**
  * Removes class cl from the class list of the element specified by id
- * @param {string} id
- * @param {string} cl
+ * @param {String} id
+ * @param {String} cl
  */
-function removeClass(id, cl) {
+function removeElementClass(id, cl) {
 	document.getElementById(id).classList.remove(cl);
 }
 /* =============================== Setters ================================ */
@@ -150,11 +150,22 @@ function showInlineBlockElement(id) {
 function showInlineElement(id) {
 	document.getElementById(id).style.display = 'inline';
 }
+
+/* ============================== Toggle Functions ========================= */
+/**
+ * Returns true if class cl is on for the element specified by id, otherwise
+ * it returns false
+ * @param {String} id
+ * @param {String} cl
+ */
+function toggleElementClass(id, cl) {
+	return document.getElementById(id).classList.toggle(cl);
+}
 /* ================================ Validators ============================= */
 
 /**
  * Returns true if the value selected in the element is in the list of options
- * @param {string} id
+ * @param {String} id
  */
 function validateAccType(id) {
 	var val = getSelectElementValue(id);
@@ -163,7 +174,7 @@ function validateAccType(id) {
 
 /**
  * Returns true if email address in the input element is valid
- * @param {string} id
+ * @param {String} id
  */
 function validateEmail(id) {
 	var val = getElementValue(id);
@@ -177,8 +188,8 @@ function validateEmail(id) {
 
 /**
  * Returns true if both elements are valid and have the same value
- * @param {string} pass
- * @param {string} repass
+ * @param {String} pass
+ * @param {String} repass
  */
 function validatePass(pass, repass) {
 	pval = getElementValue(pass);
