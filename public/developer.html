@@ -7,49 +7,51 @@
 		<link rel="stylesheet" href="resources/css/index.css" />
 	</head>
 	<body onload="userCheck()" class="body">
-		<header id="">
-			<div class="">
-				<nav class="">
-					<!--Text based logo-->
-					<a href="#" onclick="" class="">SD Manager</a>
-					<div id="navbar-content">
-						<ul class="">
-							<li class="">
-								<a href="#" onclick="" class="">Dashboard</a>
-							</li>
-							<li class="">
-								<a href="#" onclick="" class="">Projects</a>
-							</li>
-							<li class="">
-								<a href="#" onclick="" class="">Messages</a>
-							</li>
-							<li class="">
-								<a href="#" onclick="" class="">Github</a>
-							</li>
-							<li class="">
-								<a href="#" onclick="" class="">Scrum</a>
-							</li>
-							<li class="">
-								<a href="#" onclick="" class=""
-									><i class="icon-bell"
-										><!--Notifications--></i
-									></a
-								>
-							</li>
-							<li class="">
-								<a href="#" onclick="" class=""
-									><i class="icon-user"></i
-									><!--Profile--></a
-								>
-							</li>
-						</ul>
-					</div>
-				</nav>
+		<div id="navbar" class="">
+			<div class="container">
+				<div id="logo" class="fl_left">
+					<h1 class="">
+						<a href="#" class="text-al-center" onclick="showHome()"
+							>S.D Manager</a
+						>
+					</h1>
+				</div>
+				<div id="nav-list" class="fl_right">
+					<ul class="block text-al-right">
+						<li id="nav-item-projects" class="current">
+							<a href="#" class="no-text-decor" onclick=""
+								>Projects</a
+							>
+						</li>
+						<li id="nav-item-messages" class="current">
+							<a href="#" class="no-text-decor" onclick=""
+								>Messages</a
+							>
+						</li>
+						<li id="nav-item-scrum" class="current">
+							<a href="#" class="no-text-decor" onclick=""
+								>Scrum</a
+							>
+						</li>
+						<li id="nav-item-git" class="current">
+							<a href="#" class="no-text-decor" onclick="">Git</a>
+						</li>
+						<li id="nav-item-notifications" class="current">
+							<a href="#" class="no-text-decor" onclick=""
+								><i class="icon-bell-alt"></i
+							></a>
+						</li>
+						<li id="nav-item-profile" class="current">
+							<a href="#" class="no-text-decor" onclick=""
+								><i class="icon-user"></i
+							></a>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</header>
+		</div>
 		<div id="developer-main" class="">
 			<!--TODO: Design the main section of the lecturer's page of the web app-->
-			<button onclick="logout()">Logout</button>
 		</div>
 		<div id="develeoper-notifications" class="">
 			<!--TODO: Design the notifications section of the lecturer's page as well as a template
@@ -58,6 +60,7 @@
 		</div>
 		<div id="developer-profile" class="">
 			<!--TODO: Design the profile section of the lecturer's page-->
+			<button onclick="logout()">Logout</button>
 		</div>
 		<div id="developer-projects" class=""></div>
 		<div id="developer-sprints" class=""></div>
