@@ -20,30 +20,36 @@ function logout() {
  * correct section of the web app. I
  */
 function userCheck() {
-	firebase.auth().onAuthStateChanged(function(user) {
+	var onAuthStateChanged = firebase.auth().onAuthStateChanged(function(user) {
 		console.log(user);
 		if (user) {
 			// User is signed in.
 			user.getIdTokenResult().then(idTokenResult => {
 				var claim = idTokenResult.claims;
 				var pathname = getPathname();
+				console.log(pathname);
+				console.log(claim);
 				if (!pathname.includes('client') && claim.client) {
 					sendToDashboard('client');
 					return;
 				} else if (!pathname.includes('developer') && claim.developer) {
 					sendToDashboard('developer');
-					return;
 				}
 			});
 		} else {
 			// No user is signed in.
 			var pathname = getPathname();
-			if (pathname != '/' || !pathname.includes('index.html')) {
+			if (pathname.includes('client') || pathname.includes('developer')) {
 				setPathname('index.html');
 				return;
 			}
+			/*
+			if (pathname != '') {
+				setPathname('index.html');
+			}*/
 		}
 	});
+	//onAuthStateChanged();
 }
 /**
  * Sends user to their dashboard according to their access level
