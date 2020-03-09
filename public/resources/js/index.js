@@ -46,5 +46,5 @@ function showSignUp() {
 	removeElementClass('nav-item-about', 'current');
 	removeElementClass('nav-item-contact', 'current');
 	removeElementClass('nav-item-login', 'current');
-	removeElementClass('nav-item-signup', 'current');
+	removeElementClass('nav-item-home', 'current');
 }
