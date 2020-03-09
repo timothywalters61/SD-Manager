@@ -37,3 +37,21 @@ function showNotifications() {
 	removeElementClass('nav-item-profile', 'current');
 	addElementClass('nav-item-notifications', 'current');
 }
+
+/**
+ * Shows the Messages section of the page
+ */
+function showMessages() {
+	hideElement('developer-notifications');
+	hideElement('developer-main');
+	hideElement('developer-scrum');
+	hideElement('developer-projects');
+	hideElement('developer-profile');
+	showBlockElement('developer-messages');
+	removeElementClass('nav-item-projects', 'current');
+	removeElementClass('logo', 'current');
+	removeElementClass('nav-item-notifications', 'current');
+	removeElementClass('nav-item-git', 'current');
+	removeElementClass('nav-item-profile', 'current');
+	addElementClass('nav-item-messages', 'current');
+}
