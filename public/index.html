@@ -6,7 +6,59 @@
 		<link rel="stylesheet" href="resources/css/index.css" />
 		<title>SD Manager</title>
 	</head>
-	<body onload="userCheck()">
+	<body onload="userCheck()" class="signup-body">
+		<div id="navbar" class="">
+			<div class="container">
+				<div id="logo" class="fl_left">
+					<h1 class="block pos-relative">
+						<a
+							href="#"
+							class="block text-al-center"
+							onclick="showHome()"
+							>S.D Manager</a
+						>
+					</h1>
+				</div>
+				<div id="nav-list" class="fl_right">
+					<ul class="block text-al-right">
+						<li class="current">
+							<a
+								href="#"
+								class="no-text-decor"
+								onclick="showHome()"
+								>Home</a
+							>
+						</li>
+						<li class="">
+							<a href="#" class="no-text-decor" onclick=""
+								>About</a
+							>
+						</li>
+						<li class="">
+							<a href="#" class="no-text-decor" onclick=""
+								>Contact Us</a
+							>
+						</li>
+						<li class="">
+							<a
+								href="#"
+								class="no-text-decor"
+								onclick="showLogin()"
+								>Log In</a
+							>
+						</li>
+						<li class="">
+							<a
+								href="#"
+								class="no-text-decor"
+								onclick="showSignUp()"
+								>Sign Up</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div id="home" class="">
 			<!--Home Section-->
 			<!--
@@ -52,10 +104,14 @@
 
 			<div id="signup-form" class="">
 				<label for="signup-ac" class="">Type of Account:</label>
-				<select id="signup-ac" class="">
-					<option value="" disabled>Select one option</option>
-					<option value="developer" class="">Developer</option>
-					<option value="client" class="">Client</option>
+				<select id="signup-ac" class="signup-select">
+					<option value="" class="signup-option" disabled
+						>Select one option</option
+					>
+					<option value="developer" class="signup-option"
+						>Developer</option
+					>
+					<option value="client" class="signup-option">Client</option>
 				</select>
 				<label for="signup-fn" class="">First Name:</label>
 				<input
