@@ -3,7 +3,7 @@
  *              page to make it more responsive
  */
 /**
- * Shows the main section of the page
+ * Shows the main section of the page and hides the rest
  */
 function showMain() {
 	hideElement('developer-notifications');
@@ -22,7 +22,7 @@ function showMain() {
 }
 
 /**
- * Shows the nofitications section of the web page
+ * Shows the nofitications section of the web page and hides the rest
  */
 function showNotifications() {
 	hideElement('developer-main');
@@ -41,7 +41,7 @@ function showNotifications() {
 }
 
 /**
- * Shows the Messages section of the page
+ * Shows the Messages section of the page and hides the rest
  */
 function showMessages() {
 	hideElement('developer-notifications');
@@ -60,7 +60,7 @@ function showMessages() {
 }
 
 /**
- * Shows the Scrum section of the page
+ * Shows the Scrum section of the page and hides the rest
  */
 function showScrum() {
 	hideElement('developer-notifications');
@@ -76,4 +76,23 @@ function showScrum() {
 	removeElementClass('nav-item-profile', 'current');
 	removeElementClass('logo', 'current');
 	addElementClass('nav-item-scrum', 'current');
+}
+
+/**
+ * Shows the Projects sections of the page and hides the rest
+ */
+function showProjects() {
+	hideElement('developer-notifications');
+	hideElement('developer-messages');
+	hideElement('developer-main');
+	hideElement('developer-scrum');
+	hideElement('developer-profile');
+	showBlockElement('developer-projects');
+	removeElementClass('nav-item-scrum', 'current');
+	removeElementClass('nav-item-messages', 'current');
+	removeElementClass('nav-item-notifications', 'current');
+	removeElementClass('nav-item-git', 'current');
+	removeElementClass('nav-item-profile', 'current');
+	removeElementClass('logo', 'current');
+	addElementClass('nav-item-projects', 'current');
 }
