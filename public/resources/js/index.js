@@ -3,6 +3,8 @@
  *              page.
  */
 
+showHome();
+
 /**
  * Shows the home block and hides the rest
  */
