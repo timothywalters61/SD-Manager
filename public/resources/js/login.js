@@ -14,7 +14,17 @@ function login() {
 		auth.signInWithEmailAndPassword(em, pa)
 			.then(() => {
 				alert('Login Successful');
-				sendToDashboard('tutor');
+				var user = auth.currentUser;
+				console.log(user);
+				user.getIdTokenResult().then(idTokenResult => {
+					var claim = idTokenResult.claims;
+					console.log(claim);
+					if (claim.client) {
+						sendToDashboard('client');
+					} else if (claim.developer) {
+						sendToDashboard('developer');
+					}
+				});
 			})
 			.catch(onError);
 	}
