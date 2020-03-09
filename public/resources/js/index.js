@@ -27,6 +27,11 @@ function showLogin() {
 	hideElement('signup');
 	showBlockElement('login-form');
 	showBlockElement('login');
+	addElementClass('nav-item-login', 'current');
+	removeElementClass('nav-item-about', 'current');
+	removeElementClass('nav-item-contact', 'current');
+	removeElementClass('nav-item-home', 'current');
+	removeElementClass('nav-item-signup', 'current');
 }
 
 /**
