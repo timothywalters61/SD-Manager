@@ -3,6 +3,7 @@
  *              the code.
  */
 
+/* ================================ Adders ================================ */
 /**
  * Adds class cl to the class list of the element specified by id
  * @param {string} id
@@ -12,6 +13,7 @@ function addClass(id, cl) {
 	document.getElementById(id).classList.add(cl);
 }
 
+/* =============================== Enablers ================================ */
 /**
  * Enables the onclick function of an element
  * @param {string} id
@@ -20,6 +22,7 @@ function enableElement(id) {
 	document.getElementById(id).disabled = false;
 }
 
+/* ================================ Diasblers ================================ */
 /**
  * Disables the onclick function of an element
  * @param {string} id
@@ -87,6 +90,15 @@ function hideElement(id) {
 	document.getElementById(id).style.display = 'none';
 }
 
+/* =============================== Removers =============================== */
+/**
+ * Removes class cl from the class list of the element specified by id
+ * @param {string} id
+ * @param {string} cl
+ */
+function removeClass(id, cl) {
+	document.getElementById(id).classList.remove(cl);
+}
 /* =============================== Setters ================================ */
 /**
  * Sets the background colour of the DOM element specified to the colour specified
