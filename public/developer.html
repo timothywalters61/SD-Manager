@@ -11,7 +11,7 @@
 			<div class="container">
 				<div id="logo" class="fl_left">
 					<h1 class="">
-						<a href="#" class="text-al-center" onclick="showHome()"
+						<a href="#" class="text-al-center" onclick="showMain()"
 							>S.D Manager</a
 						>
 					</h1>
@@ -19,17 +19,26 @@
 				<div id="nav-list" class="fl_right">
 					<ul class="block text-al-right">
 						<li id="nav-item-projects" class="current">
-							<a href="#" class="no-text-decor" onclick=""
+							<a
+								href="#"
+								class="no-text-decor"
+								onclick="showProjects()"
 								>Projects</a
 							>
 						</li>
 						<li id="nav-item-messages" class="current">
-							<a href="#" class="no-text-decor" onclick=""
+							<a
+								href="#"
+								class="no-text-decor"
+								onclick="showMessages()"
 								>Messages</a
 							>
 						</li>
 						<li id="nav-item-scrum" class="current">
-							<a href="#" class="no-text-decor" onclick=""
+							<a
+								href="#"
+								class="no-text-decor"
+								onclick="showScrum()"
 								>Scrum</a
 							>
 						</li>
@@ -37,12 +46,18 @@
 							<a href="#" class="no-text-decor" onclick="">Git</a>
 						</li>
 						<li id="nav-item-notifications" class="current">
-							<a href="#" class="no-text-decor" onclick=""
+							<a
+								href="#"
+								class="no-text-decor"
+								onclick="showNotifications()"
 								><i class="icon-bell-alt"></i
 							></a>
 						</li>
 						<li id="nav-item-profile" class="current">
-							<a href="#" class="no-text-decor" onclick=""
+							<a
+								href="#"
+								class="no-text-decor"
+								onclick="showProfile()"
 								><i class="icon-user"></i
 							></a>
 						</li>
@@ -79,5 +94,6 @@
 		<script src="resources/js/firebase.init.js"></script>
 		<script src="resources/js/helper.js"></script>
 		<script src="resources/js/session.js"></script>
+		<script src="resources/js/developer.js"></script>
 	</body>
 </html>
