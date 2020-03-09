@@ -96,3 +96,22 @@ function showProjects() {
 	removeElementClass('logo', 'current');
 	addElementClass('nav-item-projects', 'current');
 }
+
+/**
+ * Shows the Profile section of the page and hides the rest
+ */
+function showProfile() {
+	hideElement('developer-notifications');
+	hideElement('developer-messages');
+	hideElement('developer-main');
+	hideElement('developer-projects');
+	hideElement('developer-scrum');
+	showBlockElement('developer-profile');
+	removeElementClass('nav-item-projects', 'current');
+	removeElementClass('nav-item-messages', 'current');
+	removeElementClass('nav-item-notifications', 'current');
+	removeElementClass('nav-item-git', 'current');
+	removeElementClass('nav-item-scrum', 'current');
+	removeElementClass('logo', 'current');
+	addElementClass('nav-item-profile', 'current');
+}
