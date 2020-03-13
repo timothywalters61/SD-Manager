@@ -34,12 +34,21 @@ function userCheck() {
 					return;
 				} else if (!pathname.includes('developer') && claim.developer) {
 					sendToDashboard('developer');
+				} else if (
+					!pathname.includes('product_owner') &&
+					claim.product_owner
+				) {
+					sendToDashboard('product_owner');
 				}
 			});
 		} else {
 			// No user is signed in.
 			var pathname = getPathname();
-			if (pathname.includes('client') || pathname.includes('developer')) {
+			if (
+				pathname.includes('client') ||
+				pathname.includes('developer') ||
+				pathname.includes('product_owner')
+			) {
 				setPathname('index.html');
 				return;
 			}
