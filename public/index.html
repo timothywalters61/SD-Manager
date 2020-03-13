@@ -1,128 +1,221 @@
-<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="resources/css/index.css" />
-		<title>SD Manager</title>
-	</head>
-	<body onload="userCheck()">
-		<div id="home" class="">
-			<!--Home Section-->
-			<!--
-				Make sure to include a nav bar with links to the login section and sign up section of
-				the home page.
-				- The onclick function to show the login section is:
-						showLogin()
-				- The onclick function to show the sign up section is:
-						showSignUp()
-			-->
-		</div>
-		<div id="login" class="signup-box">
-			<!--Login section-->
-			<img src="resources/images/index2.png" alt="" class="signup-img" />
-			<div id="login-form">
-				<label for="login-em" class="">Email Address:</label>
-				<input
-					type="email"
-					id="login-em"
-					class=""
-					placeholder="Enter Email Address"
-				/>
-				<label for="login-pa" class="">Password:</label>
-				<input
-					type="password"
-					id="login-pa"
-					class=""
-					placeholder="Enter Password"
-				/>
-				<button id="login-button" class="signup-btn" onclick="login()">
-					Login
-				</button>
-				<p>
-					Don't have an account?
-					<a href="" onclick="showSignUp()">Sign up</a>
-				</p>
-			</div>
-		</div>
-		<div id="signup" class="signup-box">
-			<!--Sign up section-->
-			<img src="resources/images/index2.png" alt="" class="signup-img" />
 
-			<div id="signup-form" class="">
-				<label for="signup-ac" class="">Type of Account:</label>
-				<select id="signup-ac" class="">
-					<option value="" disabled>Select one option</option>
-					<option value="developer" class="">Developer</option>
-					<option value="client" class="">Client</option>
-				</select>
-				<label for="signup-fn" class="">First Name:</label>
-				<input
-					type="text"
-					id="signup-fn"
-					class=""
-					placeholder="Enter First Name"
-				/>
-				<label for="signup-ln" class="">Last Name:</label>
-				<input
-					type="text"
-					id="signup-ln"
-					class=""
-					placeholder="Enter Last Name"
-				/>
-				<label for="signup-em" class="">Email Address:</label>
-				<input
-					type="email"
-					id="signup-em"
-					class=""
-					placeholder="Enter Email Address"
-				/>
-				<label for="signup-pa" class="">Password:</label>
-				<input
-					type="password"
-					id="signup-pa"
-					class=""
-					placeholder="Enter Password"
-				/>
-				<label for="signup-co-pa" class="">Confirm Password:</label>
-				<input
-					type="password"
-					id="signup-co-pa"
-					class=""
-					placeholder="Enter Password Again"
-				/>
-				<button
-					id="signup-button"
-					class="signup-btn"
-					onclick="signup()"
-				>
-					Sign Up
-				</button>
-				<p>
-					Already have an account?
-					<a href="#" onclick="showLogin()">Login</a>
-				</p>
-			</div>
-		</div>
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="/__/firebase/7.9.3/firebase-app.js"></script>
+<style>
 
-		<!-- TODO: Add SDKs for Firebase products that you want to use
-     	https://firebase.google.com/docs/web/setup#available-libraries -->
-		<script src="/__/firebase/7.9.3/firebase-analytics.js"></script>
-		<script src="/__/firebase/7.9.2/firebase-auth.js"></script>
-		<script src="/__/firebase/7.9.2/firebase-firestore.js"></script>
-		<script src="/__/firebase/7.9.2/firebase-functions.js"></script>
+ body{
+     background-color: white;
+     background: url("pictures/sdPicture.jpg");
+     background-size: cover;
+ }
 
-		<!-- Initialize Firebase -->
-		<script src="/__/firebase/init.js"></script>
-		<script src="resources/js/firebase.init.js"></script>
-		<script src="resources/js/helper.js"></script>
-		<script src="resources/js/index.js"></script>
-		<script src="resources/js/login.events.js"></script>
-		<script src="resources/js/login.js"></script>
-		<script src="resources/js/session.js"></script>
-		<script src="resources/js/signup.events.js"></script>
-		<script src="resources/js/signup.js"></script>
-	</body>
+.card-container {
+    padding-left: 250px;
+} 
+
+.card-image img{
+    width: 626px;
+    height: 175px;;
+}
+
+.card-content {
+    background-color: #212121 ;
+    color: white
+}
+
+.card-action {
+    background-color: #212121 ;
+    color: white
+}
+
+
+@font-face {
+     font-family: HOMOARAK;
+     src: url(Fonts/HOMOARAK.ttf); 
+    }
+
+
+.Opening-text {
+  font-size: 10px;  
+  color: white;
+  background-color:#212121;
+  text-align: center;
+  padding-left: 200px;
+  padding-right: 200px;
+  font-family: 'Play',sans-serif;
+}
+
+.hide-on-med-and-down li a:hover{
+    background:#1a237e;
+ 
+    color: #333;
+}
+
+.log {
+   color: white; 
+}
+
+.Sign-Up {
+    color: white;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Play:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <title>SD-Manager</title>
+
+    <style>
+        .parallax-container {
+            height: 250px;
+        }
+    </style>
+
+</head>
+
+<body class="grey lighten-3">
+
+    <!-- NAVBAR -->
+    <nav class=" z-depth-0 grey darken-4">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="logged-out">
+                    <a href="#" class="white-text modal-trigger" data-target="modal-login">Login</a>
+                </li>
+                <li class="logged-out">
+                    <a href="#" class="white-text modal-trigger" data-target="modal-signup">Sign up</a>
+                </li>
+                </span>
+            </ul>
+        </div>
+    </nav>
+
+    <br></br>
+
+    <br></br>
+
+    <!--
+       <div class = "Opening-text">
+    <h10>
+        SD Manager is a platform that students can use to manage their software design projects. Lecturers, who act as
+        product owners, can also use this platform to verify sprint details such as which user stories are to be
+        implemented. This platform can be used to award sprint marks accordingly since sprint details need to be
+        verified by the product owner before any changes are saved. This helps prevent students from changing the
+        backlog to suit what they've managed to do over the course of a sprint. Students can also communicate with their
+        product through this platform to make any queries. The head lecturer of the course can also access a group's
+        backlog and track changes made to the backlog to help with awarding marks
+   </h10>
+    </div>    
+    -->
+ 
+
+    <div class = "card-container">
+    <div class = "row">
+        <div class = "col s3 l3">
+         <div class = "card">
+          <div class = "card-image">
+           <img src = "pictures/world.jpg" alt="">
+           </div>
+           <div class = "card-content">
+            <span class = "card-title">Client</span>
+            <p>Act as a client and work and communicate with developers within your personal circle or developers all across 
+                the world and monitor their code, user-stories, progress and more! 
+            </p>
+           </div>
+          </div>
+         </div>
+         <div class = "col s3 l3">
+          <div class = "card">
+            <div class = "card-image">
+             <img src = "pictures/work.jpg" alt="">
+            </div>
+            <div class = "card-content">
+             <span class = "card-title">Marker</span>
+             <p>
+              A special role made by our team catered to lecturers of universities. Oversee
+              projects and gain access to work from all development and client groups in your institution    
+            </p>
+            </div>
+           </div>
+          </div>
+          <div class = "col s3 l3">
+            <div class = "card">
+              <div class = "card-image">
+               <img src = "pictures/work2.jpg" alt="">
+              </div>
+              <div class = "card-content">
+               <span class = "card-title">Developer</span>
+               <p>
+                Take on the role as a developer and work with various clients and developers from all over the world - from 
+                 corporate companies to personal pet projects.
+               </p>
+              </div>
+        </div>
+    </div>
+       
+       
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content grey darken-4">
+            <div class="Sign-Up">
+            <h4>Sign up</h4><br />   
+            </div>
+            <form id="signup-form">
+                <div class="input-field">
+                    <input type="email" id="signup-email" required />
+                    <label for="signup-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="signup-username" required />
+                    <label for="signup-username">Username</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" required />
+                    <label for="signup-password">Enter password</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-confirmpassword" required />
+                    <label for="signup-email">Confirm password</label>
+                </div>
+                <button class="btn indigo darken-4 waves-effect waves-dark">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+        <div class="modal-content grey darken-4">
+            <div class="Log">
+                <h4>Login</h4><br />   
+                </div>
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Your password</label>
+                </div>
+                <button class="btn indigo darken-4 waves-effect waves-dark">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="auth.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
 </html>
