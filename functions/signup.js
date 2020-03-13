@@ -82,13 +82,16 @@ function createNewUser(email, fname, lname, password) {
 function setUserClaimObject(acc_type, uid) {
 	var claim = {
 		developer: false,
-		client: false
+		client: false,
+		product_owner: false
 	};
 
 	if (acc_type == 'developer') {
 		claim.developer = true;
 	} else if (acc_type == 'client') {
 		claim.client = true;
+	} else if (acc_type == 'product_owner') {
+		claim.product_owner = true;
 	} else {
 		return Promise.reject(errors.invalidCustomClaim);
 	}
