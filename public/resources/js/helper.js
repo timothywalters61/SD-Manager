@@ -169,7 +169,7 @@ function toggleElementClass(id, cl) {
  */
 function validateAccType(id) {
 	var val = getSelectElementValue(id);
-	return val == 'client' || val == 'developer';
+	return val == 'client' || val == 'developer' || val == 'product_owner';
 }
 
 /**
