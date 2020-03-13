@@ -1,5 +1,6 @@
 @import url('signup.css');
 @import url('header.css');
+@import url('../fonts/fontello/css/fontello.css');
 
 a {
 	text-decoration: none;
@@ -32,6 +33,10 @@ body {
 	padding-right: 15px;
 	padding-left: 15px;
 	width: 100%;
+}
+
+.disp-none {
+	display: none;
 }
 
 .fl_left {
