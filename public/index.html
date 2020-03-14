@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< Updated upstream
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -127,3 +128,179 @@
 		<script src="resources/js/signup.js"></script>
 	</body>
 </html>
+=======
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Play:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleIndex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+    <title>SD-Manager</title>
+
+    <style>
+        .parallax-container {
+            height: 250px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class=" z-depth-0 grey darken-4">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+                <h10>Software Design Manager</h10>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="logged-out">
+                    <a href="#" class="white-text modal-trigger" data-target="modal-login">Login</a>
+                </li>
+                <li class="logged-out">
+                    <a href="#" class="white-text modal-trigger" data-target="modal-signup">Sign up</a>
+                </li>
+                </span>
+            </ul>
+        </div>
+    </nav>
+
+    <br></br>
+
+    <br></br>
+
+    <div class="col s12 m7">
+        <h2 class="white-text header card-panel grey darken-4">Welcome to Software Design Manager</h2>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="pictures/world.jpg">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>Software Design Manager is a platform that software developers can use to manage their projects.
+                        Make your dream app a reality and start a new project where you and your dev team can keep track
+                        of project progress and define new tasks for each sprint. As a project owner you can also
+                        monitor each team members backlog to make sure that they are on track for project completion and
+                        are finishing their assigned tasks in time. With this platform you can connect developers from
+                        anywhere around the world and manage them as if they where working in the same building.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s3 13" id="ownerCard">
+            <div class="card">
+                <div class="card-image">
+                    <img src="pictures/work.jpg">
+                    <span class="card-title card-panel grey darken-4">Be an Owner</span>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>
+                            Become a project owner by creating a brand new project and inviting developers to join
+                            your team. Split your project up into sprints, assign user stories to the sprints and use
+                            Software Design manager to make your idea into a working app. Is one project not enough?
+                            Don't worry because you can manage multiple projects at the same time if a little extra
+                            work doesn't scare you
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s3 13" id="developerCard">
+            <div class="card">
+                <div class="card-image">
+                    <img src="pictures/work2.jpg">
+                    <span class="card-title card-panel grey darken-4">Be a Developer</span>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>
+                            Get invited by a project owner to join their team and work on making their idea a reality.
+                            Knowing what to do is super easy with Software Design Manager, just check what unfinished
+                            user stories you have left for the sprint and make sure they are finished by the time the
+                            sprint is through. Have a great idea of your own for an app? Just create a new project and
+                            become a project owner yourself
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content grey darken-4">
+            <div class="Sign-Up">
+                <h4>Sign up</h4><br />
+            </div>
+            <form id="signup-form">
+                <div class="input-field">
+                    <input type="email" id="signup-email" class="white-text" required />
+                    <label for="signup-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="signup-username" class="white-text" required />
+                    <label for="signup-username">Username</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" class="white-text" required />
+                    <label for="signup-password">Enter password</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-confirmpassword" class="white-text" required />
+                    <label for="signup-email">Confirm password</label>
+                </div>
+                <button class="btn indigo darken-4 waves-effect waves-dark">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+        <div class="modal-content grey darken-4">
+            <div class="Log">
+                <h4>Login</h4><br />
+            </div>
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="email" id="login-email" class="white-text" required />
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" class="white-text" required />
+                    <label for="login-password">Your password</label>
+                </div>
+                <button class="btn indigo darken-4 waves-effect waves-dark">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.11.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.11.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.10.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.10.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.10.0/firebase-functions.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+    <script type="text/javascript" src="auth.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
+</html>
+>>>>>>> Stashed changes
