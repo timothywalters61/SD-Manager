@@ -32,7 +32,15 @@ function addProjectToUserDocument(
 		role: projectRole
 	};
 
-	return docs.createDoc('users/' + uid + '/projects/' + projectid, data);
+	return docs
+		.createDoc('users/' + uid + '/projects/' + projectid, data)
+		.then(value => {
+			return {
+				isEqual: value.isEqual,
+				writeTime: value.writeTime,
+				id: projectid
+			};
+		});
 }
 
 /**
