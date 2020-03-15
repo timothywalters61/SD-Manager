@@ -9,7 +9,47 @@ const errors = require('./errors');
 const functions = require('firebase-functions');
 
 /* =========================================== Exports ============================================= */
+/**
+ * Creates a project document in the projects collection and the user's subcollection.
+ */
+exports.createProject = functions.https.onCall((data, context) => {
+	var projectName = data.pn;
+	var description = data.de;
+	var uid = context.auth.uid;
 
+	var projectData = {
+		name: projectName,
+		description: description
+	};
+	var projectid = '';
+	console.log('Creating project document');
+	return createProjectDocument(projectData)
+		.then(value => {
+			projectid = value.id;
+			console.log('Adding project to user document');
+			return addProjectToUserDocument(
+				projectid,
+				projectName,
+				description,
+				'product_owner',
+				uid
+			);
+		})
+		.then(value => {
+			return admin.auth().getUser(uid);
+		})
+		.then(user => {
+			console.log('Adding first member member to project');
+			return addMemberToProject(
+				user.displayName,
+				user.email,
+				projectid,
+				'product_owner',
+				uid
+			);
+		})
+		.catch(errors.onError);
+});
 /* ========================================= Local Functions ======================================= */
 /**
  * Creates a member document in the members subcollection of a project
