@@ -12,6 +12,20 @@ const functions = require('firebase-functions');
 
 /* ========================================= Local Functions ======================================= */
 /**
+ * Creates a member document in the members subcollection of a project
+ * @param {string} displayName
+ * @param {string} email
+ * @param {string} projectid
+ * @param {string} role
+ * @param {string} uid
+ */
+function addMemberToProject(displayName, email, projectid, role, uid) {
+	var data = createProjectMemberObject(displayName, email, role);
+
+	return docs.createDoc('projects/' + projectid + '/members/' + uid, data);
+}
+
+/**
  * Creates a project document in a user's projects subcollection
  * @param {string} projectid
  * @param {string} projectName
