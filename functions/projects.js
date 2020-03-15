@@ -64,3 +64,17 @@ function addProjectToUserDocument(
 function createProjectDocument(data) {
 	return docs.addDoc('projects', data);
 }
+
+/**
+ *
+ * @param {string} displayName
+ * @param {string} email
+ * @param {string} role
+ */
+function createProjectMemberObject(displayName, email, role) {
+	return {
+		display_name: displayName,
+		email: email,
+		role: role
+	};
+}
