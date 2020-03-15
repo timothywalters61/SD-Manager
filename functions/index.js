@@ -5,9 +5,13 @@
  */
 
 const signup = require('./signup');
+const projects = require('./projects');
 const admin = require('firebase-admin');
 
 admin.initializeApp();
-/* =============================== Sign Up =================================== */
+/* ================================ Sign Up =================================== */
 exports.signup = signup.signup;
 exports.createUserDocument = signup.createUserDocument;
+
+/* =============================== Projects =================================== */
+exports.createProject = projects.createProject;
