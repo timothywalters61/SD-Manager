@@ -51,6 +51,24 @@ exports.createProject = functions.https.onCall((data, context) => {
 		.catch(errors.onError);
 });
 
+exports.getUserProjectsList = functions.https.onCall((data, context) => {
+	var uid = context.auth.uid;
+
+	return getUserProjects(uid)
+		.then(querySnapshot => {
+			result = [];
+			querySnapshot.forEach(doc => {
+				var data = doc.data();
+				entry = {
+					id: doc.id,
+					name: data.name
+				};
+				result.push(entry);
+			});
+			return result;
+		})
+		.catch(errors.onError);
+});
 /* ========================================= Local Functions ======================================= */
 /**
  * Creates a member document in the members subcollection of a project
