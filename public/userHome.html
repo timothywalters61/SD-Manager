@@ -3,13 +3,13 @@
 <style>
 
  body {
-  background: url("pictures/sdPicture.jpg");
+  background: url("resources/images/sdPicture.jpg");
   background-size:cover;
  }
 
  @font-face {
      font-family: HOMOARAK;
-     src: url(Fonts/HOMOARAK.ttf); 
+     src: url(resources/fonts/HOMOARAK.ttf); 
     }
 
  .brand-logo {
@@ -47,10 +47,7 @@
     <!-- Compiled and minified CSS -->
     <link href="https://fonts.googleapis.com/css?family=Play:700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
     <title>SD-Manager</title>
 </head>
 
@@ -162,6 +159,15 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.11.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.11.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.10.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.10.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.10.0/firebase-functions.js"></script>
     <script type="text/javascript" src="loggedInUser.js"></script>
     <script type="text/javascript" src="index.js"></script>
 </body>
