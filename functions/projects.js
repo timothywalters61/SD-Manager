@@ -66,7 +66,7 @@ function createProjectDocument(data) {
 }
 
 /**
- *
+ * Creates the data object that will be used as a project member object
  * @param {string} displayName
  * @param {string} email
  * @param {string} role
