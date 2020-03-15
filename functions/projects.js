@@ -50,6 +50,7 @@ exports.createProject = functions.https.onCall((data, context) => {
 		})
 		.catch(errors.onError);
 });
+
 /* ========================================= Local Functions ======================================= */
 /**
  * Creates a member document in the members subcollection of a project
@@ -117,4 +118,12 @@ function createProjectMemberObject(displayName, email, role) {
 		email: email,
 		role: role
 	};
+}
+
+/**
+ * Returns a collection snapshot of a user's projects
+ * @param {string} uid
+ */
+function getUserProjects(uid) {
+	return docs.getCollection('users/' + uid + '/projects');
 }
