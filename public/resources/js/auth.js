@@ -1,6 +1,3 @@
-const auth = firebase.auth();
-const db = firebase.firestore();
-const functions = firebase.functions();
 var user = auth.currentUser;
 
 //if user is logged in pushes to userHome page
