@@ -32,6 +32,17 @@ exports.createDoc = (ref, data) => {
 };
 
 /**
+ * Returns a promise with a snapshot of a collection specified by ref
+ * @param {String} ref
+ */
+exports.getCollection = ref => {
+	return admin
+		.firestore()
+		.collection(ref)
+		.get();
+};
+
+/**
  * Returns a promise with a snapshot of a document specified by ref
  * @param {String} ref
  */
