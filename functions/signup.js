@@ -117,28 +117,17 @@ function setUserClaimObject(acc_type, uid) {
 /**
  * Returns a data object that will be used in a user's document in the
  * database
- * @param {string} acc_type
+ * @param {string} display_name
  * @param {string} email
- * @param {string} fname
- * @param {string} lname
- * @param {string} university
- * @param {string} university_id
+ * @param {string} first_name
+ * @param {string} last_name
  */
-function createUserDocObject(
-	acc_type,
-	email,
-	fname,
-	lname,
-	university,
-	university_id
-) {
+function createUserDocObject(display_name, email, first_name, last_name) {
 	var data = {
-		acc_type: acc_type,
+		display_name: display_name,
 		email: email,
-		fname: fname,
-		lname: lname,
-		university: university,
-		university_id: university_id
+		first_name: first_name,
+		last_name: last_name
 	};
 	return data;
 }
