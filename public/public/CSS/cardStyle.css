@@ -1,0 +1,27 @@
+#frontPage {
+    color: white;
+    background-color: #212121;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 20px 20px 20px 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+}
+
+.ownerHeading{
+    background: url("../pictures/work.jpg");
+    background-size: cover;
+    padding:100px 100px 10px 10px;
+}
+
+.developerHeading{
+    background: url("../pictures/work2.jpg");
+    background-size: cover;
+    padding:100px 100px 10px 10px;
+}
+
+.cards{
+    background-color: #343438;
+    padding: 10px;
+}
