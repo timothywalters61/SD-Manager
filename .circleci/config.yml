@@ -23,4 +23,4 @@ jobs:
                   command: npm build
             - run:
                   name: Firebase Deploy
-                  command: functions/node_modules/.bin/firebase deploy --token="$FIREBASE_TOKEN"
+                  command: ~/node_modules/.bin/firebase deploy --token="$FIREBASE_TOKEN"
