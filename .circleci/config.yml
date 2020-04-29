@@ -18,7 +18,7 @@ jobs:
                   name: Install Firebase Dependencies
                   command: npm install -D firebase-tools
             - save_cache:
-                  key: v1-npm-deps-{{ checksum "package-lock.json" }}
+                  key: v1-npm-deps-{{ checksum "public/package-lock.json" }}
                   paths:
                       - ./node_modules
             - run:
