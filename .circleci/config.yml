@@ -1,8 +1,4 @@
 version: 2
-# Need to install firebase-tools so that the deploy works
-dependencies:
-  pre:
-    - npm install -g firebase-tools
 jobs:
     build:
         docker:
@@ -18,6 +14,9 @@ jobs:
             - run:
                   name: Install Dependencies
                   command: npm install
+            - run:
+                  name: Install Firebase Dependencies
+                  command: npm install -g firebase-tools
             - save_cache:
                   key: v1-npm-deps-{{ checksum "package-lock.json" }}
                   paths:
@@ -27,4 +26,4 @@ jobs:
                   command: npm build
             - run:
                   name: Firebase Deploy
-                  command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
+                  command: firebase deploy --token=$FIREBASE_TOKEN
