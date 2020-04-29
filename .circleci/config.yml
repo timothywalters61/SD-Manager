@@ -26,4 +26,4 @@ jobs:
                   command: npm build
             - run:
                   name: Firebase Deploy
-                  command: ./node_modules/protobufjs/firebase deploy --token=$FIREBASE_TOKEN
+                  command: firebase deploy --token=$FIREBASE_TOKEN
