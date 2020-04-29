@@ -3,7 +3,7 @@ jobs:
     build:
         docker:
             - image: circleci/node:10.16.0
-        working_directory: ~/repo
+        working_directory: ~
         steps:
             - checkout
             # Download and cache dependencies
@@ -23,4 +23,4 @@ jobs:
                   command: npm build
             - run:
                   name: Firebase Deploy
-                  command: firebase deploy --token "$FIREBASE_TOKEN"
+                  command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
