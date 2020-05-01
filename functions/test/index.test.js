@@ -13,3 +13,14 @@ adminInitStub = sinon.stub(admin, 'initializeApp');
 // Now we can require index.js and save the exports inside a namespace called myFunctions.
 const myFunctions = require('../index');
 
+/* ======================================= Tests ======================================= */
+
+var wrapped = test.wrap(myFunctions.createUserDocument)
+var data = {
+    dn: "Display Name",
+    em: "email@email.com",
+    fn: "First",
+    ln: "Last"
+}
+
+wrapped(data);
