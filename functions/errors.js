@@ -3,15 +3,15 @@
  *              objects to be returned to the front end.
  */
 
-exports.onError = error => {
-	return Promise.reject(error);
+exports.onError = (error) => {
+	throw error;
 };
 
 exports.invalidCustomClaim = () => {
 	var error = {
 		code: 'failed-precondition',
 		message: "User's account type must be specified",
-		details: ''
+		details: '',
 	};
 
 	return createHttpErrorObject(error);
