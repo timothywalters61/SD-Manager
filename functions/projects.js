@@ -19,12 +19,12 @@ exports.createProject = functions.https.onCall((data, context) => {
 
 	var projectData = {
 		name: projectName,
-		description: description
+		description: description,
 	};
 	var projectid = '';
 	console.log('Creating project document');
 	return createProjectDocument(projectData)
-		.then(value => {
+		.then((value) => {
 			projectid = value.id;
 			console.log('Adding project to user document');
 			return addProjectToUserDocument(
@@ -35,10 +35,10 @@ exports.createProject = functions.https.onCall((data, context) => {
 				uid
 			);
 		})
-		.then(value => {
+		.then((value) => {
 			return admin.auth().getUser(uid);
 		})
-		.then(user => {
+		.then((user) => {
 			console.log('Adding first member member to project');
 			return addMemberToProject(
 				user.displayName,
@@ -48,6 +48,11 @@ exports.createProject = functions.https.onCall((data, context) => {
 				uid
 			);
 		})
+		.then((value) => {
+			return {
+				result: 'Success',
+			};
+		})
 		.catch(errors.onError);
 });
 
@@ -55,13 +60,13 @@ exports.getUserProjectsList = functions.https.onCall((data, context) => {
 	var uid = context.auth.uid;
 
 	return getUserProjects(uid)
-		.then(querySnapshot => {
+		.then((querySnapshot) => {
 			result = [];
-			querySnapshot.forEach(doc => {
+			querySnapshot.forEach((doc) => {
 				var data = doc.data();
 				entry = {
 					id: doc.id,
-					name: data.name
+					name: data.name,
 				};
 				result.push(entry);
 			});
@@ -102,16 +107,16 @@ function addProjectToUserDocument(
 	var data = {
 		name: projectName,
 		description: projectDescription,
-		role: projectRole
+		role: projectRole,
 	};
 
 	return docs
 		.createDoc('users/' + uid + '/projects/' + projectid, data)
-		.then(value => {
+		.then((value) => {
 			return {
 				isEqual: value.isEqual,
 				writeTime: value.writeTime,
-				id: projectid
+				id: projectid,
 			};
 		});
 }
@@ -134,7 +139,7 @@ function createProjectMemberObject(displayName, email, role) {
 	return {
 		display_name: displayName,
 		email: email,
-		role: role
+		role: role,
 	};
 }
 
