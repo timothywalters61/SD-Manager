@@ -20,7 +20,11 @@ exports.createUserDocument = functions.https.onCall((data, context) => {
 
 	var data = createUserDocObject(display_name, email, first_name, last_name);
 	console.log('Creating user document...');
-	return writeToUserDocument(data, uid);
+	return writeToUserDocument(data, uid).then((value) => {
+		return {
+			result: 'Success',
+		};
+	});
 });
 
 /**
@@ -37,7 +41,7 @@ exports.signup = functions.https.onCall((data, context) => {
 	var university = data.un;
 
 	return createNewUser(email, fname, lname, password)
-		.then(value => {
+		.then((value) => {
 			var doc = createUserDocObject(
 				acc_type,
 				email,
@@ -48,10 +52,10 @@ exports.signup = functions.https.onCall((data, context) => {
 			);
 			return {
 				result: writeToUserDocument(doc, value.uid),
-				uid: value.uid
+				uid: value.uid,
 			};
 		})
-		.then(result => {
+		.then((result) => {
 			return setUserClaimObject(acc_type, result.uid);
 		});
 });
@@ -72,9 +76,9 @@ function createNewUser(email, fname, lname, password) {
 			emailVerified: false,
 			displayName: fname + ' ' + lname,
 			password: password,
-			disabled: false
+			disabled: false,
 		})
-		.then(user => {
+		.then((user) => {
 			return { uid: user.uid };
 		});
 }
@@ -87,7 +91,7 @@ function createNewUser(email, fname, lname, password) {
 function setUserClaimObject(acc_type, uid) {
 	var claim = {
 		developer: false,
-		client: false
+		client: false,
 	};
 
 	if (acc_type == 'developer') {
@@ -114,7 +118,7 @@ function createUserDocObject(display_name, email, first_name, last_name) {
 		display_name: display_name,
 		email: email,
 		first_name: first_name,
-		last_name: last_name
+		last_name: last_name,
 	};
 	return data;
 }
