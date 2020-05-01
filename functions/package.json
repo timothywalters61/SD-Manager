@@ -17,7 +17,8 @@
     "firebase-functions": "^3.3.0"
   },
   "devDependencies": {
-    "firebase-functions-test": "^0.1.6"
+    "firebase-functions-test": "^0.1.7",
+    "mocha": "^7.1.2"
   },
   "private": true
 }
