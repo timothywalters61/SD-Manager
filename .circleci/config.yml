@@ -31,6 +31,3 @@ jobs:
                   name: Firebase Deploy
                   command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
 
-            - run:
-                  name: Run Coverage
-                  command: npm test coverage
