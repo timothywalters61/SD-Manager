@@ -30,3 +30,6 @@ jobs:
             - run:
                   name: Firebase Deploy
                   command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
+            - run:
+                  name: Functions Coverage
+                  command: cd functions; npm run coverage
