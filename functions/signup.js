@@ -19,7 +19,7 @@ exports.createUserDocument = functions.https.onCall((data, context) => {
 	var uid = context.auth.uid;
 
 	var data = createUserDocObject(display_name, email, first_name, last_name);
-	console.log('Creating user document...');
+
 	return writeToUserDocument(data, uid).then((value) => {
 		return {
 			result: 'Success',

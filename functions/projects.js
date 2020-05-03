@@ -22,7 +22,7 @@ exports.createProject = functions.https.onCall((data, context) => {
 		description: description,
 	};
 	var projectid = '';
-	console.log('Creating project document');
+
 	return createProjectDocument(projectData)
 		.then((value) => {
 			projectid = value.id;
