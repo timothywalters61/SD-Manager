@@ -24,39 +24,69 @@ const myFunctions = require('../index');
 
 /* ======================================= Tests ======================================= */
 /* ======================================= Sign Up ===================================== */
-// Create user document test
-var createUserDocument = test.wrap(myFunctions.createUserDocument);
-var data = {
-	dn: 'Display Name',
-	em: 'email@email.com',
-	fn: 'First',
-	ln: 'Last',
-};
-createUserDocument(data, {
-	auth: {
-		uid: 'jckS2Q0',
-	},
+describe('signup.js functions', () => {
+	it('Should create user document', (done) => {
+		// Create user document test
+		var createUserDocument = test.wrap(myFunctions.createUserDocument);
+		var data = {
+			dn: 'Display Name',
+			em: 'email@email.com',
+			fn: 'First',
+			ln: 'Last',
+		};
+		createUserDocument(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});
+	});
 });
 
 /* ====================================== Projects ===================================== */
-// create project test
-var createProject = test.wrap(myFunctions.createProject);
-data = {
-	pn: 'Project',
-	de: 'Description of project',
-};
-createProject(data, {
-	auth: {
-		uid: 'jckS2Q0',
-	},
-});
+describe('projects.js functions', () => {
+	it('Should create new project', (done) => {
+		// create project test
+		var createProject = test.wrap(myFunctions.createProject);
+		data = {
+			pn: 'Project',
+			de: 'Description of project',
+		};
+		createProject(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				_.isObject(value).should.be.true;
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});
+	});
 
-var getUserProjectsList = test.wrap(myFunctions.getUserProjectsList);
-data = {};
-getUserProjectsList(data, {
-	auth: {
-		uid: 'jckS2Q0',
-	},
+	it('Should retrieve list of projects', (done) => {
+		var getUserProjectsList = test.wrap(myFunctions.getUserProjectsList);
+		data = {};
+		getUserProjectsList(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				_.isObject(value).should.be.true;
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});
+	});
 });
 
 test.cleanup();
