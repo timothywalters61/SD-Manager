@@ -63,3 +63,6 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# Service account key
+sd-manager-firebase-adminsdk-mx72v-e8dac43245.json
