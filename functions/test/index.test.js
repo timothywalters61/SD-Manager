@@ -2,11 +2,18 @@
  * @description This file contains all the unit tests that will be used to test the
  *              Cloud Functions
  */
-
+/* ====================================== Imports ====================================== */
 // At the top of test/index.test.js
 const test = require('firebase-functions-test')();
 const sinon = require('sinon');
 const admin = require('firebase-admin');
+const assert = require('assert');
+const chai = require('chai');
+const chai_as_promised = require('chai-as-promised');
+chai.use(chai_as_promised);
+const expect = chai.expect;
+const should = chai.should();
+const _ = require('lodash');
 // If index.js calls admin.initializeApp at the top of the file,
 // we need to stub it out before requiring index.js. This is because the
 // functions will be executed as a part of the require process.
@@ -51,4 +58,5 @@ getUserProjectsList(data, {
 		uid: 'jckS2Q0',
 	},
 });
+
 test.cleanup();
