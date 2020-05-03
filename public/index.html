@@ -1,241 +1,130 @@
+<!DOCTYPE html>
 <html lang="en">
 
-<style>
-
- body{
-     background-color: white;
-     background: url("resources/images/sdPicture.jpg");
-     background-size: cover;
- }
-
-.card-container {
-    padding-left: 250px;
-} 
-
-.card-image img{
-    width: 626px;
-    height: 175px;;
-}
-
-.card-content {
-    background-color: #212121 ;
-    color: white
-}
-
-.card-action {
-    background-color: #212121 ;
-    color: white
-}
-
-
-@font-face {
-     font-family: HOMOARAK;
-     src: url(resources/fonts/HOMOARAK.ttf); 
-    }
-
-
-.Opening-text {
-  font-size: 10px;  
-  color: white;
-  background-color:#212121;
-  text-align: center;
-  padding-left: 200px;
-  padding-right: 200px;
-  font-family: 'Play',sans-serif;
-}
-
-.hide-on-med-and-down li a:hover{
-    background:#1a237e;
- 
-    color: #333;
-}
-
-.log {
-   color: white; 
-}
-
-.Sign-Up {
-    color: white;
-}
-
-</style>
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Compiled and minified CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Play:700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <title>SD-Manager</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SD Manager</title>
 
-    <style>
-        .parallax-container {
-            height: 250px;
-        }
-    </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/cardStyle.css">
 
 </head>
 
-<body class="grey lighten-3">
+<body class="indexBody">
 
-    <!-- NAVBAR -->
-    <nav class=" z-depth-0 grey darken-4">
-        <div class="nav-wrapper container">
-            <a href="#" class="brand-logo">
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="logged-out">
-                    <a href="#" class="white-text modal-trigger" data-target="modal-login">Login</a>
-                </li>
-                <li class="logged-out">
-                    <a href="#" class="white-text modal-trigger" data-target="modal-signup">Sign up</a>
-                </li>
-                </span>
-            </ul>
-        </div>
-    </nav>
+  <!-- navigation -->
 
-    <br></br>
+  <div class="navigation">
+    <p><a href="#">Software Design Manager</a></p>
+    <ul>
+      <li><a href="#" class="modal-trigger" data-target="signup-modal">Sign Up</a></li>
+      <li><a href="#" class="modal-trigger" data-target="login-modal">Login</a></li>
+    </ul>
 
-    <br></br>
+  </div>
 
-    <!--
-       <div class = "Opening-text">
-    <h10>
-        SD Manager is a platform that students can use to manage their software design projects. Lecturers, who act as
-        product owners, can also use this platform to verify sprint details such as which user stories are to be
-        implemented. This platform can be used to award sprint marks accordingly since sprint details need to be
-        verified by the product owner before any changes are saved. This helps prevent students from changing the
-        backlog to suit what they've managed to do over the course of a sprint. Students can also communicate with their
-        product through this platform to make any queries. The head lecturer of the course can also access a group's
-        backlog and track changes made to the backlog to help with awarding marks
-   </h10>
-    </div>    
-    -->
- 
+  <!-- info cards -->
 
-    <div class = "card-container">
-        <div class = "row">
-            <div class = "col s3 l3">
-                <div class = "card">
-                    <div class = "card-image">
-                        <img src = "resources/images/world.jpg" alt="">
-                    </div>
-                    <div class = "card-content">
-                        <span class = "card-title">Client</span>
-                        <p>Act as a client and work and communicate with developers within your personal circle or developers all across 
-                            the world and monitor their code, user-stories, progress and more! 
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class = "col s3 l3">
-                <div class = "card">
-                    <div class = "card-image">
-                        <img src = "resources/images/work.jpg" alt="">
-                    </div>
-                    <div class = "card-content">
-                    <span class = "card-title">Marker</span>
-                    <p>
-                        A special role made by our team catered to lecturers of universities. Oversee
-                        projects and gain access to work from all development and client groups in your institution    
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class = "col s3 l3">
-            <div class = "card">
-                <div class = "card-image">
-                    <img src = "resources/images/work2.jpg" alt="">
-                </div>
-                <div class = "card-content">
-                    <span class = "card-title">Developer</span>
-                    <p>
-                        Take on the role as a developer and work with various clients and developers from all over the world - from 
-                        corporate companies to personal pet projects.
-                    </p>
-                </div>
-            </div>
-        </div>
+  <div id="frontPage">
+    <h3 class="welcomeCard center">Welcome to Software Design Manager</h3>
+    <br>
+    <h6 class="welcomeCard">Software Design Manager is a platform that software developers
+      can use to manage their projects.
+      Make your dream app a reality and start a new project where you and your dev team can keep track
+      of project progress and define new tasks for each sprint. As a project owner you can also
+      monitor each team members backlog to make sure that they are on track for project completion and
+      are finishing their assigned tasks in time. With this platform you can connect developers from
+      anywhere around the world and manage them as if they where working in the same building.</h6>
+    <br>
+
+    <div class="cards">
+      <div class="ownerHeading">
+        <span class="white-text card-panel indigo darken-4 z-depth-0 ">Be an Owner:</span>
+      </div><br>
+      <div class="content">
+        <h6>Become a project owner by creating a brand new project and inviting developers to join
+          your team. Split your project up into sprints, assign user stories to the sprints and use
+          Software Design manager to make your idea into a working app. Is one project not enough?
+          Don't worry because you can manage multiple projects at the same time if a little extra
+          work doesn't scare you.</h6>
+      </div>
     </div>
-       
-       
-
-    <!-- SIGN UP MODAL -->
-    <div id="modal-signup" class="modal">
-        <div class="modal-content grey darken-4">
-            <div class="Sign-Up">
-            <h4>Sign up</h4><br />   
-            </div>
-            <form id="signup-form">
-                <div class="input-field">
-                    <input type="email" id="signup-email" required />
-                    <label for="signup-email">Email address</label>
-                </div>
-                <div class="input-field">
-                    <input type="text" id="signup-displayname" required />
-                    <label for="signup-username">Display Name</label>
-                </div>
-                <div class="input-field">
-                    <input type="text" id="signup-firstname"/>
-                    <label for="signup-username">First Name</label>
-                </div>
-                <div class="input-field">
-                    <input type="text" id="signup-lastname"/>
-                    <label for="signup-username">Last Name</label>
-                </div>
-                <div class="input-field">
-                    <input type="password" id="signup-password" required />
-                    <label for="signup-password">Enter password</label>
-                </div>
-                <div class="input-field">
-                    <input type="password" id="signup-confirmpassword" required />
-                    <label for="signup-email">Confirm password</label>
-                </div>
-                <button class="btn indigo darken-4 waves-effect waves-dark">Sign up</button>
-            </form>
-        </div>
+    <br>
+    <div class="cards">
+      <div class="developerHeading">
+        <span class="white-text card-panel indigo darken-4 z-depth-0">Be a Developer:</span>
+      </div><br>
+      <div class="content">
+        <h6>Get invited by a project owner to join their team and work on making their idea a reality.
+          Knowing what to do is super easy with Software Design Manager, just check what unfinished
+          user stories you have left for the sprint and make sure they are finished by the time the
+          sprint is through. Have a great idea of your own for an app? Just create a new project and
+          become a project owner yourself.</h6>
+      </div>
     </div>
+  </div>
 
-    <!-- LOGIN MODAL -->
-    <div id="modal-login" class="modal">
-        <div class="modal-content grey darken-4">
-            <div class="Log">
-                <h4>Login</h4><br />   
-                </div>
-            <form id="login-form">
-                <div class="input-field">
-                    <input type="email" id="login-email" required />
-                    <label for="login-email">Email address</label>
-                </div>
-                <div class="input-field">
-                    <input type="password" id="login-password" required />
-                    <label for="login-password">Your password</label>
-                </div>
-                <button class="btn indigo darken-4 waves-effect waves-dark">Login</button>
-            </form>
+  <!-- signup modal -->
+
+  <div id="signup-modal" class="modal">
+    <div class="modal-content">
+      <h4>Sign Up</h4>
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" class="white-text" required />
+          <label for="signup-email">Email address</label>
         </div>
+        <div class="input-field">
+          <input type="text" id="signup-username" class="white-text" required />
+          <label for="signup-username">Username</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" class="white-text" required />
+          <label for="signup-password">Enter password</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-confirmpassword" class="white-text" required />
+          <label for="signup-email">Confirm password</label>
+        </div>
+        <button class="btn indigo darken-4 waves-effect waves-dark">Sign up</button>
+      </form>
     </div>
+  </div>
 
-    <!-- Compiled and minified JavaScript -->
+  <!-- login modal -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/7.11.0/firebase-app.js"></script>
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" class="white-text" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" class="white-text" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn indigo darken-4 waves-effect waves-dark">Login</button>
+      </form>
+    </div>
+  </div>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/7.11.0/firebase-analytics.js"></script>
-    <script src="/__/firebase/7.10.0/firebase-auth.js"></script>
-    <script src="/__/firebase/7.10.0/firebase-firestore.js"></script>
-    <script src="/__/firebase/7.10.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
-    <script type="text/javascript" src="resources/js/firebase.init.js"></script>
-    <script type="text/javascript" src="resources/js/auth.js"></script>
-    <script type="text/javascript" src="resources/js/index.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+
+  <!-- <script src="/__/firebase/init.js"></script> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="text/javascript" src="JavaScript/materialize.js"></script>
+  <script type="text/javascript" src="JavaScript/authentication.js"></script>
+
 </body>
 
 </html>

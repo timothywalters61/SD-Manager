@@ -10,35 +10,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/sideNavStyle.css">
-
 </head>
 
 <body>
-
-    <!-- navigation -->
-
     <div class="navigation">
-        <p><a href=userHome.html>Software Design Manager</a></p>
+        <p><a href="userHome.html">Software Design Manager</a></p>
         <ul>
-            <li><a href="#">My Projects<i class="material-icons">arrow_drop_down</i></a>
-                <ul id="projectList">
-                    <li><a href="#">You Currently Have No Projects</a></li>
+            <li><a href="#">Notifications<span class="badge white-text">0</span></a>
+                <ul id="notificationsList">
+                    <li><a href="#">0 Notifications</a></li>
                 </ul>
             </li>
-            <li><a href="#" class="modal-trigger" data-target="create-modal">Create Project</a></li>
-            <li><a href="#" id="inviteBadge">Invites<span class="badge">0</span></a>
-                <ul id="inviteList">
-                    <li><a href="#">No Invites</a></li>
+            <li><a href="#">Team</a>
+                <ul id="teamList">
+                    <li><a href="#"></a></li>
                 </ul>
             </li>
-            <li><a href="https://github.com/">Git</a></li>
-            <li><a href="https://tree.taiga.io/">Taiga</a></li>
             <li><a href="#" id="logout">Logout</a></li>
         </ul>
 
     </div>
 
-    <!-- SIDE NAVBAR -->
+    <br>
+    <br>
+    <br>
+
+    <div id="projectTitle"></div>
+
+    <!-- sidenav -->
+
     <ul id="slide-out" class="sidenav">
         <li>
             <div id="user-info" class="user-view">
@@ -62,21 +62,17 @@
             class="material-icons grey-text">menu</i>
     </a>
 
-    <!-- create project modal -->
+    <!-- add developer modal -->
 
-    <div id="create-modal" class="modal">
+    <div id="addDev-modal" class="modal">
         <div class="modal-content">
-            <h4>Create Project</h4>
-            <form id="create-form">
+            <h4>Add Developer</h4>
+            <form id="add-form">
                 <div class="input-field">
-                    <input type="text" id="projectName" class="white-text" required />
-                    <label for="projectName">Project Name</label>
+                    <input type="email" id="add-email" class="white-text" required />
+                    <label for="add-email">Add a Developer by Email</label>
                 </div>
-                <div class="input-field">
-                    <input type="text" id="projectDescription" class="white-text" />
-                    <label for="projectDescription">Project Description (optional)</label>
-                </div>
-                <button class="btn indigo darken-4 waves-effect waves-dark">Create</button>
+                <button class="btn indigo darken-4 waves-effect waves-dark">Add</button>
             </form>
         </div>
     </div>
@@ -91,11 +87,11 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="JavaScript/materialize.js"></script>
-    <script type="text/javascript" src="JavaScript/loggedInUserHome.js"></script>
-    <script type="text/javascript" src="JavaScript/createProject.js"></script>
-    <script type="text/javascript" src="JavaScript/setUpProjectDropdown.js"></script>
+    <script type="text/javascript" src="JavaScript/loggedInProjectDev.js"></script>
     <script type="text/javascript" src="JavaScript/setUpSidenav.js"></script>
-    <script type="text/javascript" src="JavaScript/setUpInviteDropdown.js"></script>
+    <script type="text/javascript" src="JavaScript/populateProjectPage.js"></script>
+    <script type="text/javascript" src="JavaScript/setUpTeamDropdown.js"></script>
+
 
 </body>
 
