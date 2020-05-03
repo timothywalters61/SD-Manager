@@ -4,7 +4,14 @@
  */
 /* ====================================== Imports ====================================== */
 // At the top of test/index.test.js
-const test = require('firebase-functions-test')();
+const test = require('firebase-functions-test')(
+	{
+		databaseURL: 'https://sd-manager.firebaseio.com',
+		projectId: 'sd-manager',
+		storageBucket: 'sd-manager.appspot.com',
+	},
+	'../sd-manager-firebase-adminsdk-mx72v-e8dac43245.json'
+);
 const sinon = require('sinon');
 const admin = require('firebase-admin');
 const assert = require('assert');
@@ -23,6 +30,9 @@ const _ = require('lodash');
 const myFunctions = require('../index');
 
 /* ======================================= Tests ======================================= */
+var success = {
+	result: 'Success',
+};
 /* ======================================= Sign Up ===================================== */
 describe('signup.js functions', () => {
 	it('Should create user document', (done) => {
@@ -40,6 +50,7 @@ describe('signup.js functions', () => {
 			},
 		})
 			.then((value) => {
+				expect(value).to.equal(success);
 				done();
 			})
 			.catch((error) => {
