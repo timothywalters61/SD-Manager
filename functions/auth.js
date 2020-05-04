@@ -13,3 +13,12 @@ const admin = require('firebase-admin');
 exports.getUser = (uid) => {
 	return admin.auth().getUser(uid);
 };
+
+/**
+ * Gets user data for the user corresponding to a given email
+ * @param {String} email The email corresponding to the user whose data to
+ *                          fetch.
+ */
+exports.getUserByEmail = (email) => {
+	return admin.auth().getUserByEmail(email);
+};
