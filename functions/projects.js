@@ -4,11 +4,44 @@
  */
 
 const admin = require('firebase-admin');
+const auth = require('./auth');
 const docs = require('./docs');
 const errors = require('./errors');
 const functions = require('firebase-functions');
 
 /* =========================================== Exports ============================================= */
+exports.addNewMemberToProject = functions.https.onCall((data, context) => {
+	var projectid = data.pid;
+	var memberEmail = data.mem;
+	var memberID = '';
+	var memberName = '';
+	var projectName = '';
+	var projectDescription = '';
+
+	return auth
+		.getUserByEmail(memberEmail)
+		.then((user) => {
+			memberID = user.uid;
+			memberName = user.displayName;
+			return {
+				memberUID: user.uid,
+				memberName: user.displayName,
+			};
+		})
+		.then((value) => {
+			return addMemberToProject(
+				value.memberName,
+				memberEmail,
+				projectid,
+				'developer',
+				value.memberUID
+			);
+		})
+		.then((value) => {
+			return;
+		});
+});
+
 /**
  * Creates a project document in the projects collection and the user's subcollection.
  */
@@ -141,6 +174,14 @@ function createProjectMemberObject(displayName, email, role) {
 		email: email,
 		role: role,
 	};
+}
+
+/**
+ * Returns a document snapshot of a project corresponding to projectid
+ * @param {String} projectid
+ */
+function getProjectDocument(projectid) {
+	return docs.getDoc('projects/' + projectid);
 }
 
 /**
