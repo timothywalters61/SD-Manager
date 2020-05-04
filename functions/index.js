@@ -14,5 +14,6 @@ exports.signup = signup.signup;
 exports.createUserDocument = signup.createUserDocument;
 
 /* =============================== Projects =================================== */
+exports.addMemberToProject = projects.addNewMemberToProject;
 exports.createProject = projects.createProject;
 exports.getUserProjectsList = projects.getUserProjectsList;

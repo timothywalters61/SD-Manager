@@ -10,35 +10,45 @@ const errors = require('./errors');
 const functions = require('firebase-functions');
 
 /* =========================================== Exports ============================================= */
+/**
+ * Adds a new member to an existing project
+ */
 exports.addNewMemberToProject = functions.https.onCall((data, context) => {
 	var projectid = data.pid;
 	var memberEmail = data.mem;
 	var memberID = '';
 	var memberName = '';
-	var projectName = '';
-	var projectDescription = '';
 
 	return auth
 		.getUserByEmail(memberEmail)
 		.then((user) => {
 			memberID = user.uid;
 			memberName = user.displayName;
-			return {
-				memberUID: user.uid,
-				memberName: user.displayName,
-			};
-		})
-		.then((value) => {
 			return addMemberToProject(
-				value.memberName,
-				memberEmail,
+				user.displayName,
+				user.email,
 				projectid,
 				'developer',
-				value.memberUID
+				user.uid
 			);
 		})
 		.then((value) => {
-			return;
+			return getProjectDocument(projectid);
+		})
+		.then((snapshot) => {
+			var data = snapshot.data();
+			return addProjectToUserDocument(
+				projectid,
+				data.name,
+				data.description,
+				'developer',
+				memberID
+			);
+		})
+		.then((value) => {
+			return {
+				result: 'Success',
+			};
 		});
 });
 
