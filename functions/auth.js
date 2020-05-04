@@ -32,3 +32,12 @@ exports.getUserByEmail = (email) => {
 exports.getUserByPhoneNumber = (phone) => {
 	return admin.auth().getUserByPhoneNumber(phone);
 };
+
+/**
+ * Updates an existing user.
+ * @param {String} uid The uid of the user to be updated
+ * @param {Object} properties The properties to update on the provided user.
+ */
+exports.updateUser = (uid, properties) => {
+	return admin.auth().updateUser(uid, properties);
+};
