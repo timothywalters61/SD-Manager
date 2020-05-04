@@ -103,6 +103,26 @@ describe('projects.js functions', () => {
 				done(error);
 			});
 	});
+	it('Should add a member to an existing project', (done) => {
+		var addMemberToProject = test.wrap(myFunctions.addMemberToProject);
+		data = {
+			mem: 'user@user.com',
+			pid: 'test_project',
+		};
+		addMemberToProject(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				//_.isObject(value).should.be.true
+				expect(value.result).to.equal('Success');
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});
+	});
 });
 
 //test.cleanup();
