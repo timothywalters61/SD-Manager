@@ -22,3 +22,13 @@ exports.getUser = (uid) => {
 exports.getUserByEmail = (email) => {
 	return admin.auth().getUserByEmail(email);
 };
+
+/**
+ * Gets the user data for the user corresponding to a given phone number.
+ * The phone number has to conform to the E.164 specification.
+ * @param {String} phone The phone number corresponding to the user whose data
+ *                          to fetch.
+ */
+exports.getUserByPhoneNumber = (phone) => {
+	return admin.auth().getUserByPhoneNumber(phone);
+};
