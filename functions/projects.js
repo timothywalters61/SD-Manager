@@ -117,6 +117,7 @@ exports.getUserProjectsList = functions.https.onCall((data, context) => {
 		})
 		.catch(errors.onError);
 });
+
 /* ========================================= Local Functions ======================================= */
 /**
  * Creates a member document in the members subcollection of a project
@@ -130,6 +131,20 @@ function addMemberToProject(displayName, email, projectid, role, uid) {
 	var data = createProjectMemberObject(displayName, email, role);
 
 	return docs.createDoc('projects/' + projectid + '/members/' + uid, data);
+}
+
+/**
+ * Creates a member document in the invites subcollection of a project
+ * @param {string} displayName
+ * @param {string} email
+ * @param {string} projectid
+ * @param {string} role
+ * @param {string} uid
+ */
+function addMemberToInvites(displayName, email, projectid, role, uid) {
+	var data = createProjectMemberObject(displayName, email, role);
+
+	return docs.createDoc('projects/' + projectid + '/invites/' + uid, data);
 }
 
 /**
