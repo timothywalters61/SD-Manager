@@ -131,7 +131,7 @@ exports.getUserProjectsList = functions.https.onCall((data, context) => {
  * of a project corresponding to projectid
  * @param {String} projectid
  * @param {String} uid
- * @param {String} data
+ * @param {Object} data
  */
 function addMemberDataToProject(projectid, uid, data) {
 	return docs.createDoc('projects/' + projectid + '/members/' + uid, data);
@@ -195,6 +195,16 @@ function addProjectInviteToUserDocument(
 				id: projectid,
 			};
 		});
+}
+
+/**
+ * Creeates a project document in a user's projects subcollection
+ * @param {Object} data
+ * @param {String} projectid
+ * @param {String} uid
+ */
+function addProjectDataToUserDocument(data, projectid, uid) {
+	return docs.createDoc('users/' + uid + '/projetcs/' + projectid, data);
 }
 
 /**
