@@ -234,6 +234,16 @@ function createProjectMemberObject(displayName, email, role) {
 }
 
 /**
+ * Deletes an invite doctument that's found in a project specified by
+ * projectid that was sent to the user corresponding to uid
+ * @param {String} projectid
+ * @param {String} uid
+ */
+function deleteInviteFromProject(projectid, uid) {
+	return docs.deleteDoc('projects/' + projectid + '/invites/' + uid);
+}
+
+/**
  * Returns a document snapshot of a project corresponding to projectid
  * @param {String} projectid
  */
