@@ -26,6 +26,14 @@ exports.createDoc = (ref, data) => {
 };
 
 /**
+ * Deletes the document referred to by ref
+ * @param {String} ref
+ */
+exports.deleteDoc = (ref) => {
+	return admin.firestore().doc(ref).delete();
+};
+
+/**
  * Returns a promise with a snapshot of a collection specified by ref
  * @param {String} ref
  */
