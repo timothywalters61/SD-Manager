@@ -284,6 +284,16 @@ function deleteInviteFromUserDocument(projectid, uid) {
 }
 
 /**
+ * Returns a document snapshot of a user corresponding to uid found
+ * in a project's invites subcollection
+ * @param {String} projectid
+ * @param {String} uid
+ */
+function getInviteFromProjectDocument(projectid, uid) {
+	return docs.getDoc('projects/' + projectid + '/invites/' + uid);
+}
+
+/**
  * Returns a document snapshot of a project corresponding to projectid
  * found in a user's invites subcollection
  * @param {String} projectid
