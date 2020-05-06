@@ -14,6 +14,8 @@ const functions = require('firebase-functions');
 exports.acceptInvite = functions.https.onCall((data, context) => {
 	var projectid = data.pid;
 	var uid = context.auth.uid;
+
+	return;
 });
 
 /**
@@ -279,6 +281,16 @@ function deleteInviteFromProjectDocument(projectid, uid) {
  */
 function deleteInviteFromUserDocument(projectid, uid) {
 	return docs.deleteDoc('users/' + uid + '/invites/' + projectid);
+}
+
+/**
+ * Returns a document snapshot of a project corresponding to projectid
+ * found in a user's invites subcollection
+ * @param {String} projectid
+ * @param {String} uid
+ */
+function getInviteFromUserDocument(projectid, uid) {
+	return docs.getDoc('users/' + uid + '/invites/' + projectid);
 }
 
 /**
