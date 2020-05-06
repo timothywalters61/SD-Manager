@@ -148,6 +148,38 @@ function addMemberToInvites(displayName, email, projectid, role, uid) {
 }
 
 /**
+ * Creates a project document in a user's invites subcollection
+ * @param {string} projectid
+ * @param {string} projectName
+ * @param {string} projectDescription
+ * @param {string} projectRole
+ * @param {string} uid
+ */
+function addProjectInviteToUserDocument(
+	projectid,
+	projectName,
+	projectDescription,
+	projectRole,
+	uid
+) {
+	var data = {
+		name: projectName,
+		description: projectDescription,
+		role: projectRole,
+	};
+
+	return docs
+		.createDoc('users/' + uid + '/invites/' + projectid, data)
+		.then((value) => {
+			return {
+				isEqual: value.isEqual,
+				writeTime: value.writeTime,
+				id: projectid,
+			};
+		});
+}
+
+/**
  * Creates a project document in a user's projects subcollection
  * @param {string} projectid
  * @param {string} projectName
