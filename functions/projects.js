@@ -10,6 +10,12 @@ const errors = require('./errors');
 const functions = require('firebase-functions');
 
 /* =========================================== Exports ============================================= */
+
+exports.acceptInvite = functions.https.onCall((data, context) => {
+	var projectid = data.pid;
+	var uid = context.auth.uid;
+});
+
 /**
  * Adds a new member to an existing project
  */
