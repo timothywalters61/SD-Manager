@@ -15,7 +15,31 @@ exports.acceptInvite = functions.https.onCall((data, context) => {
 	var projectid = data.pid;
 	var uid = context.auth.uid;
 
-	return;
+	return getInviteFromProjectDocument(projectid, uid)
+		.then((snapshot) => {
+			if (!snapshot.exists) {
+				throw errors.docDoesNotExist();
+			}
+
+			var data = snapshot.data();
+			return addMemberDataToProject(projectid, uid, data);
+		})
+		.then((value) => {
+			return getInviteFromUserDocument(projectid, uid);
+		})
+		.then((snapshot) => {
+			if (!snapshot.exists) {
+				throw errors.docDoesNotExist();
+			}
+
+			var data = snapshot.data();
+			return addProjectDataToUserDocument(data, projectid, uid);
+		})
+		.then((value) => {
+			return {
+				result: 'Success',
+			};
+		});
 });
 
 /**
