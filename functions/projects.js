@@ -239,7 +239,7 @@ function createProjectMemberObject(displayName, email, role) {
  * @param {String} projectid
  * @param {String} uid
  */
-function deleteInviteFromProject(projectid, uid) {
+function deleteInviteFromProjectDocument(projectid, uid) {
 	return docs.deleteDoc('projects/' + projectid + '/invites/' + uid);
 }
 
