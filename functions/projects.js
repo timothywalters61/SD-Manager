@@ -125,6 +125,18 @@ exports.getUserProjectsList = functions.https.onCall((data, context) => {
 });
 
 /* ========================================= Local Functions ======================================= */
+
+/**
+ * Creates a member document corresponding to uid in the members subcollection
+ * of a project corresponding to projectid
+ * @param {String} projectid
+ * @param {String} uid
+ * @param {String} data
+ */
+function addMemberDataToProject(projectid, uid, data) {
+	return docs.createDoc('projects/' + projectid + '/members/' + uid, data);
+}
+
 /**
  * Creates a member document in the members subcollection of a project
  * @param {string} displayName
