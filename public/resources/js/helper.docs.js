@@ -24,6 +24,18 @@ function getDoc(col, doc) {
 }
 
 /**
+ * Creates and returns a new Query with the additional filter that documents must contain
+ * the specified field and the value should satisfy the relation constraint provided.
+ * @param {String} col Collection reference
+ * @param {Object} condition Object with fieldPath, opStr and value
+ */
+function collectionWhere(col, condition) {
+	return firestore
+		.collection(col)
+		.where(condition.fieldPath, condition.opStr, condition.value);
+}
+
+/**
  * Creates or overwrites a single document specified by doc which is found in a
  * collection specified by col
  * @param {String} col
