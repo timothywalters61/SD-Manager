@@ -42,6 +42,17 @@ function createProjectDocument(data) {
 }
 
 /**
+ * Creates a document in the invites subcollection of a project specified by
+ * pid which will contain the contents of data
+ * @param {Object} data
+ * @param {String} pid
+ * @param {String} uid
+ */
+function createProjectInviteDocument(data, pid, uid) {
+	return setDoc('projects/' + pid + '/invites/', data, uid);
+}
+
+/**
  * Creates a member document in a project's members subcollection that will
  * contain the contents of data
  * @param {Object} data
