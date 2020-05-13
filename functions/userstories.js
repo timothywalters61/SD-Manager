@@ -8,6 +8,21 @@ const docs = require('./docs');
 const errors = require('./errors');
 const functions = require('firebase-functions');
 /* ===================================== Exports ====================================== */
+/**
+ * Creates a user story and saves it in the project's bakclog
+ */
+exports.createUserStory = functions.https.onCall((data, context) => {
+	var acceptance = data.acc;
+	var description = data.des;
+	var points = data.pts;
+	var projectid = data.pid;
+
+	var data = createUserStoryDataObject(acceptance, description, points);
+
+	return createNewUserStoryDocument(data, projectid).then((value) => {
+		return { result: 'Success' };
+	});
+});
 /* ================================== Local Functions ================================= */
 /**
  * Returns a map of fields and values that will be used when creating a new user story
