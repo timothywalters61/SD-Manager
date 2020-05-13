@@ -66,3 +66,6 @@ node_modules/
 
 # Service account key
 sd-manager-firebase-adminsdk-mx72v-e8dac43245.json
+
+# Firebase hosting init file
+public/resources/js/firebase.init.js
