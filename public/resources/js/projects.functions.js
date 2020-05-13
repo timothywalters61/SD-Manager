@@ -23,13 +23,23 @@ function createProjectMemberDataObject(email, name, role) {
  * document.
  * @param {String} name
  * @param {String} description
+ * @param {String} owner
  * @param {String} repository
+ * @param {Array} team
  */
-function createProjectDocumentDataObject(name, description, repository) {
+function createProjectDocumentDataObject(
+	name,
+	description,
+	owner,
+	repository,
+	team
+) {
 	return {
 		description: description,
 		name: name,
+		owner_id: owner,
 		repository: repository,
+		team: team,
 	};
 }
 
