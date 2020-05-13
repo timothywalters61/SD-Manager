@@ -23,3 +23,13 @@ function createSprintDataObject(end, name, start) {
 		start_date: start,
 	};
 }
+
+/**
+ * Creates a sprint document in a project's sprints subcollection. The document
+ * will contain the contents of data.
+ * @param {Object} data
+ * @param {String} projectid
+ */
+function createSprintDocument(data, projectid) {
+	return docs.addDoc('projects/' + projectid + '/sprints', data);
+}
