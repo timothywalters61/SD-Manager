@@ -51,20 +51,22 @@ auth.onAuthStateChanged((user) => {
 		});
 
 		//set up invite dropdown
-
-		db.collection('Invites')
-			.where('inviteToID', '==', user.uid)
-			.onSnapshot(function (snapshot) {
-				if (snapshot.docs != 0) {
-					setUpInvites(snapshot.docs);
-				} else {
-					console.log('invites do not exist');
-					let html = '<li><a href="#">No Invites</a></li>';
-					inviteList.innerHTML = html;
-					let html2 = 'Invites<span class="badge">0</span>';
-					inviteBadge.innerHTML = html2;
-				}
-			});
+		var cond = {
+			fieldPath: 'inviteToID',
+			opStr: '==',
+			value: user.uid,
+		};
+		collectionWhere('invites', cond).onSnapshot(function (snapshot) {
+			if (snapshot.docs != 0) {
+				setUpInvites(snapshot.docs);
+			} else {
+				console.log('invites do not exist');
+				let html = '<li><a href="#">No Invites</a></li>';
+				inviteList.innerHTML = html;
+				let html2 = 'Invites<span class="badge">0</span>';
+				inviteBadge.innerHTML = html2;
+			}
+		});
 	} else {
 		console.log('user logged out');
 		window.location.href = 'index.html';
