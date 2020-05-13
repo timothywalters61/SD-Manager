@@ -1,62 +1,10 @@
-<<<<<<< HEAD
-/**
- * @description This file contains all the functions that will be used to navigate the home
- *              page.
- */
-
-showHome();
-
-/**
- * Shows the home block and hides the rest
- */
-function showHome() {
-	hideElement('login');
-	hideElement('signup');
-	showBlockElement('home');
-	addElementClass('nav-item-home', 'current');
-	removeElementClass('nav-item-about', 'current');
-	removeElementClass('nav-item-contact', 'current');
-	removeElementClass('nav-item-login', 'current');
-	removeElementClass('nav-item-signup', 'current');
-}
-
-/**
- * Shows the login block and hides the rest
- */
-function showLogin() {
-	hideElement('home');
-	hideElement('signup');
-	showBlockElement('login-form');
-	showBlockElement('login');
-	addElementClass('nav-item-login', 'current');
-	removeElementClass('nav-item-about', 'current');
-	removeElementClass('nav-item-contact', 'current');
-	removeElementClass('nav-item-home', 'current');
-	removeElementClass('nav-item-signup', 'current');
-}
-
-/**
- * Shows the sign up block and hides the rest
- */
-function showSignUp() {
-	hideElement('home');
-	hideElement('login');
-	showBlockElement('signup-form');
-	showBlockElement('signup');
-	addElementClass('nav-item-signup', 'current');
-	removeElementClass('nav-item-about', 'current');
-	removeElementClass('nav-item-contact', 'current');
-	removeElementClass('nav-item-login', 'current');
-	removeElementClass('nav-item-home', 'current');
-}
-=======
 //setup user interaction with buttons on home page
 
 const sideNav = document.querySelector('#slide-out');
 
 const setUpSideNav = (data) => {
-    let html = '';
-    const li = `
+	let html = '';
+	const li = `
     <li><div id = "user-info" class="user-view">
     <div class="background">
       <img src="pictures/Russia.jpg">
@@ -71,22 +19,20 @@ const setUpSideNav = (data) => {
   <li><a class="subheader">Subheader</a></li>
   <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
     `;
-    html = html + li;
-    sideNav.innerHTML = html;
-}
+	html = html + li;
+	sideNav.innerHTML = html;
+};
 
 document.addEventListener('DOMContentLoaded', function () {
+	var modals = document.querySelectorAll('.modal');
+	M.Modal.init(modals);
 
-    var modals = document.querySelectorAll('.modal');
-    M.Modal.init(modals);
+	var items = document.querySelectorAll('.collapsible');
+	M.Collapsible.init(items);
 
-    var items = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(items);
+	var elems = document.querySelectorAll('.parallax');
+	M.Parallax.init(elems);
 
-    var elems = document.querySelectorAll('.parallax');
-    M.Parallax.init(elems);
-
-    var sideNav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sideNav);
+	var sideNav = document.querySelectorAll('.sidenav');
+	M.Sidenav.init(sideNav);
 });
->>>>>>> 5b57ff4799f90484b8ad3e62e50c33ee72577de4
