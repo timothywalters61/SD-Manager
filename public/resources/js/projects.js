@@ -51,3 +51,18 @@ function createProjectDocument(data) {
 function createProjectMemberDocument(data, pid, uid) {
 	return setDoc('projects/' + pid + '/members/', data, uid);
 }
+
+/**
+ * Returns a map of fields and values that will be used in a user's projects
+ * subcollection to create a project document
+ * @param {String} description
+ * @param {String} name
+ * @param {String} role
+ */
+function createUserProjectDataObject(description, name, role) {
+	return {
+		description: description,
+		name: name,
+		role: role,
+	};
+}
