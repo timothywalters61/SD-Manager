@@ -38,7 +38,7 @@ function createProjectDocumentDataObject(name, description, repository) {
  * @param {Object} data
  */
 function createProjectDocument(data) {
-	return firestore.collection('projects').add(data);
+	return addDoc('projects', data);
 }
 
 /**
