@@ -40,3 +40,14 @@ function createProjectDocumentDataObject(name, description, repository) {
 function createProjectDocument(data) {
 	return firestore.collection('projects').add(data);
 }
+
+/**
+ * Creates a member document in a project's members subcollection that will
+ * contain the contents of data
+ * @param {Object} data
+ * @param {String} pid
+ * @param {String} uid
+ */
+function createProjectMemberDocument(data, pid, uid) {
+	return setDoc('projects/' + pid + '/members/', data, uid);
+}
