@@ -66,3 +66,14 @@ function createUserProjectDataObject(description, name, role) {
 		role: role,
 	};
 }
+
+/**
+ * Creates a project document in a user's projects subcollection that will
+ * store the contents of data
+ * @param {Object} data
+ * @param {String} pid
+ * @param {String} uid
+ */
+function createUserProjectDocument(data, pid, uid) {
+	return setDoc('users/' + uid + '/projects', data, pid);
+}
