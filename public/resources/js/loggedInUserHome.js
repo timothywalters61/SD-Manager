@@ -33,20 +33,22 @@ auth.onAuthStateChanged((user) => {
 		setUpSideNav(data);
 
 		//set up project dropdown
-
-		db.collection('Projects')
-			.where('Team', 'array-contains', user.email)
-			.onSnapshot(function (snapshot) {
-				if (snapshot.docs != 0) {
-					console.log(snapshot.docs);
-					setUpProjects(snapshot.docs);
-				} else {
-					console.log('projects do not exist');
-					let html =
-						'<li><a href="#">You Currently Have No Projects</a></li>';
-					projectList.innerHTML = html;
-				}
-			});
+		var cond = {
+			fieldPath: 'team',
+			opStr: 'array-contains',
+			value: user.email,
+		};
+		collectionWhere('projects', cond).onSnapshot(function (snapshot) {
+			if (snapshot.docs != 0) {
+				console.log(snapshot.docs);
+				setUpProjects(snapshot.docs);
+			} else {
+				console.log('projects do not exist');
+				let html =
+					'<li><a href="#">You Currently Have No Projects</a></li>';
+				projectList.innerHTML = html;
+			}
+		});
 
 		//set up invite dropdown
 
