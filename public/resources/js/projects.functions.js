@@ -79,6 +79,17 @@ function createUserProjectDataObject(description, name, role) {
 }
 
 /**
+ * Creates a project document in a user's invites subcollection which will
+ * contain the content of data.
+ * @param {Object} data
+ * @param {String} pid
+ * @param {String} uid
+ */
+function createUserInviteDocument(data, pid, uid) {
+	return setDoc('users/' + uid + '/invites/', data, pid);
+}
+
+/**
  * Creates a project document in a user's projects subcollection that will
  * store the contents of data
  * @param {Object} data
