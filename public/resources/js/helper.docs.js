@@ -9,6 +9,6 @@
  * @param {String} ref
  * @param {Object} data
  */
-function addDocument(ref, data) {
+function addDoc(ref, data) {
 	return firestore.collection(ref).add(data);
 }
