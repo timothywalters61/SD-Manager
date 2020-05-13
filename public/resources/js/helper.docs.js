@@ -14,6 +14,16 @@ function addDoc(ref, data) {
 }
 
 /**
+ * Returns a document snapshot of a document specified by doc in a collection specified
+ * by col.
+ * @param {String} col Collection reference
+ * @param {String} doc Document reference
+ */
+function getDoc(col, doc) {
+	return firestore.collection(col).doc(doc).get();
+}
+
+/**
  * Creates or overwrites a single document specified by doc which is found in a
  * collection specified by col
  * @param {String} col
