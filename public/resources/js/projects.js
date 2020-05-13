@@ -17,3 +17,11 @@ function createProjectDocumentDataObject(name, description, repository) {
 		repository: repository,
 	};
 }
+
+/**
+ * Creates a project document in the projects collection
+ * @param {Object} data
+ */
+function createProjectDocument(data) {
+	return firestore.collection('projects').add(data);
+}
