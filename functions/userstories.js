@@ -23,3 +23,14 @@ function createUserStoryDataObject(acceptance, description, points) {
 		points: points,
 	};
 }
+
+/**
+ * Creates a new user story document in a project's backlog subcollection.
+ * The project is specified by projectid and the document will contain the
+ * contents of data.
+ * @param {Object} data
+ * @param {String} projectid
+ */
+function createNewUserStoryDocument(data, projectid) {
+	return docs.addDoc('projects/' + projectid + '/backlog', data);
+}
