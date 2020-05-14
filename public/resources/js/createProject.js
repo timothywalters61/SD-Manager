@@ -6,7 +6,7 @@ create.addEventListener('submit', (e) => {
 
 	const projectName = create['projectName'].value;
 	const projectDescription = create['projectDescription'].value;
-	const projectRepo = '';
+	const projectRepo = create['projectRepo'].value;
 	var user = auth.currentUser;
 
 	console.log(projectName, ' ', projectDescription);
