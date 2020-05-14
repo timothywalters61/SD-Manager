@@ -34,7 +34,7 @@ create.addEventListener('submit', (e) => {
 			projectRepo,
 			[user.email]
 		);
-		addDoc('projects', data).then((value) => {
+		createProjectDocument(data).then((value) => {
 			console.log('project created');
 			alert('project created');
 			create.reset();
