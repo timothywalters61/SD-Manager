@@ -6,6 +6,7 @@ create.addEventListener('submit', (e) => {
 
 	const projectName = create['projectName'].value;
 	const projectDescription = create['projectDescription'].value;
+	const projectRepo = '';
 	var user = auth.currentUser;
 
 	console.log(projectName, ' ', projectDescription);
@@ -28,38 +29,19 @@ create.addEventListener('submit', (e) => {
         });*/
 		var data = createProjectDocumentDataObject(
 			projectName,
-			projectDescription
+			projectDescription,
+			user.uid,
+			projectRepo,
+			[user.email]
 		);
-		var pid = '';
-		createProjectDocument(data)
-			.then((docRef) => {
-				pid = docRef.id;
-				var member = createProjectMemberDataObject(
-					user.email,
-					user.displayName,
-					'product_owner'
-				);
-				return createProjectMemberDocument(member, pid, user.uid);
-			})
-			.then((value) => {
-				var project = createUserProjectDataObject(
-					projectDescription,
-					projectName,
-					'product_owner'
-				);
-				return createUserProjectDocument(project, pid, user.uid);
-			})
-			.then((value) => {
-				console.log('project created');
-				alert('project created');
-				create.reset();
-				localStorage.setItem('docID', newProjectRef.id);
-				localStorage.setItem('ownerID', user.uid);
-				window.location.href = 'projectOwner.html';
-			})
-			.catch(function (error) {
-				console.error('error creating project: ', error);
-			});
+		addDoc('projects', data).then((value) => {
+			console.log('project created');
+			alert('project created');
+			create.reset();
+			localStorage.setItem('docID', newProjectRef.id);
+			localStorage.setItem('ownerID', user.uid);
+			window.location.href = 'projectOwner.html';
+		});
 	} else {
 		console.log('user does not exist');
 	}
