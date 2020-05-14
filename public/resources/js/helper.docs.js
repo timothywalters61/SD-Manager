@@ -24,6 +24,15 @@ function getDoc(col, doc) {
 }
 
 /**
+ * Get a DocumentReference for the document within the collection at the specified path
+ * @param {String} col
+ * @param {String} doc
+ */
+function getDocumentReference(col, doc) {
+	return firebase.collection(col).doc(doc);
+}
+
+/**
  * Creates and returns a new Query with the additional filter that documents must contain
  * the specified field and the value should satisfy the relation constraint provided.
  * @param {String} col Collection reference
