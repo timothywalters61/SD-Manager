@@ -14,6 +14,27 @@ function addDoc(ref, data) {
 }
 
 /**
+ * Creates and returns a new Query with the additional filter that documents must contain
+ * the specified field and the value should satisfy the relation constraint provided.
+ * @param {String} col Collection reference
+ * @param {Object} condition Object with fieldPath, opStr and value
+ */
+function collectionWhere(col, condition) {
+	return firestore
+		.collection(col)
+		.where(condition.fieldPath, condition.opStr, condition.value);
+}
+
+/**
+ * Deletes a document specified by doc which is found in a collection specified by col
+ * @param {String} col
+ * @param {String} doc
+ */
+function deleteDoc(col, doc) {
+	return firestore.collection(col).doc(doc).delete();
+}
+
+/**
  * Returns a document snapshot of a document specified by doc in a collection specified
  * by col.
  * @param {String} col Collection reference
@@ -30,18 +51,6 @@ function getDoc(col, doc) {
  */
 function getDocumentReference(col, doc) {
 	return firebase.collection(col).doc(doc);
-}
-
-/**
- * Creates and returns a new Query with the additional filter that documents must contain
- * the specified field and the value should satisfy the relation constraint provided.
- * @param {String} col Collection reference
- * @param {Object} condition Object with fieldPath, opStr and value
- */
-function collectionWhere(col, condition) {
-	return firestore
-		.collection(col)
-		.where(condition.fieldPath, condition.opStr, condition.value);
 }
 
 /**
