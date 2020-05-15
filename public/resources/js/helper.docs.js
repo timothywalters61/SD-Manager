@@ -54,3 +54,14 @@ function collectionWhere(col, condition) {
 function setDoc(col, data, doc) {
 	return firestore.collection(col).doc(doc).set(data);
 }
+
+/**
+ * Updates a document specified by doc which is found in a collection specified
+ * by col
+ * @param {String} col
+ * @param {Object} data
+ * @param {String} doc
+ */
+function updateDoc(col, data, doc) {
+	return firestore.collection(col).doc(doc).update(data);
+}
