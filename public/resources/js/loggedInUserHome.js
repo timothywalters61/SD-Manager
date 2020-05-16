@@ -1,9 +1,5 @@
-const auth = firebase.auth();
-const db = firebase.firestore();
-
 auth.onAuthStateChanged((user) => {
 	if (user) {
-		console.log('user logged in: ', user);
 		//create user doc in database
 
 		getDoc('users', user.uid).then((doc) => {
@@ -52,7 +48,7 @@ auth.onAuthStateChanged((user) => {
 
 		//set up invite dropdown
 		var cond = {
-			fieldPath: 'inviteToID',
+			fieldPath: 'to_id',
 			opStr: '==',
 			value: user.uid,
 		};
@@ -78,10 +74,9 @@ auth.onAuthStateChanged((user) => {
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
 	e.preventDefault();
-
 	auth.signOut()
 		.then(() => {
-			//console.log("user has signed out");
+			console.log('user has signed out');
 		})
 		.catch(function (error) {
 			console.log('user failed to sign out because of error: ', error);
