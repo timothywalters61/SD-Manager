@@ -1,5 +1,3 @@
-const auth = firebase.auth();
-const db = firebase.firestore();
 const projectID = localStorage.getItem('docID');
 const ownerID = localStorage.getItem('ownerID');
 
