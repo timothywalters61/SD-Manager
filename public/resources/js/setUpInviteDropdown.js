@@ -5,8 +5,8 @@ const setUpInvites = (data) => {
 	let html = '';
 	var invCount = 0;
 	data.forEach((doc) => {
-		const inviteFrom = doc.data().inviteFromEmail;
-		const project = doc.data().projectID;
+		const inviteFrom = doc.data().from_email;
+		const project = doc.data().project_id;
 		const docID = doc.id;
 		const li = `
             <li><a href="#">${inviteFrom}<button type="button" class="acceptInviteButtons" onclick="acceptInvite('${project}','${docID}')">Accept</button><button type="button" class="declineInviteButtons" onclick="declineInvite('${docID}')">Decline</button></a></li>
