@@ -1,0 +1,15 @@
+#displayStories {
+    color: white;
+}
+
+#btt {
+    border: 0px solid #3498db;
+    padding: 10px 10px;
+    fontSize:15px;
+    cursor:pointer;
+    background-color:#1a237e;
+    borderRadius:10px;
+    borderRadius:10px;
+    color:white;
+    fontFamily:Arial;
+}

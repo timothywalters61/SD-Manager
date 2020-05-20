@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprint Page</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/UserStorystyle.css">
+    <link rel="stylesheet" href="resources/css/sideNavStyle.css">
+</head>
+<body>
+
+<div class="navigation">
+    <p><a href=userHome.html>Sprint Name</a></p>
+    <ul>
+        <li><a href="#" class="modal-trigger" data-target="create-modal">Create User Story</a></li>
+        <li><a href="#" id = logout>Logout</a></li>
+    </ul>
+
+</div>
+
+<!-- create project modal -->
+
+<div id="create-modal" class="modal">
+    <div class="modal-content">
+        <h4>Create User Story</h4>
+        <form id="create-form">
+            <div class="input-field">
+                <input type="text" id="storyTitle" class="white-text" required />
+                <label for="storyTitle">User Story Title</label>
+            </div>
+            <div class="input-field">
+               <!-- <input type="text" id="storyDescription" class="white-text" />-->
+                <textarea id ="storyDescription" class="materialize-textarea white-text"></textarea>
+                <label for="storyDescription">Description</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="Points" class="white-text" />
+                <label for="Points">Points</label>
+            </div>
+            <div class="input-field">
+                <!---<input type="text" id="AccCrit" class="white-text" />-->
+                <textarea id ="AccCrit" class="materialize-textarea white-text"></textarea>
+                <label for="AccCrit">Acceptance Criteria</label>
+            </div>
+            <!--<button class="btn indigo darken-4 waves-effect waves-dark" onclick="AddUserStory()">Create</button>-->
+            <button type = "button" id = "btt" onclick="AddUserStory()">Create Sprint</button>
+        </form>
+    </div>
+</div>
+
+<div id = displayStories>
+    <h4 id = "default">User Stories Will Appear Here As You Create Them</h4>
+</div>
+
+<script type="text/javascript" src = "resources/js/UserStoryStuff.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="resources/js/materialize.js"></script>
+
+
+</body>
+</html>

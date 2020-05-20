@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="resources/css/SprintStyle.css">
+</head>
+<body>
+<div class = "container">
+   <h3>Create New Sprint Button</h3>
+   <a href = "#" class = "btn indigo darken-4 modal-trigger" data-target="sprint_details">Create New Sprint</a>
+
+
+    <div class = "modal" id = "sprint_details">
+        <div class = "modal-content">
+         <h4>Create New Sprint</h4>
+            <form id="create-form">
+                <div class="input-field">
+                    <input type="text" id="sprintName" class="white-text" required />
+                    <label for="sprintName">Sprint Name</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="startDate" class="white-text" required />
+                    <label for="startDate">Start Date</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="dueDate" class="white-text" required />
+                    <label for="dueDate">Due Date</label>
+                </div>
+                <!-- <button class="btn indigo darken-4 waves-effect waves-dark" onclick="AddSprint()">Create Sprint</button>-->
+                <button type = "button" id = "btt" onclick="AddSprint()">Create Sprint</button>
+           </form>
+       </div>
+   </div>
+
+   <h4 id = "output"></h4>
+
+  <div class = "navigation">
+      <ul id = "sprint-nav">
+          <li><a href="#">Sprints<i class="material-icons">arrow_drop_down</i></a>
+              <ul id="sprintList">
+                 <!-- <li><a href="#">You Currently Have No Sprints</a></li> -->
+                  <li><a href="SprintPage.html">Sprint 1</a></li>
+                  <li><a href="SprintPage.html">Sprint 2</a></li>
+                  <li><a href="SprintPage.html">Sprint 3</a></li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+       var elems = document.querySelectorAll('.modal');
+       M.Modal.init(elems);
+   });
+</script>
+<script src = "resources/js/DisplaySprints.js"></script>
+</body>
+</html>
