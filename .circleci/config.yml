@@ -27,7 +27,7 @@ jobs:
             - run:
                   name: Build
                   command: npm build
-            - run: cd functions ; npm test ; npm run coveralls
+            - run: cd functions ; npm test ; npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls
             - run:
                   name: Firebase Deploy
                   command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
