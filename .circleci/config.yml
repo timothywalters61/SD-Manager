@@ -18,8 +18,8 @@ jobs:
                   name: Install Firebase Dependencies
                   command: npm install -D firebase-tools
             - run:
-                  name: Install npm in Functions
-                  command: cd functions ; npm install ; cd ..
+                  name: Install npm and coveralls in Functions
+                  command: cd functions ; npm install ; npm install --save-dev coveralls mocha-lcov-reporter ; cd ..
             - save_cache:
                   key: v1-npm-deps-{{ checksum "public/package-lock.json" }}
                   paths:
