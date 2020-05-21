@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for functions/projects.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">functions/</a> projects.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.5% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>11/40</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.5% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>11/40</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @description This file contains all the functions that use the 'projects' document in
+ *              the database.
+ */
+&nbsp;
+const admin = require('firebase-admin');
+const docs = require('./docs');
+const errors = require('./errors');
+const functions = require('firebase-functions');
+&nbsp;
+/* =========================================== Exports ============================================= */
+/**
+ * Creates a project document in the projects collection and the user's subcollection.
+ */
+exports.createProject = functions.https.onCall((data, context) =&gt; {
+<span class="cstat-no" title="statement not covered" >	var projectName = data.pn;</span>
+<span class="cstat-no" title="statement not covered" >	var description = data.de;</span>
+<span class="cstat-no" title="statement not covered" >	var uid = context.auth.uid;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	var projectData = {</span>
+		name: projectName,
+		description: description,
+	};
+<span class="cstat-no" title="statement not covered" >	var projectid = '';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return createProjectDocument(projectData)</span>
+		.then((value) =&gt; {
+<span class="cstat-no" title="statement not covered" >			projectid = value.id;</span>
+<span class="cstat-no" title="statement not covered" >			console.log('Adding project to user document');</span>
+<span class="cstat-no" title="statement not covered" >			return addProjectToUserDocument(</span>
+				projectid,
+				projectName,
+				description,
+				'product_owner',
+				uid
+			);
+		})
+		.then((value) =&gt; {
+<span class="cstat-no" title="statement not covered" >			return admin.auth().getUser(uid);</span>
+		})
+		.then((user) =&gt; {
+<span class="cstat-no" title="statement not covered" >			console.log('Adding first member member to project');</span>
+<span class="cstat-no" title="statement not covered" >			return addMemberToProject(</span>
+				user.displayName,
+				user.email,
+				projectid,
+				'product_owner',
+				uid
+			);
+		})
+		.then((value) =&gt; {
+<span class="cstat-no" title="statement not covered" >			return {</span>
+				result: 'Success',
+			};
+		})
+		.catch(errors.onError);
+});
+&nbsp;
+exports.getUserProjectsList = functions.https.onCall((data, context) =&gt; {
+<span class="cstat-no" title="statement not covered" >	var uid = context.auth.uid;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return getUserProjects(uid)</span>
+		.then((querySnapshot) =&gt; {
+<span class="cstat-no" title="statement not covered" >			result = [];</span>
+<span class="cstat-no" title="statement not covered" >			querySnapshot.forEach((doc) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >				var data = doc.data();</span>
+<span class="cstat-no" title="statement not covered" >				entry = {</span>
+					id: doc.id,
+					name: data.name,
+				};
+<span class="cstat-no" title="statement not covered" >				result.push(entry);</span>
+			});
+<span class="cstat-no" title="statement not covered" >			return result;</span>
+		})
+		.catch(errors.onError);
+});
+/* ========================================= Local Functions ======================================= */
+/**
+ * Creates a member document in the members subcollection of a project
+ * @param {string} displayName
+ * @param {string} email
+ * @param {string} projectid
+ * @param {string} role
+ * @param {string} uid
+ */
+<span class="fstat-no" title="function not covered" >function addMemberToProject(displayName, email, projectid, role, uid) {</span>
+<span class="cstat-no" title="statement not covered" >	var data = createProjectMemberObject(displayName, email, role);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return docs.createDoc('projects/' + projectid + '/members/' + uid, data);</span>
+}
+&nbsp;
+/**
+ * Creates a project document in a user's projects subcollection
+ * @param {string} projectid
+ * @param {string} projectName
+ * @param {string} projectDescription
+ * @param {string} projectRole
+ * @param {string} uid
+ */
+<span class="fstat-no" title="function not covered" >function addProjectToUserDocument(</span>
+	projectid,
+	projectName,
+	projectDescription,
+	projectRole,
+	uid
+) {
+<span class="cstat-no" title="statement not covered" >	var data = {</span>
+		name: projectName,
+		description: projectDescription,
+		role: projectRole,
+	};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	return docs</span>
+		.createDoc('users/' + uid + '/projects/' + projectid, data)
+		.then((value) =&gt; {
+<span class="cstat-no" title="statement not covered" >			return {</span>
+				isEqual: value.isEqual,
+				writeTime: value.writeTime,
+				id: projectid,
+			};
+		});
+}
+&nbsp;
+/**
+ * Creates a document in the Projects collection with data as its content
+ * @param {object} data
+ */
+<span class="fstat-no" title="function not covered" >function createProjectDocument(data) {</span>
+<span class="cstat-no" title="statement not covered" >	return docs.addDoc('projects', data);</span>
+}
+&nbsp;
+/**
+ * Creates the data object that will be used as a project member object
+ * @param {string} displayName
+ * @param {string} email
+ * @param {string} role
+ */
+<span class="fstat-no" title="function not covered" >function createProjectMemberObject(displayName, email, role) {</span>
+<span class="cstat-no" title="statement not covered" >	return {</span>
+		display_name: displayName,
+		email: email,
+		role: role,
+	};
+}
+&nbsp;
+/**
+ * Returns a collection snapshot of a user's projects
+ * @param {string} uid
+ */
+<span class="fstat-no" title="function not covered" >function getUserProjects(uid) {</span>
+<span class="cstat-no" title="statement not covered" >	return docs.getCollection('users/' + uid + '/projects');</span>
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu May 21 2020 17:00:45 GMT+0200 (South Africa Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
