@@ -3,15 +3,15 @@ service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{userId} {
       allow create, read: if request.auth.uid != null;
-      allow write, update, delete: if request.auth.uid == userId;
+      allow write, update, delete: if request.auth.uid === userId;
     }
 
     match /projects/{projectId} {
-      allow create, read, write, update, delete: if request.auth.uid != null;
+      allow create, read, write, update, delete: if request.auth.uid !== null;
 
     }
     match /inivtes/{inviteId} {
-      allow create, read, write, update, delete: if request.auth.uid != null;
+      allow create, read, write, update, delete: if request.auth.uid !== null;
     }
   }
 }
