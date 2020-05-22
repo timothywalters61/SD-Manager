@@ -26,10 +26,10 @@ pids
 lib-cov
 
 # Coverage directory used by tools like istanbul
-coverage
+# coverage
 
 # nyc test coverage
-.nyc_output
+# .nyc_output
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
@@ -44,10 +44,10 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+# node_modules/
 
 # Optional npm cache directory
-.npm
+# .npm
 
 # Optional eslint cache
 .eslintcache
@@ -67,4 +67,4 @@ node_modules/
 # Service account key
 sd-manager-firebase-adminsdk-mx72v-e8dac43245.json
 
-node_modules
+# node_modules
