@@ -37,8 +37,6 @@ exports.signup = functions.https.onCall((data, context) => {
 	var fname = data.fn;
 	var lname = data.ln;
 	var password = data.pa;
-	var university_id = data.un_id;
-	var university = data.un;
 
 	return createNewUser(email, fname, lname, password)
 		.then((value) => {
@@ -98,6 +96,8 @@ function setUserClaimObject(acc_type, uid) {
 		claim.developer = true;
 	} else if (acc_type == 'client') {
 		claim.client = true;
+	} else if (acc_type == 'product_owner') {
+		claim.product_owner = true;
 	} else {
 		return Promise.reject(errors.invalidCustomClaim);
 	}

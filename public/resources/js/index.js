@@ -3,8 +3,8 @@
 const sideNav = document.querySelector('#slide-out');
 
 const setUpSideNav = (data) => {
-    let html = '';
-    const li = `
+	let html = '';
+	const li = `
     <li><div id = "user-info" class="user-view">
     <div class="background">
       <img src="pictures/Russia.jpg">
@@ -19,21 +19,20 @@ const setUpSideNav = (data) => {
   <li><a class="subheader">Subheader</a></li>
   <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
     `;
-    html = html + li;
-    sideNav.innerHTML = html;
-}
+	html = html + li;
+	sideNav.innerHTML = html;
+};
 
 document.addEventListener('DOMContentLoaded', function () {
+	var modals = document.querySelectorAll('.modal');
+	M.Modal.init(modals);
 
-    var modals = document.querySelectorAll('.modal');
-    M.Modal.init(modals);
+	var items = document.querySelectorAll('.collapsible');
+	M.Collapsible.init(items);
 
-    var items = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(items);
+	var elems = document.querySelectorAll('.parallax');
+	M.Parallax.init(elems);
 
-    var elems = document.querySelectorAll('.parallax');
-    M.Parallax.init(elems);
-
-    var sideNav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sideNav);
+	var sideNav = document.querySelectorAll('.sidenav');
+	M.Sidenav.init(sideNav);
 });
