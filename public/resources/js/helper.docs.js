@@ -35,6 +35,14 @@ function deleteDoc(col, doc) {
 }
 
 /**
+ * Returns a snapshot of a collection specified by col
+ * @param {} col 
+ */
+function getCol(col) {
+	return firebase.collection(col).get();
+}
+
+/**
  * Returns a document snapshot of a document specified by doc in a collection specified
  * by col.
  * @param {String} col Collection reference
