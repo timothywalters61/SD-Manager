@@ -19,7 +19,7 @@ jobs:
                   command: npm install -D firebase-tools
             - run:
                   name: Install npm in Functions
-                  command: cd functions ; npm install --save-dev mocha ; npm test ; npm run coveralls ;cd ..
+                  command: cd functions ; npm install; npm install --save-dev mocha ; npm test ; npm run coveralls ;cd ..
             - save_cache:
                   key: v1-npm-deps-{{ checksum "public/package-lock.json" }}
                   paths:
@@ -30,4 +30,3 @@ jobs:
             - run:
                   name: Firebase Deploy
                   command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
-
