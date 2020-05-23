@@ -53,6 +53,14 @@ function getDoc(col, doc) {
 }
 
 /**
+ * Returns a CollectionReference for a collection specified by col
+ * @param {*} col 
+ */
+function getCollectionReference(col) {
+	return firestore.collection(col);
+}
+
+/**
  * Get a DocumentReference for the document within the collection at the specified path
  * @param {String} col
  * @param {String} doc
