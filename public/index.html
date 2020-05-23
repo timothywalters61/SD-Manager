@@ -3,127 +3,211 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="resources/css/index.css" />
 		<title>SD Manager</title>
+
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+		/>
+		<link rel="stylesheet" href="resources/css/style.css" />
+		<link rel="stylesheet" href="resources/css/cardStyle.css" />
 	</head>
-	<body onload="userCheck()">
-		<div id="home" class="">
-			<!--Home Section-->
-			<!--
-				Make sure to include a nav bar with links to the login section and sign up section of
-				the home page.
-				
-				- The onclick function to show the login section is:
-						showLogin()
-				- The onclick function to show the sign up section is:
-						showSignUp()
-			-->
+
+	<body class="indexBody">
+		<!-- navigation -->
+
+		<div class="navigation">
+			<p><a href="#">Software Design Manager</a></p>
+			<ul>
+				<li>
+					<a href="#" class="modal-trigger" data-target="signup-modal"
+						>Sign Up</a
+					>
+				</li>
+				<li>
+					<a href="#" class="modal-trigger" data-target="login-modal"
+						>Login</a
+					>
+				</li>
+			</ul>
 		</div>
-		<div id="login" class="signup-box">
-			<!--Login section-->
-			<img src="resources/images/index2.png" alt="" class="signup-img" />
-			<div id="login-form">
-				<label for="login-em" class="">Email Address:</label>
-				<input
-					type="email"
-					id="login-em"
-					class=""
-					placeholder="Enter Email Address"
-				/>
-				<label for="login-pa" class="">Password:</label>
-				<input
-					type="password"
-					id="login-pa"
-					class=""
-					placeholder="Enter Password"
-				/>
-				<button id="login-button" class="signup-btn" onclick="login()">
-					Login
-				</button>
-				<p>
-					Don't have an account?
-					<a href="" onclick="showSignUp()">Sign up</a>
-				</p>
+
+		<!-- info cards -->
+
+		<div id="frontPage">
+			<h3 class="welcomeCard center">
+				Welcome to Software Design Manager
+			</h3>
+			<br />
+			<h6 class="welcomeCard">
+				Software Design Manager is a platform that software developers
+				can use to manage their projects. Make your dream app a reality
+				and start a new project where you and your dev team can keep
+				track of project progress and define new tasks for each sprint.
+				As a project owner you can also monitor each team members
+				backlog to make sure that they are on track for project
+				completion and are finishing their assigned tasks in time. With
+				this platform you can connect developers from anywhere around
+				the world and manage them as if they where working in the same
+				building.
+			</h6>
+			<br />
+
+			<div class="cards">
+				<div class="ownerHeading">
+					<span
+						class="white-text card-panel indigo darken-4 z-depth-0"
+						>Be an Owner:</span
+					>
+				</div>
+				<br />
+				<div class="content">
+					<h6>
+						Become a project owner by creating a brand new project
+						and inviting developers to join your team. Split your
+						project up into sprints, assign user stories to the
+						sprints and use Software Design manager to make your
+						idea into a working app. Is one project not enough?
+						Don't worry because you can manage multiple projects at
+						the same time if a little extra work doesn't scare you.
+					</h6>
+				</div>
+			</div>
+			<br />
+			<div class="cards">
+				<div class="developerHeading">
+					<span
+						class="white-text card-panel indigo darken-4 z-depth-0"
+						>Be a Developer:</span
+					>
+				</div>
+				<br />
+				<div class="content">
+					<h6>
+						Get invited by a project owner to join their team and
+						work on making their idea a reality. Knowing what to do
+						is super easy with Software Design Manager, just check
+						what unfinished user stories you have left for the
+						sprint and make sure they are finished by the time the
+						sprint is through. Have a great idea of your own for an
+						app? Just create a new project and become a project
+						owner yourself.
+					</h6>
+				</div>
 			</div>
 		</div>
-		<div id="signup" class="signup-box">
-			<!--Sign up section-->
-			<img src="resources/images/index2.png" alt="" class="signup-img" />
 
-			<div id="signup-form" class="">
-				<label for="signup-ac" class="">Type of Account:</label>
-				<select id="signup-ac" class="">
-					<option value="" disabled>Select one option</option>
-					<option value="developer" class="">Developer</option>
-					<option value="client" class="">Client</option>
-				</select>
-				<label for="signup-fn" class="">First Name:</label>
-				<input
-					type="text"
-					id="signup-fn"
-					class=""
-					placeholder="Enter First Name"
-				/>
-				<label for="signup-ln" class="">Last Name:</label>
-				<input
-					type="text"
-					id="signup-ln"
-					class=""
-					placeholder="Enter Last Name"
-				/>
-				<label for="signup-em" class="">Email Address:</label>
-				<input
-					type="email"
-					id="signup-em"
-					class=""
-					placeholder="Enter Email Address"
-				/>
-				<label for="signup-pa" class="">Password:</label>
-				<input
-					type="password"
-					id="signup-pa"
-					class=""
-					placeholder="Enter Password"
-				/>
-				<label for="signup-co-pa" class="">Confirm Password:</label>
-				<input
-					type="password"
-					id="signup-co-pa"
-					class=""
-					placeholder="Enter Password Again"
-				/>
-				<button
-					id="signup-button"
-					class="signup-btn"
-					onclick="signup()"
-				>
-					Sign Up
-				</button>
-				<p>
-					Already have an account?
-					<a href="#" onclick="showLogin()">Login</a>
-				</p>
+		<!-- signup modal -->
+
+		<div id="signup-modal" class="modal">
+			<div class="modal-content">
+				<h4>Sign Up</h4>
+				<form id="signup-form">
+					<div class="input-field">
+						<input
+							type="email"
+							id="signup-email"
+							class="white-text"
+							required
+						/>
+						<label for="signup-email">Email address</label>
+					</div>
+					<div class="input-field">
+						<input
+							type="text"
+							id="signup-username"
+							class="white-text"
+							required
+						/>
+						<label for="signup-username">Username</label>
+					</div>
+					<div class="input-field">
+						<input
+							type="password"
+							id="signup-password"
+							class="white-text"
+							required
+						/>
+						<label for="signup-password">Enter password</label>
+					</div>
+					<div class="input-field">
+						<input
+							type="password"
+							id="signup-confirmpassword"
+							class="white-text"
+							required
+						/>
+						<label for="signup-email">Confirm password</label>
+					</div>
+					<button class="btn indigo darken-4 waves-effect waves-dark">
+						Sign up
+					</button>
+				</form>
 			</div>
 		</div>
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="/__/firebase/7.9.3/firebase-app.js"></script>
 
-		<!-- TODO: Add SDKs for Firebase products that you want to use
-     	https://firebase.google.com/docs/web/setup#available-libraries -->
-		<script src="/__/firebase/7.9.3/firebase-analytics.js"></script>
-		<script src="/__/firebase/7.9.2/firebase-auth.js"></script>
-		<script src="/__/firebase/7.9.2/firebase-firestore.js"></script>
-		<script src="/__/firebase/7.9.2/firebase-functions.js"></script>
+		<!-- login modal -->
 
-		<!-- Initialize Firebase -->
+		<div id="login-modal" class="modal">
+			<div class="modal-content">
+				<h4>Login</h4>
+				<form id="login-form">
+					<div class="input-field">
+						<input
+							type="email"
+							id="login-email"
+							class="white-text"
+							required
+						/>
+						<label for="login-email">Email address</label>
+					</div>
+					<div class="input-field">
+						<input
+							type="password"
+							id="login-password"
+							class="white-text"
+							required
+						/>
+						<label for="login-password">Your password</label>
+					</div>
+					<button class="btn indigo darken-4 waves-effect waves-dark">
+						Login
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+
 		<script src="/__/firebase/init.js"></script>
-		<script src="resources/js/firebase.init.js"></script>
-		<script src="resources/js/helper.js"></script>
-		<script src="resources/js/index.js"></script>
-		<script src="resources/js/login.events.js"></script>
-		<script src="resources/js/login.js"></script>
-		<script src="resources/js/session.js"></script>
-		<script src="resources/js/signup.events.js"></script>
-		<script src="resources/js/signup.js"></script>
+		<!--Remove the firebase.init.js script when deploying-->
+		<!--<script src="resources/js/firebase.init.js"></script>-->
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script
+			type="text/javascript"
+			src="resources/js/materialize.js"
+		></script>
+		<script type="text/javascript" src="resources/js/init.js"></script>
+		<script
+			type="text/javascript"
+			src="resources/js/helper.auth.js"
+		></script>
+		<script
+			type="text/javascript"
+			src="resources/js/helper.docs.js"
+		></script>
+		<script
+			type="text/javascript"
+			src="resources/js/authentication.js"
+		></script>
 	</body>
 </html>

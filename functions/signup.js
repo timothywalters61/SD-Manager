@@ -12,27 +12,18 @@ const functions = require('firebase-functions');
 /* ===================================== Exports ====================================== */
 exports.createUserDocument = functions.https.onCall((data, context) => {
 	// get variables from data object
-	var acc_type = data.ac;
+	var display_name = data.dn;
 	var email = data.em;
-	var fname = data.fn;
-	var lname = data.ln;
-	var university_id = data.un_id;
-	var university = data.un;
+	var first_name = data.fn;
+	var last_name = data.ln;
 	var uid = context.auth.uid;
 
-	var data = createUserDocObject(
-		acc_type,
-		email,
-		fname,
-		lname,
-		university,
-		university_id
-	);
-	console.log('Creating user document...');
-	return writeToUserDocument(data, uid).then(value => {
-		console.log('Document created...');
-		console.log('Setting custom user claim object...');
-		return setUserClaimObject(acc_type, uid);
+	var data = createUserDocObject(display_name, email, first_name, last_name);
+
+	return writeToUserDocument(data, uid).then((value) => {
+		return {
+			result: 'Success',
+		};
 	});
 });
 
@@ -46,11 +37,9 @@ exports.signup = functions.https.onCall((data, context) => {
 	var fname = data.fn;
 	var lname = data.ln;
 	var password = data.pa;
-	var university_id = data.un_id;
-	var university = data.un;
 
 	return createNewUser(email, fname, lname, password)
-		.then(value => {
+		.then((value) => {
 			var doc = createUserDocObject(
 				acc_type,
 				email,
@@ -61,10 +50,10 @@ exports.signup = functions.https.onCall((data, context) => {
 			);
 			return {
 				result: writeToUserDocument(doc, value.uid),
-				uid: value.uid
+				uid: value.uid,
 			};
 		})
-		.then(result => {
+		.then((result) => {
 			return setUserClaimObject(acc_type, result.uid);
 		});
 });
@@ -85,9 +74,9 @@ function createNewUser(email, fname, lname, password) {
 			emailVerified: false,
 			displayName: fname + ' ' + lname,
 			password: password,
-			disabled: false
+			disabled: false,
 		})
-		.then(user => {
+		.then((user) => {
 			return { uid: user.uid };
 		});
 }
@@ -100,13 +89,15 @@ function createNewUser(email, fname, lname, password) {
 function setUserClaimObject(acc_type, uid) {
 	var claim = {
 		developer: false,
-		client: false
+		client: false,
 	};
 
 	if (acc_type == 'developer') {
 		claim.developer = true;
 	} else if (acc_type == 'client') {
 		claim.client = true;
+	} else if (acc_type == 'product_owner') {
+		claim.product_owner = true;
 	} else {
 		return Promise.reject(errors.invalidCustomClaim);
 	}
@@ -117,28 +108,17 @@ function setUserClaimObject(acc_type, uid) {
 /**
  * Returns a data object that will be used in a user's document in the
  * database
- * @param {string} acc_type
+ * @param {string} display_name
  * @param {string} email
- * @param {string} fname
- * @param {string} lname
- * @param {string} university
- * @param {string} university_id
+ * @param {string} first_name
+ * @param {string} last_name
  */
-function createUserDocObject(
-	acc_type,
-	email,
-	fname,
-	lname,
-	university,
-	university_id
-) {
+function createUserDocObject(display_name, email, first_name, last_name) {
 	var data = {
-		acc_type: acc_type,
+		display_name: display_name,
 		email: email,
-		fname: fname,
-		lname: lname,
-		university: university,
-		university_id: university_id
+		first_name: first_name,
+		last_name: last_name,
 	};
 	return data;
 }

@@ -1,1 +1,89 @@
 @import url('signup.css');
+@import url('header.css');
+@import url('../fonts/fontello/css/fontello.css');
+
+a {
+	text-decoration: none;
+}
+
+body {
+	font-family: 'Raleway', sans-serif;
+	color: #666666;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+.block {
+	display: block;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.inline {
+	display: inline;
+}
+
+.container {
+	max-width: 1140px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 100%;
+}
+
+.disp-none {
+	display: none;
+}
+
+.fl_left {
+	float: left;
+}
+
+.fl_right {
+	float: right;
+}
+
+.logo {
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 36px;
+}
+
+.mr-auto {
+	margin-right: auto !important;
+}
+
+.pos-relative {
+	position: relative;
+}
+
+.no-text-decor {
+	text-decoration: none;
+}
+
+.text-al-right {
+	text-align: right;
+}
+
+.text-al-center {
+	text-align: center;
+}
+
+.text-al-left {
+	text-align: left;
+}
+
+ul li {
+	font-size: 17px;
+	line-height: 1.59;
+}
+
+*,
+::after,
+::before {
+	box-sizing: inherit;
+}
