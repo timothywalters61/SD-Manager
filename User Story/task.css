@@ -1,0 +1,128 @@
+body{
+    font-family: Arial;
+}
+
+.button1 {
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #4169e1;
+}
+
+.modal-bg{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left:0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s ,opacity 0.5s;
+}
+.bg-active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal{
+    font-family: Arial;
+    font-size: 20px;
+    position: relative;
+    background-color: #212121;
+    padding: 20px 40px;
+    width: 60%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.modal header {
+    background-color: #212121;
+    width: 100%;
+    /*padding: 30px;*/
+    text-align: center;
+    color: white;
+}
+
+input[type="text"],input[type="date"]{
+
+    font-family: Arial;
+    font-size: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    background: #212121;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #fff;
+    color: white;
+    /*border-radius: 5px;*/
+    margin: 5px;
+}
+
+input[type="date"]{
+    -webkit-appearance: none;
+}
+
+.modal select{
+    font-size: 20px;
+    font-family: Arial;
+    background: #212121;
+    color: white;
+    padding: 12px 5px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #fff;
+}
+
+.modal textarea{
+    font-size: 20px;
+    font-family: Arial;
+    background: #636363;
+    color: black;
+    padding: 12px 5px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #fff;
+}
+
+.modal select option{
+    padding: 12px 5px;
+}
+
+::placeholder{
+    color:#fff;
+
+}
+
+.modal button{
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: bold;
+    width: 30%;
+    padding: 20px 10px;
+    background: #1a237e;
+    color: white;
+    border: none;
+
+}

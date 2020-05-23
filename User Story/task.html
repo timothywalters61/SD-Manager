@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+    <link rel="stylesheet" href="task.css" type="text/css">
+</head>
+<body>
+
+<script src = "task.js"></script>
+
+<button class="button1">new task</button>
+
+<div class ="modal-bg">
+    <div class ="modal">
+        <header>
+            <h1>Create Task</h1>
+        </header>
+        <input type="text" placeholder="Subject" id="subject">
+        <br>
+        <textarea name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+        <br>
+        <select name="progess" id="progress">
+            <option value="" disabled selected>Progress</option>
+            <option value="1">New</option>
+            <option value="2">In Progress</option>
+            <option value="3">Ready To Test</option>
+            <option value="4">Done</option>
+        </select>
+        <br>
+        <input type="text" onfocus="(this.type='date')" id="duedate" placeholder="Due Date">
+        <br>
+        <button type="button" onclick="getAreaValue();">Create</button>
+
+    </div>
+</div>
+
+<script src = "task.js"></script>
+
+</body>
+</html>
