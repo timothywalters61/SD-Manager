@@ -13,3 +13,11 @@ getDoc('projects', projectID)
 	.catch(function (error) {
 		alert('project could not be retrieved because of error: ', error);
 	});
+
+getCollectionReference('projects/' + projectID + '/sprints').onSnapshot((snapshot) => {
+	snapshot.forEach(doc => {
+		createSprintButton(doc);
+	});
+}).catch((error) => {
+	alert('Sprints could not be retrieved because of error: ', error)
+});
