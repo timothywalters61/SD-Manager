@@ -96,11 +96,26 @@ body {
 
 #projectTitle {
     font-size: 25px;
-    background-color: #212121;
-    color: white;
     margin-left: 10%;
     margin-right: 72%; 
     padding: 15px 15px 15px 15px;
+}
+
+#project {
+    background-color: #212121;
+    color: white;
+    max-width: 80%;
+    margin: auto;
+    padding: 15px 15px 15px 15px;
+}
+
+.sprint_btn {
+    background-color: #1a237e;
+    color: white;
+    width: 50%;
+    margin-left: 10%;
+    margin-right: 72%;
+    height: 100px;
 }
 
 .declineInviteButtons {
