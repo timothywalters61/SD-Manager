@@ -33,7 +33,7 @@ auth.onAuthStateChanged(user => {
 
         db.collection("projects").where("team", "array-contains", user.email)
             .onSnapshot(function (snapshot) {
-                if (snapshot.docs != 0) {
+                if (snapshot.exists) {
                     setUpProjects(snapshot.docs);
                 } else {
                     console.log("projects do not exist");
