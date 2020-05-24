@@ -104,18 +104,23 @@ body {
 #project {
     background-color: #212121;
     color: white;
-    max-width: 80%;
-    margin: auto;
+}
+
+.sprints_btn_group {
+    margin-left: 10%;
+    margin-right: 72%; 
     padding: 15px 15px 15px 15px;
 }
 
 .sprint_btn {
     background-color: #1a237e;
     color: white;
-    width: 50%;
-    margin-left: 10%;
-    margin-right: 72%;
-    height: 100px;
+    margin: 5px;
+    width: 100%;
+}
+.sprint_btn:hover {
+    background-color: white;
+    color: #1a237e;
 }
 
 .declineInviteButtons {
