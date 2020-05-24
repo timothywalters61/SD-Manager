@@ -9,7 +9,7 @@ const setUpProjects = (data) => {
         const projectName = project.name;
         const docID = doc.id;
         const li = `
-            <li><a href="#" onclick="saveDocID('${docID}', '${project.OwnerID}')">${projectName}</a></li>
+            <li><a href="#" onclick="saveDocID('${docID}', '${project.owner_id}')">${projectName}</a></li>
         `;
         html = html + li;
     });

@@ -12,7 +12,7 @@ addStory.addEventListener('submit', (e) => {
         name: title,
         description: description,
         acceptance: acceptance,
-        SprintID: currentSprintID,
+        sprint_id: currentSprintID,
         points: points
     }).then((doc) => {
         db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(doc.id)
@@ -20,7 +20,7 @@ addStory.addEventListener('submit', (e) => {
                 name: title,
                 description: description,
                 acceptance: acceptance,
-                SprintID: currentSprintID,
+                sprint_id: currentSprintID,
                 points: points
             }).then(() => {
                 addStory.reset();

@@ -12,12 +12,12 @@ create.addEventListener('submit', (e) => {
     console.log(projectName, " ", projectDescription);
     if (user) {
         db.collection("projects").add({
-            OwnerID: user.uid,
+            owner_id: user.uid,
             name: projectName,
             description: projectDescription,
-            Team: [user.email],
+            team: [user.email],
             repository: gitLink,
-            Sprints: null
+            sprints: null
         }).then(function (docRef) {
             db.collection("users").doc(user.uid).update({
                 projects: firebase.firestore.FieldValue.arrayUnion(docRef.id)

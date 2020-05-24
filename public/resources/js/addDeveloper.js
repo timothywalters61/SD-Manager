@@ -11,7 +11,7 @@ addForm.addEventListener('submit', (e) => {
         .get()
         .then((doc) => {
             if (doc.exists) {
-                if (doc.data().Team.includes(dev)) {
+                if (doc.data().team.includes(dev)) {
                     console.log("in the team");
                     alert("developer is already in the team");
                 } else {
@@ -19,11 +19,11 @@ addForm.addEventListener('submit', (e) => {
                         .then((querySnapshot) => {
                             querySnapshot.forEach((doc) => {
                                 if (doc.exists) {
-                                    db.collection("Invites").doc().set({
-                                        inviteFromID: user.uid,
-                                        inviteToID: doc.id,
-                                        inviteFromEmail: user.email,
-                                        projectID: projectID
+                                    db.collection("invites").doc().add({
+                                        from_id: user.uid,
+                                        to_id: doc.id,
+                                        from_email: user.email,
+                                        project_id: projectID
                                     }).then(() => {
                                         alert("invite sent");
                                         addForm.reset();

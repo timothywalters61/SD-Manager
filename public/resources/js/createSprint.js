@@ -15,7 +15,7 @@ startSprint.addEventListener('submit', (e) => {
     .then((doc) => {
         localStorage.setItem("currentSprintID", doc.id);
         db.collection("projects").doc(projectID).update({
-            "Sprints": "started"
+            "sprints": "started"
         })
         .then(() => {
             alert("Sprint Created");
