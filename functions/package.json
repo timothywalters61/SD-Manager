@@ -8,8 +8,8 @@
 		"start": "npm run shell",
 		"deploy": "firebase deploy --only functions",
 		"logs": "firebase functions:log",
-		"cover": "istanbul cover _mocha stuff.test.js -x stuff.test.js || true",
-		"test": "mocha stuff.test.js || true",
+		"cover": "istanbul cover _mocha ./stuff.test.js -x ./stuff.test.js || true",
+		"test": "mocha ./stuff.test.js || true",
 		"coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls || true"
 	},
 	"engines": {
