@@ -1,17 +1,32 @@
-version: 2.1
-orbs:
-  node: circleci/node@1.1.6
+version: 2
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
-workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+    build:
+        docker:
+            - image: circleci/node:10.16.0
+        working_directory: ~/repo
+        steps:
+            - checkout
+            # Download and cache dependencies
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "public/package.json" }}
+                      - v1-dependencies-
+            - run:
+                  name: Install Dependencies
+                  command: npm install
+            - run:
+                  name: Install Firebase Dependencies
+                  command: npm install -D firebase-tools
+            - run:
+                  name: Install npm in Functions
+                  command: cd functions ; npm install; npm install --save-dev mocha ; npm test ; npm run coveralls ;cd ..
+            - save_cache:
+                  key: v1-npm-deps-{{ checksum "public/package-lock.json" }}
+                  paths:
+                      - ./node_modules
+            - run:
+                  name: Build
+                  command: npm build
+            - run:
+                  name: Firebase Deploy
+                  command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
