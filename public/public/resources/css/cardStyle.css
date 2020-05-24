@@ -10,13 +10,13 @@
 }
 
 .ownerHeading{
-    background: url("../pictures/work.jpg");
+    background: url("../images/work.jpg");
     background-size: cover;
     padding:100px 100px 10px 10px;
 }
 
 .developerHeading{
-    background: url("../pictures/work2.jpg");
+    background: url("../images/work2.jpg");
     background-size: cover;
     padding:100px 100px 10px 10px;
 }

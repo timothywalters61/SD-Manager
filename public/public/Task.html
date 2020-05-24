@@ -10,20 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/sideNavStyle.css">
+    <link rel="stylesheet" href="resources/css/userStoryStyle.css">
 </head>
 
 <body>
     <div class="navigation">
         <p><a href="userHome.html">Software Design Manager</a></p>
         <ul>
-
-            <li><a href="#">Sprints</a>
-                <ul id="sprintList">
-                    <li><a href="#">No Sprints Started</a></li>
-                </ul>
-            </li>
-
-            <li><a href="#" class="modal-trigger" data-target="addDev-modal">Add a Developer</a></li>
+            <li><a href="#" class="modal-trigger" data-target="Task-modal">Add Task</a></li>
             <li><a href="#">Notifications<span class="badge white-text">0</span></a>
                 <ul id="notificationsList">
                     <li><a href="#">0 Notifications</a></li>
@@ -34,21 +28,38 @@
                     <li><a href="#"></a></li>
                 </ul>
             </li>
-            
+
             <li id="gitLink"><a>Git</a></li>
             <li><a href="#" id="logout">Logout</a></li>
         </ul>
 
     </div>
 
-    <br>
-    <br>
-    <br>
+    <div><a href="#" id="backButton">Back</a></div>
 
-    <div id="projectTitle"></div>
+    <div id="Title"></div>
 
-    <div id="createSprint">
-        <li><a href="#" class="modal-trigger" data-target="createSprint-modal">Start A New Sprint</a></li>
+    <div class="taskList">
+        <ul id ="taskList">
+          <li>           
+            <h3>No Tasks Yet</h3>
+          </li>
+        </ul>
+      </div>
+
+    <!-- add Task story modal -->
+
+    <div id="Task-modal" class="modal">
+        <div class="modal-content">
+            <h4>Add a Task</h4>
+            <form id="Task-form">
+                <div class="input-field">
+                    <input type="text" id="TaskTitle" class="white-text" required />
+                    <label for="TaskTitle">Task</label>
+                </div>
+                <button class="btn indigo darken-4 waves-effect waves-dark">Add To User Story</button>
+            </form>
+        </div>
     </div>
 
     <!-- sidenav -->
@@ -76,63 +87,15 @@
             class="material-icons grey-text">menu</i>
     </a>
 
-    <!-- add developer modal -->
-
-    <div id="addDev-modal" class="modal">
-        <div class="modal-content">
-            <h4>Add Developer</h4>
-            <form id="add-form">
-                <div class="input-field">
-                    <input type="email" id="add-email" class="white-text" required />
-                    <label for="add-email">Add a Developer by Email</label>
-                </div>
-                <button class="btn indigo darken-4 waves-effect waves-dark">Add</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- add sprint modal -->
-
-    <div id="createSprint-modal" class="modal">
-        <div class="modal-content">
-            <h4>Start Sprint</h4>
-            <form id="sprint-form">
-                <div class="input-field">
-                    <input type="text" id="sprint-name" class="white-text" required />
-                    <label for="sprint-name">Sprint Name</label>
-                </div>
-                <div class="input-field">
-                    <input type="text" id="startDate" class="datepicker white-text" required />
-                    <label for="startDate">Start Date</label>
-                </div>
-                <div class="input-field">
-                    <input type="text" id="endDate" class="datepicker white-text" required />
-                    <label for="endDate">End Date</label>
-                </div>
-                <button class="btn indigo darken-4 waves-effect waves-dark">Start</button>
-            </form>
-        </div>
-    </div>
-
     <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
 
-    <!-- <script src="/__/firebase/init.js"></script> -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="resources/js/materialize.js"></script>
-    <script type="text/javascript" src="resources/js/loggedInProject.js"></script>
-    <script type="text/javascript" src="resources/js/setUpSidenav.js"></script>
-    <script type="text/javascript" src="resources/js/populateProjectPage.js"></script>
-    <script type="text/javascript" src="resources/js/addDeveloper.js"></script>
+    <script type="text/javascript" src="resources/js/loggedInTask.js"></script>
     <script type="text/javascript" src="resources/js/setUpTeamDropdown.js"></script>
-    <script type="text/javascript" src="resources/js/createSprint.js"></script>
-    <script type="text/javascript" src="resources/js/setUpSprint.js"></script>
-
-
-</body>
-
-</html>
+    <script type="text/javascript" src="resources/js/setUpSidenav.js"></script>
+    <script type="text/javascript" src="resources/js/createTask.js"></script>

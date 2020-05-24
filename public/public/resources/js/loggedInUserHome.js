@@ -18,13 +18,13 @@ auth.onAuthStateChanged(user => {
         console.log("user logged in: ", user);
         //create user doc in database
 
-        db.collection("Users").doc(user.uid)
+        db.collection("users").doc(user.uid)
             .get()
             .then((doc) => {
                 if (doc.exists) {
                     console.log("user document exists");
                 } else {
-                    db.collection("Users").doc(user.uid).set({
+                    db.collection("users").doc(user.uid).set({
                         userEmail: user.email,
                         userDisplayName: user.displayName
                     }).then(() => {
@@ -42,28 +42,31 @@ auth.onAuthStateChanged(user => {
 
         //set up project dropdown
 
-        db.collection("Projects").where("Team", "array-contains", user.email)
-            .get()
-            .then(snapshot => {
+        db.collection("projects").where("Team", "array-contains", user.email)
+            .onSnapshot(function (snapshot) {
                 if (snapshot.docs != 0) {
-                    console.log(snapshot.docs);
                     setUpProjects(snapshot.docs);
                 } else {
                     console.log("projects do not exist");
+                    let html = '<li><a href="#">You Currently Have No Projects</a></li>';
+                    projectList.innerHTML = html;
                 }
             });
 
         //set up invite dropdown
 
         db.collection("Invites").where("inviteToID", "==", user.uid)
-        .get()
-        .then(snapshot => {
-            if (snapshot.docs != 0) {
-                setUpInvites(snapshot.docs);
-            } else {
-                console.log("invites do not exist");
-            }
-        });
+            .onSnapshot(function (snapshot) {
+                if (snapshot.docs != 0) {
+                    setUpInvites(snapshot.docs);
+                } else {
+                    console.log("invites do not exist");
+                    let html = '<li><a href="#">No Invites</a></li>';
+                    inviteList.innerHTML = html;
+                    let html2 = 'Invites<span class="badge">0</span>';
+                    inviteBadge.innerHTML = html2;
+                }
+            });
 
     } else {
         console.log("user logged out");

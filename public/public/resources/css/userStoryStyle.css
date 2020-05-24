@@ -1,0 +1,70 @@
+* {margin: 0; padding: 0;}
+
+#backButton{
+    color: white;
+    font-size: 25px;
+    padding: 10px 10px 10px 10px;
+}
+
+#backButton:hover{
+    background-color: #212121;
+}
+
+#Title p{
+    font-size: 50px;
+    color: white;
+    padding: 10px 10px 10px 10px;
+}
+
+.userStoryList {
+  margin: 10px;
+}
+
+.userStoryList ul {
+  list-style-type: none;
+  width: 100%;
+}
+
+.userStoryList h3 {
+    font-size: 25px;
+    color: white;
+}
+
+.userStoryList li p {
+    font-size: 20px;
+    color: white;
+}
+
+.userStoryList li {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.userStoryList li:hover {
+  background: #212121;
+  cursor: pointer;
+}
+
+.taskList {
+    margin: 10px;
+  }
+  
+  .taskList ul {
+    list-style-type: none;
+    width: 100%;
+  }
+  
+  .taskList h3 {
+      font-size: 25px;
+      color: white;
+  }
+  
+  .taskList li p {
+      font-size: 20px;
+      color: white;
+  }
+  
+  .taskList li {
+    padding: 5px;
+    border-radius: 5px;
+  }

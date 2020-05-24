@@ -8,14 +8,20 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/sideNavStyle.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/sideNavStyle.css">
 </head>
 
 <body>
     <div class="navigation">
         <p><a href="userHome.html">Software Design Manager</a></p>
         <ul>
+            <li><a href="#">Sprints</a>
+                <ul id="sprintList">
+                    <li><a href="#">No Sprints Started</a></li>
+                </ul>
+            </li>
+            
             <li><a href="#">Notifications<span class="badge white-text">0</span></a>
                 <ul id="notificationsList">
                     <li><a href="#">0 Notifications</a></li>
@@ -26,6 +32,8 @@
                     <li><a href="#"></a></li>
                 </ul>
             </li>
+            
+            <li id="gitLink"><a>Git</a></li>
             <li><a href="#" id="logout">Logout</a></li>
         </ul>
 
@@ -35,7 +43,9 @@
     <br>
     <br>
 
-    <div id="projectTitle">this is my doc id</div>
+    <div id="projectTitle"></div>
+
+    <div id="currentSprint"></div>
 
     <!-- sidenav -->
 
@@ -43,9 +53,9 @@
         <li>
             <div id="user-info" class="user-view">
                 <div class="background">
-                    <img src="pictures/world.jpg">
+                    <img src="resources/images/world.jpg">
                 </div>
-                <a href="#user"><img class="circle" src="pictures/world.jpg"></a>
+                <a href="#user"><img class="circle" src="resources/images/world.jpg"></a>
                 <a href="#name"><span class="white-text name">error</span></a>
                 <a href="#email"><span class="white-text email">error</span></a>
             </div>
@@ -62,21 +72,6 @@
             class="material-icons grey-text">menu</i>
     </a>
 
-    <!-- add developer modal -->
-
-    <div id="addDev-modal" class="modal">
-        <div class="modal-content">
-            <h4>Add Developer</h4>
-            <form id="add-form">
-                <div class="input-field">
-                    <input type="email" id="add-email" class="white-text" required />
-                    <label for="add-email">Add a Developer by Email</label>
-                </div>
-                <button class="btn indigo darken-4 waves-effect waves-dark">Add</button>
-            </form>
-        </div>
-    </div>
-
     <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
@@ -86,11 +81,12 @@
     <!-- <script src="/__/firebase/init.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="JavaScript/materialize.js"></script>
-    <script type="text/javascript" src="JavaScript/loggedInProjectDev.js"></script>
-    <script type="text/javascript" src="JavaScript/setUpSidenav.js"></script>
-    <script type="text/javascript" src="JavaScript/populateProjectPage.js"></script>
-    <script type="text/javascript" src="JavaScript/setUpTeamDropdown.js"></script>
+    <script type="text/javascript" src="resources/js/materialize.js"></script>
+    <script type="text/javascript" src="resources/js/loggedInProjectDev.js"></script>
+    <script type="text/javascript" src="resources/js/setUpSidenav.js"></script>
+    <script type="text/javascript" src="resources/js/populateProjectPage.js"></script>
+    <script type="text/javascript" src="resources/js/setUpTeamDropdown.js"></script>
+    <script type="text/javascript" src="resources/js/setUpSprint.js"></script>
 
 
 </body>

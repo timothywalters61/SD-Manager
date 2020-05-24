@@ -5,4 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var sideNav = document.querySelectorAll('.sidenav');
     M.Sidenav.init(sideNav);
+
+    var datePicker = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(datePicker);
 });

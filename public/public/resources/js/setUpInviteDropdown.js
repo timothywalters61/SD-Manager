@@ -21,7 +21,10 @@ const setUpInvites = (data) => {
 
 const acceptInvite = (data,data1) => {
     var user = auth.currentUser;
-    db.collection("Projects").doc(data).update({
+    db.collection("users").doc(user.uid).update({
+        projects: firebase.firestore.FieldValue.arrayUnion(data)
+    });
+    db.collection("projects").doc(data).update({
         Team: firebase.firestore.FieldValue.arrayUnion(user.email)
     }).then(() => {
         db.collection("Invites").doc(data1).delete()
@@ -30,7 +33,6 @@ const acceptInvite = (data,data1) => {
         }).catch(function(error) {
             console.error("Error removing document: ", error);
         });
-        window.location.href = "userHome.html";
     });
 }
 
@@ -38,7 +40,6 @@ const declineInvite = (data) => {
     db.collection("Invites").doc(data).delete()
     .then(function() {
         console.log("Document successfully deleted!");
-        window.location.href = "userHome.html";
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });

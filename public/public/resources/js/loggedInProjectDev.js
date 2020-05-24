@@ -12,11 +12,32 @@ firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 const db = firebase.firestore();
+const projectID = localStorage.getItem("docID");
+const ownerID = localStorage.getItem("ownerID");
 
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log("user logged in: ", user);
         //console.log(data);
+
+        //only team members can open this page
+
+        db.collection("projects").doc(projectID)
+            .get()
+            .then((doc) => {
+                if (doc.exists) {
+                    if (doc.data().Team.includes(user.email)) {
+                        console.log("in the team");
+                        if (user.uid === ownerID) {
+                            window.location.href = "projectOwner.html";
+                        }
+                    } else {
+                        window.location.href = "userHome.html";
+                    }
+                } else {
+                    console.log("project does not exist");
+                }
+            });
 
         //set up sidenav
 
@@ -25,12 +46,28 @@ auth.onAuthStateChanged(user => {
 
         //populate team dropdown
 
-        db.collection("Projects").doc(projectID)
-            .get()
-            .then((doc) => {
+        db.collection("projects").doc(projectID)
+            .onSnapshot(function (doc) {
                 if (doc.exists) {
                     console.log(doc.data().Team);
                     setUpTeam(doc.data().Team);
+
+                    //git and links
+
+                    const gitLink = document.querySelector('#gitLink');
+                    
+                    let git = `<a href="${doc.data().repository}">Git</a>`;
+
+                    gitLink.innerHTML = git;
+
+                    //display sprints
+
+                    if (doc.data().Sprints === "started") {
+                        db.collection("projects").doc(projectID).collection("sprints").get().then((querySnapshot) => {
+                            setUpSprint(querySnapshot);
+                        });
+                    }
+
                 } else {
                     console.log("project does not exist");
                 }
