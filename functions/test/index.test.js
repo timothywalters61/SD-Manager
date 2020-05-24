@@ -4,13 +4,14 @@
  */
 /* ====================================== Imports ====================================== */
 // At the top of test/index.test.js
+
 const test = require('firebase-functions-test')(
 	{
 		databaseURL: 'https://sd-manager.firebaseio.com',
 		projectId: 'sd-manager',
 		storageBucket: 'sd-manager.appspot.com',
-	},
-	'../sd-manager-firebase-adminsdk-mx72v-e8dac43245.json'
+	}
+	
 );
 const sinon = require('sinon');
 const admin = require('firebase-admin');
@@ -37,6 +38,7 @@ var success = {
 describe('signup.js functions', () => {
 	it('Should create user document', (done) => {
 		// Create user document test
+		assert.isString('testing');
 		var createUserDocument = test.wrap(myFunctions.createUserDocument);
 		var data = {
 			dn: 'Display Name',
@@ -67,7 +69,7 @@ describe('projects.js functions', () => {
 		test.cleanup();
 	});
 	it('Should create new project', (done) => {
-		// create project test
+		// create project test	
 		var createProject = test.wrap(myFunctions.createProject);
 		data = {
 			pn: 'Project',
@@ -79,12 +81,12 @@ describe('projects.js functions', () => {
 			},
 		})
 			.then((value) => {
-				_.isObject(value).should.be.true;
+				_.isObject(value).should.be.true;				
 				done();
 			})
 			.catch((error) => {
 				done(error);
-			});
+			});	
 	});
 
 	it('Should retrieve list of projects', (done) => {
