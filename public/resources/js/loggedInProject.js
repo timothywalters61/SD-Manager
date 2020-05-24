@@ -27,6 +27,18 @@ auth.onAuthStateChanged((user) => {
 				console.log('project does not exist');
 			}
 		});
+
+		getCollectionReference('projects/' + projectID + '/sprints').onSnapshot(querySnapshot =>{
+			if (querySnapshot.exists) {
+				var sprints = document.querySelector('#sprintList');
+				sprints.innerHTML = '';
+				/*
+				querySnapshot.forEach((doc) => {
+					createSprintButton(doc);
+				});	*/
+				setUpSprints(querySnapshot)
+			} else {}
+		})
 	} else {
 		console.log('user logged out');
 		window.location.href = 'index.html';
