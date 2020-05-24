@@ -47,11 +47,44 @@
 		<br />
 		<br />
 		<br />
-
-		<div id="project">
-			<h3 id="projectTitle"></h3>
-			<a href="SprintPage.html" class="sprint_btn">Sprints</a>
-			<a href="SprintPage.html" class="sprint_btn">Sprints</a>
+		<div class="container">
+			<div id="project">
+				<h3 id="projectTitle"></h3>
+				<div id="sprint_btns" class="sprints_btn_group">
+					<a href = "#" class = "btn indigo darken-4 modal-trigger sprint_btn" data-target="sprint_details">Create Sprint</a>
+					<div class = "navigation">
+						<ul id = "sprint-nav">
+							<li><a href="#">Sprints<i class="material-icons">arrow_drop_down</i></a>
+								<ul id="sprintList">
+								   <!-- <li><a href="#">You Currently Have No Sprints</a></li> -->
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class = "modal" id = "sprint_details">
+					<div class = "modal-content">
+					 <h4>Create New Sprint</h4>
+						<form id="create-form">
+							<div class="input-field">
+								<input type="text" id="sprintName" class="white-text" required />
+								<label for="sprintName">Sprint Name</label>
+							</div>
+							<div class="input-field">
+								<input type="text" id="startDate" class="white-text" required />
+								<label for="startDate">Start Date</label>
+							</div>
+							<div class="input-field">
+								<input type="text" id="dueDate" class="white-text" required />
+								<label for="dueDate">Due Date</label>
+							</div>
+							<!-- <button class="btn indigo darken-4 waves-effect waves-dark" onclick="AddSprint()">Create Sprint</button>-->
+							<button type = "button" id = "btt" class="btn indigo darken-4" onclick="AddSprint()">Create Sprint</button>
+					   </form>
+				   </div>
+			   </div>
+			
+			</div>
 		</div>
 
 		<!-- sidenav -->
