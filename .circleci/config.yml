@@ -18,6 +18,9 @@ jobs:
                   name: Install Firebase Dependencies
                   command: npm install -D firebase-tools
             - run:
+                  name: Update Npm Dependencies
+                  command: npm install --save firebase-functions@latest     
+            - run:
                   name: Install npm in Functions
                   command: cd functions ; npm install ; npm install --save-dev mocha ; npm test ; npm run coveralls ;cd ..
             - save_cache:
