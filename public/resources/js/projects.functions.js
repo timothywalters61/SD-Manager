@@ -78,11 +78,10 @@ function createProjectMemberDocument(data, pid, uid) {
  * @param {DocumentSnapshot} snap 
  */
 function createSprintButton(snap) {
-	var btn = document.createElement('a');
-	btn.classList.add('sprint_btn');
-	btn.href = 'SprintPage.html';
-	localStorage.sprintId = snap.id;
-	var sprints = document.getElementById('sprint_btns');
+	var data = snap.data()
+	var btn = document.createElement('li');
+	btn.innerHTML = `<a href="SprintPage.html" onclick="saveSprintRef(${snap.id})">${data.name}</a>`
+	var sprints = document.getElementById('sprintList');
 	sprints.appendChild(btn);
 }
 
