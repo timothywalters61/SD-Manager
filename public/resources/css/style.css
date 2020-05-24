@@ -78,7 +78,6 @@ body {
 
 .navigation ul li ul li a:hover {
     background-color: #1a237e;
-    border-bottom: 5px solid #1a237e;
 }
 
 .navigation ul li a i {
