@@ -74,18 +74,6 @@ function createProjectMemberDocument(data, pid, uid) {
 }
 
 /**
- * Creates a new sprint
- * @param {DocumentSnapshot} snap 
- */
-function createSprintButton(snap) {
-	var data = snap.data()
-	var btn = document.createElement('li');
-	btn.innerHTML = `<a href="SprintPage.html" onclick="saveSprintRef(${snap.id})">${data.name}</a>`
-	var sprints = document.getElementById('sprintList');
-	sprints.appendChild(btn);
-}
-
-/**
  * Returns a map of fields and values that will be used in a user's projects
  * subcollection to create a project document
  * @param {String} description
