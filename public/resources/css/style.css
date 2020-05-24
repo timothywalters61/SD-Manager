@@ -69,4 +69,24 @@ font-size: 40px;
 
 display:none;
 }
+<<<<<<< Updated upstream
  
+=======
+
+.acceptInviteButtons {
+    color: white;
+    background-color: #1a237e;
+    padding: 5px 10px;
+}
+
+#btt {
+    border: 0px solid #3498db;
+    padding: 10px 10px;
+    fontSize:15px;
+    cursor:pointer;
+    background-color:#1a237e;
+    borderRadius:10px;
+    color:white;
+    fontFamily:Arial;
+}
+>>>>>>> Stashed changes
