@@ -22,8 +22,8 @@ function createSprintButton(snap) {
  * @param {String} end 
  */
 function createSprintData(name, start, end) {
-    start = new Date(start);
-    end = new Date(end);
+    //start = new Date(start);
+    //end = new Date(end);
     return {
         end_date: end,
         name: name,
@@ -38,4 +38,18 @@ function createSprintData(name, start, end) {
  */
 function createSprintDocument(projectid, data) {
     return addDoc('projects/' + projectid + '/sprints', data)
+}
+
+
+function setUpSprints(query) {
+    var sprints = document.getElementById('sprintList')
+    let html = ``;
+    query.forEach(doc => {
+        var sprintData = doc.data()
+        var li = `
+            <li><a href="SprintPage.html" onclick="saveSprintRef('${doc.id}')">${sprintData.name}</a></li>
+        `;
+		html = html + li;
+    });
+    sprints.innerHTML = html;
 }
