@@ -65,7 +65,7 @@
 				<div class = "modal" id = "sprint_details">
 					<div class = "modal-content">
 					 <h4>Create New Sprint</h4>
-						<form id="create-form">
+						<form id="create-sprint-form">
 							<div class="input-field">
 								<input type="text" id="sprintName" class="white-text" required />
 								<label for="sprintName">Sprint Name</label>
@@ -79,7 +79,7 @@
 								<label for="dueDate">Due Date</label>
 							</div>
 							<!-- <button class="btn indigo darken-4 waves-effect waves-dark" onclick="AddSprint()">Create Sprint</button>-->
-							<button type = "button" id = "btt" class="btn indigo darken-4" onclick="AddSprint()">Create Sprint</button>
+							<input type="submit" class="btn indigo darken-4 waves-effect waves-dark white-text" value="Create Sprint">
 					   </form>
 				   </div>
 			   </div>
@@ -197,5 +197,6 @@
 			type="text/javascript"
 			src="resources/js/setUpTeamDropdown.js"
 		></script>
+		<script type="text/javascript" src="resources/js/sprints.create.js"></script>
 	</body>
 </html>
