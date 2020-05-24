@@ -30,3 +30,12 @@ function createSprintData(name, start, end) {
         start_date: start,
     };
 }
+
+/**
+ * Creates a new sprint document in a project's sprints subcollection
+ * @param {String} projectid 
+ * @param {Object} data 
+ */
+function createSprintDocument(projectid, data) {
+    return addDoc('projects/' + projectid + '/sprints', data)
+}
