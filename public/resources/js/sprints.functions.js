@@ -14,3 +14,19 @@ function createSprintButton(snap) {
 	var sprints = document.getElementById('sprintList');
 	sprints.appendChild(btn);
 }
+
+/**
+ * Returns a map of fields and values that will be used to save a sprint
+ * @param {String} name 
+ * @param {String} start 
+ * @param {String} end 
+ */
+function createSprintData(name, start, end) {
+    start = new Date(start);
+    end = new Date(end);
+    return {
+        end_date: end,
+        name: name,
+        start_date: start,
+    };
+}
