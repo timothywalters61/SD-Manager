@@ -39,7 +39,7 @@ function deleteDoc(col, doc) {
  * @param {} col 
  */
 function getCol(col) {
-	return firebase.collection(col).get();
+	return firestore.collection(col).get();
 }
 
 /**
@@ -66,7 +66,7 @@ function getCollectionReference(col) {
  * @param {String} doc
  */
 function getDocumentReference(col, doc) {
-	return firebase.collection(col).doc(doc);
+	return firestore.collection(col).doc(doc);
 }
 
 /**
