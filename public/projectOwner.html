@@ -51,6 +51,9 @@
 		<div id="project">
 			<h3 id="projectTitle"></h3>
 			<a href="SprintPage.html" class="sprint_btn">Sprints</a>
+			<br />
+			<br />
+			<br />
 			<a href="SprintPage.html" class="sprint_btn">Sprints</a>
 		</div>
 
@@ -114,6 +117,43 @@
 				</form>
 			</div>
 		</div>
+
+		<!-- Create Sprints Button With Modal Setup-->
+
+		<div class = "container">
+			<a href = "#" id = "pageBtt2" class = "btn indigo darken-4 modal-trigger" data-target="sprint_details">Create New Sprint</a>
+
+			<div class = "modal" id = "sprint_details">
+				<div class = "modal-content">
+					<h4>Create New Sprint</h4>
+					<form id="create-form">
+						<div class="input-field">
+							<input type="text" id="sprintName" class="white-text" required />
+							<label for="sprintName">Sprint Name</label>
+						</div>
+						<div class="input-field">
+							<input type="text" id="startDate" class="white-text" required />
+							<label for="startDate">Start Date</label>
+						</div>
+						<div class="input-field">
+							<input type="text" id="dueDate" class="white-text" required />
+							<label for="dueDate">Due Date</label>
+						</div>
+						<!-- <button class="btn indigo darken-4 waves-effect waves-dark" onclick="AddSprint()">Create Sprint</button>-->
+						<button type = "button" id = "btt" onclick="AddSprint()">Create Sprint</button>
+					</form>
+				</div>
+			</div>
+
+			<!-- Cards -->
+
+					<div class = "col s12 16">
+
+					</div>
+				</div>
+			</div>
+
+
 
 		<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 

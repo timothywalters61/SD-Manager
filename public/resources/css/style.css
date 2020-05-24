@@ -124,18 +124,12 @@ body {
     padding: 5px 10px;
     margin-left: 20px;
 }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
- 
-=======
-=======
->>>>>>> f7dec262129866b1cafc56a68666b1efb332d0a1
+
 
 .acceptInviteButtons {
     color: white;
     background-color: #1a237e;
     padding: 5px 10px;
-<<<<<<< HEAD
 }
 
 #btt {
@@ -148,7 +142,23 @@ body {
     color:white;
     fontFamily:Arial;
 }
->>>>>>> Stashed changes
-=======
+
+#pageBtt {
+    margin-top: -100px;
 }
->>>>>>> f7dec262129866b1cafc56a68666b1efb332d0a1
+
+#pageBtt2 {
+    margin-top: -470px;
+}
+
+.sprint_btn {
+    border: 0px solid #3498db;
+    padding: 10px 10px;
+    fontSize:15px;
+    cursor:pointer;
+    background-color:#1a237e;
+    borderRadius:10px;
+    color:white;
+    fontFamily:Arial;
+}
+
