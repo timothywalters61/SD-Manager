@@ -1,82 +1,141 @@
 *{
-
- margin: 0;	
- padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-.wrapper {
-
- width: 1170px;
- margin:auto; 
+.indexBody {
+    background: url("../images/sdPicture.jpg");
+    background-size: cover;
 }
 
-header {
- background: url("BlackBackground.jpg");
- 
- height: 100vh;
- -webkit-background-size:cover;
- background-size:cover;
- background-position: center center;
- position: relative;
+body {
+    background-color: #383535;
 }
 
-.AccOps{
-
-float: left;
-list-style: none;
-
-margin-top: 35px;
+.navigation {
+    width: 100%;
+    height: 65px;
+    background-color: #212121;
 }
 
-.AccOps li{
-display:inline-block;
-
+.navigation p {
+    font-family: Arial;
+    color: white;
+    font-size: 30px;
+    line-height: 65px;
+    float: left;
+    padding: 0px 0px 0px 10%;
 }
 
-.AccOps li a {
-color: #fff;
-text-decoration: none;
-padding: 5px 20px; 
-font-family:Arial;
-font-size:18px;
+.navigation p a {
+    text-decoration: none;
+    color: white;
 }
 
-.AccOps li a:hover {
- background: #fff;
- color: #333;
+.navigation ul {
+    float: right;
+    font-family: Arial;
+    color: white;
+    padding: 0px 10% 0px 0px;
 }
 
-.Greeting-Text {
-
-position:absolute;
-width: 600px;
-height:300px;
-margin: 20% 29%;
-text-align: center; 
+.navigation ul li {
+    float: left;
+    list-style: none;
+    position: relative;
 }
 
-.Greeting-Text h1 {
-float: left
-text-align:center;
-color: #fff;
-text-transform: uppercase;
-font-family: sans-serif
-font-size: 40px;
-
+.navigation ul li a {
+    display: block;
+    font-family: Arial;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 20px 15px;
 }
- 
-.sub-menu {
 
-display:none;
+.navigation ul li a:hover {
+    background-color: #1a237e;
 }
+
+.navigation ul li ul {
+    display: none;
+    position: absolute;
+    font-size: 14px;
+    background-color: #212121;
+    padding: 5px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.navigation ul li ul li {
+    width: 200px;
+    border-radius: 4px;
+}
+
+.navigation ul li ul li a {
+    padding: 15px 15px
+}
+
+.navigation ul li ul li a:hover {
+    background-color: #1a237e;
+    border-bottom: 5px solid #1a237e;
+}
+
+.navigation ul li a i {
+    float: right;
+}
+
+.navigation ul li:hover ul {
+    display: block;
+}
+
+.modal {
+    background-color: #212121;
+    color: white;
+}
+
+#projectTitle {
+    font-size: 25px;
+    margin-left: 10%;
+    margin-right: 72%; 
+    padding: 15px 15px 15px 15px;
+}
+
+#project {
+    background-color: #212121;
+    color: white;
+    max-width: 80%;
+    margin: auto;
+    padding: 15px 15px 15px 15px;
+}
+
+.sprint_btn {
+    background-color: #1a237e;
+    color: white;
+    width: 50%;
+    margin-left: 10%;
+    margin-right: 72%;
+    height: 100px;
+}
+
+.declineInviteButtons {
+    color: white;
+    background-color: #1a237e;
+    padding: 5px 10px;
+    margin-left: 20px;
+}
+<<<<<<< HEAD
 <<<<<<< Updated upstream
  
 =======
+=======
+>>>>>>> f7dec262129866b1cafc56a68666b1efb332d0a1
 
 .acceptInviteButtons {
     color: white;
     background-color: #1a237e;
     padding: 5px 10px;
+<<<<<<< HEAD
 }
 
 #btt {
@@ -90,3 +149,6 @@ display:none;
     fontFamily:Arial;
 }
 >>>>>>> Stashed changes
+=======
+}
+>>>>>>> f7dec262129866b1cafc56a68666b1efb332d0a1
