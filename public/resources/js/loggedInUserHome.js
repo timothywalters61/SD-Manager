@@ -31,7 +31,8 @@ auth.onAuthStateChanged(user => {
 
         //set up project dropdown
 
-        db.collection("projects").where("team", "array-contains", user.email)
+        db.collection("projects")
+            .where("team", "array-contains", user.email)
             .onSnapshot(function (snapshot) {
                 if (snapshot.exists) {
                     setUpProjects(snapshot.docs);
@@ -44,7 +45,8 @@ auth.onAuthStateChanged(user => {
 
         //set up invite dropdown
 
-        db.collection("invites").where("to_id", "==", user.uid)
+        db.collection("invites")
+            .where("to_id", "==", user.uid)
             .onSnapshot(function (snapshot) {
                 if (snapshot.docs != 0) {
                     setUpInvites(snapshot.docs);
