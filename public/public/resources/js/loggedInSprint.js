@@ -23,14 +23,14 @@ auth.onAuthStateChanged(user => {
 
         //back button
 
-        const backButton = document.querySelector("#backButton");
-        backButton.addEventListener('click', () => {
-            if (user.uid === ownerID) {
-                window.location.href = "projectOwner.html";
-            } else {
-                window.location.href = "projectDeveloper.html";
-            }
-        });
+        // const backButton = document.querySelector("#backButton");
+        // backButton.addEventListener('click', () => {
+        //     if (user.uid === ownerID) {
+        //         window.location.href = "projectOwner.html";
+        //     } else {
+        //         window.location.href = "projectDeveloper.html";
+        //     }
+        // });
 
         //only team members can open this page
 
@@ -63,6 +63,7 @@ auth.onAuthStateChanged(user => {
                     //display sprint heading
 
                     const sprintHeading = document.querySelector('#Title');
+                    sprintHeading.style.color = "#000000";
 
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).get().then((doc) => {
                         let html = `<p>${doc.data().name}</p>`;

@@ -10,10 +10,30 @@
     background-color: #212121;
 }
 
+@font-face {
+    src: url("../Fonts/spiderman/HOMOARAK.TTF");
+    font-family: arak;
+}
+
+@font-face {
+    src: url("../Fonts/007-golden-eye/007 GoldenEye.ttf");
+    font-family: golden;
+}
+
+@font-face {
+    src: url("../Fonts/uptown-elegance/Uptown Elegance Regular.ttf");
+    font-family: uptown;
+}
+
+
 #Title p{
     font-size: 50px;
     color: white;
     padding: 10px 10px 10px 10px;
+    text-align: center;
+    font-style: italic;
+    text-transform: capitalize;
+    font-family: mall;
 }
 
 .userStoryList {
@@ -56,7 +76,7 @@
   
   .taskList h3 {
       font-size: 25px;
-      color: white;
+      color: black;
   }
   
   .taskList li p {

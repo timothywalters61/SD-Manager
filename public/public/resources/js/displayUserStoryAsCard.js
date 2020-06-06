@@ -15,7 +15,7 @@ function displayUserStoryAsCard(title, description, acceptance, points, docID) {
     //console.log(storyDiv);
 
    let storyDiv = document.createElement('div');
-   storyDiv.style = "background-color: #ffffff";
+   storyDiv.style = "background-color:#ECEFF1";
    storyDiv.style.width = "1000px";
    storyDiv.style.marginLeft = "auto";
    storyDiv.style.marginRight = "auto";
@@ -33,7 +33,8 @@ function displayUserStoryAsCard(title, description, acceptance, points, docID) {
 
     newTitle.innerText = Title;
     newTitle.style.width = "500px";
-    newTitle.style.backgroundColor = '#212121';
+    newTitle.style.backgroundColor = '#1a237e';
+    newTitle.style.borderRadius = "5px";
     newTitle.style.color = "#e0e0e0";
     newTitle.style.padding = '10px 10px';
     newDesc.innerText = Desc;
@@ -52,7 +53,7 @@ function displayUserStoryAsCard(title, description, acceptance, points, docID) {
     //taskBtt.style.float = 'right';
     taskBtt.style.fontSize = '15px';
     taskBtt.style.cursor = 'pointer';
-    taskBtt.style.backgroundColor = '#212121';
+    taskBtt.style.backgroundColor = '#1a237e';
     //taskBtt.style.borderRadius = '10px';
     taskBtt.style.color = 'white';
     taskBtt.innerText = "View Tasks";
@@ -63,7 +64,8 @@ function displayUserStoryAsCard(title, description, acceptance, points, docID) {
         saveUserStoryID(docID);
     });
 
-
+    storyDiv.style.borderRadius = "20px";
+    storyDiv.style.borderColor = "black #1a237e";
  storyDiv.appendChild(newTitle);
  storyDiv.appendChild(breakPoint);
   storyDiv.appendChild(newDesc);

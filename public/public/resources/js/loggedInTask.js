@@ -24,10 +24,10 @@ auth.onAuthStateChanged(user => {
 
         //back button
 
-        const backButton = document.querySelector("#backButton");
-        backButton.addEventListener('click', () => {
-            window.location.href = "Sprint.html";
-        });
+        // const backButton = document.querySelector("#backButton");
+        // backButton.addEventListener('click', () => {
+        //     window.location.href = "Sprint.html";
+        // });
 
         //only team members can open this page
 
@@ -70,6 +70,12 @@ auth.onAuthStateChanged(user => {
 
                     const taskList = document.querySelector("#taskList");
                     let taskListHTML = '';
+                    taskList.style = "background-color: #ECEFF1";
+                    taskList.style.width = "1000px";
+                    taskList.style.marginLeft = "auto";
+                    taskList.style.marginRight = "auto";
+                    taskList.style.borderRadius = "20px";
+                    // taskList.style.color = "#121212";
 
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").get().then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
@@ -79,6 +85,7 @@ auth.onAuthStateChanged(user => {
                             </li>
                             `;
                             taskListHTML = taskListHTML + li;
+                            console.log("created");
                         });
                         if (taskListHTML.length === 0) {
                             console.log("no tasks");

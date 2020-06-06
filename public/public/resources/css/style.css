@@ -8,9 +8,61 @@
     background-size: cover;
 }
 
-body {
-    background-color: #383535;
+.homeBody {
+    background: url("../images/sdPicture.jpg");
+    background-size: cover;
 }
+
+.SprintBody {
+    background: url("../images/blue4.jpg");
+}
+
+.TaskBody {
+    background: url("../images/blue4.jpg");
+    background-size: cover;
+}
+
+.devBody {
+    background: url("../images/blue4.jpg");
+    background-size: cover;
+}
+
+.ownerBody {
+    background: url("../images/blue4.jpg");
+    background-size: cover;
+}
+
+/*body {*/
+/*    background: url("../images/sdPicture.jpg");*/
+/*    background-size: cover;*/
+/*    !/background-color: #383535;*!*!*/
+/*}*/
+
+@font-face {
+    src: url("../Fonts/spiderman/HOMOARAK.TTF");
+    font-family: arak;
+}
+
+@font-face {
+    src: url("../Fonts/mallanna/Mallanna-Regular.ttf");
+    font-family: mall;
+}
+
+@font-face {
+    src: url("../Fonts/catamaran/Catamaran-Medium.ttf");
+    font-family: cat;
+}
+
+@font-face {
+    src: url("../Fonts/007-golden-eye/007 GoldenEye.ttf");
+    font-family: golden;
+}
+
+@font-face {
+    src: url("../Fonts/uptown-elegance/Uptown Elegance Regular.ttf");
+    font-family: uptown;
+}
+
 
 .navigation {
     width: 100%;
@@ -19,9 +71,9 @@ body {
 }
 
 .navigation p {
-    font-family: Arial;
+    font-family: golden;
     color: white;
-    font-size: 30px;
+    font-size: 40px;
     line-height: 65px;
     float: left;
     padding: 0px 0px 0px 10%;
@@ -30,6 +82,7 @@ body {
 .navigation p a {
     text-decoration: none;
     color: white;
+
 }
 
 .navigation ul {
@@ -96,6 +149,8 @@ body {
 #projectTitle {
     font-size: 25px;
     background-color: #212121;
+    /*background-color: #ECEFF1;*/
+    border-radius: 10px;
     color: white;
     margin-left: 10%;
     margin-right: 72%; 
