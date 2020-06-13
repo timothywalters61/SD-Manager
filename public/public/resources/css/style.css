@@ -67,12 +67,14 @@
 .navigation {
     width: 100%;
     height: 65px;
-    background-color: #212121;
+    /*background-color: #212121;*/
+    background-color: #ECEFF1;
 }
 
 .navigation p {
     font-family: golden;
-    color: white;
+    /*color: white;*/
+    color: black;
     font-size: 40px;
     line-height: 65px;
     float: left;
@@ -81,7 +83,8 @@
 
 .navigation p a {
     text-decoration: none;
-    color: white;
+    /*color: white;*/
+    color:black;
 
 }
 
@@ -89,6 +92,7 @@
     float: right;
     font-family: Arial;
     color: white;
+    /*color: black;*/
     padding: 0px 10% 0px 0px;
 }
 
@@ -101,7 +105,8 @@
 .navigation ul li a {
     display: block;
     font-family: Arial;
-    color: white;
+    /*color: white;*/
+    color: black;
     font-size: 16px;
     text-decoration: none;
     padding: 20px 15px;
@@ -109,24 +114,29 @@
 
 .navigation ul li a:hover {
     background-color: #1a237e;
+    color: #ECEFF1;
 }
 
 .navigation ul li ul {
     display: none;
     position: absolute;
     font-size: 14px;
-    background-color: #212121;
+    /*background-color: #212121;*/
+    background-color: #ECEFF1;
+    color: #ECEFF1;
     padding: 5px;
     border-radius: 0px 0px 4px 4px;
 }
 
 .navigation ul li ul li {
     width: 200px;
+    color: black;
     border-radius: 4px;
 }
 
 .navigation ul li ul li a {
-    padding: 15px 15px
+    padding: 15px 15px;
+    color: black;
 }
 
 .navigation ul li ul li a:hover {
@@ -169,3 +179,74 @@
     background-color: #1a237e;
     padding: 5px 10px;
 }
+
+#displayProjects {
+    display: inline-flex;
+}
+
+#displaySprints {
+    display: inline-flex;
+}
+
+#viewSprints {
+
+    border:0px solid #3498db;
+    padding:6px 6px;
+    marginTop:-37px;
+    fontSize:15px;
+    cursor:pointer;
+    background-color:#1a237e;
+    color:white;
+    fontFamily:Arial;
+    border-radius: 5px;
+}
+
+#Proj1 {
+    background-color:#ECEFF1;
+    width:300px;
+    border-radius: 5px;
+    margin-Left :80px;
+    margin-top: 60px;
+    position: relative;
+}
+
+#title {
+    width:100px;
+    background-color:#1a237e;
+    color:#e0e0e0;
+    border-radius: 5px;
+    padding: 3px 3px;
+    bottom: -80px;
+}
+
+#title2 {
+    width:100px;
+    background-color:#1a237e;
+    color:#e0e0e0;
+    border-radius: 5px;
+    padding: 3px 3px;
+    bottom: -80px;
+}
+
+#viewSprints2 {
+
+    border:0px solid #3498db;
+    padding:6px 6px;
+    marginTop:-37px;
+    fontSize:15px;
+    cursor:pointer;
+    background-color:#1a237e;
+    color:white;
+    fontFamily:Arial;
+    border-radius: 5px;
+}
+
+#Proj2 {
+    background-color:#ECEFF1;
+    width:300px;
+    border-radius: 5px;
+    margin-left:80px;
+    margin-top: 60px;
+    position: relative;
+}
+
