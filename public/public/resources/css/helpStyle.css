@@ -1,0 +1,129 @@
+#definitions {
+    display: inline-flex;
+}
+
+#defHeader {
+    font-size: 45px;
+}
+
+#projDef {
+    padding-left: 60px;
+    width: 200px;
+    right: 80px;
+}
+
+#sprintDef {
+    padding-left: 60px;
+    width: 200px;
+}
+
+#storyDef {
+    padding-left: 60px;
+    width: 200px;
+}
+
+#taskDef {
+    padding-left: 60px;
+    width: 200px;
+}
+
+#th {
+    color:#095CF5;
+}
+
+#ph {
+    color:#095CF5;
+}
+
+#ush {
+    color:#095CF5;
+}
+
+#sph {
+    color:#095CF5;
+}
+
+#HomeDiv {
+    display: inline-flex;
+
+}
+
+#prH {
+    color:#095CF5;
+}
+
+#navH {
+    color:#095CF5;
+}
+
+#Nav {
+    width: 200px;
+    padding-left: 60px;
+}
+
+#homeHead {
+    padding-top: 20px;
+    font-size: 45px;
+}
+
+#projDis {
+    width: 200px;
+    padding-left: 60px;
+}
+
+#projBtt {
+    width: 200px;
+    padding-left: 60px;
+}
+
+h3 {
+    color:#095CF5;
+}
+
+#projPages {
+    display: inline-flex;
+}
+
+#sp {
+    width: 200px;
+    padding-left: 60px;
+}
+
+#prjDis {
+    width: 200px;
+    padding-left: 60px;
+}
+
+#ProjHeader {
+    padding-top: 20px;
+    font-size: 45px;
+}
+
+#SprintDisplay {
+    padding-top: 20px;
+    width: 250px;
+    /*width: 400px;*/
+    padding-left: 60px;
+}
+
+
+#SprintHeader {
+    padding-top: 20px;
+    font-size: 45px;
+}
+
+#StoryHeader{
+    padding-top: 20px;
+    font-size: 45px;
+}
+
+#StoryDisplay {
+    padding-top: 20px;
+    /*width: 400px;*/
+    width: 250px;
+    padding-left: 60px;
+}
+
+#helpTab{
+    color:#095CF5;
+}
