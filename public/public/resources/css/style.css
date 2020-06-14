@@ -31,6 +31,13 @@
     width:100%;
     background-image: url("/public/resources/images/testWallpapera3.jpg");
 }
+
+.HelpBody {
+    height:100%;
+    width:100%;
+    background-color: white;
+}
+
 .navigation{
     background: whitesmoke;
     position: relative;
@@ -189,7 +196,7 @@
 }
 
 .subNav ul button{
-   margin-left: 70%;
+   float: right;
 }
 
 .subNav ul li a{
