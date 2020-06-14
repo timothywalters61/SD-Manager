@@ -46,7 +46,7 @@ auth.onAuthStateChanged(user => {
         let heading = `<p>${projectName}</p>`;
         projectTitle.innerHTML = heading;
 
-        //populate team dropdown
+        
 
         db.collection("projects").doc(projectID)
             .onSnapshot(function (doc) {
