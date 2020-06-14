@@ -27,6 +27,7 @@ create.addEventListener('submit', (e) => {
                     create.reset();
                     localStorage.setItem("docID", docRef.id);
                     localStorage.setItem("ownerID", user.uid);
+
                     window.location.href = "projectOwner.html";
                 });
         }).catch(function (error) {

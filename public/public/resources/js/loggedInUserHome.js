@@ -41,6 +41,8 @@ auth.onAuthStateChanged(user => {
             .onSnapshot(function (snapshot) {
                 if (snapshot.docs != 0) {
                     setUpProjects(snapshot.docs);
+                    // //Creating The Div Cards for Projects On User Page
+                    // displayProjectsUserHome(projectName,projectDescription);
                 } else {
                     console.log("projects do not exist");
                     const projectBox = document.querySelector("#projectContainer");
