@@ -189,7 +189,7 @@
 }
 
 .subNav ul button{
-   margin-left: 70%;
+   float:right;
 }
 
 .subNav ul li a{
