@@ -44,7 +44,7 @@ auth.onAuthStateChanged(user => {
         let heading = `<p>${projectName}</p>`;
         projectTitle.innerHTML = heading;
 
-        //populate team dropdown
+        
 
         db.collection("projects").doc(projectID)
             .onSnapshot(function (doc) {
@@ -79,20 +79,6 @@ auth.onAuthStateChanged(user => {
                             }
                             storyListLink.innerHTML = userStoryHTML;
                         });
-                        // querySnapshot.forEach((doc) => {
-                        //     const li = `
-                        //     <li><a href="Task.html" onclick="saveUserStoryID('${doc.id}')">           
-                        //         <h3>${doc.data().name}</h3>
-                        //             <p>${doc.data().description}</p>
-                        //     </a></li>
-                        //     `;
-                        //     userStoryHTML = userStoryHTML + li;
-                        // });
-                        // if (userStoryHTML.length === 0) {
-                        //     console.log("no user story");
-                        // } else {
-                        //     storyListLink.innerHTML = userStoryHTML;
-                        // }
                     });
 
                     //git and links

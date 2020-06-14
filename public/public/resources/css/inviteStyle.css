@@ -1,3 +1,19 @@
+@keyframes acceptInviteBtnAnimation{
+    from{color: green;
+        background: whitesmoke;
+        border: 1px solid green;}
+    to{color: whitesmoke;
+        background: green;}
+}
+
+@keyframes declineInviteBtnAnimation{
+    from{color: red;
+        background: whitesmoke;
+        border: 1px solid red;}
+    to{color: whitesmoke;
+        background: red;}
+}
+
 #inviteBadge{
     color: #095CF5;
 }
@@ -14,4 +30,38 @@
 #inviteContainer div{
     padding: 20px;
     font-size: 16px;
+}
+
+.acceptInviteButtons{
+    color: green;
+    background: whitesmoke;
+    border: 1px solid green;
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.acceptInviteButtons:hover{
+    cursor: pointer;
+    animation-name: acceptInviteBtnAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.declineInviteButtons{
+    color: red;
+    background: whitesmoke;
+    border: 1px solid red;
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+.declineInviteButtons:hover{
+    cursor: pointer;
+    animation-name: declineInviteBtnAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
 }
