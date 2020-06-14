@@ -14,6 +14,7 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 const projectID = localStorage.getItem("docID");
 const ownerID = localStorage.getItem("ownerID");
+const projectName = localStorage.getItem("docName");
 
 auth.onAuthStateChanged(user => {
     if (user) {
@@ -39,10 +40,11 @@ auth.onAuthStateChanged(user => {
                 }
             });
 
-        //set up sidenav
+        //heading
 
-        var data = [user.displayName, user.email];
-        setUpSideNav(data);
+        const projectTitle = document.querySelector("#PageHeading");
+        let heading = `<p>${projectName}</p>`;
+        projectTitle.innerHTML = heading;
 
         //populate team dropdown
 
@@ -50,12 +52,12 @@ auth.onAuthStateChanged(user => {
             .onSnapshot(function (doc) {
                 if (doc.exists) {
                     console.log(doc.data().Team);
-                    setUpTeam(doc.data().Team);
+                    // setUpTeam(doc.data().Team);
 
                     //git and links
-
+                    console.log(doc.data().repository);
                     const gitLink = document.querySelector('#gitLink');
-                    
+
                     let git = `<a href="${doc.data().repository}">Git</a>`;
 
                     gitLink.innerHTML = git;
@@ -72,6 +74,23 @@ auth.onAuthStateChanged(user => {
                     console.log("project does not exist");
                 }
             });
+
+        //set up invite badge
+
+        const inviteBadge = document.querySelector("#inviteBadge");
+
+        db.collection("Invites").where("inviteToID", "==", user.uid)
+            .onSnapshot(function (snapshot) {
+                if (snapshot.docs != 0) {
+                    let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
+                    inviteBadge.innerHTML = html;
+                } else {
+                    console.log("invites do not exist");
+                    let html2 = '<span class="badge">0</span> Invites';
+                    inviteBadge.innerHTML = html2;
+                }
+            });
+
     } else {
         console.log("user logged out");
         window.location.href = "index.html";

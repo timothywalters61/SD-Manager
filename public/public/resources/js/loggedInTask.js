@@ -16,18 +16,12 @@ const projectID = localStorage.getItem("docID");
 const ownerID = localStorage.getItem("ownerID");
 const currentSprintID = localStorage.getItem("currentSprintID");
 const userStoryID = localStorage.getItem("userStoryID");
+const projectName = localStorage.getItem("docName");
 
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log("user logged in: ", user);
         //console.log(data);
-
-        //back button
-
-        // const backButton = document.querySelector("#backButton");
-        // backButton.addEventListener('click', () => {
-        //     window.location.href = "Sprint.html";
-        // });
 
         //only team members can open this page
 
@@ -45,51 +39,44 @@ auth.onAuthStateChanged(user => {
                 }
             });
 
-        //set up sidenav
+        //heading
 
-        var data = [user.displayName, user.email];
-        setUpSideNav(data);
+        const projectTitle = document.querySelector("#PageHeading");
+        let heading = `<p>${projectName}</p>`;
+        projectTitle.innerHTML = heading;
 
         //populate team dropdown
 
         db.collection("projects").doc(projectID)
             .onSnapshot(function (doc) {
                 if (doc.exists) {
-                    setUpTeam(doc.data().Team);
+                    //setUpTeam(doc.data().Team);
 
                     //display user story heading
 
-                    const userStoryTitle = document.querySelector('#Title');
+                    const userStoryTitle = document.querySelector('#subPageHeading');
 
                     db.collection("projects").doc(projectID).collection("backlog").doc(userStoryID).get().then((doc) => {
-                        let html = `<p>${doc.data().name}: ${doc.data().description}</p>`;
+                        let html = `<p>${doc.data().name}</p>`;
                         userStoryTitle.innerHTML = html;
                     });
 
                     //display tasks
 
-                    const taskList = document.querySelector("#taskList");
+                    const taskList = document.querySelector("#taskContainer");
                     let taskListHTML = '';
-                    taskList.style = "background-color: #ECEFF1";
-                    taskList.style.width = "1000px";
-                    taskList.style.marginLeft = "auto";
-                    taskList.style.marginRight = "auto";
-                    taskList.style.borderRadius = "20px";
-                    // taskList.style.color = "#121212";
 
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").get().then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
-                            const li = `
-                            <li>           
-                                <h3>${doc.data().name}</h3>
-                            </li>
+                            const li = `     
+                                <div class="task"><a href="#"></a><span>${doc.data().name}</span></div>
                             `;
                             taskListHTML = taskListHTML + li;
-                            console.log("created");
                         });
                         if (taskListHTML.length === 0) {
                             console.log("no tasks");
                         } else {
+                            console.log(taskListHTML);
                             taskList.innerHTML = taskListHTML;
                         }
                     });
@@ -101,6 +88,22 @@ auth.onAuthStateChanged(user => {
                     let git = `<a href="${doc.data().repository}">Git</a>`;
 
                     gitLink.innerHTML = git;
+
+                    //set up invite badge
+
+                    const inviteBadge = document.querySelector("#inviteBadge");
+
+                    db.collection("Invites").where("inviteToID", "==", user.uid)
+                        .onSnapshot(function (snapshot) {
+                            if (snapshot.docs != 0) {
+                                let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
+                                inviteBadge.innerHTML = html;
+                            } else {
+                                console.log("invites do not exist");
+                                let html2 = '<span class="badge">0</span> Invites';
+                                inviteBadge.innerHTML = html2;
+                            }
+                        });
 
                 } else {
                     console.log("project does not exist");

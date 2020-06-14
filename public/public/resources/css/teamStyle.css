@@ -1,0 +1,17 @@
+#teamContainer{
+    background: white;
+    margin-top: 40px;
+    margin-left: 15.2%;
+    margin-right: 30%;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#teamContainer div{
+    padding: 20px;
+    font-size: 16px;
+}
+
+#teamTag{
+    color: #095CF5;
+}

@@ -18,7 +18,6 @@ startSprint.addEventListener('submit', (e) => {
             "Sprints": "started"
         })
         .then(() => {
-            alert("Sprint Created");
             startSprint.reset();
             window.location.href = "Sprint.html";
         });

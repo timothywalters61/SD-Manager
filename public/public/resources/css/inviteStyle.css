@@ -1,0 +1,17 @@
+#inviteBadge{
+    color: #095CF5;
+}
+
+#inviteContainer{
+    background: whitesmoke;
+    margin-top: 80px;
+    margin-left: 10%;
+    margin-right: 40%;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#inviteContainer div{
+    padding: 20px;
+    font-size: 16px;
+}

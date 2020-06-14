@@ -1,90 +1,61 @@
-* {margin: 0; padding: 0;}
+@keyframes userStoryBtnAnimation{
+    from{color: #095CF5;
+        background: whitesmoke;
+        border: 1px solid #095CF5;}
+    to{color: whitesmoke;
+        background: #095CF5;}
+}
 
-#backButton{
-    color: white;
+#userStoryContainer{
+    margin: 10px 20px 0 20px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.userStory{
+    background: white;
+    padding: 0 20px 20px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 5px;
+    width: 29.9%;
+}
+
+.userStoryBtn{
+    float: right;
+    color: #095CF5;
+    background: whitesmoke;
+    border: 1px solid #095CF5;
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+.userStoryBtn:hover{
+    cursor: pointer;
+    animation-name: userStoryBtnAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.userStoryName{
+    color:#095CF5;
+    padding-top: 10px;
     font-size: 25px;
-    padding: 10px 10px 10px 10px;
 }
 
-#backButton:hover{
-    background-color: #212121;
-}
-
-@font-face {
-    src: url("../Fonts/spiderman/HOMOARAK.TTF");
-    font-family: arak;
-}
-
-@font-face {
-    src: url("../Fonts/007-golden-eye/007 GoldenEye.ttf");
-    font-family: golden;
-}
-
-@font-face {
-    src: url("../Fonts/uptown-elegance/Uptown Elegance Regular.ttf");
-    font-family: uptown;
-}
-
-
-#Title p{
-    font-size: 50px;
-    color: white;
-    padding: 10px 10px 10px 10px;
-    text-align: center;
-    font-style: italic;
-    text-transform: capitalize;
-    font-family: mall;
-}
-
-.userStoryList {
-  margin: 10px;
-}
-
-.userStoryList ul {
-  list-style-type: none;
-  width: 100%;
-}
-
-.userStoryList h3 {
-    font-size: 25px;
-    color: white;
-}
-
-.userStoryList li p {
+.description{
+    color: #68BCE5;
+    padding:15px 2px 2px 2px;
     font-size: 20px;
-    color: white;
 }
 
-.userStoryList li {
-  padding: 5px;
-  border-radius: 5px;
+.acceptance{
+    padding:4px;
+    color: black;
 }
 
-.userStoryList li:hover {
-  background: #212121;
-  cursor: pointer;
+.points{
+    padding:4px;
+    color: black;
 }
-
-.taskList {
-    margin: 10px;
-  }
-  
-  .taskList ul {
-    list-style-type: none;
-    width: 100%;
-  }
-  
-  .taskList h3 {
-      font-size: 25px;
-      color: black;
-  }
-  
-  .taskList li p {
-      font-size: 20px;
-      color: white;
-  }
-  
-  .taskList li {
-    padding: 5px;
-    border-radius: 5px;
-  }

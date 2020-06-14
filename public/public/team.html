@@ -4,17 +4,14 @@
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/formStyle.css">
     <link rel="stylesheet" href="resources/css/toastStyle.css">
-    <link rel="stylesheet" href="resources/css/projectPageStyle.css">
-    <link rel="stylesheet" href="resources/css/sprintStyle.css">
+    <link rel="stylesheet" href="resources/css/teamStyle.css">
 </head>
 
 <body>
 
     <div class="container">
         <div class="navigation">
-            <div class="webPageTitle">
-                <li><a href="userHome.html"><img src="/public/resources/images/SD-Manager.png"></a></li>
-            </div>
+            <div class="webPageTitle"><li><a href="userHome.html"><img src="/public/resources/images/SD-Manager.png"></a></li></div>
             <ul>
                 <li><a href="userHome.html">Projects</a></li>
                 <li><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
@@ -25,24 +22,24 @@
         <div id="contentContainer">
 
             <div id="PageHeading">
-                <p></p>
+              <p></p>
             </div>
-
+      
             <div class="subNav">
-                <ul>
-                    <li><a href="#" id="sprintTag">Sprints</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li id="gitLink"><a>Git</a></li>
-                </ul>
+              <ul>
+                <li><a href="projectDeveloper.html" id="sprintTag">Sprints</a></li>
+                <li><a href="#" id="teamTag">Team</a></li>
+                <li id="gitLink"><a>Git</a></li>
+              </ul>
             </div>
+      
+            <div id="teamContainer">
+              <div class="teamMember"></div>
+          </div>
+      
+          </div>
 
-            <div id="sprintContainer">
-                <div class="sprint-box"><a href="#"></a><span>No Sprints Started Yet</span></div>
-            </div>
-
-        </div>
-
-        <div id="toast">Some text some message..</div>
+          <div id="toast">Some text some message..</div>
 
     </div>
 
@@ -55,8 +52,8 @@
 
     <!-- <script src="/__/firebase/init.js"></script> -->
 
-    <script type="text/javascript" src="resources/js/loggedInProjectDev.js"></script>
-    <script type="text/javascript" src="resources/js/setUpSprint.js"></script>
+    <script type="text/javascript" src="resources/js/loggedInTeam.js"></script>
+    <script type="text/javascript" src="resources/js/setUpTeam.js"></script>
 
 
 </body>

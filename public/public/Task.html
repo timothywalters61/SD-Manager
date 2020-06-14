@@ -1,101 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SD Manager</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="stylesheet" href="resources/css/sideNavStyle.css">
-    <link rel="stylesheet" href="resources/css/userStoryStyle.css">
+  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="resources/css/toastStyle.css">
+  <link rel="stylesheet" href="resources/css/formStyle.css">
+  <link rel="stylesheet" href="resources/css/modal.css">
+  <link rel="stylesheet" href="resources/css/taskStyle.css">
 </head>
 
-<body class="TaskBody">
+<body>
+
+  <div class="container">
     <div class="navigation">
-        <p><a href="userHome.html">Software Design Manager</a></p>
-        <ul>
-            <li><a href="#" class="modal-trigger" data-target="Task-modal">Add Task</a></li>
-            <li><a href="#">Notifications<span class="badge white-text">0</span></a>
-                <ul id="notificationsList">
-                    <li><a href="#">0 Notifications</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Team</a>
-                <ul id="teamList">
-                    <li><a href="#"></a></li>
-                </ul>
-            </li>
-
-            <li id="gitLink"><a>Git</a></li>
-            <li><a href="#" id="logout">Logout</a></li>
-        </ul>
-
+      <div class="webPageTitle">
+        <li><a href="userHome.html"><img src="/public/resources/images/SD-Manager.png"></a></li>
+      </div>
+      <ul>
+        <li><a href="userHome.html">Projects</a></li>
+        <li><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
     </div>
 
-<!--    <div><a href="#" id="backButton">Back</a></div>-->
+    <div id="contentContainer">
 
-    <div id="Title"></div>
+      <div id="PageHeading">
+        <p></p>
+      </div>
 
-    <div class="taskList">
-        <ul id ="taskList">
-          <li>           
-            <h3>No Tasks Yet</h3>
-          </li>
+      <div class="subNav">
+        <ul>
+          <li><a href="projectDeveloper.html">Sprints</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li id="gitLink"><a>Git</a></li>
+          <button id="Btn" onclick="showTaskForm()">Add a Task</button>
         </ul>
       </div>
 
-    <!-- add Task story modal -->
+      <div id="subPageHeading">
+        <p></p>
+      </div>
 
-    <div id="Task-modal" class="modal">
-        <div class="modal-content">
-            <h4>Add a Task</h4>
-            <form id="Task-form">
-                <div class="input-field">
-                    <input type="text" id="TaskTitle" class="white-text" required />
-                    <label for="TaskTitle">Task</label>
-                </div>
-                <button class="btn indigo darken-4 waves-effect waves-dark">Add To User Story</button>
-            </form>
-        </div>
+      <div id = "taskContainer">
+        <div class="task"><a href="#"></a><span>No Tasks yet</span></div>
+      </div>
+
     </div>
 
-    <!-- sidenav -->
+    <div id="toast">Some text some message..</div>
 
-    <ul id="slide-out" class="sidenav">
-        <li>
-            <div id="user-info" class="user-view">
-                <div class="background">
-                    <img src="resources/images/world.jpg">
-                </div>
-                <a href="#user"><img class="circle" src="resources/images/world.jpg"></a>
-                <a href="#name"><span class="white-text name">error</span></a>
-                <a href="#email"><span class="white-text email">error</span></a>
-            </div>
-        </li>
-        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-        <li><a href="#!">Second Link</a></li>
-        <li>
-            <div class="divider"></div>
-        </li>
-        <li><a class="subheader">Subheader</a></li>
-        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-    </ul>
-    <a href="#" id="sidenav2" data-target="slide-out" class="sidenav-trigger z-depth-0 card-panel"><i
-            class="material-icons grey-text">menu</i>
-    </a>
+  </div>
 
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+  <div class="hide" id="createTask">
+    <h2>Add a Task</h2><a onclick="hideTaskForm()">close</a>
+    <form id="Task-form">
+      <div class="user-box">
+        <input type="text" id="TaskTitle" name="" required="">
+        <label>Task</label>
+      </div>
+      <button>
+        Add To User Story
+      </button>
+    </form>
+  </div>
 
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="resources/js/materialize.js"></script>
-    <script type="text/javascript" src="resources/js/loggedInTask.js"></script>
-    <script type="text/javascript" src="resources/js/setUpTeamDropdown.js"></script>
-    <script type="text/javascript" src="resources/js/setUpSidenav.js"></script>
-    <script type="text/javascript" src="resources/js/createTask.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+
+  <!-- <script src="/__/firebase/init.js"></script> -->
+
+  <script type="text/javascript" src="resources/js/loggedInTask.js"></script>
+  <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
+  <script type="text/javascript" src="resources/js/createTask.js"></script>
+
+
+
+</body>
+
+</html>

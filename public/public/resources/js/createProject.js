@@ -24,7 +24,6 @@ create.addEventListener('submit', (e) => {
             })
                 .then(() => {
                     console.log("project created");
-                    alert("project created");
                     create.reset();
                     localStorage.setItem("docID", docRef.id);
                     localStorage.setItem("ownerID", user.uid);

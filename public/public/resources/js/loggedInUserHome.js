@@ -35,12 +35,7 @@ auth.onAuthStateChanged(user => {
                 }
             });
 
-        //set up sidenav
-
-        var data = [user.displayName, user.email];
-        setUpSideNav(data);
-
-        //set up project dropdown
+        //set up projects
 
         db.collection("projects").where("Team", "array-contains", user.email)
             .onSnapshot(function (snapshot) {
@@ -48,22 +43,24 @@ auth.onAuthStateChanged(user => {
                     setUpProjects(snapshot.docs);
                 } else {
                     console.log("projects do not exist");
-                    let html = '<li><a href="#">You Currently Have No Projects</a></li>';
-                    projectList.innerHTML = html;
+                    const projectBox = document.querySelector("#projectContainer");
+                    let html = '<div class="project-box"><a href="#"></a><span>No Projects Yet!!!</span></div>';
+                    projectBox.innerHTML = html;
                 }
             });
 
-        //set up invite dropdown
+        //set up invite badge
+
+        const inviteBadge = document.querySelector("#inviteBadge");
 
         db.collection("Invites").where("inviteToID", "==", user.uid)
             .onSnapshot(function (snapshot) {
                 if (snapshot.docs != 0) {
-                    setUpInvites(snapshot.docs);
+                    let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
+                    inviteBadge.innerHTML = html;
                 } else {
                     console.log("invites do not exist");
-                    let html = '<li><a href="#">No Invites</a></li>';
-                    inviteList.innerHTML = html;
-                    let html2 = 'Invites<span class="badge">0</span>';
+                    let html2 = '<span class="badge">0</span> Invites';
                     inviteBadge.innerHTML = html2;
                 }
             });

@@ -1,0 +1,135 @@
+#modal{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+#modal.show {
+    visibility: visible;
+}
+
+#modal.hide{
+    visibility: hidden;
+}
+
+#modal a{
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right:15px;
+}
+
+#modal a:hover{
+    color: #095CF5;
+    cursor: pointer;
+}
+
+#createSprint{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+#createSprint.show {
+    visibility: visible;
+}
+
+#createSprint.hide{
+    visibility: hidden;
+}
+
+#createSprint a{
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right:15px;
+}
+
+#createSprint a:hover{
+    color: #095CF5;
+    cursor: pointer;
+}
+
+#createUserStory{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+#createUserStory.show {
+    visibility: visible;
+}
+
+#createUserStory.hide{
+    visibility: hidden;
+}
+
+#createUserStory a{
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right:15px;
+}
+
+#createUserStory a:hover{
+    color: #095CF5;
+    cursor: pointer;
+}
+
+#createTask{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+#createTask.show {
+    visibility: visible;
+}
+
+#createTask.hide{
+    visibility: hidden;
+}
+
+#createTask a{
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right:15px;
+}
+
+#createTask a:hover{
+    color: #095CF5;
+    cursor: pointer;
+}

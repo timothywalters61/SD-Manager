@@ -12,71 +12,31 @@ firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 const db = firebase.firestore();
-const projectID = localStorage.getItem("docID");
-const ownerID = localStorage.getItem("ownerID");
-const projectName = localStorage.getItem("docName");
 
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log("user logged in: ", user);
-        //console.log(data);
-
-        //only project owner can open this page
-
-        if (user.uid != ownerID) {
-            window.location.href = "userHome.html";
-        }
-
-        //heading
-
-        const projectTitle = document.querySelector("#PageHeading");
-        let heading = `<p>${projectName}</p>`;
-        projectTitle.innerHTML = heading;
-
-        //populate team dropdown
-
-        db.collection("projects").doc(projectID)
-            .onSnapshot(function (doc) {
-                if (doc.exists) {
-                    // setUpTeam(doc.data().Team);
-
-                    //git and links
-
-                    const gitLink = document.querySelector('#gitLink');
-
-                    console.log(doc.data().repository);
-                    let git = `<a href="${doc.data().repository}">Git</a>`;
-
-                    //TODO//gitLink.innerHTML = git;
-
-                    // display current sprints
-
-                    if (doc.data().Sprints === "started") {
-                        db.collection("projects").doc(projectID).collection("sprints").get().then((querySnapshot) => {
-                            setUpSprint(querySnapshot);
-                        });
-                    }
-
-                } else {
-                    console.log("project does not exist");
-                }
-            });
-
-        //set up invite badge
+        
+        //set up invites
 
         const inviteBadge = document.querySelector("#inviteBadge");
+        const inviteContainer = document.querySelector("#inviteContainer");
 
         db.collection("Invites").where("inviteToID", "==", user.uid)
             .onSnapshot(function (snapshot) {
                 if (snapshot.docs != 0) {
                     let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
                     inviteBadge.innerHTML = html;
+                    setUpInvites(snapshot.docs);
                 } else {
                     console.log("invites do not exist");
                     let html2 = '<span class="badge">0</span> Invites';
                     inviteBadge.innerHTML = html2;
+                    let html3 = '<div class="invites">You have not been invited to any projects</div>';
+                    inviteContainer.innerHTML = html3
                 }
             });
+
     } else {
         console.log("user logged out");
         window.location.href = "index.html";

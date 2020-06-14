@@ -12,16 +12,15 @@ firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 const db = firebase.firestore();
-const projectID = localStorage.getItem("docID");
 const ownerID = localStorage.getItem("ownerID");
 const projectName = localStorage.getItem("docName");
+projectID = localStorage.getItem("docID");
 
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log("user logged in: ", user);
-        //console.log(data);
 
-        //only project owner can open this page
+        //only owner can view this page
 
         if (user.uid != ownerID) {
             window.location.href = "userHome.html";
@@ -33,34 +32,26 @@ auth.onAuthStateChanged(user => {
         let heading = `<p>${projectName}</p>`;
         projectTitle.innerHTML = heading;
 
-        //populate team dropdown
+        //set up team
 
         db.collection("projects").doc(projectID)
-            .onSnapshot(function (doc) {
-                if (doc.exists) {
-                    // setUpTeam(doc.data().Team);
+        .onSnapshot(function (doc) {
+            if (doc.exists) {
+                setUpTeam(doc.data().Team);
 
-                    //git and links
+                //git and links
 
-                    const gitLink = document.querySelector('#gitLink');
+                const gitLink = document.querySelector('#gitLink');
 
-                    console.log(doc.data().repository);
-                    let git = `<a href="${doc.data().repository}">Git</a>`;
+                console.log(doc.data().repository);
+                let git = `<a href="${doc.data().repository}">Git</a>`;
 
-                    //TODO//gitLink.innerHTML = git;
+                gitLink.innerHTML = git;
 
-                    // display current sprints
-
-                    if (doc.data().Sprints === "started") {
-                        db.collection("projects").doc(projectID).collection("sprints").get().then((querySnapshot) => {
-                            setUpSprint(querySnapshot);
-                        });
-                    }
-
-                } else {
-                    console.log("project does not exist");
-                }
-            });
+            } else {
+                console.log("project does not exist");
+            }
+        });
 
         //set up invite badge
 
@@ -77,6 +68,7 @@ auth.onAuthStateChanged(user => {
                     inviteBadge.innerHTML = html2;
                 }
             });
+
     } else {
         console.log("user logged out");
         window.location.href = "index.html";

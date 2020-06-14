@@ -1,171 +1,216 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
 }
 
-.indexBody {
-    background: url("../images/sdPicture.jpg");
-    background-size: cover;
+@keyframes createBtnAnimation{
+    from{color: white;
+        background: #095CF5;}
+    to{color: white;
+        background: #68BCE5;}
 }
 
-.homeBody {
-    background: url("../images/sdPicture.jpg");
-    background-size: cover;
+@keyframes signUpBtnAnimation{
+    from{color: #095CF5;
+        border: 1px solid #095CF5;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: -4px;}
+    to{background-color: #095CF5;
+        color:white;}
 }
 
-.SprintBody {
-    background: url("../images/blue4.jpg");
+@keyframes btnAnimation{
+    from{color: black}
+    to{color:#095CF5;}
 }
 
-.TaskBody {
-    background: url("../images/blue4.jpg");
-    background-size: cover;
+.container{
+    height:100%;
+    width:100%;
+    background-image: url("/public/resources/images/testWallpapera3.jpg");
 }
-
-.devBody {
-    background: url("../images/blue4.jpg");
-    background-size: cover;
-}
-
-.ownerBody {
-    background: url("../images/blue4.jpg");
-    background-size: cover;
-}
-
-/*body {*/
-/*    background: url("../images/sdPicture.jpg");*/
-/*    background-size: cover;*/
-/*    !/background-color: #383535;*!*!*/
-/*}*/
-
-@font-face {
-    src: url("../Fonts/spiderman/HOMOARAK.TTF");
-    font-family: arak;
-}
-
-@font-face {
-    src: url("../Fonts/mallanna/Mallanna-Regular.ttf");
-    font-family: mall;
-}
-
-@font-face {
-    src: url("../Fonts/catamaran/Catamaran-Medium.ttf");
-    font-family: cat;
-}
-
-@font-face {
-    src: url("../Fonts/007-golden-eye/007 GoldenEye.ttf");
-    font-family: golden;
-}
-
-@font-face {
-    src: url("../Fonts/uptown-elegance/Uptown Elegance Regular.ttf");
-    font-family: uptown;
-}
-
-
-.navigation {
-    width: 100%;
-    height: 65px;
-    background-color: #212121;
-}
-
-.navigation p {
-    font-family: golden;
-    color: white;
-    font-size: 40px;
-    line-height: 65px;
-    float: left;
-    padding: 0px 0px 0px 10%;
-}
-
-.navigation p a {
-    text-decoration: none;
-    color: white;
-
-}
-
-.navigation ul {
-    float: right;
-    font-family: Arial;
-    color: white;
-    padding: 0px 10% 0px 0px;
-}
-
-.navigation ul li {
-    float: left;
-    list-style: none;
+.navigation{
+    background: whitesmoke;
     position: relative;
 }
 
-.navigation ul li a {
-    display: block;
-    font-family: Arial;
-    color: white;
-    font-size: 16px;
-    text-decoration: none;
-    padding: 20px 15px;
-}
-
-.navigation ul li a:hover {
-    background-color: #1a237e;
-}
-
-.navigation ul li ul {
-    display: none;
-    position: absolute;
-    font-size: 14px;
-    background-color: #212121;
-    padding: 5px;
-    border-radius: 0px 0px 4px 4px;
-}
-
-.navigation ul li ul li {
-    width: 200px;
-    border-radius: 4px;
-}
-
-.navigation ul li ul li a {
-    padding: 15px 15px
-}
-
-.navigation ul li ul li a:hover {
-    background-color: #1a237e;
-}
-
-.navigation ul li a i {
+.navigation ul{
+    display: inline-flex;
+    margin: 62px 10% 62px 80px;
     float: right;
 }
 
-.navigation ul li:hover ul {
-    display: block;
+.navigation ul li{
+    list-style: none;
+    margin: 0 20px;
+    cursor: pointer;
 }
 
-.modal {
-    background-color: #212121;
-    color: white;
+.navigation ul li a:hover{
+    animation-name: btnAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
 }
 
-#projectTitle {
+.navigation ul li a{
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#signUpBtn{
+    color: #095CF5;
+    border: 1px solid #095CF5;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: -4px;
+}
+
+#signUpBtn:hover{
+    animation-name: signUpBtnAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.webPageTitle{
+    list-style: none;
+    margin:20px 20px 20px 5%;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+#frontPage{
+    margin: 80px 25% 0 25%;
+    position: relative;
+}
+
+.welcomeCard{
+    background: whitesmoke;
+    border-radius: 20px;
+    padding: 20px;
+    color: black;
+    text-align: center;
+}
+
+.card{
+    background: whitesmoke;
+    border-radius: 20px;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    width: 49.6%;
+}
+
+.frontPageHeading{
+    font-size: 35px;
+    color: #095CF5;
+}
+
+.heading {
     font-size: 25px;
-    background-color: #212121;
-    /*background-color: #ECEFF1;*/
+    color: #095CF5;
+    padding-top: 20px;
+}
+
+.content{
+    font-size: 18px;
+    padding: 0 20px 20px 20px;
+}
+
+.modal{
+    position: absolute;
+    left:50%;
+}
+
+#PageHeading {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#095CF5;
+    padding: 10px;
+    border: 2px solid #095CF5;
+    margin:0 20px;
     border-radius: 10px;
-    color: white;
-    margin-left: 10%;
-    margin-right: 72%; 
-    padding: 15px 15px 15px 15px;
 }
 
-.declineInviteButtons {
+#PageHeading p {
+    margin: 0 ;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+#subPageHeading{
+    background: #095CF5;
     color: white;
-    background-color: #1a237e;
-    padding: 5px 10px;
+    height: 30px;
+    width: 200px;
+    margin: 0 100px 30px 50px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+#subPageHeading p {
+    margin: 0 ;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#contentContainer{
+    background: whitesmoke;
+    margin: 5% 10%;
+    padding: 10px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.subNav{
+    margin: 10px 0;
+    height: 75px;
+}
+
+.subNav ul{
+    padding:13px;
+    line-height: 45px;
+}
+
+.subNav ul li{
+    list-style: none;
     margin-left: 20px;
+    margin-right: 15px;
+    font-weight: 600;
+    display: inline;
 }
 
-.acceptInviteButtons {
+.subNav ul button{
+   margin-left: 70%;
+}
+
+.subNav ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+#Btn{
+    outline: none;
+    border-radius: 20px;
     color: white;
-    background-color: #1a237e;
-    padding: 5px 10px;
+    background: #095CF5;
+    padding: 15px 20px;
+    font-size: 15px;
+    border: none;
+    font-weight: 500;
+}
+
+#Btn:hover{
+    cursor: pointer;
+    animation-name: createBtnAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
 }

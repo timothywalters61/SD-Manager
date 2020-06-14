@@ -15,22 +15,12 @@ const db = firebase.firestore();
 const projectID = localStorage.getItem("docID");
 const ownerID = localStorage.getItem("ownerID");
 const currentSprintID = localStorage.getItem("currentSprintID");
+const projectName = localStorage.getItem("docName");
 
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log("user logged in: ", user);
         //console.log(data);
-
-        //back button
-
-        // const backButton = document.querySelector("#backButton");
-        // backButton.addEventListener('click', () => {
-        //     if (user.uid === ownerID) {
-        //         window.location.href = "projectOwner.html";
-        //     } else {
-        //         window.location.href = "projectDeveloper.html";
-        //     }
-        // });
 
         //only team members can open this page
 
@@ -48,22 +38,23 @@ auth.onAuthStateChanged(user => {
                 }
             });
 
-        //set up sidenav
+        //heading
 
-        var data = [user.displayName, user.email];
-        setUpSideNav(data);
+        const projectTitle = document.querySelector("#PageHeading");
+        let heading = `<p>${projectName}</p>`;
+        projectTitle.innerHTML = heading;
 
         //populate team dropdown
 
         db.collection("projects").doc(projectID)
             .onSnapshot(function (doc) {
                 if (doc.exists) {
-                    setUpTeam(doc.data().Team);
+                    console.log(doc.data().Team);
+                    //setUpTeam(doc.data().Team);
 
                     //display sprint heading
 
-                    const sprintHeading = document.querySelector('#Title');
-                    sprintHeading.style.color = "#000000";
+                    const sprintHeading = document.querySelector('#subPageHeading');
 
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).get().then((doc) => {
                         let html = `<p>${doc.data().name}</p>`;
@@ -73,7 +64,7 @@ auth.onAuthStateChanged(user => {
                     //display user stories
 
                     let userStoryHTML = '';
-                    const storyListLink = document.querySelector('#userStoryList');
+                    const storyListLink = document.querySelector('#userStoryContainer');
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").get().then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
                             if (doc.exists) {
@@ -81,10 +72,12 @@ auth.onAuthStateChanged(user => {
                                 const description = doc.data().description;
                                 const acceptance = doc.data().acceptance;
                                 const points = doc.data().points;
-                                displayUserStoryAsCard(name, description, acceptance, points, doc.id);
+                                li = `<div class="userStory"><p class="userStoryName">${name}</p><p class="description">${description}</p><p class="acceptance">Acceptance: ${acceptance}</p><p class="points">Points: ${points}</p><button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button></div>`;
+                                userStoryHTML = userStoryHTML + li;
                             } else {
                                 console.log("user story doesnt exist");
                             }
+                            storyListLink.innerHTML = userStoryHTML;
                         });
                         // querySnapshot.forEach((doc) => {
                         //     const li = `
@@ -109,6 +102,22 @@ auth.onAuthStateChanged(user => {
                     let git = `<a href="${doc.data().repository}">Git</a>`;
 
                     gitLink.innerHTML = git;
+
+                    //set up invite badge
+
+                    const inviteBadge = document.querySelector("#inviteBadge");
+
+                    db.collection("Invites").where("inviteToID", "==", user.uid)
+                        .onSnapshot(function (snapshot) {
+                            if (snapshot.docs != 0) {
+                                let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
+                                inviteBadge.innerHTML = html;
+                            } else {
+                                console.log("invites do not exist");
+                                let html2 = '<span class="badge">0</span> Invites';
+                                inviteBadge.innerHTML = html2;
+                            }
+                        });
 
                 } else {
                     console.log("project does not exist");

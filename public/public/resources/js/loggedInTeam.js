@@ -13,19 +13,31 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 const projectID = localStorage.getItem("docID");
-const ownerID = localStorage.getItem("ownerID");
 const projectName = localStorage.getItem("docName");
+const ownerID = localStorage.getItem("ownerID");
 
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log("user logged in: ", user);
-        //console.log(data);
 
-        //only project owner can open this page
+        //only team members can open this page
 
-        if (user.uid != ownerID) {
-            window.location.href = "userHome.html";
-        }
+        db.collection("projects").doc(projectID)
+            .get()
+            .then((doc) => {
+                if (doc.exists) {
+                    if (doc.data().Team.includes(user.email)) {
+                        console.log("in the team");
+                        if (user.uid === ownerID) {
+                            window.location.href = "teamOwner.html";
+                        }
+                    } else {
+                        window.location.href = "userHome.html";
+                    }
+                } else {
+                    console.log("project does not exist");
+                }
+            });
 
         //heading
 
@@ -33,12 +45,12 @@ auth.onAuthStateChanged(user => {
         let heading = `<p>${projectName}</p>`;
         projectTitle.innerHTML = heading;
 
-        //populate team dropdown
+        //set up team
 
         db.collection("projects").doc(projectID)
             .onSnapshot(function (doc) {
                 if (doc.exists) {
-                    // setUpTeam(doc.data().Team);
+                    setUpTeam(doc.data().Team);
 
                     //git and links
 
@@ -47,15 +59,7 @@ auth.onAuthStateChanged(user => {
                     console.log(doc.data().repository);
                     let git = `<a href="${doc.data().repository}">Git</a>`;
 
-                    //TODO//gitLink.innerHTML = git;
-
-                    // display current sprints
-
-                    if (doc.data().Sprints === "started") {
-                        db.collection("projects").doc(projectID).collection("sprints").get().then((querySnapshot) => {
-                            setUpSprint(querySnapshot);
-                        });
-                    }
+                    gitLink.innerHTML = git;
 
                 } else {
                     console.log("project does not exist");
@@ -77,6 +81,7 @@ auth.onAuthStateChanged(user => {
                     inviteBadge.innerHTML = html2;
                 }
             });
+
     } else {
         console.log("user logged out");
         window.location.href = "index.html";

@@ -13,7 +13,7 @@ addForm.addEventListener('submit', (e) => {
             if (doc.exists) {
                 if (doc.data().Team.includes(dev)) {
                     console.log("in the team");
-                    alert("developer is already in the team");
+                    toast("developer is already in the team");
                 } else {
                     db.collection("users").where("userEmail", "==", dev).get()
                         .then((querySnapshot) => {
@@ -23,13 +23,13 @@ addForm.addEventListener('submit', (e) => {
                                         inviteFromID: user.uid,
                                         inviteToID: doc.id,
                                         inviteFromEmail: user.email,
-                                        projectID: projectID
+                                        projectID: projectID,
+                                        projectName: projectName
                                     }).then(() => {
-                                        alert("invite sent");
-                                        addForm.reset();
+                                        toast("invite sent");
                                     });
                                 } else {
-                                    alert("user does not exist");
+                                    toast("user does not exist")
                                 }
                             });
                         }).catch((error) => {

@@ -24,7 +24,6 @@ addStory.addEventListener('submit', (e) => {
                 points: points
             }).then(() => {
                 addStory.reset();
-                alert("user story added");
                 window.location.reload(true);
             });
     });

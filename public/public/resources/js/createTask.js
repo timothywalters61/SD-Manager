@@ -12,7 +12,6 @@ createTask.addEventListener('submit', (e) => {
         db.collection('projects').doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(doc.id).set({
             name: name
         }).then(() => {
-            alert("task added to user story");
             createTask.reset();
             window.location.reload(true);
         });
