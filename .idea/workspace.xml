@@ -10,8 +10,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -30,6 +31,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CGV/CGVProject" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -52,7 +54,8 @@
       <workItem from="1591103466247" duration="9821000" />
       <workItem from="1591470195648" duration="4628000" />
       <workItem from="1591524706672" duration="7458000" />
-      <workItem from="1592057626937" duration="11819000" />
+      <workItem from="1592057626937" duration="13021000" />
+      <workItem from="1592150467357" duration="8640000" />
     </task>
     <servers />
   </component>
@@ -64,5 +67,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591645086901" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1592152393725">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1592152393725" />
   </component>
 </project>
