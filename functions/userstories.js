@@ -23,6 +23,16 @@ exports.createUserStory = functions.https.onCall((data, context) => {
 		return { result: 'Success' };
 	});
 });
+
+exports.displayUserStories = functions.https.onCall((data, context) => {
+	var sprintID = data.acc;
+
+	var data = createUserStoryDataObject(sprintID);
+
+	return displayUserStoriesDocument(data, projectid).then((value) => {
+		return { result: 'Success' };
+	});
+});
 /* ================================== Local Functions ================================= */
 /**
  * Returns a map of fields and values that will be used when creating a new user story
@@ -30,12 +40,19 @@ exports.createUserStory = functions.https.onCall((data, context) => {
  * @param {String} acceptance
  * @param {String} description
  * @param {String} points
+ * @param {String} sprintID
  */
 function createUserStoryDataObject(acceptance, description, points) {
 	return {
 		acceptance: acceptance,
 		description: description,
 		points: points,
+	};
+}
+
+function getUserStoriesDataObject(id) {
+	return {
+		sprintID: id
 	};
 }
 
@@ -48,4 +65,8 @@ function createUserStoryDataObject(acceptance, description, points) {
  */
 function createNewUserStoryDocument(data, projectid) {
 	return docs.addDoc('projects/' + projectid + '/backlog', data);
+}
+
+function getUserStoriesDocument(data, projectid) {
+	return docs.getCollection('projects/' + projectid + '/backlog', data);
 }

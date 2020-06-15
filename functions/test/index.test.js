@@ -34,6 +34,32 @@ const myFunctions = require('../index');
 var success = {
 	result: 'Success',
 };
+/* ======================================= Sign In ===================================== */
+describe('auth.js functions', () => {
+	it('Should sign in user', (done) => {
+		// Create user document test
+		assert.isString('testing');
+		var getUserByEmail = test.wrap(myFunctions.getUserByEmail);
+		var data = {
+			em: 'email@email.com',
+			pa: '12345678',
+		};
+		getUserByEmail(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				//expect(value).to.equal(success);
+				_.isObject(value).should.be.true;
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});
+	});
+});
+
 /* ======================================= Sign Up ===================================== */
 describe('signup.js functions', () => {
 	it('Should create user document', (done) => {
@@ -128,3 +154,148 @@ describe('projects.js functions', () => {
 });
 
 //test.cleanup();
+/* ====================================== Sprints ===================================== */
+describe('sprints.js functions', () => {
+	after(() => {
+		admin.app().delete();
+		test.cleanup();
+	});
+	it('Should create new sprint', (done) => {
+		// create project test	
+		var createSprint = test.wrap(myFunctions.createSprint);
+		data = {
+			end: 'end date',
+			name: 'name of sprint',
+			start:	'start date'
+		};
+		createSprint(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				_.isObject(value).should.be.true;				
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});	
+	});
+	it('Should display sprints', (done) => {
+		// create project test	
+		var displaySprints = test.wrap(myFunctions.displaySprints);
+		data = {
+			projectId: 'project id'
+		};
+		displaySprints(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				_.isObject(value).should.be.true;				
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});	
+	});
+});
+
+/* ====================================== User Stories ===================================== */
+describe('userstories.js functions', () => {
+	after(() => {
+		admin.app().delete();
+		test.cleanup();
+	});
+	it('Should create new user story', (done) => {
+		// create project test	
+		var createUserStory = test.wrap(myFunctions.createUserStory);
+		data = {
+			ac:	'acceptance criteria',
+			de:	'description',
+			po:	'points'	
+		};
+		createUserStory(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				_.isObject(value).should.be.true;				
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});	
+	});
+	it('Should display user stories', (done) => {
+		// create project test	
+		var displayUserStories = test.wrap(myFunctions.displayUserStories);
+		data = {
+			sp:	'sprint ID',
+		};
+		displayUserStories(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				_.isObject(value).should.be.true;				
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});	
+	});
+	
+});
+
+/* ====================================== Tasks ===================================== */
+describe('tasks.js functions', () => {
+	after(() => {
+		admin.app().delete();
+		test.cleanup();
+	});
+	it('Should create new task', (done) => {
+		// create project test	
+		var createTask = test.wrap(myFunctions.createTask);
+		data = {
+			userStory: 'userStory',
+			projectid: 'projectid',
+		};
+		createTask(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				_.isObject(value).should.be.true;				
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});	
+	});
+	it('Should display tasks', (done) => {
+		// create project test	
+		var displayTasks = test.wrap(myFunctions.displayTasks);
+		data = {
+			userStory: 'userStory',
+			projectid: 'projectid',
+		};
+		displayTasks(data, {
+			auth: {
+				uid: 'jckS2Q0',
+			},
+		})
+			.then((value) => {
+				_.isObject(value).should.be.true;				
+				done();
+			})
+			.catch((error) => {
+				done(error);
+			});	
+	});
+	
+});
