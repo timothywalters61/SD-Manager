@@ -10,9 +10,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< Updated upstream
         <option value="HTML File" />
         <option value="JavaScript File" />
+=======
+>>>>>>> Stashed changes
         <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -47,10 +52,23 @@
       <created>1589830752546</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< Updated upstream
       <updated>1589830752546</updated>
       <workItem from="1589830754919" duration="8253000" />
       <workItem from="1589970029254" duration="16287000" />
       <workItem from="1590011956822" duration="6748000" />
+=======
+      <updated>1591103207256</updated>
+      <workItem from="1591103240486" duration="52000" />
+      <workItem from="1591103307206" duration="108000" />
+      <workItem from="1591103466247" duration="9821000" />
+      <workItem from="1591470195648" duration="4628000" />
+      <workItem from="1591524706672" duration="7458000" />
+      <workItem from="1592057626937" duration="13021000" />
+      <workItem from="1592150467357" duration="10361000" />
+      <workItem from="1595274522829" duration="1032000" />
+      <workItem from="1595595543479" duration="11782000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -58,9 +76,20 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< Updated upstream
     <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1590324682877">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1590324682877" />
+=======
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1591645086901">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591645086901" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595603853460">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595603853460" />
+>>>>>>> Stashed changes
   </component>
 </project>

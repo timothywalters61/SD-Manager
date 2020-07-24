@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #095CF5;
+}
+
+.Sys {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-flow: column;
+}
+
+.cat-container {
+    display: flex;
+    flex: 1;
+    width: 50%;
+}
+
+.cat-container .categories {
+    display: flex;
+    flex: 1;
+    flex-flow: column;
+    width: 60%;
+    min-width: 50px;
+    min-height: 350px;
+
+    background-color: slategray;
+    margin: 0px 15px;
+    padding: 8px;
+}
+
+.stories {
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    padding: 7px 20px;
+    text-align: center;
+}
