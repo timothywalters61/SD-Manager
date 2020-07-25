@@ -2,16 +2,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
-    background-color: #095CF5;
+    background-color: white;
 }
 
 .Sys {
     display: flex;
-    width: 100vw;
-    height: 100vh;
+
+    height: 180vh;
+    width: 180vw;
     flex-flow: column;
 }
 
@@ -29,17 +31,32 @@ body {
     min-width: 50px;
     min-height: 350px;
 
-    background-color: slategray;
+    background-color: whitesmoke;
     margin: 0px 15px;
     padding: 8px;
 }
 
 .stories {
-    background-color: white;
-    color: black;
+    background-color: #095CF5;
+    color: white;
     border-radius: 4px;
     margin-bottom: 10px;
     margin-top: 5px;
     padding: 7px 20px;
     text-align: center;
+}
+
+#NS {
+    text-decoration: underline;
+    text-decoration-color: red ;
+}
+
+#IP {
+    text-decoration: underline;
+    text-decoration-color: goldenrod;
+}
+
+#C {
+    text-decoration: underline;
+    text-decoration-color: green;
 }

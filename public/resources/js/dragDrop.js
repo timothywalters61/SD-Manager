@@ -3,17 +3,20 @@
 const stories = document.querySelectorAll('.stories');
 const categories = document.querySelectorAll('.categories');
 
-
 let dragStory = null;
+
 
 for(var a = 0; a < stories.length;a++)
 {
   const story = stories[a];
+  console.log(story.parentElement.id);
 
   story.addEventListener('dragstart', function() {
       console.log("You are dragging an item");
 
       dragStory = story;
+
+
 
       setTimeout(function () {
 
@@ -31,6 +34,7 @@ for(var a = 0; a < stories.length;a++)
           },0);
 });
 
+
   for (var b = 0; b < categories.length;b++) {
         let category = categories[b];
 
@@ -43,16 +47,18 @@ for(var a = 0; a < stories.length;a++)
         category.addEventListener('dragenter', function (e) {
             e.preventDefault();
             this.style.backgroundColor = '#778899';
+
         });
 
         category.addEventListener('dragleave', function () {
-            this.style.backgroundColor = '#708090';
+            this.style.backgroundColor = 'whitesmoke';
         })
 
         category.addEventListener('drop',function (ev) {
 
          this.appendChild(dragStory);
-         this.style.backgroundColor = '#708090';
+         console.log(dragStory.parentElement.id);
+         this.style.backgroundColor = 'whitesmoke';
 
         });
   }
