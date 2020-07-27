@@ -3,6 +3,7 @@
 const stories = document.querySelectorAll('.stories');
 const categories = document.querySelectorAll('.categories');
 
+
 let dragStory = null;
 
 
@@ -62,4 +63,15 @@ for(var a = 0; a < stories.length;a++)
 
         });
   }
+}
+
+// add new story to not started
+
+// can't access the db here, will append that code when we move to jesse's branch
+
+function addStoryDynam(){
+    ns = document.getElementById('Not Started'); //get column element
+    nsInner = ns.innerHTML; // get contents of column
+    ns.innerHTML = nsInner + '<br><div class="stories" draggable="true">Item 1</div>'; // append new content to column contents
+
 }
