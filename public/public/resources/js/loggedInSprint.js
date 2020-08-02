@@ -64,14 +64,16 @@ auth.onAuthStateChanged(user => {
                     //display user stories
 
                     let userStoryHTML = '';
-                    const storyListLink = document.querySelector('#userStoryContainer');
+                    const storyListLink = document.querySelector('#userStoryContainer'); // object representing that div
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").get().then((querySnapshot) => {
-                        querySnapshot.forEach((doc) => {
-                            if (doc.exists) {
+                        querySnapshot.forEach((doc) => {  // querySnapShot stores all docs
+                            if (doc.exists) /* caters for when there are no user stories*/{
                                 const name = doc.data().name;
                                 const description = doc.data().description;
                                 const acceptance = doc.data().acceptance;
                                 const points = doc.data().points;
+                                // must use tilda to accept variables
+                                // onclick="saveUserStoryID('${doc.id}') to call a function use apostrophe
                                 li = `<div class="userStory"><p class="userStoryName">${name}</p><p class="description">${description}</p><p class="acceptance">Acceptance: ${acceptance}</p><p class="points">Points: ${points}</p><button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button></div>`;
                                 userStoryHTML = userStoryHTML + li;
                             } else {

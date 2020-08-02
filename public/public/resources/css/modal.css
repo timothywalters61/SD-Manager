@@ -12,7 +12,7 @@
     border-radius: 10px;
 }
 
-#modal.show {
+#modal.show { 
     visibility: visible;
 }
 
@@ -50,7 +50,7 @@
     visibility: visible;
 }
 
-#createSprint.hide{
+#createSprint.hide{  /* # = id . = class*/
     visibility: hidden;
 }
 

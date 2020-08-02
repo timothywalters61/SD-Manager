@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/dragDrop.css">
+    <link rel="stylesheet" href="resources/css/userStoryStyle.css">
+    <title>Drag Drop</title></head>
+<body>
+
+  <div class = "Sys">
+
+    <div class = "cat-container">
+      <div><button class="btnAdd" onclick="addStoryDynam()"> Add </button></div>
+        <div class = "categories" id = "NotStarted">
+        </div>
+  
+        <div class = "categories" id = "In Progress">
+            <h2 id = "IP">In Progress</h2>
+        </div>
+  
+        <div class = "categories" id = "Completed">
+          <h2 id = "C">Completed</h2>
+        </div>
+  
+    </div>
+  
+  </div>
+
+    
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+
+  
+    <script type="text/javascript" src="resources/js/dragDrop.js"></script>
+    <script type="text/javascript" src="resources/js/getUserStories.js"></script>
+
+</body>
+</html>
