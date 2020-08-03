@@ -34,7 +34,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             console.log(name);
 
             //Lines of code supposed to fetch current status of user stories but I got errors with access
-            // const status = doc.data().status;
+            const status = doc.data().status;
             console.log(status);
 
             const description = doc.data().description;
@@ -50,12 +50,16 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             wholeDiv.draggable = true;
             wholeDiv.className = "stories";
             let n = document.createElement('p');
+            n.className = "userStoryName"
             n.innerText= name;
             let des = document.createElement('p');
+            des.className = "description";
             des.innerText = description;
             let acc = document.createElement('p');
+            acc.className = "acceptance";
             acc.innerText = acceptance;
             let p = document.createElement('p');
+            p.className = "points";
             p.innerText = points;
             wholeDiv.appendChild(n);
             wholeDiv.appendChild(des);
@@ -64,6 +68,8 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             // NS.appendChild(wholeDiv);
 
             //If statements attach stories to the correct status columns
+            console.log(status == 1);
+            console.log(status)
             if (status == 1) {
                 NS.appendChild(wholeDiv);
             }
@@ -80,6 +86,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
               IP.appendChild(wholeDiv);
             }
 
+           console.log("status", status) 
             //console.log(wholeDiv.parentElement.id);
             console.log(NS.childNodes);
 
@@ -145,8 +152,36 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
                     category.addEventListener('drop',function (ev) {
 
                         category.appendChild(dragStory);
-                        console.log(dragStory.parentElement.id);
+                        console.log("h",dragStory.parentElement.id);
                         console.log(category.childElementCount);
+                      
+                        let newStatus = 0;
+                        let parentID = dragStory.parentElement.id;
+                        if(parentID == "NotStarted"){
+                            console.log(parentID,"1");
+                            newStatus = 1;
+                        }
+                        else if(parentID == "In Progress"){
+                            console.log(parentID,"2");
+
+                            newStatus = 2;
+                        }
+                        else if(parentID == "Completed"){
+                            console.log(parentID,"3");
+                            newStatus = 3;
+                        }
+
+                        console.log("new", newStatus);
+
+                        db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(doc.id)
+                        .set({
+                            SprintID: currentSprintID,
+                            name : name,
+                            description: description,
+                            acceptance: acceptance,
+                            points: points,
+                            status: newStatus
+                        });
 
 
 

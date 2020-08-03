@@ -12,6 +12,16 @@
     border-radius: 10px;
 }
 
+.stories{
+    background: white;
+    padding: 0 20px 20px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 5px;
+    /*border-left: solid black;*/
+    /*width: 29.9%;*/
+}
+
 .userStory{
     background: white;
     padding: 0 20px 20px 20px;
