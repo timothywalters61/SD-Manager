@@ -35,7 +35,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
             //Lines of code supposed to fetch current status of user stories but I got errors with access
             const status = doc.data().status;
-            console.log(status);
+            console.log("Original Status ",status);
 
             const description = doc.data().description;
             console.log(description);
@@ -68,39 +68,37 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             // NS.appendChild(wholeDiv);
 
             //If statements attach stories to the correct status columns
-            console.log(status == 1);
-            console.log(status)
-            if (status == 1) {
+            if (status === 1) {
                 NS.appendChild(wholeDiv);
             }
 
-            else if (status == 2) {
+            else if (status === 2) {
                IP.appendChild(wholeDiv);
             }
 
-            else if (status == 3) {
+            else if (status === 3) {
                 C.appendChild(wholeDiv);
             }
 
             else {
-              IP.appendChild(wholeDiv);
-            }
+               IP.appendChild(wholeDiv);
+                }
 
-           console.log("status", status) 
-            //console.log(wholeDiv.parentElement.id);
-            console.log(NS.childNodes);
+            console.log("Amount of stories in Not Started ",NS.childElementCount-1);
+            console.log("Amount of stories in In Progress ", IP.childElementCount-1);
+            console.log("Amount of stories in Completed ", C.childElementCount-1);
 
             const stories = document.querySelectorAll('.stories');
             const categories = document.querySelectorAll('.categories');
 
-            console.log(stories);
-            console.log(categories);
+            // console.log(stories);
+            // console.log(categories);
 
 
             let dragStory = null;
 
 
-            for(var a = 0; a < stories.length;a++)
+            for(let a = 0; a < stories.length;a++)
             {
                 const story = stories[a];
                 console.log(story.parentElement.id);
@@ -129,7 +127,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
                 });
 
 
-                for (var b = 0; b < categories.length;b++) {
+                for (let b = 0; b < categories.length;b++) {
                     const category = categories[b];
 
                     category.addEventListener('dragover', function (e) {
@@ -153,25 +151,30 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
                         category.appendChild(dragStory);
                         console.log("h",dragStory.parentElement.id);
-                        console.log(category.childElementCount);
+                        // console.log(category.childElementCount);
                       
                         let newStatus = 0;
                         let parentID = dragStory.parentElement.id;
+
                         if(parentID == "NotStarted"){
-                            console.log(parentID,"1");
+                           // console.log(parentID,"1");
                             newStatus = 1;
+                            console.log("Amount of stories in Not Started ",NS.childElementCount-1);
                         }
                         else if(parentID == "In Progress"){
-                            console.log(parentID,"2");
+                           // console.log(parentID,"2");
 
                             newStatus = 2;
+                            console.log("Amount of stories in In Progress ", IP.childElementCount-1);
                         }
                         else if(parentID == "Completed"){
-                            console.log(parentID,"3");
+                           // console.log(parentID,"3");
+
                             newStatus = 3;
+                            console.log("Amount of stories in Completed ", C.childElementCount-1);
                         }
 
-                        console.log("new", newStatus);
+                        console.log("new status of story", newStatus);
 
                         db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(doc.id)
                         .set({
