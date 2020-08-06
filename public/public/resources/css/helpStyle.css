@@ -3,81 +3,94 @@
 }
 
 #defHeader {
-    font-size: 45px;
+    font-size: 50px;
 }
 
 #projDef {
     padding-left: 60px;
     width: 200px;
     right: 80px;
+    font-size: 16px;
 }
 
 #sprintDef {
     padding-left: 60px;
     width: 200px;
+    font-size: 16px;
 }
 
 #storyDef {
     padding-left: 60px;
     width: 200px;
+    font-size: 16px;
 }
 
 #taskDef {
     padding-left: 60px;
     width: 200px;
+    font-size: 16px;
 }
 
 #th {
-    color:#095CF5;
+    color: #095CF5;
+    font-size: 30px;
 }
 
 #ph {
-    color:#095CF5;
+    color: #095CF5;
+    font-size: 30px;
 }
 
 #ush {
-    color:#095CF5;
+    color: #095CF5;
+    font-size: 30px;
 }
 
 #sph {
-    color:#095CF5;
+    color: #095CF5;
+    font-size: 30px;
 }
 
 #HomeDiv {
     display: inline-flex;
-
 }
 
 #prH {
-    color:#095CF5;
+    color: #095CF5;
+    font-size: 30px;
 }
 
 #navH {
-    color:#095CF5;
+    color: #095CF5;
+    font-size: 30px;
 }
 
 #Nav {
     width: 200px;
     padding-left: 60px;
+    font-size: 16px;
 }
 
 #homeHead {
     padding-top: 20px;
-    font-size: 45px;
+    font-size: 50px;
 }
 
 #projDis {
     width: 200px;
     padding-left: 60px;
+    font-size: 16px;
 }
 
 #projBtt {
     width: 200px;
     padding-left: 60px;
+    font-size: 16px;
 }
 
 h3 {
-    color:#095CF5;
+    color: #095CF5;
+    font-size: 30px;
 }
 
 #projPages {
@@ -87,16 +100,18 @@ h3 {
 #sp {
     width: 200px;
     padding-left: 60px;
+    font-size: 16px;
 }
 
 #prjDis {
     width: 200px;
     padding-left: 60px;
+    font-size: 16px;
 }
 
 #ProjHeader {
     padding-top: 20px;
-    font-size: 45px;
+    font-size: 50px;
 }
 
 #SprintDisplay {
@@ -104,17 +119,17 @@ h3 {
     width: 250px;
     /*width: 400px;*/
     padding-left: 60px;
+    font-size: 16px;
 }
-
 
 #SprintHeader {
     padding-top: 20px;
-    font-size: 45px;
+    font-size: 50px;
 }
 
-#StoryHeader{
+#StoryHeader {
     padding-top: 20px;
-    font-size: 45px;
+    font-size: 50px;
 }
 
 #StoryDisplay {
@@ -122,8 +137,9 @@ h3 {
     /*width: 400px;*/
     width: 250px;
     padding-left: 60px;
+    font-size: 16px;
 }
 
-#helpTab{
-    color:#095CF5;
+#helpTab {
+    color: #095CF5;
 }
