@@ -1,7 +1,11 @@
-log = console.log
-expect = require('chai').expect
-should = require('chai').should()
-_ = require('lodash')
+log = console.log;
+expect = require('chai').expect;
+should = require('chai').should();
+_ = require('lodash');
+
+const puppeteer = require('puppeteer');
+const { title } = require('process');
+const { doesNotMatch } = require('assert');
 
 const {
     getSignIn,createUser1,createProject1,getProjects1,addMemberToProject1, addSprint1,getSprints1 ,createUserStory1, getUserStories1, createTask1,getTasks1
@@ -15,6 +19,37 @@ describe('auth.js functions', () => {
         //expect(getSignUp(email,password)).to.equal(email+password);
         expect(getSignIn(email,password)).to.equal(email+password);
     });
+    
+});
+
+describe('puppeteer test 1', () => {
+    it('must navigate on website', async()=>{
+        //this.timeout(60000);
+        const browser = await puppeteer.launch({
+            headless: false,
+            slowMo: 70,
+            args: ['--window-size=800,600']
+        });
+    
+        const page = await browser.newPage();
+        page.setViewport({ width: 800, height: 600 });
+    
+        await page.goto(
+            'https://scrum-manager-91e13.web.app/login.html'
+        );
+    
+        await page.waitForSelector('#login-email');
+
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+    
+        //await page.waitForNavigation();
+        const urlPage = page.url();
+        expect(urlPage).contain('.html');
+        await browser.close();
+    },60000);
     
 });
 

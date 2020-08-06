@@ -22,7 +22,7 @@ jobs:
                   command: cd functions ; npm install --save firebase-functions@latest     
             - run:
                   name: Install npm in Functions
-                  command: cd functions ; npm install ; npm install --save-dev mocha ; npm test ; npm run coveralls ; cd ..
+                  command: cd functions ; npm install ; npm install chai ; npm install --save-dev mocha ; npm test ; npm run coveralls ; cd ..
             - save_cache:
                   key: v1-npm-deps-{{ checksum "public/package-lock.json" }}
                   paths:
