@@ -9,7 +9,7 @@
 		"deploy": "firebase deploy --only functions",
 		"logs": "firebase functions:log",
 		"cover": "istanbul cover _mocha ./firebase/index.test.js -x ./firebase/index.test.js || true",
-		"test": "mocha ./firebase/index.test.js  --detectOpenHandles --timeout 60000",
+		"test": "mocha ./firebase/index.test.js  --detectOpenHandles --timeout 60000 || true",
 		"coveralls": "npm run cover -- --report lcovonly && cat ../coverage/lcov.info | coveralls || true"
 	},
 	"engines": {
