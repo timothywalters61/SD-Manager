@@ -26,8 +26,8 @@ describe('puppeteer test 1', () => {
     it('must navigate on website', async()=>{
         //this.timeout(60000);
         const browser = await puppeteer.launch({
-            headless: false,
-            slowMo: 70,
+            headless: true,
+            slowMo: 10,
             args: ['--window-size=800,600']
         });
     
