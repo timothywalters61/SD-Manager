@@ -13,5 +13,5 @@ const setUpSprint = (data) => {
 
 function saveSprintID(sprintID){
     localStorage.setItem("currentSprintID", sprintID);
-    window.location.href = "Sprint.html";
+    window.location.href = "dragDrop.html";
 }

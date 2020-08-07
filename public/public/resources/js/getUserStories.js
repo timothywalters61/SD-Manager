@@ -17,8 +17,44 @@ const ownerID = localStorage.getItem("ownerID");
 const currentSprintID = localStorage.getItem("currentSprintID");
 const projectName = localStorage.getItem("docName");
 
+
 //let userStoryHTML = '<h2 id = "NS">Not Started</h2>';
 //const storyListLink = document.querySelector('#NotStarted'); // object representing that div
+
+const projectTitle = document.querySelector("#PageHeading");
+let heading = `<p>${projectName}</p>`;
+projectTitle.innerHTML = heading;
+
+const sprintHeading = document.querySelector('#subPageHeading');
+db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).get().then((doc) => {
+    let html = `<p>${doc.data().name}</p>`;
+    sprintHeading.innerHTML = html;
+});
+
+const gitLink = document.querySelector('#gitLink');
+db.collection("projects").doc(projectID)
+    .onSnapshot(function (doc) {
+        let git = `<a href="${doc.data().repository}">Git</a>`;
+        gitLink.innerHTML = git;
+    });
+
+
+auth.onAuthStateChanged(user => {
+    const inviteBadge = document.querySelector("#inviteBadge");
+    db.collection("Invites").where("inviteToID", "==", user.uid)
+        .onSnapshot(function (snapshot) {
+            if (snapshot.docs != 0) {
+            let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
+            inviteBadge.innerHTML = html;
+        } else {
+            console.log("invites do not exist");
+            let html2 = '<span class="badge">0</span> Invites';
+            inviteBadge.innerHTML = html2;
+        }
+    });
+});
+
+
 
 const NS = document.getElementById("NotStarted");
 const IP= document.getElementById("In Progress");
@@ -205,6 +241,19 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
 
     });
+});
+
+const logout = document.querySelector("#logout");
+logout.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    auth.signOut().then(() => {
+        //console.log("user has signed out");
+    })
+        .catch(function (error) {
+            console.log("user failed to sign out because of error: ", error);
+            alert(error.message);
+        });
 });
 
 function addStoryDynam(){
