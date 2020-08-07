@@ -28,7 +28,9 @@ describe('puppeteer test 1', () => {
         const browser = await puppeteer.launch({
             headless: true,
             slowMo: 10,
-            args: ['--window-size=800,600']
+            args: ['--window-size=800,600',
+            '–disable-setuid-sandbox',
+        '–no-sandbox']
         });
     
         const page = await browser.newPage();
