@@ -117,7 +117,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             }
 
             else {
-               IP.appendChild(wholeDiv);
+               NS.appendChild(wholeDiv);
                 }
 
             console.log("Amount of stories in Not Started ",NS.childElementCount-1);

@@ -7,7 +7,7 @@ addStory.addEventListener('submit', (e) => {
     const description = addStory['storyDescription'].value;
     const acceptance = addStory['Acceptance'].value;
     const points = addStory['points'].value;
-    const status = addStory['status'].value;
+    const status = 1;//addStory['status'].value;
     console.log(status);
 
 
