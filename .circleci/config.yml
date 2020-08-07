@@ -26,6 +26,7 @@ jobs:
             - run:
                   name: Install npm in Functions
                   command: cd functions ; npm install ; npm install chai ; npm i puppeteer ; npm install --save-dev mocha ; npm test ; npm run coveralls ; cd ..
+                  timeout: 60000
             - save_cache:
                   key: v1-npm-deps-{{ checksum "public/package-lock.json" }}
                   paths:
