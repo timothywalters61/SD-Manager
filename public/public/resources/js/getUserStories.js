@@ -67,20 +67,21 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
     querySnapshot.forEach((doc) => {
         if (doc.exists) {
             const name = doc.data().name;
-            console.log(name);
+            //console.log(name);
 
             //Lines of code supposed to fetch current status of user stories but I got errors with access
             const status = doc.data().status;
-            console.log("Original Status ",status);
+            //console.log("Original Status ",status);
 
             const description = doc.data().description;
-            console.log(description);
+            //console.log(description);
             const acceptance = doc.data().acceptance;
-            console.log(acceptance);
+            //console.log(acceptance);
             const points = doc.data().points;
-            console.log(points);
+            //console.log(points);
             // li= `<div class="stories" draggable = "true"><p class="userStoryName">${name}</p><p class="description">${description}</p><p class="acceptance">Acceptance: ${acceptance}</p><p class="points">Points: ${points}</p><button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button></div>`;
             //userStoryHTML = userStoryHTML + li;
+
 
             wholeDiv = document.createElement('div');
             wholeDiv.draggable = true;
@@ -120,117 +121,9 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
                NS.appendChild(wholeDiv);
                 }
 
-            console.log("Amount of stories in Not Started ",NS.childElementCount-1);
-            console.log("Amount of stories in In Progress ", IP.childElementCount-1);
-            console.log("Amount of stories in Completed ", C.childElementCount-1);
-
-            const stories = document.querySelectorAll('.stories');
-            const categories = document.querySelectorAll('.categories');
-
-            // console.log(stories);
-            // console.log(categories);
-
-
-            let dragStory = null;
-
-
-            for(let a = 0; a < stories.length;a++)
-            {
-                const story = stories[a];
-                console.log(story.parentElement.id);
-
-                story.addEventListener('dragstart', function() {
-                    console.log("You are dragging an item");
-
-                    dragStory = story;
-
-
-
-                    setTimeout(function () {
-
-                        story.style.display = 'none';
-
-                    },0);
-                });
-
-                story.addEventListener('dragend',function () {
-                    console.log("You are no longer dragging an item");
-                    setTimeout(function () {
-
-                        story.style.display = 'block';
-                        dragStory=null;
-                    },0);
-                });
-
-
-                for (let b = 0; b < categories.length;b++) {
-                    const category = categories[b];
-
-                    category.addEventListener('dragover', function (e) {
-
-                        e.preventDefault();
-
-                    });
-
-                    category.addEventListener('dragenter', function (e) {
-                        e.preventDefault();
-                        this.style.backgroundColor = '#778899';
-
-                    });
-
-                    category.addEventListener('dragleave', function () {
-                        this.style.backgroundColor = 'whitesmoke';
-
-                    })
-
-                    category.addEventListener('drop',function (ev) {
-
-                        category.appendChild(dragStory);
-                        console.log("h",dragStory.parentElement.id);
-                        // console.log(category.childElementCount);
-                      
-                        let newStatus = 0;
-                        let parentID = dragStory.parentElement.id;
-
-                        if(parentID == "NotStarted"){
-                           // console.log(parentID,"1");
-                            newStatus = 1;
-                            console.log("Amount of stories in Not Started ",NS.childElementCount-1);
-                        }
-                        else if(parentID == "In Progress"){
-                           // console.log(parentID,"2");
-
-                            newStatus = 2;
-                            console.log("Amount of stories in In Progress ", IP.childElementCount-1);
-                        }
-                        else if(parentID == "Completed"){
-                           // console.log(parentID,"3");
-
-                            newStatus = 3;
-                            console.log("Amount of stories in Completed ", C.childElementCount-1);
-                        }
-
-                        console.log("new status of story", newStatus);
-
-                        db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(doc.id)
-                        .set({
-                            SprintID: currentSprintID,
-                            name : name,
-                            description: description,
-                            acceptance: acceptance,
-                            points: points,
-                            status: newStatus
-                        });
-
-
-
-                        this.style.backgroundColor = 'whitesmoke';
-
-                    });
-                }
-            }
-
-
+            //console.log("Amount of stories in Not Started ",NS.childElementCount-1);
+            //console.log("Amount of stories in In Progress ", IP.childElementCount-1);
+            //console.log("Amount of stories in Completed ", C.childElementCount-1);
 
             // storyListLink.appendChild(userStoryHTML);
         } else {
@@ -238,6 +131,129 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
         }
         // storyListLink.innerHTML = userStoryHTML;
 
+        
+        const stories = document.querySelectorAll('.stories');
+        const categories = document.querySelectorAll('.categories');
+
+        // console.log(stories);
+        // console.log(categories);
+
+
+        let dragStory = null;
+
+
+        for(let a = 0; a < stories.length;a++)
+        {
+            const story = stories[a];
+            //console.log(story.parentElement.id);
+
+            story.addEventListener('dragstart', function() {
+                console.log("You are dragging an item");
+
+                dragStory = story;
+
+
+
+                setTimeout(function () {
+
+                    story.style.display = 'none';
+
+                },0);
+            });
+
+            story.addEventListener('dragend',function () {
+                console.log("You are no longer dragging an item");
+                setTimeout(function () {
+
+                    story.style.display = 'block';
+                    dragStory=null;
+                },10000);
+            });
+
+
+            for (let b = 0; b < categories.length;b++) {
+                const category = categories[b];
+
+                category.addEventListener('dragover', function (e) {
+
+                    e.preventDefault();
+
+                });
+
+                category.addEventListener('dragenter', function (e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = '#778899';
+
+                });
+
+                category.addEventListener('dragleave', function () {
+                    this.style.backgroundColor = 'whitesmoke';
+
+                })
+
+                category.addEventListener('drop',function (ev) {
+
+                    category.appendChild(dragStory);
+                    //console.log("drag story === ",dragStory);
+
+                    let name = dragStory.querySelector('.userStoryName').innerText;
+                    //console.log(name);
+                    let des = dragStory.querySelector('.description').innerText;
+                    //console.log(des);
+
+                    let points = dragStory.querySelector('.points').innerText;
+                    //console.log(points);
+
+                    let acc = dragStory.querySelector('.acceptance').innerText;
+                    //console.log(acc);
+
+
+
+                    //console.log(dragStory.parentElement.id);
+                    // console.log(category.childElementCount);
+                  
+                    let newStatus = 0;
+                    let parentID = dragStory.parentElement.id;
+
+                    if(parentID == "NotStarted"){
+                       // console.log(parentID,"1");
+                        newStatus = 1;
+                        //console.log("Amount of stories in Not Started ",NS.childElementCount-1);
+                    }
+                    else if(parentID == "In Progress"){
+                       // console.log(parentID,"2");
+
+                        newStatus = 2;
+                        //console.log("Amount of stories in In Progress ", IP.childElementCount-1);
+                    }
+                    else if(parentID == "Completed"){
+                       // console.log(parentID,"3");
+
+                        newStatus = 3;
+                        //console.log("Amount of stories in Completed ", C.childElementCount-1);
+                    }
+
+                   // console.log("new status of story", newStatus);
+/*
+                    db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(doc.id)
+                    .set({
+                        SprintID: currentSprintID,
+                        name : name,
+                        description: des,
+                        acceptance: acc,
+                        points: points,
+                        status: newStatus
+                    });*/
+
+
+                    console.log("h");
+
+
+                    this.style.backgroundColor = 'whitesmoke';
+
+                });
+            }
+        }
 
 
     });
