@@ -19,9 +19,8 @@ jobs:
                   command: npm install -D firebase-tools
             - run:
                   name: Update Npm Dependencies
-                  command: cd functions ; npm install --save firebase-functions@latest  
-                  
-         - run:
+                  command: cd functions ; npm install --save firebase-functions@latest       
+            - run:
                   name: apt stuff
                   command: cd functions ; sudo apt-get update ; sudo apt-get install -y libgbm-dev
             - run:
