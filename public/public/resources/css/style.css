@@ -1,74 +1,86 @@
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
 }
 
-@keyframes createBtnAnimation{
-    from{color: white;
-        background: #095CF5;}
-    to{color: white;
-        background: #68BCE5;}
+@keyframes createBtnAnimation {
+    from {
+        color: white;
+        background: #095CF5;
+    }
+    to {
+        color: white;
+        background: #68BCE5;
+    }
 }
 
-@keyframes signUpBtnAnimation{
-    from{color: #095CF5;
+@keyframes signUpBtnAnimation {
+    from {
+        color: #095CF5;
         border: 1px solid #095CF5;
         border-radius: 20px;
         overflow: hidden;
-        margin: -4px;}
-    to{background-color: #095CF5;
-        color:white;}
+        margin: -4px;
+    }
+    to {
+        background-color: #095CF5;
+        color: white;
+    }
 }
 
-@keyframes btnAnimation{
-    from{color: black}
-    to{color:#095CF5;}
+@keyframes btnAnimation {
+    from {
+        color: black
+    }
+    to {
+        color: #095CF5;
+    }
 }
 
-.container{
-    height:100%;
-    width:100%;
+.container {
+    height: auto;
+    width: 100%;
     background-image: url("../images/testWallpapera3.jpg");
 }
 
 .HelpBody {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     background-color: white;
 }
 
-.navigation{
+.navigation {
     background: whitesmoke;
     position: relative;
 }
 
-.navigation ul{
+.navigation ul {
     display: inline-flex;
     margin: 62px 10% 62px 80px;
     float: right;
 }
 
-.navigation ul li{
+.navigation ul li {
     list-style: none;
     margin: 0 20px;
     cursor: pointer;
 }
 
-.navigation ul li a:hover{
+.navigation ul li a:hover {
     animation-name: btnAnimation;
     animation-duration: 0.5s;
     animation-fill-mode: both;
 }
 
-.navigation ul li a{
+.navigation ul li a {
     padding: 10px;
     color: black;
     text-decoration: none;
     font-size: 16px;
 }
 
-#signUpBtn{
+#signUpBtn {
     color: #095CF5;
     border: 1px solid #095CF5;
     border-radius: 20px;
@@ -76,25 +88,25 @@
     margin: -4px;
 }
 
-#signUpBtn:hover{
+#signUpBtn:hover {
     animation-name: signUpBtnAnimation;
     animation-duration: 0.5s;
     animation-fill-mode: both;
 }
 
-.webPageTitle{
+.webPageTitle {
     list-style: none;
-    margin:20px 20px 20px 5%;
+    margin: 20px 20px 20px 5%;
     display: inline-flex;
     cursor: pointer;
 }
 
-#frontPage{
+#frontPage {
     margin: 80px 25% 0 25%;
     position: relative;
 }
 
-.welcomeCard{
+.welcomeCard {
     background: whitesmoke;
     border-radius: 20px;
     padding: 20px;
@@ -102,7 +114,7 @@
     text-align: center;
 }
 
-.card{
+.card {
     background: whitesmoke;
     border-radius: 20px;
     color: black;
@@ -111,25 +123,25 @@
     width: 49.6%;
 }
 
-.frontPageHeading{
-    font-size: 35px;
+.frontPageHeading {
+    font-size: 40px;
     color: #095CF5;
 }
 
 .heading {
-    font-size: 25px;
+    font-size: 35px;
     color: #095CF5;
     padding-top: 20px;
 }
 
-.content{
-    font-size: 18px;
+.content {
+    font-size: 14px;
     padding: 0 20px 20px 20px;
 }
 
-.modal{
+.modal {
     position: absolute;
-    left:50%;
+    left: 50%;
 }
 
 #PageHeading {
@@ -137,20 +149,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#095CF5;
+    color: #095CF5;
     padding: 10px;
     border: 2px solid #095CF5;
-    margin:0 20px;
+    margin: 0 20px;
     border-radius: 10px;
 }
 
 #PageHeading p {
-    margin: 0 ;
+    margin: 0;
     font-weight: 600;
     font-size: 30px;
 }
 
-#subPageHeading{
+#subPageHeading {
     background: #095CF5;
     color: white;
     height: 30px;
@@ -164,12 +176,12 @@
 }
 
 #subPageHeading p {
-    margin: 0 ;
+    margin: 0;
     font-weight: 600;
     font-size: 20px;
 }
 
-#contentContainer{
+#contentContainer {
     background: whitesmoke;
     margin: 5% 10%;
     padding: 10px;
@@ -177,17 +189,17 @@
     border-radius: 10px;
 }
 
-.subNav{
+.subNav {
     margin: 10px 0;
     height: 75px;
 }
 
-.subNav ul{
-    padding:13px;
+.subNav ul {
+    padding: 13px;
     line-height: 45px;
 }
 
-.subNav ul li{
+.subNav ul li {
     list-style: none;
     margin-left: 20px;
     margin-right: 15px;
@@ -195,16 +207,16 @@
     display: inline;
 }
 
-.subNav ul button{
-   float: right;
+.subNav ul button {
+    float: right;
 }
 
-.subNav ul li a{
+.subNav ul li a {
     text-decoration: none;
     color: black;
 }
 
-#Btn{
+#Btn {
     outline: none;
     border-radius: 20px;
     color: white;
@@ -215,7 +227,7 @@
     font-weight: 500;
 }
 
-#Btn:hover{
+#Btn:hover {
     cursor: pointer;
     animation-name: createBtnAnimation;
     animation-duration: 0.5s;
