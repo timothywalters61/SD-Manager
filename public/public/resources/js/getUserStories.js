@@ -98,10 +98,21 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             let p = document.createElement('p');
             p.className = "points";
             p.innerText = points;
+
+            // TASK BUTTON
+            let btnTask = document.createElement('button');
+            btnTask.className = "userStoryBtn";
+            console.log(`${doc.id}`); // displays userstory ID in console. We need to save the user story ID so that the relevant tasks can be accessed
+            btnTask.onclick = `saveUserStoryID('${doc.id}')`; // function found in saveUserStory.js should save user story to localstorage and then go to task html
+            // for some reason its not going to this function
+            btnTask.innerText = "View Tasks"
+
+            //<button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button>
             wholeDiv.appendChild(n);
             wholeDiv.appendChild(des);
             wholeDiv.appendChild(acc);
             wholeDiv.appendChild(p);
+            wholeDiv.append(btnTask);
             // NS.appendChild(wholeDiv);
 
             //If statements attach stories to the correct status columns
