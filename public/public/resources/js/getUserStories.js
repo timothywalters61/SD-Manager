@@ -62,6 +62,7 @@ const C = document.getElementById("Completed");
 
 
 let wholeDiv;
+let userIDs = new Map();
                     
 db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -82,6 +83,8 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             // li= `<div class="stories" draggable = "true"><p class="userStoryName">${name}</p><p class="description">${description}</p><p class="acceptance">Acceptance: ${acceptance}</p><p class="points">Points: ${points}</p><button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button></div>`;
             //userStoryHTML = userStoryHTML + li;
 
+            //console.log(name , "    ", `${doc.id}`);
+            userIDs.set(name, {id : doc.id});
 
             wholeDiv = document.createElement('div');
             wholeDiv.draggable = true;
@@ -142,133 +145,154 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
         }
         // storyListLink.innerHTML = userStoryHTML;
 
-        
-        const stories = document.querySelectorAll('.stories');
-        const categories = document.querySelectorAll('.categories');
-
-        // console.log(stories);
-        // console.log(categories);
-
-
-        let dragStory = null;
-
-
-        for(let a = 0; a < stories.length;a++)
-        {
-            const story = stories[a];
-            //console.log(story.parentElement.id);
-
-            story.addEventListener('dragstart', function() {
-                console.log("You are dragging an item");
-
-                dragStory = story;
-
-
-
-                setTimeout(function () {
-
-                    story.style.display = 'none';
-
-                },0);
-            });
-
-            story.addEventListener('dragend',function () {
-                console.log("You are no longer dragging an item");
-                setTimeout(function () {
-
-                    story.style.display = 'block';
-                    dragStory=null;
-                },10000);
-            });
-
-
-            for (let b = 0; b < categories.length;b++) {
-                const category = categories[b];
-
-                category.addEventListener('dragover', function (e) {
-
-                    e.preventDefault();
-
-                });
-
-                category.addEventListener('dragenter', function (e) {
-                    e.preventDefault();
-                    this.style.backgroundColor = '#778899';
-
-                });
-
-                category.addEventListener('dragleave', function () {
-                    this.style.backgroundColor = 'whitesmoke';
-
-                })
-
-                category.addEventListener('drop',function (ev) {
-
-                    category.appendChild(dragStory);
-                    //console.log("drag story === ",dragStory);
-
-                    let name = dragStory.querySelector('.userStoryName').innerText;
-                    //console.log(name);
-                    let des = dragStory.querySelector('.description').innerText;
-                    //console.log(des);
-
-                    let points = dragStory.querySelector('.points').innerText;
-                    //console.log(points);
-
-                    let acc = dragStory.querySelector('.acceptance').innerText;
-                    //console.log(acc);
-
-
-
-                    //console.log(dragStory.parentElement.id);
-                    // console.log(category.childElementCount);
-                  
-                    let newStatus = 0;
-                    let parentID = dragStory.parentElement.id;
-
-                    if(parentID == "NotStarted"){
-                       // console.log(parentID,"1");
-                        newStatus = 1;
-                        //console.log("Amount of stories in Not Started ",NS.childElementCount-1);
-                    }
-                    else if(parentID == "In Progress"){
-                       // console.log(parentID,"2");
-
-                        newStatus = 2;
-                        //console.log("Amount of stories in In Progress ", IP.childElementCount-1);
-                    }
-                    else if(parentID == "Completed"){
-                       // console.log(parentID,"3");
-
-                        newStatus = 3;
-                        //console.log("Amount of stories in Completed ", C.childElementCount-1);
-                    }
-
-                   // console.log("new status of story", newStatus);
-/*
-                    db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(doc.id)
-                    .set({
-                        SprintID: currentSprintID,
-                        name : name,
-                        description: des,
-                        acceptance: acc,
-                        points: points,
-                        status: newStatus
-                    });*/
-
-
-                    console.log("h");
-
-
-                    this.style.backgroundColor = 'whitesmoke';
-
-                });
-            }
-        }
+  
 
 
     });
+/*
+    console.log(userIDs);
+    let test = userIDs.get("user story 3 ");
+    console.log("user id \n",test);
+    console.log("id ", test.id);
+          */
+    //setTimeout(dragDrop , 3000);
+
+    const stories = document.querySelectorAll('.stories');
+    const categories = document.querySelectorAll('.categories');
+
+    // console.log(stories);
+    // console.log(categories);
+
+
+    let dragStory = null;
+
+    console.log('stories ', stories);
+    console.log('len ',stories.length);
+    for(let a = 0; a < stories.length;a++)
+    {
+        const story = stories[a];
+        console.log(a);
+        //console.log(story.parentElement.id);
+
+        story.addEventListener('dragstart', function(e) {
+            console.log("dragstart", e);
+            console.log("You are dragging an item");
+
+            dragStory = story;
+
+
+
+            setTimeout(function () {
+
+                story.style.display = 'none';
+
+            },0);
+        });
+
+        story.addEventListener('dragend',function () {
+            console.log("You are no longer dragging an item");
+            setTimeout(function () {
+
+                story.style.display = 'block';
+                dragStory=null;
+            },10000);
+        });
+
+
+        for (let b = 0; b < categories.length;b++) {
+            const category = categories[b];
+
+            category.addEventListener('dragover', function (e) {
+
+                e.preventDefault();
+
+            });
+
+            category.addEventListener('dragenter', function (e) {
+                e.preventDefault();
+                this.style.backgroundColor = '#778899';
+
+            });
+
+            category.addEventListener('dragleave', function () {
+                this.style.backgroundColor = 'whitesmoke';
+
+            })
+
+            category.addEventListener('drop',function (ev) {
+
+                category.appendChild(dragStory);
+                //console.log("drag story === ",dragStory);
+
+                let name = dragStory.querySelector('.userStoryName').innerText;
+                //console.log(name);
+                let des = dragStory.querySelector('.description').innerText;
+                //console.log(des);
+
+                let points = dragStory.querySelector('.points').innerText;
+                //console.log(points);
+
+                let acc = dragStory.querySelector('.acceptance').innerText;
+                //console.log(acc);
+
+
+
+                //console.log(dragStory.parentElement.id);
+                // console.log(category.childElementCount);
+              
+                let newStatus = 0;
+                let parentID = dragStory.parentElement.id;
+
+                if(parentID == "NotStarted"){
+                   // console.log(parentID,"1");
+                    newStatus = 1;
+                    //console.log("Amount of stories in Not Started ",NS.childElementCount-1);
+                }
+                else if(parentID == "In Progress"){
+                   // console.log(parentID,"2");
+
+                    newStatus = 2;
+                    //console.log("Amount of stories in In Progress ", IP.childElementCount-1);
+                }
+                else if(parentID == "Completed"){
+                   // console.log(parentID,"3");
+
+                    newStatus = 3;
+                    //console.log("Amount of stories in Completed ", C.childElementCount-1);
+                }
+
+               console.log("new status of story", newStatus);
+
+               
+                console.log(userIDs);
+                let test = userIDs.get(name);
+                console.log("user id \n",test);
+                console.log("id ", test.id);
+
+                db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(test.id)
+                .set({
+                    SprintID: currentSprintID,
+                    name : name,
+                    description: des,
+                    acceptance: acc,
+                    points: points,
+                    status: newStatus
+                });
+
+
+                console.log("h");
+
+
+                this.style.backgroundColor = 'whitesmoke';
+
+            });
+        }
+    }
 });
+
+function dragDrop() {
+    alert('hello');
+}
 
 const logout = document.querySelector("#logout");
 logout.addEventListener("click", (e) => {
