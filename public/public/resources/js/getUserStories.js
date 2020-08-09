@@ -64,7 +64,7 @@ const C = document.getElementById("Completed");
 let wholeDiv;
 let userIDs = new Map();
 
-let btnTask;
+//let btnTask;
 
 db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -104,9 +104,10 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             p.className = "points";
             p.innerText = points;
 
+            //console.log('hello  ' ,doc.id);
             // TASK BUTTON
-             //let btnTask = document.createElement('button');
-             btnTask = document.createElement('a');
+             let btnTask = document.createElement('button');
+             /*let btnTask = document.createElement('a');
              btnTask.href = "Task.html"
              btnTask.className = "userStoryBtn";
 
@@ -116,10 +117,14 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
                 window.location.href = "Task.html";
                 console.log("This Code has Executed");
             });
+*/
+            btnTask.className = "TaskBTT";
+            console.log('user story             \n\n' ,`${doc.id}`); // displays userstory ID in console. We need to save the user story ID so that the relevant tasks can be accessed
+            //btnTask.onmousedown = saveUserStoryID(doc.id); // function found in saveUserStory.js should save user story to localstorage and then go to task html
+            btnTask.addEventListener( "click" , function(){
+                saveUserStoryID(doc.id);
 
-            //btnTask.className = "TaskBTT";
-            console.log(`${doc.id}`); // displays userstory ID in console. We need to save the user story ID so that the relevant tasks can be accessed
-           // btnTask.onclick = `saveUserStoryID('${doc.id}')`; // function found in saveUserStory.js should save user story to localstorage and then go to task html
+            });
             btnTask.innerText = "View Tasks";
 
 
