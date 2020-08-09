@@ -42,7 +42,7 @@ auth.onAuthStateChanged(user => {
         //heading
 
         const projectTitle = document.querySelector("#PageHeading");
-        let heading = `<p>${projectName}</p>`;
+        let heading = `<p>Project: ${projectName}</p>`;
         projectTitle.innerHTML = heading;
 
         //set up team

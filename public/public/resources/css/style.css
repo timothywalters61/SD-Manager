@@ -42,8 +42,6 @@
     min-height: 100%;
     width: 100%;
     background-image: url("../images/testWallpapera3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .HelpBody {
@@ -181,6 +179,42 @@
     margin: 0;
     font-weight: 600;
     font-size: 20px;
+}
+
+#userStories {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #095CF5;
+    padding: 10px;
+    border: 2px solid #095CF5;
+    margin: 0 40%;
+    border-radius: 10px;
+}
+
+#userStories p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+#tasks {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #095CF5;
+    padding: 10px;
+    border: 2px solid #095CF5;
+    margin: 0 40%;
+    border-radius: 10px;
+}
+
+#tasks p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 30px;
 }
 
 #contentContainer {
