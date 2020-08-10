@@ -94,7 +94,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     it('(valid input) log in and navigate websites functionality, must return true', async () => {
         const browser = await puppeteer.launch({
-            headless: false,
+            headless: true, //must be set to true for circleci to work!
             slowMo: 25,
             args: ['--window-size=1440,900']
         });
@@ -138,7 +138,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     it('(invalid input) log in and navigate websites functionality, must return true', async () => {
         const browser = await puppeteer.launch({
-            headless: true,
+            headless: true, //must be set to true for circleci to work!
             slowMo: 25,
             args: ['--window-size=1440,900']
         });
