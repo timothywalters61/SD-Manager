@@ -10,7 +10,7 @@ expect = require('chai').expect
 should = require('chai').should()
 _ = require('lodash')
 
-tests
+//tests
 describe('embedded function tests - used for input validation before passed to firebase', () => {
 
     it('check if 03/25/2015 is before current date - must return false', () => {
