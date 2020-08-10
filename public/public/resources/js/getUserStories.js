@@ -118,7 +118,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
                 console.log("This Code has Executed");
             });
 */
-            btnTask.className = "TaskBTT";
+            btnTask.className = "userStoryBtn";
             console.log('user story             \n\n' ,`${doc.id}`); // displays userstory ID in console. We need to save the user story ID so that the relevant tasks can be accessed
             //btnTask.onmousedown = saveUserStoryID(doc.id); // function found in saveUserStory.js should save user story to localstorage and then go to task html
             btnTask.addEventListener( "click" , function(){
