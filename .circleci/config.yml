@@ -2,15 +2,15 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/node:latest
+            - image: circleci/node:10.16.0
         steps:
             - checkout
             - run:
-                  name: installing npm dependencies
-                  command: npm install
+                  name: installing npm & puppeteer
+                  command: cd /public/public/tests
             - run:
                   name: installing npm & puppeteer
-                  command: ls
+                  command: cd /public/public/tests ; npm run test
             # - run:
             #       name: run tests
             #       command: cd public/ ; cd public/ ; cd tests/ ; npm run test
