@@ -43,6 +43,26 @@ function toast(data) {
     x.className = "hide";
   }
 
+  function showSprintdateForm(){
+    var x = document.getElementById("sprintDate");
+    x.className = "show login-box";
+  }
+  
+  function hideSprintdateForm(){
+    var x = document.getElementById("sprintDate");
+    x.className = "hide";
+  }
+
+  function showSprintdateSwapForm(){
+    var x = document.getElementById("sprintDateSwap");
+    x.className = "show login-box";
+  }
+  
+  function hideSprintdateSwapForm(){
+    var x = document.getElementById("sprintDateSwap");
+    x.className = "hide";
+  }
+
   function showUserStoryForm(){
     var x = document.getElementById("createUserStory");
     x.className = "show login-box";
