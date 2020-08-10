@@ -7,7 +7,7 @@ jobs:
         steps:
             - run:
                   name: installing npm & puppeteer
-                  command: cd public/public/tests/ ; npm install ; npm install puppeteer
+                  command: cd /public/public/tests/ ; npm install ; npm install puppeteer
             - run:
                   name: run tests
-                  command: cd public/public/tests/ ; npm run test
+                  command: cd /public/public/tests/ ; npm run test
