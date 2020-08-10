@@ -36,7 +36,7 @@ let test = parseInt("2020");
                     })
                     .then(() => {
                         startSprint.reset();
-                        window.location.href = "Sprint.html";
+                        window.location.href = "dragDrop.html";
                     });
             })
             .catch((error) => {
@@ -65,7 +65,7 @@ let test = parseInt("2020");
                     })
                     .then(() => {
                         startSprint.reset();
-                        window.location.href = "Sprint.html";
+                        window.location.href = "dragDrop.html";
                     });
             })
             .catch((error) => {
@@ -89,7 +89,7 @@ let test = parseInt("2020");
                 })
                 .then(() => {
                     startSprint.reset();
-                    window.location.href = "Sprint.html";
+                    window.location.href = "dragDrop.html";
                 });
         })
         .catch((error) => {

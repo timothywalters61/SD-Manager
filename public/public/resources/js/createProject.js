@@ -19,14 +19,17 @@ create.addEventListener('submit', (e) => {
             repository: gitLink,
             Sprints: null
         }).then(function (docRef) {
+            //console.log(docRef.name);
             db.collection("users").doc(user.uid).update({
                 projects: firebase.firestore.FieldValue.arrayUnion(docRef.id)
             })
                 .then(() => {
                     console.log("project created");
                     create.reset();
+                    
                     localStorage.setItem("docID", docRef.id);
                     localStorage.setItem("ownerID", user.uid);
+                    localStorage.setItem("docName", projectName);
                     window.location.href = "projectOwner.html";
                 });
         }).catch(function (error) {

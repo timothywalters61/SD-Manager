@@ -8,7 +8,7 @@ const setUpInvites = (data) => {
         const docID = doc.id;
         const projectName = doc.data().projectName;
         const li = `
-        <div class="invites">${inviteFrom} has invited you to join their team and help develop ${projectName} <button type="button" class="acceptInviteButtons" onclick="acceptInvite('${project}','${docID}')">Accept</button><button type="button" class="declineInviteButtons" onclick="declineInvite('${docID}')">Decline</button></div>
+        <div class="invites">${inviteFrom} has invited you to join their team and help develop <p> ${projectName}</p> <button type="button" class="acceptInviteButtons" onclick="acceptInvite('${project}','${docID}')">Accept</button><button type="button" class="declineInviteButtons" onclick="declineInvite('${docID}')">Decline</button></div>
         `;
         html = html + li;
     });
