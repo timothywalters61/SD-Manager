@@ -6,5 +6,8 @@ jobs:
         working_directory: ~/repo
         steps:
             - run:
-                  name: checking if everything is fine with you guys
-                  command: npm install
+                  name: installing npm & puppeteer
+                  command: cd public/public/tests/ ; npm install ; npm install puppeteer
+            - run:
+                  name: run tests
+                  command: cd public/public/tests/ ; npm run test

@@ -1,0 +1,17 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "tests",
+  "main": "tests.js",
+  "dependencies": {
+    "jest": "^26.2.2",
+    "puppeteer": "^5.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "coverage": "jest --detectOpenHandles --coverage"
+  },
+  "author": "Timothy Walters",
+  "license": "ISC"
+}
