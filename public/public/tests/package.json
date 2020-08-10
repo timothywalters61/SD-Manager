@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "cover": "jest --detectOpenHandles --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage || true"
+    "cover": "jest --detectOpenHandles --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage || true",
+    "move": "mv ./coverage/ ../../../"
   },
   "author": "Timothy Walters",
   "license": "ISC"

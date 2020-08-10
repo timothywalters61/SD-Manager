@@ -6,11 +6,14 @@ jobs:
         steps:
             - checkout
             - run:
-                  name: installing npm & puppeteer
+                  name: installing npm 
+                  command: npm install
+            - run:
+                  name: installing npm & puppeteer in tests folder
                   command: cd public/public/tests ;  npm install jest ; npm install puppeteer
             - run:
                   name: running tests & coverage
-                  command: cd public/public/tests ; npm run test ; npm run cover
+                  command: cd public/public/tests ; npm run test ; npm run cover ; npm run move
             # - run:
             #       name: run tests
             #       command: cd public/ ; cd public/ ; cd tests/ ; npm run test
