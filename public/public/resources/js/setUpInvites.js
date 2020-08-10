@@ -27,10 +27,13 @@ const acceptInvite = (data,data1) => {
         db.collection("Invites").doc(data1).delete()
         .then(function() {
             console.log("Document successfully deleted!");
+            window.location.href = "userHome.html";
         }).catch(function(error) {
             console.error("Error removing document: ", error);
         });
     });
+    //window.location.href = "Task.html";
+    console.log("after");
 }
 
 const declineInvite = (data) => {
