@@ -6,14 +6,8 @@ jobs:
         steps:
             - checkout
             - run:
-                  name: installing npm 
-                  command: npm install
-            - run:
-                  name: installing npm & puppeteer in tests folder
-                  command: cd public/public/tests ;  npm install jest ; npm install puppeteer
+                  name: installing things 
+                  command: npm install ; npm install puppeteer ; npm install --save-dev coveralls mocha-lcov-reporter
             - run:
                   name: running tests & coverage
-                  command: cd public/public/tests ; npm run test ; npm run cover ; npm run move
-            # - run:
-            #       name: run tests
-            #       command: cd public/ ; cd public/ ; cd tests/ ; npm run test
+                  command: npm run test ; npm run coverage
