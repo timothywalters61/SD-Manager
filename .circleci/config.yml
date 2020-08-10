@@ -10,4 +10,4 @@ jobs:
                   command: npm install ; npm install puppeteer ; npm install --save-dev coveralls mocha-lcov-reporter
             - run:
                   name: running tests & coverage
-                  command: npm run test ; npm run coverage
+                  command: npm run test ; npm run coveralls
