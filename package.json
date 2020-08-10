@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./testingCode/embeddedFunctions.test.js  --timeout 60000",
-    "cover": "istanbul cover _mocha ./testingCode/embeddedFunctions.test.js -x ./testingCode/embeddedFunctions.test.js  --timeout 60000|| true",
+    "cover": "istanbul cover _mocha ./testingCode/embeddedFunctions.test.js -x ./testingCode/embeddedFunctions.test.js|| true",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls || true"
   },
   "repository": {
