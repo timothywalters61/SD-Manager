@@ -17,21 +17,23 @@ addForm.addEventListener('submit', (e) => {
                 } else {
                     db.collection("users").where("userEmail", "==", dev).get()
                         .then((querySnapshot) => {
-                            querySnapshot.forEach((doc) => {
-                                if (doc.exists) {
-                                    db.collection("Invites").doc().set({
-                                        inviteFromID: user.uid,
-                                        inviteToID: doc.id,
-                                        inviteFromEmail: user.email,
-                                        projectID: projectID,
-                                        projectName: projectName
-                                    }).then(() => {
-                                        toast("invite sent");
-                                    });
-                                } else {
-                                    toast("user does not exist")
-                                }
-                            });
+                            if(querySnapshot.size === 0){
+                                    toast("user doesn't exist");
+                            }else {
+                                querySnapshot.forEach((doc) => {
+                                    if (doc.exists) {
+                                        db.collection("Invites").doc().set({
+                                            inviteFromID: user.uid,
+                                            inviteToID: doc.id,
+                                            inviteFromEmail: user.email,
+                                            projectID: projectID,
+                                            projectName: projectName
+                                        }).then(() => {
+                                            toast("invite sent");
+                                        });
+                                    }
+                                });
+                            }
                         }).catch((error) => {
                             alert("error getting documents, ", error);
                         });
