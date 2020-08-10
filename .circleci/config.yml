@@ -9,8 +9,8 @@ jobs:
                   name: installing npm & puppeteer
                   command: cd public/public/tests ;  npm install jest ; npm install puppeteer
             - run:
-                  name: installing npm & puppeteer
-                  command: cd public/public/tests ; npm run test
+                  name: running tests & coverage
+                  command: cd public/public/tests ; npm run test ; npm run cover
             # - run:
             #       name: run tests
             #       command: cd public/ ; cd public/ ; cd tests/ ; npm run test
