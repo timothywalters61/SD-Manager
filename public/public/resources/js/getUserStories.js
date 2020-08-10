@@ -22,7 +22,7 @@ const projectName = localStorage.getItem("docName");
 //const storyListLink = document.querySelector('#NotStarted'); // object representing that div
 
 const projectTitle = document.querySelector("#PageHeading");
-let heading = `<p>${projectName}</p>`;
+let heading = `<p>Project: ${projectName}</p>`;
 projectTitle.innerHTML = heading;
 
 const sprintHeading = document.querySelector('#subPageHeading');
@@ -52,6 +52,20 @@ auth.onAuthStateChanged(user => {
             inviteBadge.innerHTML = html2;
         }
     });
+});
+
+const logout = document.querySelector("#logout");
+logout.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    auth.signOut().then(() => {
+        
+        window.location.href = "index.html";
+    })
+        .catch(function (error) {
+            console.log("user failed to sign out because of error: ", error);
+            alert(error.message);
+        });
 });
 
 
@@ -311,19 +325,6 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 function dragDrop() {
     alert('hello');
 }
-
-const logout = document.querySelector("#logout");
-logout.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    auth.signOut().then(() => {
-        //console.log("user has signed out");
-    })
-        .catch(function (error) {
-            console.log("user failed to sign out because of error: ", error);
-            alert(error.message);
-        });
-});
 
 function addStoryDynam(){
     ns = document.getElementById('Not Started'); //get column element

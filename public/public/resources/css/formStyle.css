@@ -55,6 +55,20 @@
   .login-box .user-box input:focus{
     border-bottom: 2px solid #095CF5;
   }
+
+  .login-box .user-box #start {
+    top: -20px;
+    left: 0;
+    color:  black;
+    font-size: 12px;
+  }
+
+  .login-box .user-box #end {
+    top: -20px;
+    left: 0;
+    color:  black;
+    font-size: 12px;
+  }
   
   .login-box form button {
     position: relative;

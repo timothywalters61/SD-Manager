@@ -1,8 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
 }
 
 body {
@@ -12,7 +10,7 @@ body {
 .Sys {
     display: flex;
     /*background-color: burlywood;*/
-    height: 180vh;
+    min-height: 100%;
     /*width: 180vw;*/
     width: 100%;
     flex-flow: column;
