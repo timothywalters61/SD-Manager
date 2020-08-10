@@ -2,9 +2,9 @@ version: 2
 jobs:
     build:
         docker:
-            - image: circleci/node:10.16.0
-        working_directory: ~/repo
+            - image: circleci/node:latest
         steps:
+            - checkout
             - run:
                   name: installing npm dependencies
                   command: npm install
