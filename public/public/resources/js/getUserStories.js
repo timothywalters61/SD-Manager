@@ -26,7 +26,7 @@ projectTitle.innerHTML = heading;
 // display sprint title
 const sprintHeading = document.querySelector('#subPageHeading');
 db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).get().then((doc) => {
-    let html = `<p>${doc.data().name}</p>`;
+    let html = `<p>Sprint: ${doc.data().name}</p>`;
     sprintHeading.innerHTML = html;
 });
 

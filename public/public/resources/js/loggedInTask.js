@@ -57,7 +57,7 @@ auth.onAuthStateChanged(user => {
                     const userStoryTitle = document.querySelector('#subPageHeading');
 
                     db.collection("projects").doc(projectID).collection("backlog").doc(userStoryID).get().then((doc) => {
-                        let html = `<p>${doc.data().name}</p>`;
+                        let html = `<p>User Story: ${doc.data().name}</p>`;
                         userStoryTitle.innerHTML = html;
                     });
 
