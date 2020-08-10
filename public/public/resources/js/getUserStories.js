@@ -10,6 +10,7 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// get required values from local storage
 const auth = firebase.auth();
 const db = firebase.firestore();
 const projectID = localStorage.getItem("docID");
@@ -17,20 +18,19 @@ const ownerID = localStorage.getItem("ownerID");
 const currentSprintID = localStorage.getItem("currentSprintID");
 const projectName = localStorage.getItem("docName");
 
-
-//let userStoryHTML = '<h2 id = "NS">Not Started</h2>';
-//const storyListLink = document.querySelector('#NotStarted'); // object representing that div
-
+// display project title
 const projectTitle = document.querySelector("#PageHeading");
 let heading = `<p>Project: ${projectName}</p>`;
 projectTitle.innerHTML = heading;
 
+// display sprint title
 const sprintHeading = document.querySelector('#subPageHeading');
 db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).get().then((doc) => {
     let html = `<p>${doc.data().name}</p>`;
     sprintHeading.innerHTML = html;
 });
 
+// add link to github
 const gitLink = document.querySelector('#gitLink');
 db.collection("projects").doc(projectID)
     .onSnapshot(function (doc) {
@@ -39,6 +39,8 @@ db.collection("projects").doc(projectID)
     });
 
 
+
+// display pending invites
 auth.onAuthStateChanged(user => {
     const inviteBadge = document.querySelector("#inviteBadge");
     db.collection("Invites").where("inviteToID", "==", user.uid)
@@ -54,6 +56,8 @@ auth.onAuthStateChanged(user => {
     });
 });
 
+
+// logout
 const logout = document.querySelector("#logout");
 logout.addEventListener("click", (e) => {
     e.preventDefault();
@@ -69,7 +73,7 @@ logout.addEventListener("click", (e) => {
 });
 
 
-
+// refernces to categories or columns
 const NS = document.getElementById("NotStarted");
 const IP= document.getElementById("In Progress");
 const C = document.getElementById("Completed");
@@ -78,82 +82,58 @@ const C = document.getElementById("Completed");
 let wholeDiv;
 let userIDs = new Map();
 
-//let btnTask;
-
+// display user stories
 db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         if (doc.exists) {
+
+            // get user story data into variables
             const name = doc.data().name;
-            //console.log(name);
-
-            //Lines of code supposed to fetch current status of user stories but I got errors with access
             const status = doc.data().status;
-            //console.log("Original Status ",status);
-
             const description = doc.data().description;
-            //console.log(description);
             const acceptance = doc.data().acceptance;
-            //console.log(acceptance);
             const points = doc.data().points;
-            //console.log(points);
-            // li= `<div class="stories" draggable = "true"><p class="userStoryName">${name}</p><p class="description">${description}</p><p class="acceptance">Acceptance: ${acceptance}</p><p class="points">Points: ${points}</p><button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button></div>`;
-            //userStoryHTML = userStoryHTML + li;
+            userIDs.set(name, {id : doc.id}); // adds user story name and id to be used later
 
-            //console.log(name , "    ", `${doc.id}`);
-            userIDs.set(name, {id : doc.id});
-
+            // create div with inner components to hold user story data
             wholeDiv = document.createElement('div');
             wholeDiv.draggable = true;
             wholeDiv.className = "stories";
-            let n = document.createElement('p');
+
+            let n = document.createElement('p'); //name comp
             n.className = "userStoryName"
             n.innerText= name;
-            let des = document.createElement('p');
+
+            let des = document.createElement('p'); //description comp
             des.className = "description";
             des.innerText = description;
-            let acc = document.createElement('p');
+
+            let acc = document.createElement('p'); //acceptance comp
             acc.className = "acceptance";
             acc.innerText = acceptance;
-            let p = document.createElement('p');
+
+            let p = document.createElement('p'); // points comp
             p.className = "points";
             p.innerText = points;
 
-            //console.log('hello  ' ,doc.id);
-            // TASK BUTTON
-             let btnTask = document.createElement('button');
-             /*let btnTask = document.createElement('a');
-             btnTask.href = "Task.html"
-             btnTask.className = "userStoryBtn";
-
-            btnTask.addEventListener('onclick',function(e) {
-                console.log("in");
-                localStorage.setItem("userStoryID", doc.id);
-                window.location.href = "Task.html";
-                console.log("This Code has Executed");
-            });
-*/
+            let btnTask = document.createElement('button'); // moves to task page
             btnTask.className = "userStoryBtn";
-            console.log('user story             \n\n' ,`${doc.id}`); // displays userstory ID in console. We need to save the user story ID so that the relevant tasks can be accessed
-            //btnTask.onmousedown = saveUserStoryID(doc.id); // function found in saveUserStory.js should save user story to localstorage and then go to task html
             btnTask.addEventListener( "click" , function(){
-                saveUserStoryID(doc.id);
+                saveUserStoryID(doc.id); // saves id of user story clicked
 
             });
             btnTask.innerText = "View Tasks";
 
-
-
-            // for some reason its not going to this function
-
-            //<button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button>
             wholeDiv.appendChild(n);
             wholeDiv.appendChild(des);
             wholeDiv.appendChild(acc);
             wholeDiv.appendChild(p);
             wholeDiv.append(btnTask);
-            // NS.appendChild(wholeDiv);
 
-            //If statements attach stories to the correct status columns
+            // attaches user story to the relevant column
+            // 1 : not started
+            // 2 : in progress
+            // 3 : completed
             if (status === 1) {
                 NS.appendChild(wholeDiv);
             }
@@ -168,52 +148,27 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
             else {
                NS.appendChild(wholeDiv);
-                }
+            }
 
-            //console.log("Amount of stories in Not Started ",NS.childElementCount-1);
-            //console.log("Amount of stories in In Progress ", IP.childElementCount-1);
-            //console.log("Amount of stories in Completed ", C.childElementCount-1);
-
-            // storyListLink.appendChild(userStoryHTML);
 
         } else {
             console.log("user story doesnt exist");
         }
-        // storyListLink.innerHTML = userStoryHTML;
     });
-/*
-    console.log(userIDs);
-    let test = userIDs.get("user story 3 ");
-    console.log("user id \n",test);
-    console.log("id ", test.id);
-          */
-    //setTimeout(dragDrop , 3000);
 
     const stories = document.querySelectorAll('.stories');
     const categories = document.querySelectorAll('.categories');
 
-    // console.log(stories);
-    // console.log(categories);
-
-
     let dragStory = null;
 
-    console.log('stories ', stories);
-    console.log('len ',stories.length);
-    for(let a = 0; a < stories.length;a++)
-    {
+    // set event listeners for drag and drop for each user story in each column
+    for(let a = 0; a < stories.length;a++) {
         const story = stories[a];
-        console.log(a);
-        //console.log(story.parentElement.id);
 
-        story.addEventListener('dragstart', function(e) {
-            console.log("dragstart", e);
+        // when story is starting to drag
+        story.addEventListener('dragstart', function() {
             console.log("You are dragging an item");
-
             dragStory = story;
-
-
-
             setTimeout(function () {
 
                 story.style.display = 'none';
@@ -221,13 +176,15 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             },0);
         });
 
+        // when story is stopping drag
         story.addEventListener('dragend',function () {
             console.log("You are no longer dragging an item");
             setTimeout(function () {
 
                 story.style.display = 'block';
                 dragStory=null;
-            },10000);
+
+            },0);
         });
 
 
