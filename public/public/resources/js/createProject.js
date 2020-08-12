@@ -8,11 +8,13 @@ create.addEventListener('submit', (e) => {
     const projectDescription = create['projectDescription'].value;
     const gitLink = create['gitLink'].value;
     var user = auth.currentUser;
+    console.log(user.email)
 
     console.log(projectName, " ", projectDescription);
     if (user) {
         db.collection("projects").add({
             OwnerID: user.uid,
+            OwnerEmail: user.email,
             name: projectName,
             description: projectDescription,
             Team: [user.email],

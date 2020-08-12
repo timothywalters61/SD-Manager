@@ -37,11 +37,14 @@
         color: #095CF5;
     }
 }
+body {
+    background-image: url("../images/testWallpapera3.jpg");
+
+}
 
 .container {
     min-height: 100%;
     width: 100%;
-    background-image: url("../images/testWallpapera3.jpg");
 }
 
 .HelpBody {

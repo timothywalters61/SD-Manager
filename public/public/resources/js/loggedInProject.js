@@ -32,6 +32,9 @@ auth.onAuthStateChanged(user => {
         const projectTitle = document.querySelector("#PageHeading");
         let heading = `<p>Project: ${projectName}</p>`;
         projectTitle.innerHTML = heading;
+        /*projectTitle.addEventListener("click", function(){
+            window.location.href = "projectDetails.html";
+        });*/
 
 
         db.collection("projects").doc(projectID)
