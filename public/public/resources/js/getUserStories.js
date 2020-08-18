@@ -124,11 +124,17 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             });
             btnTask.innerText = "View Tasks";
 
+            let btnDeleteUS = document.createElement('button'); // moves to task page
+            btnDeleteUS.className = "userStoryBtn";
+            btnDeleteUS.id = "btnDelete";
+            btnDeleteUS.innerText = "Delete"
+
             wholeDiv.appendChild(n);
             wholeDiv.appendChild(des);
             wholeDiv.appendChild(acc);
             wholeDiv.appendChild(p);
             wholeDiv.append(btnTask);
+            wholeDiv.append(btnDeleteUS);
 
             // attaches user story to the relevant column
             // 1 : not started
@@ -164,6 +170,23 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
     // set event listeners for drag and drop for each user story in each column
     for(let a = 0; a < stories.length;a++) {
         const story = stories[a];
+
+        deleteButton = story.querySelector("#btnDelete");
+        deleteButton.addEventListener('click' , function(){
+            let usName = story.querySelector(".userStoryName").innerText;
+            let deleteID = userIDs.get(usName).id;
+            db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(deleteID).delete().then(function() {
+                console.log("Document successfully deleted!");
+                window.location.href = "dragDrop.html";
+
+
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+            });
+            console.log(deleteID);
+
+            
+        });
 
         // when story is starting to drag
         story.addEventListener('dragstart', function() {

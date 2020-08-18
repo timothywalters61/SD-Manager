@@ -64,21 +64,63 @@ auth.onAuthStateChanged(user => {
                     //display tasks
 
                     const taskList = document.querySelector("#taskContainer");
-                    let taskListHTML = '';
+                    taskList.innerHTML = '';
+
+                    let tasksIDs = new Map();
+
 
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").get().then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
-                            const li = `     
-                                <div class="task"><a href="#"></a><span>${doc.data().name}</span></div>
-                            `;
-                            taskListHTML = taskListHTML + li;
+                            if(doc.exists){
+                                const name = doc.data().name;
+                                console.log(name);
+                                tasksIDs.set(name, {id : doc.id}); // adds user story name and id to be used later
+
+
+                                let wholeDiv;
+
+                                wholeDiv = document.createElement('div');
+                                wholeDiv.draggable = true;
+                                wholeDiv.className = "stories";
+                                
+                                let n = document.createElement('p'); //name comp
+                                n.className = "userStoryName"
+                                n.innerText= name;
+
+                                let btnDeleteUS = document.createElement('button'); // moves to task page
+                                btnDeleteUS.className = "userStoryBtn";
+                                btnDeleteUS.id = "btnDelete";
+                                btnDeleteUS.innerText = "Delete";
+
+                                wholeDiv.append(n);
+                                wholeDiv.append(btnDeleteUS);
+
+                                taskList.appendChild(wholeDiv);
+
+                            }else{
+                                console.log("none");
+                            }
+
                         });
-                        if (taskListHTML.length === 0) {
-                            console.log("no tasks");
-                        } else {
-                            console.log(taskListHTML);
-                            taskList.innerHTML = taskListHTML;
+                        const stories = document.querySelectorAll('.stories');
+                        console.log(tasksIDs);
+                        for(let a = 0; a < stories.length;a++) {
+                            const story = stories[a];
+
+                            deleteButton = story.querySelector("#btnDelete");
+                            deleteButton.addEventListener('click' , function(){
+                                let usName = story.querySelector(".userStoryName").innerText;
+                                let deleteID = tasksIDs.get(usName).id;
+                                db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(deleteID).delete().then(function() {
+                                    console.log("Document successfully deleted!");
+                                    window.location.href = "Task.html";
+                                }).catch(function(error) {
+                                    console.error("Error removing document: ", error);
+                                });
+                                console.log(deleteID);
+                            });
                         }
+                    
                     });
 
                     //git and links
