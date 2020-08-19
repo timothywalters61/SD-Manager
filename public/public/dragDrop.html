@@ -13,6 +13,8 @@
     <title>Drag Drop</title></head>
 <body>
 
+
+
   <div class="container">
     <div class="navigation">
       <div class="webPageTitle">
@@ -100,6 +102,41 @@
       <button id="createUserStory-button">
         Add
       </button>
+    </form>
+  </div>
+
+  <div class="hide" id="ViewUserStory">
+    <h2>User Story Details</h2>
+    <form id="userStory-form2">
+      <div class="user-box">
+        <h3>Title</h3>
+        <br>
+        <p id = "Title"></p>
+        <br>
+        <br>
+      </div>
+      <div class="user-box">
+        <h3>Description</h3>
+        <br>
+        <p id = "Description"></p>
+        <br>
+        <br>
+      </div>
+      <div class="user-box">
+        <h3>Acceptance Criteria</h3>
+        <br>
+        <p id = "Acc"></p>
+        <br>
+        <br>
+      </div>
+      <div class="user-box">
+        <h3>Points</h3>
+        <br>
+        <p id = "Point"></p>
+        <br>
+        <br>
+        <a class = "userStoryBtn" onclick="hideFullUserStoryForm()">close</a>
+      </div>
     </form>
   </div>
 

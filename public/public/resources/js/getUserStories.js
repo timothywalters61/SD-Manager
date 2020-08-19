@@ -99,22 +99,30 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             wholeDiv = document.createElement('div');
             wholeDiv.draggable = true;
             wholeDiv.className = "stories";
+            // wholeDiv.addEventListener( "onclick" , function(){
+            //     showUserStoryForm(); // saves id of user story clicked
+            //
+            // });
 
             let n = document.createElement('p'); //name comp
-            n.className = "userStoryName"
+            n.className = "userStoryName";
             n.innerText= name;
+            n.style.marginBottom = "15px";
 
             let des = document.createElement('p'); //description comp
             des.className = "description";
             des.innerText = description;
+            des.style.display = "none";
 
             let acc = document.createElement('p'); //acceptance comp
             acc.className = "acceptance";
             acc.innerText = acceptance;
+            acc.style.display = "none";
 
             let p = document.createElement('p'); // points comp
             p.className = "points";
             p.innerText = points;
+            p.style.display = "none";
 
             let btnTask = document.createElement('button'); // moves to task page
             btnTask.className = "userStoryBtn";
@@ -124,11 +132,37 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             });
             btnTask.innerText = "View Tasks";
 
+            let btnStory = document.createElement('button'); // moves to task page
+            btnStory.className = "userStoryBtn";
+            btnStory.style.float = "left";
+            btnStory.addEventListener( "click" , function(){
+                showFullUserStoryForm();
+
+                // console.log(name);
+                // console.log(description);
+                // console.log(acceptance);
+                // console.log(points);
+
+                let Title = document.getElementById("Title");
+                Title.innerText = name;
+
+                let Des =  document.getElementById("Description");
+                Des.innerText = description;
+
+                let Acc =  document.getElementById("Acc");
+                Acc.innerText = acceptance;
+
+                let Points =  document.getElementById("Point");
+                Points.innerText = points;
+            });
+            btnStory.innerText = "View Story";
+
             wholeDiv.appendChild(n);
             wholeDiv.appendChild(des);
             wholeDiv.appendChild(acc);
             wholeDiv.appendChild(p);
             wholeDiv.append(btnTask);
+            wholeDiv.appendChild(btnStory);
 
             // attaches user story to the relevant column
             // 1 : not started
@@ -216,13 +250,13 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
                 let name = dragStory.querySelector('.userStoryName').innerText;
                 //console.log(name);
                 let des = dragStory.querySelector('.description').innerText;
-                //console.log(des);
+                console.log(des);
 
                 let points = dragStory.querySelector('.points').innerText;
-                //console.log(points);
+                console.log(points);
 
                 let acc = dragStory.querySelector('.acceptance').innerText;
-                //console.log(acc);
+                console.log(acc);
 
 
 

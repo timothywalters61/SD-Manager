@@ -68,6 +68,17 @@ function toast(data) {
     x.className = "show login-box";
   }
 
+  function showFullUserStoryForm() {
+    var x = document.getElementById("ViewUserStory");
+    x.className = "show login-box";
+    console.log("in");
+  }
+
+function hideFullUserStoryForm(){
+  var x = document.getElementById("ViewUserStory");
+  x.className = "hide";
+}
+
   function hideUserStoryForm(){
     var x = document.getElementById("createUserStory");
     x.className = "hide";
