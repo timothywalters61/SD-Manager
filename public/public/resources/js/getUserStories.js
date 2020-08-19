@@ -161,6 +161,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             btnDeleteUS.className = "userStoryBtn";
             btnDeleteUS.id = "btnDelete";
             btnDeleteUS.innerText = "Delete"
+            btnDeleteUS.style.float= "left";
 
 
             wholeDiv.appendChild(n);
