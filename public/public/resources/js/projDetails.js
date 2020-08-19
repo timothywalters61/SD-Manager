@@ -56,6 +56,8 @@ logout.addEventListener("click", (e) => {
             alert(error.message);
         });
 });
+
+let des , owner , team , github;
         
 db.collection("projects").doc(projectID)
     .onSnapshot(function (doc) {
@@ -88,7 +90,7 @@ db.collection("projects").doc(projectID)
             });            
             desc.append(desP);
             desc.append(descript);
-            desc.append(desEdit);
+            //desc.append(desEdit);
         
             // team
             teamP = document.createElement('p');
@@ -110,7 +112,7 @@ db.collection("projects").doc(projectID)
             teamEdit.addEventListener( "click" , function(){
                 console.log("remove member");
             }); 
-            teams.append(teamEdit);
+            //teams.append(teamEdit);
 
             // owner info
 
@@ -140,10 +142,82 @@ db.collection("projects").doc(projectID)
             });            
             gitLink.append(gitP);
             gitLink.append(gitL);
-            gitLink.append(gitEdit);
+            //gitLink.append(gitEdit);
         
 
         } else {
             console.log("project does not exist");
         }
     });
+
+
+
+    //delete
+let deleteProj = document.querySelector("#delete");
+deleteProj.addEventListener('click', function(){
+    let currentUser = auth.currentUser.email;
+    console.log(currentUser);
+    if (currentUser == owner){
+        console.log("delete");
+        db.collection("projects").doc(projectID).delete().then(function() {
+            console.log("Document successfully deleted!");
+            window.location.href = "userHome.html";
+
+
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+    }
+    else {
+        //toast("You are not the owner of this project");
+        console.log("you're not the owner");
+    }
+});
+
+let leaveProj = document.querySelector("#leave");
+leaveProj.addEventListener('click', function(){
+    let currentUser = auth.currentUser.email;
+    if(currentUser == owner){
+        db.collection("projects").doc(projectID).delete().then(function() {
+            console.log("Document successfully deleted!");
+            window.location.href = "userHome.html";
+
+
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+        });
+    }
+    else {
+        for(let i = 0; i < team.length; i++){
+            if(currentUser == team[i]){
+                team.splice(i,1);
+                break;
+            }
+        }
+    
+        db.collection("projects").doc(projectID).update({
+            Team: team
+          }).then(function() {
+            window.location.href = "userHome.html";
+          });
+
+    }
+    
+
+});
+/*
+setTimeout(function(){
+    // change description 
+    let changeDes = document.querySelector("#des").querySelector("#desBtn");
+    changeDes.addEventListener('click' , function(){
+    
+        db.collection("projects").doc(projectID).update({
+            description: "changed description"
+          }).then(function() {
+            window.location.href = "projectDetails.html";
+          });
+    
+    });
+
+}, 3000);
+*/
