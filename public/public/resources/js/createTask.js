@@ -1,3 +1,5 @@
+const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink } = require('../../../../testingCode/embeddedFunctions');
+
 const createTask = document.querySelector("#Task-form");
 
 createTask.addEventListener('submit', (e) => {

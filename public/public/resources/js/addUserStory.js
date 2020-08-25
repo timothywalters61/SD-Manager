@@ -1,3 +1,5 @@
+const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink } = require('../../../../testingCode/embeddedFunctions');
+
 const addStory = document.querySelector("#userStory-form");
 
 addStory.addEventListener('submit', (e) => {
@@ -10,27 +12,31 @@ addStory.addEventListener('submit', (e) => {
     const status = 1;//addStory['status'].value;
     console.log(status);
 
+    if (containsInput(title) == true && checkIsNotANumber(points) == false && containsInput(description) == true && containsInput(acceptance) == true) {
 
-    db.collection("projects").doc(projectID).collection("backlog").add({
-        name: title,
-        description: description,
-        acceptance: acceptance,
-        SprintID: currentSprintID,
-        points: points,
-        status:status
 
-    }).then((doc) => {
-        db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(doc.id)
-            .set({
-                name: title,
-                description: description,
-                acceptance: acceptance,
-                SprintID: currentSprintID,
-                points: points,
-                status:status
-            }).then(() => {
-                addStory.reset();
-                window.location.reload(true);
-            });
-    });
+
+        db.collection("projects").doc(projectID).collection("backlog").add({
+            name: title,
+            description: description,
+            acceptance: acceptance,
+            SprintID: currentSprintID,
+            points: points,
+            status: status
+
+        }).then((doc) => {
+            db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(doc.id)
+                .set({
+                    name: title,
+                    description: description,
+                    acceptance: acceptance,
+                    SprintID: currentSprintID,
+                    points: points,
+                    status: status
+                }).then(() => {
+                    addStory.reset();
+                    window.location.reload(true);
+                });
+        });
+    }
 });
