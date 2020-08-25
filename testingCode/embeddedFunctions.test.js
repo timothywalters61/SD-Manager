@@ -1,5 +1,5 @@
 //imports
-const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput } = require('./embeddedFunctions');
+const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink } = require('./embeddedFunctions');
 
 //tests initializations
 const puppeteer = require('puppeteer');
@@ -13,13 +13,13 @@ _ = require('lodash')
 //tests
 describe('embedded function tests - used for input validation before passed to firebase', () => {
 
-    it('check if 03/25/2015 is before current date - must return false', () => {
+    it('check if 03/25/2015 is before current date - must return true', () => {
         let date = new Date("03/25/2015");
         let value = checkDateBeforeCurrentDate(date);
         expect(value).to.equal(true);
     });
 
-    it('check if 03/25/2021 is before current date  - must return true', () => {
+    it('check if 03/25/2021 is before current date  - must return false', () => {
         //javascript format dd/mm/yy...
         let date = new Date("03/25/2021");
         let value = checkDateBeforeCurrentDate(date);
@@ -87,7 +87,40 @@ describe('embedded function tests - used for input validation before passed to f
         let value = containsInput('42');
         expect(value).to.equal(true);
     });
+    it('(hello guys) check if it is a valid repo link - must return false', () => {
+        let value = isValidRepoLink('hello guys');
+        expect(value).to.equal(false);
+    });
 
+    it('() check if it is a valid repo link - must return false', () => {
+        let value = isValidRepoLink('');
+        expect(value).to.equal(false);
+    });
+
+    it('(42) check it is a valid repo link - must return false', () => {
+        let value = isValidRepoLink('42');
+        expect(value).to.equal(false);
+    });
+
+    it('(www.github.com) check it is a valid repo link - must return false', () => {
+        let value = isValidRepoLink('www.github.com');
+        expect(value).to.equal(false);
+    });
+
+    it('(https://github.com/timothywalters61/SD-Manager/tree/JCR1999/public) check it is a valid repo link - must return true', () => {
+        let value = isValidRepoLink('https://github.com/timothywalters61/SD-Manager/tree/JCR1999/public');
+        expect(value).to.equal(true);
+    });
+
+    it('(wwww.github.com/timothywalters61/SD-Manager/tree/JCR1999/public) check it is a valid repo link - must return false', () => {
+        let value = isValidRepoLink('www.github.com/timothywalters61/SD-Manager/tree/JCR1999/public');
+        expect(value).to.equal(false);
+    });
+
+    it('(https://github/timothywalters61/) check it is a valid repo link - must return false', () => {
+        let value = isValidRepoLink('https://github/timothywalters61/');
+        expect(value).to.equal(false);
+    });
 });
 
 

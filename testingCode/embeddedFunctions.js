@@ -36,3 +36,13 @@ exports.containsInput = (input) => {
     }
     
 }
+
+exports.isValidRepoLink = (input) => {
+    if (input.includes('https://github.com/')) {
+        return true;
+    }
+    else{
+        return false;
+    }
+    
+}
