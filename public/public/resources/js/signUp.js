@@ -33,14 +33,24 @@ signupForm.addEventListener('submit', (e) => {
 
     const signUpEmail = signupForm['signup-email'].value;
     const signUpUsername = signupForm['signup-username'].value;
+    const signUpFirstName = signupForm['signup-firstname'].value;
+    const signUpLastName = signupForm['signup-lastname'].value;
     const signUpPassword = signupForm['signup-password'].value;
     const signUpConfirmpassword = signupForm['signup-confirmpassword'].value;
 
     if ((signUpPassword === signUpConfirmpassword) && (signUpPassword.length >= 6)) {
+
         auth.createUserWithEmailAndPassword(signUpEmail, signUpPassword).then(cred => {
             return cred.user.updateProfile({
                 displayName: signUpUsername
             });
+        }).then(() => {
+            return db.collection("users").doc(user.uid).set({
+                userEmail: signUpEmail,
+                userDisplayName: signUpUsername,
+                userFirstName: signUpFirstName,
+                userLastName: signUpLastName
+            })
         }).then(() => {
             signupForm.reset();
             window.location.href = "userHome.html";
