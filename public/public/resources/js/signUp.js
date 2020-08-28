@@ -13,6 +13,8 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 var user = auth.currentUser;
+const typingTimeInterval = 3000;
+var typingTimer;
 
 auth.onAuthStateChanged(user => {
     if (user) {
@@ -63,4 +65,14 @@ signupForm.addEventListener('submit', (e) => {
         console.log("passwords must match and be 6 or more characters long!!!");
         toast("passwords must match and be 6 or more characters long!!!");
     }
+});
+
+// username
+
+const usernameInput = document.querySelector("#signup-username");
+usernameInput.addEventListener('keyup', (e) => {
+    clearTimeout(typingTimeInterval);
+    typingTimer = setTimeout(() => {
+       // check if username exists 
+    }, typingTimeInterval);
 });
