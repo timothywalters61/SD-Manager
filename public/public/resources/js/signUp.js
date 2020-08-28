@@ -76,3 +76,7 @@ usernameInput.addEventListener('keyup', (e) => {
        // check if username exists 
     }, typingTimeInterval);
 });
+
+usernameInput.addEventListener('keydown', (e) => {
+    clearTimeout(typingTimer);
+});
