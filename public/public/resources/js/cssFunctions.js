@@ -12,6 +12,20 @@ function toast(data) {
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 
+  function toastError(data) {
+    // Get the snackbar DIV
+    var x = document.getElementById("toast-error");
+  
+    let html=`${data}`;
+    x.innerHTML = html;
+
+    // Add the "show" class to DIV
+    x.className = "show";
+  
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }
+
   function showCreateForm(){
     var x = document.getElementById("createProjectForm");
 
