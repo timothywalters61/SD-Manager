@@ -1,4 +1,4 @@
-/populate project dropdown
+//populate project dropdown
 
 const projectBox = document.querySelector("#projectContainer");
 
@@ -54,8 +54,10 @@ const saveDocID = (data, data1, data2) => {
                     localStorage.setItem("ownerID", data1);
                     localStorage.setItem("docName", data2);
                     if (data1 === user.uid) {
+                        localStorage.setItem("prevPage", "userHome.html");
                         window.location.href = "projectOwner.html";
                     } else {
+                        localStorage.setItem("prevPage", "userHome.html");
                         window.location.href = "projectDeveloper.html";
                     }
                     break;

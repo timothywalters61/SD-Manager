@@ -11,10 +11,12 @@
 
     <div class="container">
         <div class="navigation">
+          <div class="backBtn" onclick="back()"><img src="resources/images/back.png"></i></div>
+
             <div class="webPageTitle"><li><a href="index.html"><img src="resources/images/SD-Manager.png"></a></li></div>
             <ul>
-                <li><a href="login.html" id="loginBtn">Login</a></li>
-                <li><a href="signup.html" id="signUpBtn">Sign Up</a></li>
+                <li onclick="save(`signup.html`)"><a href="login.html" id="loginBtn">Login</a></li>
+                <li onclick="save(`signup.html`)"><a href="signup.html" id="signUpBtn">Sign Up</a></li>
             </ul>
         </div>
 
@@ -58,6 +60,7 @@
 
     <script type="text/javascript" src="resources/js/signUp.js"></script>
     <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
+    <script type="text/javascript" src="resources/js/backBtns.js"></script>
 
 
 </body>

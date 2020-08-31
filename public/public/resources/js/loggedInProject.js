@@ -1,3 +1,5 @@
+console.log("in " , location.href.split("/").slice(-1)[0]); 
+
 var firebaseConfig = {
     apiKey: "AIzaSyB1akwPd-xOMCgU9_Bc6OqdTObTp10Sb5k",
     authDomain: "scrum-manager-91e13.firebaseapp.com",

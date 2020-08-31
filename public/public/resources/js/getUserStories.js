@@ -127,6 +127,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             let btnTask = document.createElement('button'); // moves to task page
             btnTask.className = "userStoryBtn";
             btnTask.addEventListener( "click" , function(){
+                localStorage.setItem("prevPage", location.href.split("/").slice(-1)[0]);
                 saveUserStoryID(doc.id); // saves id of user story clicked
 
             });
@@ -235,6 +236,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             let deleteID = userIDs.get(usName).id;
             db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(deleteID).delete().then(function() {
                 console.log("Document successfully deleted!");
+                //localStorage.setItem("prevPage", location.href.split("/").slice(-1)[0]);
                 window.location.href = "dragDrop.html";
 
 

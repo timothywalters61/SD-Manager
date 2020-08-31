@@ -58,6 +58,18 @@ body {
     position: relative;
 }
 
+.backBtn{
+    float: left;
+    margin: 62px 0 62px 20px;
+    
+}
+
+.backBtn img{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
 .navigation ul {
     display: inline-flex;
     margin: 62px 10% 62px 80px;
@@ -99,7 +111,7 @@ body {
 
 .webPageTitle {
     list-style: none;
-    margin: 20px 20px 20px 5%;
+    margin: 20px 20px 20px 0;
     display: inline-flex;
     cursor: pointer;
 }
