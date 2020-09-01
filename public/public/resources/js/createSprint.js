@@ -1,5 +1,5 @@
 // start sprint for project
-
+console.log("hello world");
 
 const startSprint = document.querySelector("#sprint-form");
 startSprint.addEventListener('submit', (e) => {
@@ -10,12 +10,12 @@ startSprint.addEventListener('submit', (e) => {
     var today = new Date();
 
     
-var startd = new Date(startDate);
-let endd =  new Date(endDate);
+    var startd = new Date(startDate);
+    let endd =  new Date(endDate);
 
-console.log("swap",startd > endd);
-console.log("bad date", startd < today);
-let test = parseInt("2020");
+    console.log("swap",startd > endd);
+    console.log("bad date", startd < today);
+    let test = parseInt("2020");
 
     if (startd < today) {
         //toast("startdate already past");
@@ -24,9 +24,11 @@ let test = parseInt("2020");
         startdateSprint.addEventListener('submit', (e) => {
             e.preventDefault();
             //toast("chose to continue");
+            console.log("updated");
             db.collection("projects").doc(projectID).collection("sprints").add({
                 name: sprintName,
-                start: startDate,
+                starts: startDate,
+                pointTotal: 0,
                 end: endDate
             })
             .then((doc) => {
@@ -56,6 +58,7 @@ let test = parseInt("2020");
             db.collection("projects").doc(projectID).collection("sprints").add({
                 name: sprintName,
                 start: startDate,
+                pointTotal: 0,
                 end: endDate
             })
             .then((doc) => {
@@ -80,6 +83,7 @@ let test = parseInt("2020");
         db.collection("projects").doc(projectID).collection("sprints").add({
             name: sprintName,
             start: startDate,
+            pointTotal: 0,
             end: endDate
         })
         .then((doc) => {

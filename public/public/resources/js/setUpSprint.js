@@ -13,5 +13,6 @@ const setUpSprint = (data) => {
 
 function saveSprintID(sprintID){
     localStorage.setItem("currentSprintID", sprintID);
+    localStorage.setItem("prevPage", location.href.split("/").slice(-1)[0]);
     window.location.href = "dragDrop.html";
 }
