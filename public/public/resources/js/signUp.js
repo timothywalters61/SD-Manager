@@ -62,6 +62,7 @@ signupForm.addEventListener('submit', (e) => {
                     displayName: signUpUsername
                 });
             }).then(() => {
+                clearTimeout(typingTimer)
                 return db.collection("users").doc(user.uid).set({
                     userEmail: signUpEmail,
                     userDisplayName: signUpUsername,
