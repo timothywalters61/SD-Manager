@@ -48,17 +48,17 @@ logout.addEventListener("click", (e) => {
     e.preventDefault();
 
     auth.signOut().then(() => {
-        
-        window.location.href = "index.html";
-    })
+
+            window.location.href = "index.html";
+        })
         .catch(function (error) {
             console.log("user failed to sign out because of error: ", error);
             alert(error.message);
         });
 });
 
-let des , owner , team , github;
-        
+let des, owner, team, github;
+
 db.collection("projects").doc(projectID)
     .onSnapshot(function (doc) {
         if (doc.exists) {
@@ -85,33 +85,45 @@ db.collection("projects").doc(projectID)
             desEdit.className = "desEdit";
             desEdit.id = "desBtn";
             desEdit.innerText = "Edit";
-            desEdit.addEventListener( "click" , function(){
+            desEdit.addEventListener("click", function () {
                 console.log("edit description");
-            });            
+            });
             desc.append(desP);
             desc.append(descript);
             //desc.append(desEdit);
-        
+
             // team
             teamP = document.createElement('p');
             teamP.className = "tTitle";
             teamP.innerText = "Team Members: ";
             teams.append(teamP);
 
-            for(i = 0; i < team.length; i++){
-                teamMem = document.createElement('p');
-                teamMem.className = "teamMem";
-                teamMem.innerText = team[i];
-                teams.append(teamMem);
+            for (i = 0; i < team.length; i++) {
+                /**/
+                db.collection('users').where('userEmail', '==', team[i]).onSnapshot(query => {
+                    if (!query.empty) {
+                        const docs = query.docs;
+                        docs.forEach(doc => {
+                            const username = doc.data().userDisplayName;
+                            const email = doc.data().userEmail;
+                            teamMem = document.createElement('li');
+                            teamMem.className = "teamMem";
+                            teamMem.innerHTML = `<strong>${username}</strong> &lt${email}&gt`;
+                            teams.append(teamMem);
+                        });
+                    } else {
+                        console.log(team[i] + 'document does not exist');
+                    }
+                })
             }
 
             let teamEdit = document.createElement('button');
             teamEdit.className = "teamEdit";
             teamEdit.id = "teamBtn";
             teamEdit.innerText = "Remove Member";
-            teamEdit.addEventListener( "click" , function(){
+            teamEdit.addEventListener("click", function () {
                 console.log("remove member");
-            }); 
+            });
             //teams.append(teamEdit);
 
             // owner info
@@ -137,13 +149,13 @@ db.collection("projects").doc(projectID)
             gitEdit.className = "gitEdit";
             gitEdit.id = "gitBtn";
             gitEdit.innerText = "Edit";
-            gitEdit.addEventListener( "click" , function(){
+            gitEdit.addEventListener("click", function () {
                 console.log("edit github link");
-            });            
+            });
             gitLink.append(gitP);
             gitLink.append(gitL);
             //gitLink.append(gitEdit);
-        
+
 
         } else {
             console.log("project does not exist");
@@ -152,57 +164,55 @@ db.collection("projects").doc(projectID)
 
 
 
-    //delete
+//delete
 let deleteProj = document.querySelector("#delete");
-deleteProj.addEventListener('click', function(){
+deleteProj.addEventListener('click', function () {
     let currentUser = auth.currentUser.email;
     console.log(currentUser);
-    if (currentUser == owner){
+    if (currentUser == owner) {
         console.log("delete");
-        db.collection("projects").doc(projectID).delete().then(function() {
+        db.collection("projects").doc(projectID).delete().then(function () {
             console.log("Document successfully deleted!");
             window.location.href = "userHome.html";
 
 
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.error("Error removing document: ", error);
         });
-    }
-    else {
+    } else {
         //toast("You are not the owner of this project");
         console.log("you're not the owner");
     }
 });
 
 let leaveProj = document.querySelector("#leave");
-leaveProj.addEventListener('click', function(){
+leaveProj.addEventListener('click', function () {
     let currentUser = auth.currentUser.email;
-    if(currentUser == owner){
-        db.collection("projects").doc(projectID).delete().then(function() {
+    if (currentUser == owner) {
+        db.collection("projects").doc(projectID).delete().then(function () {
             console.log("Document successfully deleted!");
             window.location.href = "userHome.html";
 
 
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.error("Error removing document: ", error);
         });
-    }
-    else {
-        for(let i = 0; i < team.length; i++){
-            if(currentUser == team[i]){
-                team.splice(i,1);
+    } else {
+        for (let i = 0; i < team.length; i++) {
+            if (currentUser == team[i]) {
+                team.splice(i, 1);
                 break;
             }
         }
-    
+
         db.collection("projects").doc(projectID).update({
             Team: team
-          }).then(function() {
+        }).then(function () {
             window.location.href = "userHome.html";
-          });
+        });
 
     }
-    
+
 
 });
 /*
