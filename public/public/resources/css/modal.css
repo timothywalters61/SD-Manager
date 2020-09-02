@@ -105,7 +105,7 @@
 }
 
 #ViewUserStory.hide{
-    visibility: hidden;
+    display: hidden;
 }
 /*.close {*/
 /*    color: #095CF5;*/
