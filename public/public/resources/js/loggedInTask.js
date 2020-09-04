@@ -23,16 +23,15 @@ auth.onAuthStateChanged(user => {
         console.log("user logged in: ", user);
         //console.log(data);
 
-        //only team members can open this page
 
         db.collection("projects").doc(projectID)
-            .get()
-            .then((doc) => {
+            .onSnapshot(function (doc) {
                 if (doc.exists) {
+                    //only team members can open this page
                     const team = doc.data().Team;
                     if (team.includes(user.email)) {
                         console.log("in the team");
-                        
+
                         team.forEach(member => {
                             addMemberToSelect(member);
                         })
@@ -40,23 +39,13 @@ auth.onAuthStateChanged(user => {
                     } else {
                         window.location.href = "userHome.html";
                     }
-                } else {
-                    console.log("project does not exist");
-                }
-            });
 
-        //heading
+                    //heading
 
-        const projectTitle = document.querySelector("#PageHeading");
-        let heading = `<p>Project: ${projectName}</p>`;
-        projectTitle.innerHTML = heading;
+                    const projectTitle = document.querySelector("#PageHeading");
+                    let heading = `<p>Project: ${projectName}</p>`;
+                    projectTitle.innerHTML = heading;
 
-       
-
-        db.collection("projects").doc(projectID)
-            .onSnapshot(function (doc) {
-                if (doc.exists) {
-                    //setUpTeam(doc.data().Team);
 
                     //display user story heading
 
@@ -77,10 +66,14 @@ auth.onAuthStateChanged(user => {
 
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").get().then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
-                            if(doc.exists){
+                            if (doc.exists) {
                                 const name = doc.data().name;
+                                const assignedto = doc.data().assigned_to;
+
                                 console.log(name);
-                                tasksIDs.set(name, {id : doc.id}); // adds user story name and id to be used later
+                                tasksIDs.set(name, {
+                                    id: doc.id
+                                }); // adds user story name and id to be used later
 
 
                                 let wholeDiv;
@@ -88,45 +81,50 @@ auth.onAuthStateChanged(user => {
                                 wholeDiv = document.createElement('div');
                                 wholeDiv.draggable = true;
                                 wholeDiv.className = "stories";
-                                
+
                                 let n = document.createElement('p'); //name comp
                                 n.className = "userStoryName"
-                                n.innerText= name;
+                                n.innerText = name;
+
+                                let assignedtoElement = document.createElement('p'); // assigned to comp
+                                assignedtoElement.className = 'userStoryText';
+                                assignedtoElement.innerHTML = `<strong>Assigned To:</strong> ${assignedto}`;
 
                                 let btnDeleteUS = document.createElement('button'); // moves to task page
                                 btnDeleteUS.className = "userStoryBtn";
                                 btnDeleteUS.id = "btnDelete";
                                 btnDeleteUS.innerText = "Delete";
 
-                                wholeDiv.append(n);
-                                wholeDiv.append(btnDeleteUS);
+                                wholeDiv.appendChild(n);
+                                wholeDiv.appendChild(assignedtoElement);
+                                wholeDiv.appendChild(btnDeleteUS);
 
                                 taskList.appendChild(wholeDiv);
 
-                            }else{
+                            } else {
                                 console.log("none");
                             }
 
                         });
                         const stories = document.querySelectorAll('.stories');
                         console.log(tasksIDs);
-                        for(let a = 0; a < stories.length;a++) {
+                        for (let a = 0; a < stories.length; a++) {
                             const story = stories[a];
 
                             deleteButton = story.querySelector("#btnDelete");
-                            deleteButton.addEventListener('click' , function(){
+                            deleteButton.addEventListener('click', function () {
                                 let usName = story.querySelector(".userStoryName").innerText;
                                 let deleteID = tasksIDs.get(usName).id;
-                                db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(deleteID).delete().then(function() {
+                                db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(deleteID).delete().then(function () {
                                     console.log("Document successfully deleted!");
                                     window.location.href = "Task.html";
-                                }).catch(function(error) {
+                                }).catch(function (error) {
                                     console.error("Error removing document: ", error);
                                 });
                                 console.log(deleteID);
                             });
                         }
-                    
+
                     });
 
                     //git and links
@@ -170,8 +168,8 @@ logout.addEventListener("click", (e) => {
     e.preventDefault();
 
     auth.signOut().then(() => {
-        //console.log("user has signed out");
-    })
+            //console.log("user has signed out");
+        })
         .catch(function (error) {
             console.log("user failed to sign out because of error: ", error);
             alert(error.message);
