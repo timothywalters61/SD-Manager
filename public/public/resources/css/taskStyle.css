@@ -30,3 +30,29 @@
 #taskContainer div:hover{
     background: #68BCE5;
 }
+
+#taskContainer div.stories {
+    min-height: 100px;
+    position: relative;
+}
+
+#taskContainer div.stories p.userStoryName{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 20px;
+}
+
+#taskContainer div.stories p.userStoryText {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    margin: 20px;
+}
+
+#taskContainer div.stories button.userStoryBtn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 20px;
+}
