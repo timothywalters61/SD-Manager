@@ -29,8 +29,14 @@ auth.onAuthStateChanged(user => {
             .get()
             .then((doc) => {
                 if (doc.exists) {
-                    if (doc.data().Team.includes(user.email)) {
+                    const team = doc.data().Team;
+                    if (team.includes(user.email)) {
                         console.log("in the team");
+                        
+                        team.forEach(member => {
+                            addMemberToSelect(member);
+                        })
+
                     } else {
                         window.location.href = "userHome.html";
                     }
@@ -171,3 +177,15 @@ logout.addEventListener("click", (e) => {
             alert(error.message);
         });
 });
+
+const addMemberToSelect = email => {
+    const select = document.querySelector('#task-assign-to')
+    db.collection('users').where('userEmail', '==', email).onSnapshot(query => {
+        if (!query.empty) {
+            query.docs.forEach(doc => {
+                var username = doc.data().userDisplayName;
+                select.innerHTML += `<option value="${email}">${username}</option>`;
+            })
+        }
+    })
+}
