@@ -128,9 +128,10 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     it('(valid input) log in and create new project, sprint, user story and task, must return true', async () => {
         const browser = await puppeteer.launch({
-            headless: true, //must be set to true for circleci to work!
+            headless: false, //must be set to true for circleci to work!
             slowMo: 25,
-            args: ['--window-size=1440,900']
+            args: ["--no-sandbox"],
+            ignoreDefaultArgs: ['--disable-extensions']
         });
         const page = await browser.newPage();
         await page.goto(

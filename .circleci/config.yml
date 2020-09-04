@@ -7,7 +7,7 @@ jobs:
             - checkout
             - run:
                   name: installing npm things 
-                  command: npm install ; npm install puppeteer ; npm install --save-dev coveralls mocha-lcov-reporter
+                  command: npm install ; npm install puppeteer ; npm install puppeteer-core ; npm install --save-dev coveralls mocha-lcov-reporter
             - run:
                   name: installing puppeteer things
                   command: sudo apt-get update ; sudo apt-get install -y
