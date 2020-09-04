@@ -1,3 +1,5 @@
+//const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink } = require('../../../../testingCode/embeddedFunctions');
+
 const addForm = document.querySelector("#add-form");
 
 addForm.addEventListener('submit', (e) => {
@@ -7,39 +9,41 @@ addForm.addEventListener('submit', (e) => {
     var user = auth.currentUser;
 
 
-    db.collection("projects").doc(projectID)
-        .get()
-        .then((doc) => {
-            if (doc.exists) {
-                if (doc.data().Team.includes(dev)) {
-                    console.log("in the team");
-                    toast("developer is already in the team");
-                } else {
-                    db.collection("users").where("userEmail", "==", dev).get()
-                        .then((querySnapshot) => {
-                            if(querySnapshot.size === 0){
+        db.collection("projects").doc(projectID)
+            .get()
+            .then((doc) => {
+                if (doc.exists) {
+                    if (doc.data().Team.includes(dev)) {
+                        console.log("in the team");
+                        console.log(doc.data());
+                        toast("developer is already in the team");
+                    } else {
+                        db.collection("users").where("userEmail", "==", dev).get()
+                            .then((querySnapshot) => {
+                                if (querySnapshot.size === 0) {
                                     toast("user doesn't exist");
-                            }else {
-                                querySnapshot.forEach((doc) => {
-                                    if (doc.exists) {
-                                        db.collection("Invites").doc().set({
-                                            inviteFromID: user.uid,
-                                            inviteToID: doc.id,
-                                            inviteFromEmail: user.email,
-                                            projectID: projectID,
-                                            projectName: projectName
-                                        }).then(() => {
-                                            toast("invite sent");
-                                        });
-                                    }
-                                });
-                            }
-                        }).catch((error) => {
-                            alert("error getting documents, ", error);
-                        });
+                                } else {
+                                    querySnapshot.forEach((doc) => {
+                                        if (doc.exists) {
+                                            db.collection("Invites").doc().set({
+                                                inviteFromID: user.uid,
+                                                inviteToID: doc.id,
+                                                inviteFromEmail: user.email,
+                                                projectID: projectID,
+                                                projectName: projectName
+                                            }).then(() => {
+                                                toast("invite sent");
+                                            });
+                                        }
+                                    });
+                                }
+                            }).catch((error) => {
+                                alert("error getting documents, ", error);
+                            });
+                    }
+                } else {
+                    console.log("project does not exist");
                 }
-            } else {
-                console.log("project does not exist");
-            }
-        });
+            });
+    
 });

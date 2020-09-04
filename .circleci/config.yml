@@ -14,8 +14,8 @@ jobs:
             - run:
                   name: running tests
                   command: npm run test
-                  timeout: 100000
+                  timeout: 400000
             - run:
                   name: running coverage
                   command: npm run coveralls
-                  timeout: 100000
+                  timeout: 400000
