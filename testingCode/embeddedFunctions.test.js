@@ -148,7 +148,7 @@ describe('end to end tests - used to check business logic with javascript and fi
         
         //create project
         await page.click('#createProject');
-        await page.waitFor(2500);
+        await page.waitFor(3000);
 
         //enter project details
         await page.click('#create-form > div:nth-child(1) > #projectName');
@@ -160,7 +160,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
         //create sprint
         await page.click('#contentContainer > div.subNav > ul > #Btn');
-        await page.waitFor(2500);
+        await page.waitFor(3000);
 
         //enter sprint details
         await page.click('#sprint-form > div:nth-child(1) > #sprint-name');
@@ -176,7 +176,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
         //create user story
         await page.click('#contentContainer > div.subNav > ul > #Btn');
-        await page.waitFor(2500);
+        await page.waitFor(3000);
 
         //enter user story details
         await page.click('#userStory-form > div:nth-child(1) > #storyTitle');
@@ -196,7 +196,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
         //create task
         await page.click('#contentContainer > div.subNav > ul > #Btn');
-        await page.waitFor(2500);
+        await page.waitFor(3000);
 
         //enter task details
         await page.click('#Task-form > div > #TaskTitle');
