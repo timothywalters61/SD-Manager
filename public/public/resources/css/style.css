@@ -70,6 +70,10 @@ body {
     height: 20px;
 }
 
+.backBtn img:hover{
+    cursor: pointer;
+}
+
 .navigation ul {
     display: inline-flex;
     margin: 62px 10% 62px 80px;

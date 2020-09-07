@@ -1,12 +1,15 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="resources/css/userStoryStyle.css">
   <link rel="stylesheet" href="resources/css/style.css">
   <link rel="stylesheet" href="resources/css/toastStyle.css">
   <link rel="stylesheet" href="resources/css/formStyle.css">
   <link rel="stylesheet" href="resources/css/modal.css">
-  <link rel="stylesheet" href="resources/css/taskStyle.css">
+<!--  <link rel="stylesheet" href="resources/css/taskStyle.css">-->
+  <link rel="stylesheet" href="resources/css/dragDrop.css">
 </head>
 
 <body>
@@ -48,7 +51,23 @@
       <div id="tasks"><p>Tasks: </p></div>
       <br>
       <div id = "taskContainer">
-        <div class="task"><a href="#"></a><span>No Tasks yet</span></div>
+        <div class="Sys">
+          <div class = "cat-container">
+            <div class = "categories" id = "NotStarted">
+              <h2 id = "NS">Not Started</h2>
+              <div>
+                <div class="tasks" draggable="true">Task1</div>
+              </div>
+            </div>
+
+            <div class = "categories" id = "In Progress">
+              <h2 id = "IP">In Progress</h2>
+            </div>
+
+            <div class = "categories" id = "Completed">
+              <h2 id = "C">Completed</h2>
+            </div>
+          </div>
       </div>
 
     </div>
@@ -84,10 +103,12 @@
 
   <!-- <script src="/__/firebase/init.js"></script> -->
 
-  <script type="text/javascript" src="resources/js/loggedInTask.js"></script>
+<!--  <script type="text/javascript" src="resources/js/loggedInTask.js"></script>-->
   <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
   <script type="text/javascript" src="resources/js/createTask.js"></script>
   <script type="text/javascript" src="resources/js/backBtns.js"></script>
+  <script type="text/javascript" src="resources/js/getTasks.js"></script>
+<!--    <script type="text/javascript" src="resources/js/getUserStories.js"></script>-->
 
 
 

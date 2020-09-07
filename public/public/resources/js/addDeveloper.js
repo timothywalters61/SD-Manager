@@ -1,3 +1,5 @@
+//const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink } = require('../../../../testingCode/embeddedFunctions');
+
 const addForm = document.querySelector("#add-form");
 
 addForm.addEventListener('submit', (e) => {

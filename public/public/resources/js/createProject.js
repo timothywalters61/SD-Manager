@@ -1,4 +1,5 @@
 //save project to database
+//const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink } = require('../../../../testingCode/embeddedFunctions');
 
 const create = document.querySelector("#create-form");
 create.addEventListener('submit', (e) => {
@@ -28,7 +29,7 @@ create.addEventListener('submit', (e) => {
                 .then(() => {
                     console.log("project created");
                     create.reset();
-                    
+
                     localStorage.setItem("docID", docRef.id);
                     localStorage.setItem("ownerID", user.uid);
                     localStorage.setItem("docName", projectName);

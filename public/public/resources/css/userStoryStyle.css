@@ -54,6 +54,11 @@
     font-size: 25px;
 }
 
+.userStoryName:hover{
+    color:black;
+    cursor: pointer;
+}
+
 .description{
     color: #68BCE5;
     padding:15px 2px 2px 2px;
