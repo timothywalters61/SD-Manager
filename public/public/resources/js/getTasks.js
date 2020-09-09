@@ -11,14 +11,14 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // get required values from local storage
-const auth = firebase.auth();
-const db = firebase.firestore();
-const projectID = localStorage.getItem("docID");
-const ownerID = localStorage.getItem("ownerID");
-const currentSprintID = localStorage.getItem("currentSprintID");
-const projectName = localStorage.getItem("docName");
-const userStoryID = localStorage.getItem("userStoryID");
-console.log(userStoryID);
+// const auth = firebase.auth();
+// const db = firebase.firestore();
+// const projectID = localStorage.getItem("docID");
+// const ownerID = localStorage.getItem("ownerID");
+// const currentSprintID = localStorage.getItem("currentSprintID");
+// const projectName = localStorage.getItem("docName");
+// const userStoryID = localStorage.getItem("userStoryID");
+// console.log(userStoryID);
 
 const projectTitle = document.querySelector("#PageHeading");
 let heading = `<p>Project: ${projectName}</p>`;
