@@ -12,12 +12,14 @@ createTask.addEventListener('submit', (e) => {
 
     db.collection('projects').doc(projectID).collection("backlog").doc(userStoryID).collection("tasks").add({
         name: name,
-        assigned_to: assigned_to
+        assigned_to: assigned_to,
+        status: "1"
     })
     .then((doc) => {
         return db.collection('projects').doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(doc.id).set({
             name: name,
-            assigned_to: assigned_to
+            assigned_to: assigned_to,
+            status: "1"
         });
     }).then(() => {
         createTask.reset();
