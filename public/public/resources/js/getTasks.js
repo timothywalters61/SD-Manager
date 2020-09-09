@@ -108,6 +108,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
         btnDeleteUS.id = "btnDelete";
         btnDeleteUS.innerText = "Delete"
         btnDeleteUS.style.float= "right";
+        
 
         wholeDiv.appendChild(n);
         wholeDiv.appendChild(des);
@@ -146,6 +147,20 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
     for(let a = 0; a < tasks.length;a++) {
     const task = tasks[a];
+
+        let deleteT = task.querySelector("#btnDelete");
+        deleteT.addEventListener('click', function () {
+            let name = task.querySelector(".userStoryName").innerText;
+            let deleteID = taskIDs.get(name).id;
+            db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(deleteID).delete().then(function () {
+                console.log("Document successfully deleted!");
+                window.location.href = "Task.html";
+            }).catch(function (error) {
+                console.error("Error removing document: ", error);
+            });
+            console.log(deleteID);
+        });
+
 
         // when story is starting to drag
         task.addEventListener('dragstart', function() {
