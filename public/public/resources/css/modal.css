@@ -104,9 +104,10 @@
     visibility: visible;
 }
 
-#ViewUserStory.hide{
-    display: hidden;
+#userStory-form2 {
+    visibility: hidden;
 }
+
 /*.close {*/
 /*    color: #095CF5;*/
 /*    cursor: pointer;*/
