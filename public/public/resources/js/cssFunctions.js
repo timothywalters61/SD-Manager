@@ -85,6 +85,7 @@ function toast(data) {
   function showFullUserStoryForm() {
     var x = document.getElementById("ViewUserStory");
     x.className = "show login-box";
+    x.style.display = "block";
     let y = document.getElementById("userStory-form2");
     y.style.visibility = "visible";
     console.log("in");
@@ -93,6 +94,7 @@ function toast(data) {
 function hideFullUserStoryForm(){
   var x = document.getElementById("ViewUserStory");
   x.className = "hide";
+  x.style.display = "none";
   let y = document.getElementById("userStory-form2");
   y.style.visibility = "hidden";
 }
