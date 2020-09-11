@@ -2,7 +2,3 @@ body {
     background-image: url("../images/testWallpapera3.jpg");
     
 }
-
-body :hover{
-    cursor: pointer;
-}
