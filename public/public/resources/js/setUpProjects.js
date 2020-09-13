@@ -30,11 +30,11 @@ const saveDocID = (data, data1, data2) => {
     //you can learn more about the alert dialog here, https://sweetalert.js.org/
     swal({
             text: "What do you want to do with this project",
-            //icon: "info",
+            icon: "info",
             buttons: { //declaring the buttons in the alert dialog
                 cancel: true,
                 deleteProject: {
-                    text: "delete Project",
+                    text: "Delete Project",
                     value: "delete",
                     dangerMode: true
                 },
