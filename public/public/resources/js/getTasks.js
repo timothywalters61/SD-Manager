@@ -270,7 +270,7 @@ const addMemberToSelect = email => {
         if (!query.empty) {
             query.docs.forEach(doc => {
                 var username = doc.data().userDisplayName;
-                select.innerHTML += `<option value="${email}">${username}</option>`;
+                select.innerHTML += `<option value="${username}">${username}</option>`;
             })
         }
     })
