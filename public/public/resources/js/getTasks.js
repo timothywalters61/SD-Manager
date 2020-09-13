@@ -55,6 +55,21 @@ auth.onAuthStateChanged(user => {
                 inviteBadge.innerHTML = html2;
             }
         });
+
+        //update add task form to allow allocation to team members
+
+    db.collection("projects").doc(projectID).get().then(function (doc) {
+        let array = doc.data().Team;
+        const assignDropdown = document.getElementById("task-assign-to");
+        let assignOptions = '<option value="" selected disabled>Assign To:</option><option value="open">Open</option>';
+        for (var i = 0 ; i < array.length ; ++i) {
+            console.log(array[i]);
+            let html = `<option value="${array[i]}">${array[i]}</option>`;
+            assignOptions = assignOptions + html;
+        }
+        assignDropdown.innerHTML = assignOptions;
+    });
+
     //Drag & Drop Code
 
     const NS = document.getElementById("ns-tasks");
@@ -205,14 +220,14 @@ auth.onAuthStateChanged(user => {
                         db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(taskID).update({
                             status: "1"
                         }).then(function () {
-                            window.location.href = "Task.html";
+                            //window.location.href = "Task.html";
                         });
                     } else if (parentID == "InProgress") {
                         console.log(parentID, "2" , "   status change");
                         db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(taskID).update({
                             status: "2"
                         }).then(function () {
-                            window.location.href = "Task.html";
+                            //window.location.href = "Task.html";
                         });
 
                     } else if (parentID == "Completed") {
@@ -220,7 +235,7 @@ auth.onAuthStateChanged(user => {
                         db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(taskID).update({
                             status: "3"
                         }).then(function () {
-                            window.location.href = "Task.html";
+                            //window.location.href = "Task.html";
                         });
 
                     }
