@@ -195,17 +195,20 @@ auth.onAuthStateChanged(user => {
 
                     let name = dragTask.querySelector('.userStoryName').innerText;
                     let taskID = taskIDs.get(name).id;
-                    console.log(taskID);
+                    console.log(taskID , " task id");
 
+                    console.log(parentID , " parent id");
+
+                    console.log("should change status now");
                     if (parentID == "NotStarted") {
-                        console.log(parentID, "1");
+                        console.log(parentID, "1" , "   status change");
                         db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(taskID).update({
                             status: "1"
                         }).then(function () {
                             window.location.href = "Task.html";
                         });
-                    } else if (parentID == "In Progress") {
-                        console.log(parentID, "2");
+                    } else if (parentID == "InProgress") {
+                        console.log(parentID, "2" , "   status change");
                         db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(taskID).update({
                             status: "2"
                         }).then(function () {
@@ -213,7 +216,7 @@ auth.onAuthStateChanged(user => {
                         });
 
                     } else if (parentID == "Completed") {
-                        console.log(parentID, "3");
+                        console.log(parentID, "3" , "   status change");
                         db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(taskID).update({
                             status: "3"
                         }).then(function () {
