@@ -86,6 +86,7 @@
         <div class="user-box">
           <input type="text" id="TaskTitle" name="" required="">
           <label>Task</label>
+          
         </div>
         <div class="user-box">
           <select name="assign-to" id="task-assign-to" required>
@@ -95,6 +96,25 @@
         </div>
         <button id="createTask-button">
           Add To User Story
+        </button>
+      </form>
+    </div>
+
+    <div class="hide" id="editTask">
+      <h2>Edit Task</h2><a onclick="hideEditTaskForm()">close</a>
+      <form id="editTask-form">
+        <div class="user-box">
+          <input type="text" id="editTaskTitle" name="" required="">
+          <label>Task</label>
+        </div>
+        <div class="user-box">
+          <select name="assign-to" id="editTask-assign-to">
+            <option value="" selected disabled>Assign To:</option>
+            <option value="open">Open</option>
+          </select>
+        </div>
+        <button id="createTask-button">
+          Save
         </button>
       </form>
     </div>

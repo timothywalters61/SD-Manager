@@ -113,3 +113,13 @@ function hideFullUserStoryForm(){
     var x = document.getElementById("createTask");
     x.className = "show login-box";
   }
+
+  function hideEditTaskForm(){
+    var x = document.getElementById("editTask");
+    x.className = "hide";
+  }
+
+ function showEditTaskForm(){
+    var x = document.getElementById("editTask");
+    x.className = "show login-box";
+  }

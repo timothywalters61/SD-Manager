@@ -65,6 +65,13 @@ auth.onAuthStateChanged(user => {
             });
         });
 
+        db.collection("projects").doc(projectID).get().then(function (doc) {
+            let array = doc.data().Team;
+            array.forEach(email => {
+                addEditMemberToSelect(email);
+            });
+        });
+
         //Drag & Drop Code
 
         const NS = document.getElementById("ns-tasks");
@@ -107,10 +114,17 @@ auth.onAuthStateChanged(user => {
                 btnDeleteUS.innerText = "Delete"
                 btnDeleteUS.style.float = "right";
 
+                let btnEditUS = document.createElement('button'); // moves to task page
+                btnEditUS.className = "userStoryBtn";
+                btnEditUS.id = "btnEdit";
+                btnEditUS.innerText = "Edit"
+                btnEditUS.style.float = "left";
+
 
                 wholeDiv.appendChild(n);
                 wholeDiv.appendChild(des);
                 wholeDiv.appendChild(btnDeleteUS);
+                wholeDiv.appendChild(btnEditUS);
 
                 // attaches user story to the relevant column
                 // 1 : not started
@@ -151,6 +165,39 @@ auth.onAuthStateChanged(user => {
                         console.error("Error removing document: ", error);
                     });
                     console.log(deleteID);
+                });
+
+                let editTask = task.querySelector("#btnEdit");
+                editTask.addEventListener('click', function () {
+
+                    let name = task.querySelector(".userStoryName").innerText;
+                    let assignedMember = task.querySelector(".acceptance").innerText;
+                    console.log(assignedMember);
+
+                    var editTaskTitle = document.querySelector('#editTaskTitle');
+                    editTaskTitle.value = name;
+
+                    var editTaskAssignTo = document.querySelector('#editTask-assign-to');
+                    editTaskAssignTo.value = assignedMember;
+
+                    let editID = taskIDs.get(name).id;
+                    console.log(editID);
+                    showEditTaskForm();
+                    const editTask = document.querySelector("#editTask-form");
+                    editTask.addEventListener('submit', (e) => {
+                        e.preventDefault();
+
+                        const editedMember = editTask['editTask-assign-to'].value;
+                        const editedTaskName = editTask['editTaskTitle'].value;
+                        console.log(editedMember);
+                        db.collection('projects').doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(editID).update({
+                            name: editedTaskName,
+                            assigned_to: editedMember
+                        }).then(() => {
+                            editTask.reset();
+                            window.location.reload(true);
+                        });
+                    });
                 });
 
 
@@ -256,8 +303,8 @@ logout.addEventListener("click", (e) => {
 
     auth.signOut().then(() => {
 
-            window.location.href = "index.html";
-        })
+        window.location.href = "index.html";
+    })
         .catch(function (error) {
             console.log("user failed to sign out because of error: ", error);
             alert(error.message);
@@ -266,6 +313,18 @@ logout.addEventListener("click", (e) => {
 
 const addMemberToSelect = email => {
     const select = document.querySelector('#task-assign-to')
+    db.collection('users').where('userEmail', '==', email).onSnapshot(query => {
+        if (!query.empty) {
+            query.docs.forEach(doc => {
+                var username = doc.data().userDisplayName;
+                select.innerHTML += `<option value="${username}">${username}</option>`;
+            })
+        }
+    })
+}
+
+const addEditMemberToSelect = email => {
+    const select = document.querySelector('#editTask-assign-to')
     db.collection('users').where('userEmail', '==', email).onSnapshot(query => {
         if (!query.empty) {
             query.docs.forEach(doc => {
