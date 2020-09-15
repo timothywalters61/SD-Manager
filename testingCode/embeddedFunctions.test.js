@@ -132,18 +132,46 @@ describe('end to end tests - used to check business logic with javascript and fi
         });
         const page = await browser.newPage();
         await page.goto(
-            'http://127.0.0.1:5500/public/public/index.html'
+            'https://scrum-manager-91e13.web.app'
         );
-        // //log in process
-        // await page.click('#loginBtn');
-        // await page.click('#login-email');
-        // await page.type('#login-email', 'timothywalters@gmail.com');
-        // await page.click('#login-password');
-        // await page.type('#login-password', '12345678');
-        // await page.click('#login-button');
-        // //await page.waitForSelector('#projectContainer > div > span").innerText.includes("project")');
-        // await page.waitFor(5000);
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
 
+        //enter a project
+        await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+        await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+
+        //wait...
+        await page.waitFor(5000);
+
+        //enter a sprint
+        await page.waitForSelector('#sprintContainer > div > a');
+        await page.click('#sprintContainer > div > a');
+
+        //wait...
+        await page.waitFor(2500);
+
+        //enter a user story
+        await page.waitForSelector('#In\\ Progress > div > button:nth-child(5)');
+        await page.click('#In\\ Progress > div > button:nth-child(5)');
+
+        //wait...
+        await page.waitFor(2500);
+
+        //edit a task
+        const bodyHandle = await page.$('body');
+        const html = await page.evaluate(body => body.innerText, bodyHandle);
+        var tempHtml=html;
+        var temp=tempHtml.includes("timothywalters")
+        console.info(`${temp}`);
         await browser.close();
     }, 200000);
 });
@@ -169,7 +197,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 //         await page.click('#login-button');
 //         //await page.waitForSelector('#projectContainer > div > span").innerText.includes("project")');
 //         await page.waitFor(5000);
-        
+
 //         // //create project
 //         // await page.click('#createProject');
 //         // await page.waitFor(3000);
