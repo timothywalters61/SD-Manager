@@ -162,6 +162,11 @@ describe('embedded function tests - used for input validation before passed to f
         expect(value).to.equal(false);
     });
 
+    it('() check it is a valid username - must return false', () => {
+        let value = isValidUsername('');
+        expect(value).to.equal(false);
+    });
+
 });
 // describe('end to end tests - used to check business logic with javascript and firebase', () => {
 
