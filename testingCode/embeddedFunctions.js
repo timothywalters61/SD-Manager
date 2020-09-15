@@ -72,12 +72,13 @@ exports.isValidUsername = (input) => {
             if(letters.test(input.value) || characters.test(input.value) ){
                 return true
             }
+
         }
         else{
             return false;
         }
     }
-    else{
+    else if(input==''){
         return false;
     }
 }
