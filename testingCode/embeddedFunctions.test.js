@@ -1,5 +1,5 @@
 //imports
-const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink } = require('./embeddedFunctions');
+const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink, isValidNameOrSurname, isValidUsername } = require('./embeddedFunctions');
 
 //tests initializations
 const puppeteer = require('puppeteer');
@@ -121,60 +121,101 @@ describe('embedded function tests - used for input validation before passed to f
         let value = isValidRepoLink('https://github/timothywalters61/');
         expect(value).to.equal(false);
     });
+
+    it('(task1) check it is a valid task name - must return true', () => {
+        let value = containsInput('task1');
+        expect(value).to.equal(true);
+    });
+
+    it('() check it is a valid task name - must return false', () => {
+        let value = containsInput('');
+        expect(value).to.equal(false);
+    });
+
+    it('(James) check it is a valid first name - must return true', () => {
+        let value = isValidNameOrSurname('James');
+        expect(value).to.equal(true);
+    });
+
+    it('(Bond) check it is a valid last name - must return true', () => {
+        let value = isValidNameOrSurname('Bond');
+        expect(value).to.equal(true);
+    });
+
+    it('(jamesbond123) check it is a valid username - must return true', () => {
+        let value = isValidUsername('jamesbond');
+        expect(value).to.equal(true);
+    });
+
+    it('(2) check it is a valid first name - must return false', () => {
+        let value = isValidNameOrSurname('2');
+        expect(value).to.equal(false);
+    });
+
+    it('(12) check it is a valid last name - must return false', () => {
+        let value = isValidNameOrSurname('12');
+        expect(value).to.equal(false);
+    });
+
+    it('(1) check it is a valid username - must return false', () => {
+        let value = isValidUsername('1');
+        expect(value).to.equal(false);
+    });
+
 });
-describe('end to end tests - used to check business logic with javascript and firebase', () => {
+// describe('end to end tests - used to check business logic with javascript and firebase', () => {
 
-    it('rubbish', async () => {
-        const browser = await puppeteer.launch({
-            headless: true, //must be set to true for circleci to work!
-            slowMo: 25,
-            args: ['--window-size=1440,900']
-        });
-        const page = await browser.newPage();
-        await page.goto(
-            'https://scrum-manager-91e13.web.app'
-        );
-        //log in process
-        await page.click('#loginBtn');
-        await page.click('#login-email');
-        await page.type('#login-email', 'timothywalters@gmail.com');
-        await page.click('#login-password');
-        await page.type('#login-password', '12345678');
-        await page.click('#login-button');
-        //await page.waitFor(5000);
+    // it('rubbish', async () => {
+    //     const browser = await puppeteer.launch({
+    //         headless: true, //must be set to true for circleci to work!
+    //         slowMo: 25,
+    //         args: ['--window-size=1440,900']
+    //     });
+    //     const page = await browser.newPage();
+    //     await page.goto(
+    //         'https://scrum-manager-91e13.web.app'
+    //     );
+    //     //log in process
+    //     await page.click('#loginBtn');
+    //     await page.click('#login-email');
+    //     await page.type('#login-email', 'timothywalters@gmail.com');
+    //     await page.click('#login-password');
+    //     await page.type('#login-password', '12345678');
+    //     await page.click('#login-button');
+    //     //await page.waitFor(5000);
 
-        //enter a project
-        await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
-        await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
-        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
-        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+    //     //enter a project
+    //     await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+    //     await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+    //     await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+    //     await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
 
-        //wait...
-        await page.waitFor(5000);
+    //     //wait...
+    //     await page.waitFor(5000);
 
-        //enter a sprint
-        await page.waitForSelector('#sprintContainer > div > a');
-        await page.click('#sprintContainer > div > a');
+    //     //enter a sprint
+    //     await page.waitForSelector('#sprintContainer > div > a');
+    //     await page.click('#sprintContainer > div > a');
 
-        //wait...
-        await page.waitFor(2500);
+    //     //wait...
+    //     await page.waitFor(2500);
 
-        //enter a user story
-        await page.waitForSelector('#In\\ Progress > div > button:nth-child(5)');
-        await page.click('#In\\ Progress > div > button:nth-child(5)');
+    //     //enter a user story
+    //     await page.waitForSelector('#In\\ Progress > div > button:nth-child(5)');
+    //     await page.click('#In\\ Progress > div > button:nth-child(5)');
 
-        //wait...
-        await page.waitFor(2500);
+    //     //wait...
+    //     await page.waitFor(2500);
 
-        //edit a task
-        const bodyHandle = await page.$('body');
-        const html = await page.evaluate(body => body.innerText, bodyHandle);
-        var tempHtml=html;
-        var temp=tempHtml.includes("timothywalters")
-        console.info(`${temp}`);
-        await browser.close();
-    }, 200000);
-});
+    //     //edit a task
+    //     const bodyHandle = await page.$('body');
+    //     const html = await page.evaluate(body => body.innerText, bodyHandle);
+    //     var tempHtml=html;
+    //     var temp=tempHtml.includes("timothywalters")
+    //     console.info(`${temp}`);
+    //     await browser.close();
+    // }, 200000);
+// });
 
 // describe('end to end tests - used to check business logic with javascript and firebase', () => {
 

@@ -46,3 +46,38 @@ exports.isValidRepoLink = (input) => {
     }
     
 }
+
+exports.isValidNameOrSurname = (input) => {
+    var letters = /^[A-Za-z]+$/;
+    if(this.containsInput(input)==true){
+        if(this.checkIsNotANumber(input)){
+            if(letters.test(input.value)){
+                return true
+            }
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
+
+exports.isValidUsername = (input) => {
+    var letters = /^[A-Za-z]+$/;
+    var characters=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(this.containsInput(input)==true){
+        if(this.checkIsNotANumber(input)){
+            if(letters.test(input.value) || characters.test(input.value) ){
+                return true
+            }
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+}
