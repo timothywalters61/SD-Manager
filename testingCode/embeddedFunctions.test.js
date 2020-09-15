@@ -172,7 +172,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     it('sprint 7 end to end website functionality', async () => {
         const browser = await puppeteer.launch({
-            headless: false, //must be set to true for circleci to work!
+            headless: true, //must be set to true for circleci to work!
             slowMo: 25,
             args: ['--window-size=1440,900']
         });
@@ -263,6 +263,41 @@ describe('end to end tests - used to check business logic with javascript and fi
         // var tempHtml=html;
         // var temp=tempHtml.includes("timothywalters")
         // console.info(`${temp}`);
+        await browser.close();
+    }, 200000);
+
+    it('sprint 7 end to end website functionality - sign up conditions check', async () => {
+        const browser = await puppeteer.launch({
+            headless: true, //must be set to true for circleci to work!
+            slowMo: 25,
+            args: ['--window-size=1440,900']
+        });
+        const page = await browser.newPage();
+        await page.goto(
+            'https://scrum-manager-91e13.web.app'
+        );
+        //sign up process
+        await page.waitForSelector('#signUpBtn');
+        await page.click('#signUpBtn');
+
+        await page.waitForSelector('#signup-email');
+        await page.$eval('#signup-email', el => el.value = 'timothywalters@gmail.com');
+
+        await page.waitForSelector('#signup-username');
+        await page.$eval('#signup-username', el => el.value = 'timothywalters');
+
+        await page.waitForSelector('#signup-firstname');
+        await page.$eval('#signup-firstname', el => el.value = 'Timothy');
+
+        await page.waitForSelector('#signup-lastname');
+        await page.$eval('#signup-lastname', el => el.value = 'Walters');
+
+        await page.waitForSelector('#signup-password');
+        await page.$eval('#signup-password', el => el.value = '12345678');
+
+        await page.waitForSelector('#signup-confirmpassword');
+        await page.$eval('#signup-confirmpassword', el => el.value = '12345678');
+        
         await browser.close();
     }, 200000);
 });
