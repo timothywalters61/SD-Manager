@@ -212,19 +212,29 @@ describe('end to end tests - used to check business logic with javascript and fi
         //wait...
         await page.waitFor(2500);
 
+        //move task
+        const example = await page.$('#InProgress > div.tasks > p.userStoryName');
+        const bounding_box = await example.boundingBox();
+
+        await page.mouse.move(bounding_box.x + bounding_box.width / 2, bounding_box.y + bounding_box.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(126, 19);
+        await page.mouse.up();
+
         //update a task
         await page.waitForSelector('.cat-container > #InProgress > #ip-tasks #btnEdit');
         await page.click('.cat-container > #InProgress > #ip-tasks #btnEdit');
-  
+
         await page.waitForSelector('#editTaskTitle');
         await page.click('#editTaskTitle');
+        await page.evaluate( () => document.getElementById("#editTaskTitle").value = "")
         await page.type('#editTaskTitle', 'task-puppeteer');
 
         await page.waitForSelector('#editTask-assign-to');
         await page.click('#editTask-assign-to');
-  
+
         await page.select('#editTask-assign-to', 'timothywalters1');
-  
+
         await page.waitForSelector('body #editTask #createTask-button');
         await page.click('body #editTask #createTask-button');
 
@@ -238,6 +248,19 @@ describe('end to end tests - used to check business logic with javascript and fi
         //go to team
         await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(3) > a')
         await page.click('#contentContainer > .subNav > ul > li:nth-child(3) > a')
+
+        //add existing team member
+        await page.waitForSelector('.subNav #Btn')
+        await page.click('.subNav #Btn')
+
+        await page.waitForSelector('.user-box #add-email')
+        await page.click('.user-box #add-email')
+        await page.type('.user-box #add-email', 'help');
+
+        //close team member assignment
+        await page.waitForSelector('#modal > a')
+        await page.click('#modal > a')
+
         // const bodyHandle = await page.$('body');
         // const html = await page.evaluate(body => body.innerText, bodyHandle);
         // var tempHtml=html;
