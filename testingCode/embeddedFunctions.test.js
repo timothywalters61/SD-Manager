@@ -168,59 +168,84 @@ describe('embedded function tests - used for input validation before passed to f
     });
 
 });
-// describe('end to end tests - used to check business logic with javascript and firebase', () => {
+describe('end to end tests - used to check business logic with javascript and firebase', () => {
 
-    // it('rubbish', async () => {
-    //     const browser = await puppeteer.launch({
-    //         headless: true, //must be set to true for circleci to work!
-    //         slowMo: 25,
-    //         args: ['--window-size=1440,900']
-    //     });
-    //     const page = await browser.newPage();
-    //     await page.goto(
-    //         'https://scrum-manager-91e13.web.app'
-    //     );
-    //     //log in process
-    //     await page.click('#loginBtn');
-    //     await page.click('#login-email');
-    //     await page.type('#login-email', 'timothywalters@gmail.com');
-    //     await page.click('#login-password');
-    //     await page.type('#login-password', '12345678');
-    //     await page.click('#login-button');
-    //     //await page.waitFor(5000);
+    it('edit task functionality', async () => {
+        const browser = await puppeteer.launch({
+            headless: false, //must be set to true for circleci to work!
+            slowMo: 25,
+            args: ['--window-size=1440,900']
+        });
+        const page = await browser.newPage();
+        await page.goto(
+            'https://scrum-manager-91e13.web.app'
+        );
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
 
-    //     //enter a project
-    //     await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
-    //     await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
-    //     await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
-    //     await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+        //enter a project
+        await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+        await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
 
-    //     //wait...
-    //     await page.waitFor(5000);
+        //wait...
+        await page.waitFor(5000);
 
-    //     //enter a sprint
-    //     await page.waitForSelector('#sprintContainer > div > a');
-    //     await page.click('#sprintContainer > div > a');
+        //enter a sprint
+        await page.waitForSelector('#sprintContainer > div > a');
+        await page.click('#sprintContainer > div > a');
 
-    //     //wait...
-    //     await page.waitFor(2500);
+        //wait...
+        await page.waitFor(2500);
 
-    //     //enter a user story
-    //     await page.waitForSelector('#In\\ Progress > div > button:nth-child(5)');
-    //     await page.click('#In\\ Progress > div > button:nth-child(5)');
+        //enter a user story
+        await page.waitForSelector('#In\\ Progress > div > button:nth-child(5)');
+        await page.click('#In\\ Progress > div > button:nth-child(5)');
 
-    //     //wait...
-    //     await page.waitFor(2500);
+        //wait...
+        await page.waitFor(2500);
 
-    //     //edit a task
-    //     const bodyHandle = await page.$('body');
-    //     const html = await page.evaluate(body => body.innerText, bodyHandle);
-    //     var tempHtml=html;
-    //     var temp=tempHtml.includes("timothywalters")
-    //     console.info(`${temp}`);
-    //     await browser.close();
-    // }, 200000);
-// });
+        //update a task
+        await page.waitForSelector('.cat-container > #InProgress > #ip-tasks #btnEdit');
+        await page.click('.cat-container > #InProgress > #ip-tasks #btnEdit');
+  
+        await page.waitForSelector('#editTaskTitle');
+        await page.click('#editTaskTitle');
+        await page.type('#editTaskTitle', 'task-puppeteer');
+
+        await page.waitForSelector('#editTask-assign-to');
+        await page.click('#editTask-assign-to');
+  
+        await page.select('#editTask-assign-to', 'timothywalters1');
+  
+        await page.waitForSelector('body #editTask #createTask-button');
+        await page.click('body #editTask #createTask-button');
+
+        //wait...
+        await page.waitFor(2500);
+
+        //go back
+        await page.waitForSelector('body > .container > .navigation > .backBtn > img');
+        await page.click('body > .container > .navigation > .backBtn > img');
+
+        //go to team
+        await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(3) > a')
+        await page.click('#contentContainer > .subNav > ul > li:nth-child(3) > a')
+        // const bodyHandle = await page.$('body');
+        // const html = await page.evaluate(body => body.innerText, bodyHandle);
+        // var tempHtml=html;
+        // var temp=tempHtml.includes("timothywalters")
+        // console.info(`${temp}`);
+        await browser.close();
+    }, 200000);
+});
 
 // describe('end to end tests - used to check business logic with javascript and firebase', () => {
 
