@@ -172,7 +172,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     it('edit task functionality', async () => {
         const browser = await puppeteer.launch({
-            headless: false, //must be set to true for circleci to work!
+            headless: true, //must be set to true for circleci to work!
             slowMo: 25,
             args: ['--window-size=1440,900']
         });
