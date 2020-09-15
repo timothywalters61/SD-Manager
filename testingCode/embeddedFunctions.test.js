@@ -170,7 +170,7 @@ describe('embedded function tests - used for input validation before passed to f
 });
 describe('end to end tests - used to check business logic with javascript and firebase', () => {
 
-    it('edit task functionality', async () => {
+    it('sprint 7 end to end website functionality', async () => {
         const browser = await puppeteer.launch({
             headless: false, //must be set to true for circleci to work!
             slowMo: 25,
