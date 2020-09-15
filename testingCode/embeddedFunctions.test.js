@@ -214,9 +214,8 @@ describe('end to end tests - used to check business logic with javascript and fi
 
         //move task
         const example = await page.$('#InProgress > div.tasks > p.userStoryName');
-        const bounding_box = await example.boundingBox();
 
-        await page.mouse.move(bounding_box.x + bounding_box.width / 2, bounding_box.y + bounding_box.height / 2);
+        await page.mouse.move(126, 19);
         await page.mouse.down();
         await page.mouse.move(126, 19);
         await page.mouse.up();
