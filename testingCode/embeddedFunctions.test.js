@@ -166,6 +166,10 @@ describe('embedded function tests - used for input validation before passed to f
         let value = isValidUsername('');
         expect(value).to.equal(false);
     });
+    it('() check it is a valid username - must return false', () => {
+        let value = isValidNameOrSurname('');
+        expect(value).to.equal(false);
+    });
 
 });
 describe('end to end tests - used to check business logic with javascript and firebase', () => {
@@ -297,7 +301,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
         await page.waitForSelector('#signup-confirmpassword');
         await page.$eval('#signup-confirmpassword', el => el.value = '12345678');
-        
+
         await browser.close();
     }, 200000);
 });
