@@ -1,14 +1,22 @@
 const teamList = document.querySelector("#teamContainer");
 
-const setUpTeam = (data) => {
-    let html = '';
-    var i;
-    for(i = 0 ; i < data.length ; ++i){
-        console.log(data[i]);
-        const li = `
-        <div class="teamMember">${data[i]}</div>
-        `;
-        html = html + li;
+const setUpTeam = async (data) => {
+    
+    console.log('setting up team...');
+    for (let i = 0; i < data.length; i++) {
+        await db.collection('users').where('userEmail', '==', data[i]).onSnapshot((query) => {
+            //console.log(query);
+            if (!query.empty) {
+                const docs = query.docs;
+                docs.forEach(doc => {
+                    const username = doc.data().userDisplayName;
+                    const li = `
+                    <div class="teamMember"><strong>${username}</strong> &lt${data[i]}&gt</div>
+                    `;
+                    teamList.innerHTML += li;
+                });
+            }
+        });
     }
-    teamList.innerHTML = html;
-}
+    
+};

@@ -1,25 +1,32 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resources/css/userStoryStyle.css">
   <link rel="stylesheet" href="resources/css/style.css">
   <link rel="stylesheet" href="resources/css/toastStyle.css">
   <link rel="stylesheet" href="resources/css/formStyle.css">
   <link rel="stylesheet" href="resources/css/modal.css">
-  <link rel="stylesheet" href="resources/css/taskStyle.css">
+  <!--  <link rel="stylesheet" href="resources/css/taskStyle.css">-->
+  <link rel="stylesheet" href="resources/css/dragDrop.css">
 </head>
 
 <body>
 
   <div class="container">
     <div class="navigation">
+      <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
+
       <div class="webPageTitle">
         <li><a href="userHome.html"><img src="resources/images/SD-Manager.png"></a></li>
       </div>
       <ul>
-        <li><a href="Help.html">Help</a></li>
-        <li><a href="userHome.html">Projects</a></li>
-        <li><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
-        <li><a href="#" id="logout">Logout</a></li>
+        <li onclick="save(`Task.html`)"><a href="Help.html">Help</a></li>
+        <li onclick="save(`Task.html`)"><a href="userHome.html">Projects</a></li>
+        <li onclick="save(`Task.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a>
+        </li>
+        <li onclick="save(`Task.html`)"><a href="#" id="logout">Logout</a></li>
       </ul>
     </div>
 
@@ -31,6 +38,7 @@
 
       <div class="subNav">
         <ul>
+          <li><a href="projectDetails.html">Details</a></li>
           <li><a href="projectDeveloper.html">Sprints</a></li>
           <li><a href="team.html">Team</a></li>
           <li id="gitLink"><a>Git</a></li>
@@ -41,41 +49,91 @@
       <div id="subPageHeading">
         <p></p>
       </div>
-
-      <div id = "taskContainer">
-        <div class="task"><a href="#"></a><span>No Tasks yet</span></div>
+      <div id="tasks">
+        <p>Tasks: </p>
       </div>
+      <br>
+      <div id="taskContainer">
+        <div class="Sys">
+          <div class="cat-container">
+            <div class="categories" id="NotStarted">
+              <h2 id="NS">Not Started</h2>
+              <div id="ns-tasks">
+              </div>
+            </div>
+
+            <div class="categories" id="InProgress">
+              <h2 id="IP">In Progress</h2>
+              <div id=ip-tasks></div>
+            </div>
+
+            <div class="categories" id="Completed">
+              <h2 id="C">Completed</h2>
+              <div id="c-tasks"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="toast">Some text some message..</div>
 
     </div>
 
-    <div id="toast">Some text some message..</div>
+    <div class="hide" id="createTask">
+      <h2>Add a Task</h2><a onclick="hideTaskForm()">close</a>
+      <form id="Task-form">
+        <div class="user-box">
+          <input type="text" id="TaskTitle" name="" required="">
+          <label>Task</label>
+          
+        </div>
+        <div class="user-box">
+          <select name="assign-to" id="task-assign-to" required>
+            <option value="" selected disabled>Assign To:</option>
+            <option value="open">Open</option>
+          </select>
+        </div>
+        <button id="createTask-button">
+          Add To User Story
+        </button>
+      </form>
+    </div>
 
-  </div>
+    <div class="hide" id="editTask">
+      <h2>Edit Task</h2><a onclick="hideEditTaskForm()">close</a>
+      <form id="editTask-form">
+        <div class="user-box">
+          <input type="text" id="editTaskTitle" name="" required="">
+          <label>Task</label>
+        </div>
+        <div class="user-box">
+          <select name="assign-to" id="editTask-assign-to">
+            <option value="" selected disabled>Assign To:</option>
+            <option value="open">Open</option>
+          </select>
+        </div>
+        <button id="createTask-button">
+          Save
+        </button>
+      </form>
+    </div>
 
-  <div class="hide" id="createTask">
-    <h2>Add a Task</h2><a onclick="hideTaskForm()">close</a>
-    <form id="Task-form">
-      <div class="user-box">
-        <input type="text" id="TaskTitle" name="" required="">
-        <label>Task</label>
-      </div>
-      <button>
-        Add To User Story
-      </button>
-    </form>
-  </div>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+    <!-- <script src="/__/firebase/init.js"></script> -->
 
-  <!-- <script src="/__/firebase/init.js"></script> -->
+    <!-- <script type="text/javascript" src="resources/js/loggedInTask.js"></script> -->
+    <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
+    <script type="text/javascript" src="resources/js/createTask.js"></script>
+    <script type="text/javascript" src="resources/js/backBtns.js"></script>
+    <script type="text/javascript" src="resources/js/getTasks.js"></script>
+    <!--    <script type="text/javascript" src="resources/js/getUserStories.js"></script>-->
 
-  <script type="text/javascript" src="resources/js/loggedInTask.js"></script>
-  <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
-  <script type="text/javascript" src="resources/js/createTask.js"></script>
 
 
 

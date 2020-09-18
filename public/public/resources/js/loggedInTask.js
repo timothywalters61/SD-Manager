@@ -23,62 +23,108 @@ auth.onAuthStateChanged(user => {
         console.log("user logged in: ", user);
         //console.log(data);
 
-        //only team members can open this page
-
-        db.collection("projects").doc(projectID)
-            .get()
-            .then((doc) => {
-                if (doc.exists) {
-                    if (doc.data().Team.includes(user.email)) {
-                        console.log("in the team");
-                    } else {
-                        window.location.href = "userHome.html";
-                    }
-                } else {
-                    console.log("project does not exist");
-                }
-            });
-
-        //heading
-
-        const projectTitle = document.querySelector("#PageHeading");
-        let heading = `<p>${projectName}</p>`;
-        projectTitle.innerHTML = heading;
-
-       
 
         db.collection("projects").doc(projectID)
             .onSnapshot(function (doc) {
                 if (doc.exists) {
-                    //setUpTeam(doc.data().Team);
+                    //only team members can open this page
+                    const team = doc.data().Team;
+                    if (team.includes(user.email)) {
+                        console.log("in the team");
+
+                        team.forEach(member => {
+                            addMemberToSelect(member);
+                        })
+
+                    } else {
+                        window.location.href = "userHome.html";
+                    }
+
+                    //heading
+
+                    const projectTitle = document.querySelector("#PageHeading");
+                    let heading = `<p>Project: ${projectName}</p>`;
+                    projectTitle.innerHTML = heading;
+
 
                     //display user story heading
 
                     const userStoryTitle = document.querySelector('#subPageHeading');
 
                     db.collection("projects").doc(projectID).collection("backlog").doc(userStoryID).get().then((doc) => {
-                        let html = `<p>${doc.data().name}</p>`;
+                        let html = `<p>User Story: ${doc.data().name}</p>`;
                         userStoryTitle.innerHTML = html;
                     });
 
                     //display tasks
 
                     const taskList = document.querySelector("#taskContainer");
-                    let taskListHTML = '';
+                    taskList.innerHTML = '';
+
+                    let tasksIDs = new Map();
+
 
                     db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").get().then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
-                            const li = `     
-                                <div class="task"><a href="#"></a><span>${doc.data().name}</span></div>
-                            `;
-                            taskListHTML = taskListHTML + li;
+                            if (doc.exists) {
+                                const name = doc.data().name;
+                                const assignedto = doc.data().assigned_to;
+
+                                console.log(name);
+                                tasksIDs.set(name, {
+                                    id: doc.id
+                                }); // adds user story name and id to be used later
+
+
+                                let wholeDiv;
+
+                                wholeDiv = document.createElement('div');
+                                wholeDiv.draggable = true;
+                                wholeDiv.className = "stories";
+
+                                let n = document.createElement('p'); //name comp
+                                n.className = "userStoryName"
+                                n.innerText = name;
+
+                                let assignedtoElement = document.createElement('p'); // assigned to comp
+                                assignedtoElement.className = 'userStoryText';
+                                assignedtoElement.innerHTML = `<strong>Assigned To:</strong> ${assignedto}`;
+
+                                let btnDeleteUS = document.createElement('button'); // moves to task page
+                                btnDeleteUS.className = "userStoryBtn";
+                                btnDeleteUS.id = "btnDelete";
+                                btnDeleteUS.innerText = "Delete";
+
+                                wholeDiv.appendChild(n);
+                                wholeDiv.appendChild(assignedtoElement);
+                                wholeDiv.appendChild(btnDeleteUS);
+
+                                taskList.appendChild(wholeDiv);
+
+                            } else {
+                                console.log("none");
+                            }
+
                         });
-                        if (taskListHTML.length === 0) {
-                            console.log("no tasks");
-                        } else {
-                            console.log(taskListHTML);
-                            taskList.innerHTML = taskListHTML;
+                        const stories = document.querySelectorAll('.stories');
+                        console.log(tasksIDs);
+                        for (let a = 0; a < stories.length; a++) {
+                            const story = stories[a];
+
+                            deleteButton = story.querySelector("#btnDelete");
+                            deleteButton.addEventListener('click', function () {
+                                let usName = story.querySelector(".userStoryName").innerText;
+                                let deleteID = tasksIDs.get(usName).id;
+                                db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(userStoryID).collection("tasks").doc(deleteID).delete().then(function () {
+                                    console.log("Document successfully deleted!");
+                                    window.location.href = "Task.html";
+                                }).catch(function (error) {
+                                    console.error("Error removing document: ", error);
+                                });
+                                console.log(deleteID);
+                            });
                         }
+
                     });
 
                     //git and links
@@ -122,10 +168,22 @@ logout.addEventListener("click", (e) => {
     e.preventDefault();
 
     auth.signOut().then(() => {
-        //console.log("user has signed out");
-    })
+            //console.log("user has signed out");
+        })
         .catch(function (error) {
             console.log("user failed to sign out because of error: ", error);
             alert(error.message);
         });
 });
+
+const addMemberToSelect = email => {
+    const select = document.querySelector('#task-assign-to')
+    db.collection('users').where('userEmail', '==', email).onSnapshot(query => {
+        if (!query.empty) {
+            query.docs.forEach(doc => {
+                var username = doc.data().userDisplayName;
+                select.innerHTML += `<option value="${email}">${username}</option>`;
+            })
+        }
+    })
+}

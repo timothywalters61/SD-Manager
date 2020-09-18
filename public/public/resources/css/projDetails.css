@@ -1,0 +1,99 @@
+body{
+    background-image: url("../images/testWallpapera3.jpg");
+    background-repeat: repeat;
+}
+
+.Details {
+    font-size: small;
+}
+
+.comp {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+.Title {
+    float: left;
+    font-weight: 600;
+    margin-right: 30px;
+}
+
+.githubLink {
+    float: left;
+    /*margin-right: 150px;*/
+}
+
+.descript { 
+    float: left;
+    /*margin-right: 150px;*/
+}
+
+#gitBtn{
+    
+    margin-left: 530px;
+    outline: none;
+    border-radius: 20px;
+    color: white;
+    background: #095CF5;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    font-weight: 500;
+}
+
+#desBtn{
+    margin-left: 940px;
+    outline: none;
+    border-radius: 20px;
+    color: white;
+    background: #095CF5;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    font-weight: 500;
+}
+
+.tTitle {
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.teamMem {
+    margin: 30px;
+}
+
+#teamBtn{
+    /*float: left;*/
+    margin-left: 850px;
+    margin-bottom: 15px;
+    outline: none;
+    border-radius: 20px;
+    color: white;
+    background: #095CF5;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    font-weight: 500;
+}
+
+.btnDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.Btn {
+    margin: 10px;
+    outline: none;
+    border-radius: 20px;
+    color: white;
+    background: #095CF5;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    font-weight: 500;
+}
+
+#detailsTag {
+    color: #095CF5;
+}

@@ -13,16 +13,19 @@
     <title>Drag Drop</title></head>
 <body>
 
+
+
   <div class="container">
     <div class="navigation">
+      <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
       <div class="webPageTitle">
         <li><a href="userHome.html"><img src="resources/images/SD-Manager.png"></a></li>
       </div>
       <ul>
-        <li><a href="Help.html">Help</a></li>
-        <li><a href="userHome.html">Projects</a></li>
-        <li><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
-        <li><a href="#" id="logout">Logout</a></li>
+        <li onclick="save(`dragDrop.html`)"><a href="Help.html">Help</a></li>
+        <li onclick="save(`dragDrop.html`)"><a href="userHome.html" >Projects</a></li>
+        <li onclick="save(`dragDrop.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
+        <li onclick="save(`dragDrop.html`)"><a href="#" id="logout">Logout</a></li>
       </ul>
     </div>
 
@@ -34,6 +37,7 @@
 
       <div class="subNav">
         <ul>
+          <li><a href="projectDetails.html">Details</a></li>
           <li><a href="projectDeveloper.html">Sprints</a></li>
           <li><a href="team.html">Team</a></li>
           <li id="gitLink"><a>Git</a></li>
@@ -44,7 +48,8 @@
       <div id="subPageHeading">
         <p></p>
       </div>
-
+      <div id="userStories"><p>User Stories: </p></div>
+      <br>
       <div id = "userStoryContainer"> <!-- loggedInSprint 67-->
         <!--<div class="userStory">No User Stories Yet</div>-->
       
@@ -64,11 +69,9 @@
       </div>
       </div>
 
-    </div>
+      </div>
 
     <div id="toast">Some text some message..</div>
-
-    
 
   </div>
 
@@ -90,16 +93,51 @@
         <label>Acceptance Criteria</label>
       </div>
       <div class="user-box">
-        <input type="text" id="points" name="" required="">
+        <input type="number" id="points" name="" required="" min ="1" max="10">
         <label>Points</label>
       </div>
      <!-- <div class="user-box">
         <input type="text" id="status" name="" required="">
         <label>Status</label>
       </div>-->
-      <button>
+      <button id="createUserStory-button">
         Add
       </button>
+    </form>
+  </div>
+
+  <div class="hide" id="ViewUserStory">
+    <form id="userStory-form2">
+      <h2>User Story Details</h2>
+      <div class="user-box">
+        <h3>Title</h3>
+        <br>
+        <p id = "Title"></p>
+        <br>
+        <br>
+      </div>
+      <div class="user-box">
+        <h3>Description</h3>
+        <br>
+        <p id = "Description"></p>
+        <br>
+        <br>
+      </div>
+      <div class="user-box">
+        <h3>Acceptance Criteria</h3>
+        <br>
+        <p id = "Acc"></p>
+        <br>
+        <br>
+      </div>
+      <div class="user-box">
+        <h3>Points</h3>
+        <br>
+        <p id = "Point"></p>
+        <br>
+        <br>
+        <a class = "userStoryBtn" onclick="hideFullUserStoryForm()">close</a>
+      </div>
     </form>
   </div>
 
@@ -117,6 +155,8 @@
     <script type="text/javascript" src="resources/js/getUserStories.js"></script>
     <script type="text/javascript" src="resources/js/addUserStory.js"></script>
     <script type="text/javascript" src="resources/js/saveUserStoryID.js"></script>
+    <script type="text/javascript" src="resources/js/backBtns.js"></script>
+
 
 <!--    <script type="text/javascript" src="resources/js/dragDrop.js"></script>-->
 

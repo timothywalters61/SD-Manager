@@ -21,6 +21,15 @@
     /*border-left: solid black;*/
     /*width: 29.9%;*/
 }
+.tasks{
+    background: white;
+    padding: 0 20px 20px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 5px;
+    /*border-left: solid black;*/
+    /*width: 29.9%;*/
+}
 
 .userStory{
     background: white;
@@ -54,6 +63,11 @@
     font-size: 25px;
 }
 
+.userStoryName:hover{
+    color:black;
+    cursor: pointer;
+}
+
 .description{
     color: #68BCE5;
     padding:15px 2px 2px 2px;
@@ -62,7 +76,8 @@
 
 .acceptance{
     padding:4px;
-    color: black;
+    margin-bottom: 5px;
+    color: #68BCE5;
 }
 
 .points{

@@ -1,63 +1,75 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="stylesheet" href="resources/css/signUpStyle.css">
-    <link rel="stylesheet" href="resources/css/formStyle.css">
-    <link rel="stylesheet" href="resources/css/toastStyle.css">
+  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="resources/css/signUpStyle.css">
+  <link rel="stylesheet" href="resources/css/formStyle.css">
+  <link rel="stylesheet" href="resources/css/toastStyle.css">
 </head>
 
 <body>
 
     <div class="container">
         <div class="navigation">
+          <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
+
             <div class="webPageTitle"><li><a href="index.html"><img src="resources/images/SD-Manager.png"></a></li></div>
             <ul>
-                <li><a href="login.html" id="loginBtn">Login</a></li>
-                <li><a href="signup.html" id="signUpBtn">Sign Up</a></li>
+                <li onclick="save(`signup.html`)"><a href="login.html" id="loginBtn">Login</a></li>
+                <li onclick="save(`signup.html`)"><a href="signup.html" id="signUpBtn">Sign Up</a></li>
             </ul>
         </div>
 
-        <div class="login-box">
-            <h2>Sign Up</h2>
-            <form id="signup-form">
-                <div class="user-box">
-                    <input type="text" id="signup-email" name="" required="">
-                    <label>Email Address</label>
-                  </div>
-              <div class="user-box">
-                <input type="text" id="signup-username" name="" required="">
-                <label>Username</label>
-              </div>
-              <div class="user-box">
-                <input type="password" id="signup-password" name="" required="">
-                <label>Password</label>
-              </div>
-              <div class="user-box">
-                <input type="password" id="signup-confirmpassword" name="" required="">
-                <label>Confirm Password</label>
-              </div>
-              <button>
-                Sign Up
-              </button>
-            </form>
-          </div>
-
-          <div id="toast">Some text some message..</div>
-
+    <div class="login-box">
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <div class="user-box">
+          <input type="text" id="signup-email" name="" required="">
+          <label>Email Address</label>
+        </div>
+        <div class="user-box">
+          <input type="text" id="signup-username" name="" required="">
+          <label>Username</label>
+        </div>
+        <div class="user-box">
+          <input type="text" id="signup-firstname" name="" required="">
+          <label>First Name</label>
+        </div>
+        <div class="user-box">
+          <input type="text" id="signup-lastname" name="" required="">
+          <label>Last Name</label>
+        </div>
+        <div class="user-box">
+          <input type="password" id="signup-password" name="" required="">
+          <label>Password</label>
+        </div>
+        <div class="user-box">
+          <input type="password" id="signup-confirmpassword" name="" required="">
+          <label>Confirm Password</label>
+        </div>
+        <button id="signup-button">
+          Sign Up
+        </button>
+      </form>
     </div>
 
+    <div id="toast">Some text some message..</div>
+    <div id="toast-error">Some text message..</div>
 
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+  </div>
 
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
 
-    <!-- <script src="/__/firebase/init.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+
+  <!-- <script src="/__/firebase/init.js"></script> -->
 
     <script type="text/javascript" src="resources/js/signUp.js"></script>
     <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
+    <script type="text/javascript" src="resources/js/backBtns.js"></script>
 
 
 </body>

@@ -1,3 +1,5 @@
+console.log("in " , location.href.split("/").slice(-1)[0]); 
+
 var firebaseConfig = {
     apiKey: "AIzaSyB1akwPd-xOMCgU9_Bc6OqdTObTp10Sb5k",
     authDomain: "scrum-manager-91e13.firebaseapp.com",
@@ -30,8 +32,11 @@ auth.onAuthStateChanged(user => {
         //heading
 
         const projectTitle = document.querySelector("#PageHeading");
-        let heading = `<p>${projectName}</p>`;
+        let heading = `<p>Project: ${projectName}</p>`;
         projectTitle.innerHTML = heading;
+        /*projectTitle.addEventListener("click", function(){
+            window.location.href = "projectDetails.html";
+        });*/
 
 
         db.collection("projects").doc(projectID)
@@ -42,11 +47,12 @@ auth.onAuthStateChanged(user => {
                     //git and links
 
                     const gitLink = document.querySelector('#gitLink');
+                    let link = `${doc.data().repository}`;
+                    console.log(link);
+                    let git = `<a href="${link}">Git</a>`;
 
-                    console.log(doc.data().repository);
-                    let git = `<a href="${doc.data().repository}">Git</a>`;
-
-                    //TODO//gitLink.innerHTML = git;
+                    gitLink.innerHTML = git;
+                    console.log(gitLink.innerHTML);
 
                     // display current sprints
 

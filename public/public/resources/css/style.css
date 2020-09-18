@@ -37,13 +37,14 @@
         color: #095CF5;
     }
 }
+body {
+    background-image: url("../images/testWallpapera3.jpg");
+
+}
 
 .container {
     min-height: 100%;
     width: 100%;
-    background-image: url("../images/testWallpapera3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .HelpBody {
@@ -55,6 +56,22 @@
 .navigation {
     background: whitesmoke;
     position: relative;
+}
+
+.backBtn{
+    float: left;
+    margin: 62px 0 62px 20px;
+    
+}
+
+.backBtn img{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.backBtn img:hover{
+    cursor: pointer;
 }
 
 .navigation ul {
@@ -98,7 +115,7 @@
 
 .webPageTitle {
     list-style: none;
-    margin: 20px 20px 20px 5%;
+    margin: 20px 20px 20px 0;
     display: inline-flex;
     cursor: pointer;
 }
@@ -168,7 +185,7 @@
     background: #095CF5;
     color: white;
     height: 30px;
-    width: 200px;
+    width: 275px;
     margin: 0 100px 30px 50px;
     padding: 10px;
     display: flex;
@@ -181,6 +198,42 @@
     margin: 0;
     font-weight: 600;
     font-size: 20px;
+}
+
+#userStories {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #095CF5;
+    padding: 10px;
+    border: 2px solid #095CF5;
+    margin: 0 40%;
+    border-radius: 10px;
+}
+
+#userStories p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+#tasks {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #095CF5;
+    padding: 10px;
+    border: 2px solid #095CF5;
+    margin: 0 40%;
+    border-radius: 10px;
+}
+
+#tasks p {
+    margin: 0;
+    font-weight: 600;
+    font-size: 30px;
 }
 
 #contentContainer {

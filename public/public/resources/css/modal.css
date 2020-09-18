@@ -100,6 +100,27 @@
     cursor: pointer;
 }
 
+#ViewUserStory {
+    display: none;
+}
+
+#ViewUserStory.show {
+    visibility: visible;
+}
+
+#userStory-form2 {
+    visibility: hidden;
+}
+
+/*.close {*/
+/*    color: #095CF5;*/
+/*    cursor: pointer;*/
+/*    font-size: 14px;*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*    right:15px;*/
+/*}*/
+
 #createTask{
     visibility: hidden;
     position: absolute;
@@ -130,6 +151,113 @@
 }
 
 #createTask a:hover{
+    color: #095CF5;
+    cursor: pointer;
+}
+
+#sprintDate{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+#sprintDate.show {
+    visibility: visible;
+}
+
+#sprintDate.hide{
+    visibility: hidden;
+}
+
+#sprintDate a{
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right:15px;
+}
+
+#sprintDate a:hover{
+    color: #095CF5;
+    cursor: pointer;
+}
+
+#bad-date{
+    color: #095CF5;
+    font-size: 18px;
+}
+
+#sprintDate{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+#sprintDateSwap.show {
+    visibility: visible;
+}
+
+#sprintDateSwap.hide{
+    visibility: hidden;
+}
+
+#sprintDateSwap a{
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right:15px;
+}
+
+#sprintDateSwap a:hover{
+    color: #095CF5;
+    cursor: pointer;
+}
+
+#editTask{
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: whitesmoke;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+#editTask.show {
+    visibility: visible;
+}
+
+#editTask.hide{
+    visibility: hidden;
+}
+
+#editTask a{
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right:15px;
+}
+
+#editTask a:hover{
     color: #095CF5;
     cursor: pointer;
 }

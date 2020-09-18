@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -13,14 +12,17 @@
 
   <div class="container">
     <div class="navigation">
+      <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
+
       <div class="webPageTitle">
         <li><a href="userHome.html"><img src="resources/images/SD-Manager.png"></a></li>
       </div>
       <ul>
-        <li><a href="Help.html">Help</a></li>
-        <li><a href="userHome.html">Projects</a></li>
-        <li><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
-        <li><a href="#" id="logout">Logout</a></li>
+        <li onclick="save(`teamOwner.html`)"><a href="Help.html">Help</a></li>
+        <li onclick="save(`teamOwner.html`)"><a href="userHome.html">Projects</a></li>
+        <li onclick="save(`teamOwner.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span>
+            Invites</a></li>
+        <li onclick="save(`teamOwner.html`)"><a href="#" id="logout">Logout</a></li>
       </ul>
     </div>
 
@@ -32,6 +34,7 @@
 
       <div class="subNav">
         <ul>
+          <li><a href="projectDetails.html">Details</a></li>
           <li><a href="projectOwner.html" id="sprintTag">Sprints</a></li>
           <li><a href="#" id="teamTag">Team</a></li>
           <li id="gitLink"><a>Git</a></li>
@@ -40,8 +43,7 @@
       </div>
 
       <div id="teamContainer">
-        <div class="teamMember"></div>
-    </div>
+      </div>
 
     </div>
 
@@ -53,10 +55,10 @@
     <h2>Add Developer</h2><a onclick="hideAddForm()">close</a>
     <form id="add-form">
       <div class="user-box">
-        <input type="email" id="add-email" name="" required="">
-        <label>Add Developer by Email</label>
+        <input type="text" id="add-email" name="" required="">
+        <label>Add Developer by Username</label>
       </div>
-      <button>
+      <button id="addDev-button">
         Add
       </button>
     </form>
@@ -75,6 +77,8 @@
   <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
   <script type="text/javascript" src="resources/js/addDeveloper.js"></script>
   <script type="text/javascript" src="resources/js/setUpTeam.js"></script>
+  <script type="text/javascript" src="resources/js/backBtns.js"></script>
+
 
 
 </body>

@@ -11,12 +11,14 @@
 
     <div class="container">
         <div class="navigation">
+            <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
+
             <div class="webPageTitle"><li><a href="userHome.html"><img src="resources/images/SD-Manager.png"></a></li></div>
             <ul>
-                <li><a href="Help.html">Help</a></li>
-                <li><a href="userHome.html">Projects</a></li>
-                <li><a href="#" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
-                <li><a href="#" id="logout">Logout</a></li>
+                <li onclick="save(`invites.html`)"><a href="Help.html">Help</a></li>
+                <li onclick="save(`invites.html`)"><a href="userHome.html">Projects</a></li>
+                <li onclick="save(`invites.html`)"><a href="#" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
+                <li onclick="save(`invites.html`)"><a href="#" id="logout">Logout</a></li>
             </ul>
         </div>
 
@@ -40,6 +42,8 @@
     <script type="text/javascript" src="resources/js/loggedInInvites.js"></script>
     <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
     <script type="text/javascript" src="resources/js/setUpInvites.js"></script>
+    <script type="text/javascript" src="resources/js/backBtns.js"></script>
+
 
 
 </body>
