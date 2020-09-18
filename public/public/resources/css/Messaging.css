@@ -1,0 +1,55 @@
+#message-container {
+    width: 50%;
+
+}
+
+.message-sent{
+    font-family: Arial;
+    float:right;
+    width: 80%;
+    display: inline-block;
+    background-color: #095CF5;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.message-received{
+    font-family: Arial;
+    float:left;
+    width: 80%;
+    display: inline-block;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.input {
+    width: 100%;
+    display: inline-block;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.message-input {
+
+    background-color: white;
+    opacity: 50%;
+    width:40%;
+    border-radius: 10px;
+}
+
+
+#send{
+    font-family: Arial;
+    color: whitesmoke;
+    width: 5%;
+    border-radius: 10px;
+    border-color: #095CF5;
+    background-color:#095CF5;
+}

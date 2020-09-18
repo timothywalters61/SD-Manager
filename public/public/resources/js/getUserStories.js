@@ -64,8 +64,6 @@ const C = document.getElementById("Completed");
 let wholeDiv;
 let userIDs = new Map();
 
-let btnTask;
-
 db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         if (doc.exists) {
@@ -106,20 +104,20 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
             // TASK BUTTON
              //let btnTask = document.createElement('button');
-             btnTask = document.createElement('a');
-             btnTask.href = "Task.html"
+             let btnTask = document.createElement('a');
+             //btnTask.href = "Task.html"
              btnTask.className = "userStoryBtn";
 
-            btnTask.addEventListener('onclick',function(e) {
-                console.log("in");
-                localStorage.setItem("userStoryID", doc.id);
-                window.location.href = "Task.html";
-                console.log("This Code has Executed");
-            });
-
+            // btnTask.addEventListener('onclick',function(e) {
+            //     console.log("in");
+            //     localStorage.setItem("userStoryID", doc.id);
+            //     window.location.href = "Task.html";
+            //     console.log("This Code has Executed");
+            // });
+            const id = doc.id;
             //btnTask.className = "TaskBTT";
             console.log(`${doc.id}`); // displays userstory ID in console. We need to save the user story ID so that the relevant tasks can be accessed
-           // btnTask.onclick = `saveUserStoryID('${doc.id}')`; // function found in saveUserStory.js should save user story to localstorage and then go to task html
+            btnTask.onmousedown= saveUserStoryID(`$id`); // function found in saveUserStory.js should save user story to localstorage and then go to task html
             btnTask.innerText = "View Tasks";
 
 
