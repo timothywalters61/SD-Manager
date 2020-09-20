@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,146 +11,155 @@
     <link rel="stylesheet" href="resources/css/formStyle.css">
     <link rel="stylesheet" href="resources/css/toastStyle.css">
     <link rel="stylesheet" href="resources/css/TaskBttStyle.css">
-    <title>Drag Drop</title></head>
+    <title>Drag Drop</title>
+</head>
+
 <body>
 
 
 
-  <div class="container">
-    <div class="navigation">
-      <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
-      <div class="webPageTitle">
-        <li><a href="userHome.html"><img src="resources/images/SD-Manager.png"></a></li>
-      </div>
-      <ul>
-        <li onclick="save(`dragDrop.html`)"><a href="Help.html">Help</a></li>
-        <li onclick="save(`dragDrop.html`)"><a href="userHome.html" >Projects</a></li>
-        <li onclick="save(`dragDrop.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
-        <li onclick="save(`dragDrop.html`)"><a href="#" id="logout">Logout</a></li>
-      </ul>
+    <div class="container">
+        <div class="navigation">
+            <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i>
+            </div>
+            <div class="webPageTitle">
+                <li>
+                    <a href="userHome.html"><img src="resources/images/SD-Manager.png"></a>
+                </li>
+            </div>
+            <ul>
+                <li onclick="save(`dragDrop.html`)"><a href="Help.html">Help</a></li>
+                <li onclick="save(`dragDrop.html`)"><a href="Notifications.html" id="notifications">Notifications</a></li>
+                <li onclick="save(`dragDrop.html`)"><a href="userHome.html">Projects</a></li>
+                <li onclick="save(`dragDrop.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
+                <li onclick="save(`dragDrop.html`)"><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <div id="contentContainer">
+
+            <div id="PageHeading">
+                <p></p>
+            </div>
+
+            <div class="subNav">
+                <ul>
+                    <li><a href="projectDetails.html">Details</a></li>
+                    <li><a href="projectDeveloper.html">Sprints</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li id="gitLink"><a>Git</a></li>
+                    <button id="Btn" onclick="showUserStoryForm()">Add a User Story</button>
+                </ul>
+            </div>
+
+            <div id="subPageHeading">
+                <p></p>
+            </div>
+            <div id="userStories">
+                <p>User Stories: </p>
+            </div>
+            <br>
+            <div id="userStoryContainer">
+                <!-- loggedInSprint 67-->
+                <!--<div class="userStory">No User Stories Yet</div>-->
+
+                <div class="Sys">
+                    <div class="cat-container">
+                        <div class="categories" id="NotStarted">
+                            <h2 id="NS">Not Started</h2>
+                        </div>
+
+                        <div class="categories" id="In Progress">
+                            <h2 id="IP">In Progress</h2>
+                        </div>
+
+                        <div class="categories" id="Completed">
+                            <h2 id="C">Completed</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="toast">Some text some message..</div>
+
+        </div>
+
     </div>
 
-    <div id="contentContainer">
-
-      <div id="PageHeading">
-        <p></p>
-      </div>
-
-      <div class="subNav">
-        <ul>
-          <li><a href="projectDetails.html">Details</a></li>
-          <li><a href="projectDeveloper.html">Sprints</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li id="gitLink"><a>Git</a></li>
-          <button id="Btn" onclick="showUserStoryForm()">Add a User Story</button>
-        </ul>
-      </div>
-
-      <div id="subPageHeading">
-        <p></p>
-      </div>
-      <div id="userStories"><p>User Stories: </p></div>
-      <br>
-      <div id = "userStoryContainer"> <!-- loggedInSprint 67-->
-        <!--<div class="userStory">No User Stories Yet</div>-->
-      
-        <div class="Sys">
-        <div class = "cat-container">
-          <div class = "categories" id = "NotStarted">
-              <h2 id = "NS">Not Started</h2>
-          </div>
-    
-          <div class = "categories" id = "In Progress">
-              <h2 id = "IP">In Progress</h2>
-          </div>
-    
-          <div class = "categories" id = "Completed">
-            <h2 id = "C">Completed</h2>
-          </div>
-      </div>
-      </div>
-
-      </div>
-
-    <div id="toast">Some text some message..</div>
-
-  </div>
-
-  </div>
-
-  <div class="hide" id="createUserStory">
-    <h2>Add User Story</h2><a onclick="hideUserStoryForm()">close</a>
-    <form id="userStory-form">
-      <div class="user-box">
-        <input type="text" id="storyTitle" name="" required="">
-        <label>Title</label>
-      </div>
-      <div class="user-box">
-        <input type="text" id="storyDescription" name="" required="">
-        <label>Description</label>
-      </div>
-      <div class="user-box">
-        <input type="text" id="Acceptance" name="" required="">
-        <label>Acceptance Criteria</label>
-      </div>
-      <div class="user-box">
-        <input type="number" id="points" name="" required="" min ="1" max="10">
-        <label>Points</label>
-      </div>
-     <!-- <div class="user-box">
+    <div class="hide" id="createUserStory">
+        <h2>Add User Story</h2><a onclick="hideUserStoryForm()">close</a>
+        <form id="userStory-form">
+            <div class="user-box">
+                <input type="text" id="storyTitle" name="" required="">
+                <label>Title</label>
+            </div>
+            <div class="user-box">
+                <input type="text" id="storyDescription" name="" required="">
+                <label>Description</label>
+            </div>
+            <div class="user-box">
+                <input type="text" id="Acceptance" name="" required="">
+                <label>Acceptance Criteria</label>
+            </div>
+            <div class="user-box">
+                <input type="number" id="points" name="" required="" min="1" max="10">
+                <label>Points</label>
+            </div>
+            <!-- <div class="user-box">
         <input type="text" id="status" name="" required="">
         <label>Status</label>
       </div>-->
-      <button id="createUserStory-button">
+            <button id="createUserStory-button">
         Add
       </button>
-    </form>
-  </div>
+        </form>
+    </div>
 
-  <div class="hide" id="ViewUserStory">
-    <form id="userStory-form2">
-      <h2>User Story Details</h2>
-      <div class="user-box">
-        <h3>Title</h3>
-        <br>
-        <p id = "Title"></p>
-        <br>
-        <br>
-      </div>
-      <div class="user-box">
-        <h3>Description</h3>
-        <br>
-        <p id = "Description"></p>
-        <br>
-        <br>
-      </div>
-      <div class="user-box">
-        <h3>Acceptance Criteria</h3>
-        <br>
-        <p id = "Acc"></p>
-        <br>
-        <br>
-      </div>
-      <div class="user-box">
-        <h3>Points</h3>
-        <br>
-        <p id = "Point"></p>
-        <br>
-        <br>
-        <a class = "userStoryBtn" onclick="hideFullUserStoryForm()">close</a>
-      </div>
-    </form>
-  </div>
+    <div class="hide" id="ViewUserStory">
+        <form id="userStory-form2">
+            <h2>User Story Details</h2>
+            <div class="user-box">
+                <h3>Title</h3>
+                <br>
+                <p id="Title"></p>
+                <br>
+                <br>
+            </div>
+            <div class="user-box">
+                <h3>Description</h3>
+                <br>
+                <p id="Description"></p>
+                <br>
+                <br>
+            </div>
+            <div class="user-box">
+                <h3>Acceptance Criteria</h3>
+                <br>
+                <p id="Acc"></p>
+                <br>
+                <br>
+            </div>
+            <div class="user-box">
+                <h3>Points</h3>
+                <br>
+                <p id="Point"></p>
+                <br>
+                <br>
+                <a class="userStoryBtn" onclick="hideFullUserStoryForm()">close</a>
+            </div>
+        </form>
+    </div>
 
-    
-  
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
     <script type="text/javascript" src="resources/js/getUserStories.js"></script>
@@ -158,7 +168,8 @@
     <script type="text/javascript" src="resources/js/backBtns.js"></script>
 
 
-<!--    <script type="text/javascript" src="resources/js/dragDrop.js"></script>-->
+    <!--    <script type="text/javascript" src="resources/js/dragDrop.js"></script>-->
 
 </body>
+
 </html>
