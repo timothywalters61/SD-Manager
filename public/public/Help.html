@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Help</title>
@@ -8,129 +9,139 @@
     <link rel="stylesheet" href="resources/css/userHomeStyle.css">
     <link rel="stylesheet" href="resources/css/helpStyle.css">
 </head>
+
 <body>
 
     <div class="container">
         <div class="navigation">
-            <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
+            <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i>
+            </div>
 
-            <div class="webPageTitle"><li><a href="userHome.html"><img src="resources/images/SD-Manager.png"></a></li></div>
+            <div class="webPageTitle">
+                <li>
+                    <a href="userHome.html"><img src="resources/images/SD-Manager.png"></a>
+                </li>
+            </div>
             <ul>
                 <li onclick="save(`Help.html`)"><a href="Help.html">Help</a></li>
+                <li onclick="save(`Help.html`)"><a href="Notifications.html" id="notifications">Notifications</a></li>
                 <li onclick="save(`Help.html`)"><a href="userHome.html" id="homeTab">Projects</a></li>
                 <li onclick="save(`Help.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
                 <li onclick="save(`Help.html`)"><a href="#" id="logout">Logout</a></li>
             </ul>
         </div>
-    
 
 
-<h1 id = "header">Product Terms</h1>
-<br>
-<br>
-<div id = "definitions">
-        <!--            <li><a href="#">Back</a></li>-->
-        <div id = "projDef">
-            <h3  id ="ph">Projects </h3>
-             <div id = "writing">A collaborative collection of work to achieve a goal comprising of a project owner and project developer</div>
+
+        <h1 id="header">Product Terms</h1>
+        <br>
+        <br>
+        <div id="definitions">
+            <!--            <li><a href="#">Back</a></li>-->
+            <div id="projDef">
+                <h3 id="ph">Projects </h3>
+                <div id="writing">A collaborative collection of work to achieve a goal comprising of a project owner and project developer</div>
+            </div>
+
+            <div id="projDef">
+                <h3 id="sph">Sprints</h3>
+                <div id="writing">A short time period (usually 2-3 weeks) where a project development team completes a set amount of work</div>
+            </div>
+
+            <div id="projDef">
+                <h3 id="ush">User Story </h3>
+                <div id="writing">A natural description of features of the project being developed</div>
+            </div>
+
+            <div id="projDef">
+                <h3 id="th">Task </h3>
+                <div id="writing">A defined piece of work that is assigned to one or more people</div>
+            </div>
+        </div>
+        <br><br>
+        <h1 id="header">Home Page</h1>
+        <br>
+        <br>
+        <div id="HomeDiv">
+
+            <div id="projDef">
+                <h3 id="navH">The Navigation</h3>
+                <div id="writing">The Navigation Bar contains a projects, invitations and logout tabs. Hover over the invitations tab to see how many projects you're invited to collaborate on. To log out of the SD manager, simply click on the logout tab</div>
+            </div>
+
+            <div id="projDef">
+                <h3 id="prH">Project Display</h3>
+                <div id="writing">All the projects you have joined will be displayed in blocks on your home page, click on them to view details such as sprints, user stories and tasks. If you have not joined any projects, a message saying "No Projects Yet" will be displayed</div>
+            </div>
+
+            <div id="projDef">
+                <h3 id="navH">Create Project</h3>
+                <div id="writing">>To create a new project. click on the create project button and add developers of your choice by email. You will be required to name and give a short description of your project.</div>
+            </div>
+
         </div>
 
-        <div id = "projDef">
-             <h3 id ="sph">Sprints</h3>
-            <div id = "writing">A short time period (usually 2-3 weeks) where a project development team completes a set amount of work</div>
+        <br><br>
+        <h1 id="header">Project Owner/Developer Pages</h1>
+        <br>
+        <br>
+        <div id="projPages">
+
+            <div id="projDef">
+                <h3>Sprints</h3>
+                <div id="writing">The Navigation Bar contains a projects, invitations and logout tabs. Hover over the invitations tab to see how many projects you're invited to collaborate on. To log out of the SD manager, simply click on the logout tab</div>
+            </div>
+
+            <div id="projDef">
+                <h3 id=p rjH>Project Display</h3>
+                <div id="writing">All the sprints, sprint due and end dates, team members and gitlink pertaining to a certain project will be displayed. A button to create a new sprint will be displayed as well for project owners to further progress of the project group.</div>
+            </div>
+
         </div>
 
-        <div id = "projDef">
-            <h3  id ="ush">User Story </h3>
-            <div id = "writing">A natural description of features of the project being developed</div>
+        <br><br>
+        <h1 id="header">Sprint Section</h1>
+        <br><br>
+        <div id="Sprint">
+
+            <div id="projDef">
+                <h3>Sprint Display</h3>
+                <div id="writing">The Project Name, Sprint, team and gitlink displayed. Members of a team can create a new user story by clicking on the "create a new user story" button. User Stories will then display with their name, description , acceptance criteria,
+                    points and a "view tasks" at the bottom of the block. Click on "View tasks" button to see tasks for a specific user story.</div>
+            </div>
+
         </div>
 
-        <div id = "projDef">
-            <h3  id ="th">Task </h3>
-            <div id = "writing">A defined piece of work that is assigned to one or more people</div>
+        <br><br>
+        <h1 id="header">User Stories Section</h1>
+        <br><br>
+        <div id="UserStory">
+
+            <div id="projDef">
+                <h3 id="UTHead">User Story and Task Display</h3>
+                <div id="writing">The Project Name, Sprint, team and gitlink displayed along with a blue block containing the name of the user story accessed. Members of a team can create a new task by clicking on the "Add a task" button. The added tasks will then be displayed
+                    at the bottom at the bottom of the block.</div>
+            </div>
         </div>
-</div>
-<br><br>
-<h1 id = "header">Home Page</h1>
-<br>
-<br>
-<div id = "HomeDiv">
-
-    <div id = "projDef">
-        <h3 id = "navH">The Navigation</h3>
-        <div id = "writing">The Navigation Bar contains a projects, invitations and logout tabs. Hover over the invitations tab to see how many projects you're invited to collaborate on. To log out of the SD manager, simply click on the logout tab</div>
-    </div>
-
-    <div id = "projDef">
-        <h3 id = "prH">Project Display</h3>
-        <div id = "writing">All the projects you have joined will be displayed in blocks on your home page, click on them to view details such as sprints, user stories and tasks. If you have not joined any projects, a message saying "No Projects Yet" will be displayed</div>
-    </div>
-
-    <div id = "projDef">
-        <h3 id = "navH">Create Project</h3>
-        <div id = "writing">>To create a new project. click on the create project button and add developers of your choice by email. You will be required to name and give a short description of your project.</div>
-    </div>
-
-</div>
-
-<br><br>
-<h1 id = "header">Project Owner/Developer Pages</h1>
-<br>
-<br>
-<div id = "projPages">
-
-    <div id = "projDef">
-        <h3>Sprints</h3>
-        <div id = "writing">The Navigation Bar contains a projects, invitations and logout tabs. Hover over the invitations tab to see how many projects you're invited to collaborate on. To log out of the SD manager, simply click on the logout tab</div>
-    </div>
-
-    <div id = "projDef">
-        <h3 id = prjH>Project Display</h3>
-        <div id = "writing">All the sprints, sprint due and end dates, team members and gitlink pertaining to a certain project will be displayed. A button to create a new sprint will be displayed as well for project owners to further progress of the project group.</div>
-    </div>
-
-</div>
-
-<br><br>
-<h1 id = "header">Sprint Section</h1>
-<br><br>
-<div id = "Sprint">
-
-    <div id = "projDef">
-        <h3>Sprint Display</h3>
-        <div id = "writing">The Project Name, Sprint, team and gitlink displayed. Members of a team can create a new user story by clicking on the "create a new user story" button. User Stories will then display with their name, description , acceptance criteria, points and a "view tasks" at the bottom of the block. Click on "View tasks" button to see tasks for a specific user story.</div>
-    </div>
-
-</div>
-
-<br><br>
-<h1 id = "header">User Stories Section</h1>
-<br><br>
-<div id = "UserStory">
-
-    <div id = "projDef">
-    <h3 id = "UTHead">User Story and Task Display</h3>
-    <div id = "writing">The Project Name, Sprint, team and gitlink displayed along with a blue block containing the name of the user story accessed. Members of a team can create a new task by clicking on the "Add a task" button. The added tasks will then be displayed at the bottom at the bottom of the block.</div>
-    </div>
-</div>
-<br><br><br><br>
+        <br><br><br><br>
     </div>
 
 
-<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
 
-<!-- <script src="/__/firebase/init.js"></script> -->
+    <!-- <script src="/__/firebase/init.js"></script> -->
 
-<script type="text/javascript" src="resources/js/loggedInHelp.js"></script>
-<script type="text/javascript" src="resources/js/cssFunctions.js"></script>
-<script type="text/javascript" src="resources/js/setUpInvites.js"></script>
-<script type="text/javascript" src="resources/js/backBtns.js"></script>
+    <script type="text/javascript" src="resources/js/loggedInHelp.js"></script>
+    <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
+    <script type="text/javascript" src="resources/js/setUpInvites.js"></script>
+    <script type="text/javascript" src="resources/js/backBtns.js"></script>
 
 
 
 </body>
+
 </html>
