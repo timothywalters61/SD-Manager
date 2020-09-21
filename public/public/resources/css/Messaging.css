@@ -1,6 +1,8 @@
 #message-container {
+    height: calc(100% - 80px);
+    margin-bottom: 10px;
+    overflow-y: auto;
     width: 50%;
-
 }
 
 .message {
