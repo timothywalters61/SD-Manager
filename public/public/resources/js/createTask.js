@@ -24,6 +24,7 @@ createTask.addEventListener('submit', (e) => {
         });
     }).then(() => {
         createTask.reset();
+        addTaskNotif(name);
         window.location.reload(true);
     });
 });

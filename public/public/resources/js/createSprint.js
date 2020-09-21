@@ -38,6 +38,7 @@ startSprint.addEventListener('submit', (e) => {
                     })
                     .then(() => {
                         startSprint.reset();
+                        addSprintNotif(sprintName);
                         window.location.href = "dragDrop.html";
                     });
             })
@@ -68,8 +69,10 @@ startSprint.addEventListener('submit', (e) => {
                     })
                     .then(() => {
                         startSprint.reset();
+                        addSprintNotif(sprintName);
                         window.location.href = "dragDrop.html";
                     });
+
             })
             .catch((error) => {
                 alert("an error occured", error);
@@ -93,6 +96,7 @@ startSprint.addEventListener('submit', (e) => {
                 })
                 .then(() => {
                     startSprint.reset();
+                    addSprintNotif(sprintName);
                     window.location.href = "dragDrop.html";
                 });
         })
