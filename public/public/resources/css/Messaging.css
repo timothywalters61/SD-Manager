@@ -13,6 +13,8 @@
     margin-bottom: 5px;
     padding: 10px;
     width: 80%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .message.visible {
