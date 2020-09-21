@@ -1,8 +1,12 @@
+#group-chat {
+    width: 50%;
+    margin: auto;
+}
+
 #message-container {
     height: calc(100% - 80px);
     margin-bottom: 10px;
     overflow-y: auto;
-    width: 50%;
 }
 
 .message {
@@ -23,7 +27,7 @@
 
 .message-sent {
     float: right;
-    background-color: #095CF5;
+    background-color: #095cf5;
     color: white;
 }
 
@@ -41,19 +45,17 @@
 }
 
 .message-input {
-
     background-color: white;
     opacity: 50%;
     width: 40%;
     border-radius: 10px;
 }
 
-
 #send {
     font-family: Arial;
     color: whitesmoke;
-    width: 5%;
+    width: 10%;
     border-radius: 10px;
-    border-color: #095CF5;
-    background-color: #095CF5;
+    border-color: #095cf5;
+    background-color: #095cf5;
 }
