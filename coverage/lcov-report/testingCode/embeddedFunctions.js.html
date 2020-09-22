@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>39/39</span>
+        <span class='fraction'>49/49</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">84.62% </span>
+        <span class="strong">90.7% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>22/26</span>
+        <span class='fraction'>39/43</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>39/39</span>
+        <span class='fraction'>49/49</span>
       </div>
     </div>
   </div>
@@ -127,7 +127,28 @@
 82
 83
 84
-85</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -211,6 +232,27 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">exports.checkDateBeforeCurrentDate = (input) =&gt; {
     var currentD = new Date();
     if (input &lt; currentD) {
@@ -234,65 +276,86 @@ exports.isValidEmail = (input) =&gt; {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)) {
         return true;
     }
-    else{
+    else {
         return false;
     }
-    
+&nbsp;
 }
 &nbsp;
 exports.containsInput = (input) =&gt; {
-    if (input.length==0) {
+    if (input.length == 0) {
         return false;
     }
-    else{
+    else {
         return true;
     }
-    
+&nbsp;
 }
 &nbsp;
 exports.isValidRepoLink = (input) =&gt; {
     if (input.includes('https://github.com/')) {
         return true;
     }
-    else{
+    else {
         return false;
     }
-    
+&nbsp;
 }
 &nbsp;
 exports.isValidNameOrSurname = (input) =&gt; {
     var letters = /^[A-Za-z]+$/;
-    if(this.containsInput(input)==true){
-        if(this.checkIsNotANumber(input)){
-            <span class="missing-if-branch" title="else path not taken" >E</span>if(letters.test(input.value)){
+    if (this.containsInput(input) == true) {
+        if (this.checkIsNotANumber(input)) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (letters.test(input.value)) {
                 return true
             }
         }
-        else{
+        else {
             return false;
         }
     }
-    else{
+    else {
         return false;
     }
 }
 &nbsp;
 exports.isValidUsername = (input) =&gt; {
     var letters = /^[A-Za-z]+$/;
-    var characters=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(this.containsInput(input)==true){
-        if(this.checkIsNotANumber(input)){
-            <span class="missing-if-branch" title="else path not taken" >E</span>if(letters.test(input.value) || <span class="branch-1 cbranch-no" title="branch not covered" >characters.test(input.value) </span>){
+    var characters = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (this.containsInput(input) == true) {
+        if (this.checkIsNotANumber(input)) {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (letters.test(input.value) || <span class="branch-1 cbranch-no" title="branch not covered" >characters.test(input.value))</span> {
                 return true
             }
 &nbsp;
         }
-        else{
+        else {
             return false;
         }
     }
-    else <span class="missing-if-branch" title="else path not taken" >E</span>if(input==''){
+    else <span class="missing-if-branch" title="else path not taken" >E</span>if (input == '') {
         return false;
+    }
+}
+&nbsp;
+exports.isValidSprintPoints = (input) =&gt; {
+    if (input &gt; 0 &amp;&amp; input &lt;= 10) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+&nbsp;
+exports.isValidMessagingInput = (input) =&gt; {
+    if (input.includes("poes") || input.includes("naai") || input.includes("doos") || input.includes("fuck") || input.includes("pussy") || input.includes("bitch") || input.includes("shit")) {
+        return false;
+    }
+    else if(input==(" ") || input==("")){
+        return false;
+    }
+    else {
+        return true
     }
 }
 &nbsp;</pre></td></tr>
@@ -301,7 +364,7 @@ exports.isValidUsername = (input) =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Sep 15 2020 13:55:50 GMT+0200 (South Africa Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Sep 22 2020 15:23:25 GMT+0200 (South Africa Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

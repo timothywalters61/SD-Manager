@@ -93,7 +93,7 @@ exports.isValidSprintPoints = (input) => {
 }
 
 exports.isValidMessagingInput = (input) => {
-    if (input.includes("poes") || input.includes("naai") || input.includes("doos") || input.includes("fuck") || input.includes("pussy") || input.includes("bitch") || input.includes("shit")) {
+    if (input.includes(" poes") || input.includes(" naai") || input.includes(" doos") || input.includes(" fuck") || input.includes(" pussy") || input.includes(" bitch") || input.includes(" shit")) {
         return false;
     }
     else if(input==(" ") || input==("")){
