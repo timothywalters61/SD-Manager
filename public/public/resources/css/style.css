@@ -9,7 +9,6 @@
         color: white;
         background: #095CF5;
     }
-
     to {
         color: white;
         background: #68BCE5;
@@ -24,7 +23,6 @@
         overflow: hidden;
         margin: -4px;
     }
-
     to {
         background-color: #095CF5;
         color: white;
@@ -35,7 +33,6 @@
     from {
         color: black
     }
-
     to {
         color: #095CF5;
     }
@@ -43,7 +40,6 @@
 
 body {
     background-image: url("../images/testWallpapera3.jpg");
-
 }
 
 .container {
@@ -65,7 +61,6 @@ body {
 .backBtn {
     float: left;
     margin: 62px 0 62px 20px;
-
 }
 
 .backBtn img {
@@ -165,10 +160,6 @@ body {
 .modal {
     position: absolute;
     left: 50%;
-}
-
-.visible {
-    opacity: 1;
 }
 
 #PageHeading {
@@ -294,5 +285,26 @@ body {
     cursor: pointer;
     animation-name: createBtnAnimation;
     animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.deleteBtn {
+    margin: -10px;
+    outline: none;
+    border-radius: 20px;
+    color: white;
+    background: #095CF5;
+    padding: 10px 10px;
+    font-size: 15px;
+    border: none;
+    font-weight: 500;
+}
+
+.deleteBtn:hover {
+    cursor: pointer;
+    animation-name: createBtnAnimation;
+    animation-duration: 10s;
+    animation-fill-mode: both;
+}
     animation-fill-mode: both;
 }
