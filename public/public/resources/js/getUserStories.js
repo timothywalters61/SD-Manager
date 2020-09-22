@@ -108,16 +108,16 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
              //btnTask.href = "Task.html"
              btnTask.className = "userStoryBtn";
 
-            // btnTask.addEventListener('onclick',function(e) {
-            //     console.log("in");
-            //     localStorage.setItem("userStoryID", doc.id);
-            //     window.location.href = "Task.html";
-            //     console.log("This Code has Executed");
-            // });
-            const id = doc.id;
-            //btnTask.className = "TaskBTT";
-            console.log(`${doc.id}`); // displays userstory ID in console. We need to save the user story ID so that the relevant tasks can be accessed
-            btnTask.onmousedown= saveUserStoryID(`$id`); // function found in saveUserStory.js should save user story to localstorage and then go to task html
+            btnTask.addEventListener('click',function(e) {
+                console.log("in");
+                localStorage.setItem("userStoryID", doc.id);
+                window.location.href = "Task.html";
+                console.log("This Code has Executed");
+            });
+            // const id = doc.id;
+            // //btnTask.className = "TaskBTT";
+            // console.log(`${doc.id}`); // displays userstory ID in console. We need to save the user story ID so that the relevant tasks can be accessed
+            // btnTask.onmousedown= saveUserStoryID(`$id`); // function found in saveUserStory.js should save user story to localstorage and then go to task html
             btnTask.innerText = "View Tasks";
 
 
@@ -126,11 +126,25 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
             //<button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button>
             wholeDiv.appendChild(n);
-            wholeDiv.appendChild(des);
-            wholeDiv.appendChild(acc);
-            wholeDiv.appendChild(p);
+            // wholeDiv.appendChild(des);
+            // wholeDiv.appendChild(acc);
+            // wholeDiv.appendChild(p);
             wholeDiv.append(btnTask);
+            btnTask.style.float = "right";
+            btnTask.style.marginTop = "20px";
             // NS.appendChild(wholeDiv);
+
+            wholeDiv.addEventListener('click',function(e) {
+                let title = document.getElementById("Title");
+                let desc = document.getElementById("Description");
+                let Acc = document.getElementById("Acc");
+                let points = document.getElementById("Point");
+                title.innerText=n.innerText;
+                desc.innerText=des.innerText;
+                Acc.innerText=acc.innerText;
+                points.innerText=p.innerText;
+                showFullUserStoryForm();
+            });
 
             //If statements attach stories to the correct status columns
             if (status === 1) {

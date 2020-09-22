@@ -6,10 +6,15 @@
     width: 80%;
 }
 
+#group-chat {
+    margin: auto;
+    border-width: 20px;
+}
+
 #message-container {
     height: calc(100% - 80px);
-    margin-bottom: 10px;
     overflow-y: auto;
+    margin: auto;
 }
 
 .message {
@@ -36,7 +41,7 @@
 
 .message-received {
     float: left;
-    background-color: whitesmoke;
+    background-color: #dddddd;
     margin-left: 10px;
 }
 
@@ -49,16 +54,18 @@
 
 .message-input {
     background-color: white;
-    opacity: 50%;
-    width: 40%;
+    opacity: 80%;
+    width: 85%;
     border-radius: 10px;
 }
 
 #send {
     font-family: Arial;
     color: whitesmoke;
+    cursor: pointer;
     width: 10%;
     border-radius: 10px;
     border-color: #095cf5;
     background-color: #095cf5;
+    float: right;
 }
