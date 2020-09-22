@@ -82,3 +82,12 @@ exports.isValidUsername = (input) => {
         return false;
     }
 }
+
+exports.isValidSprintPoints = (input) => {
+    if(input>0 && input<=10){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
