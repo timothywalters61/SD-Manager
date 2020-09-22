@@ -1,5 +1,5 @@
 //imports
-const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink, isValidNameOrSurname, isValidUsername } = require('./embeddedFunctions');
+const { checkDateBeforeCurrentDate, checkIsNotANumber, isValidEmail, containsInput, isValidRepoLink, isValidNameOrSurname, isValidUsername, isValidSprintPoints } = require('./embeddedFunctions');
 
 //tests initializations
 const puppeteer = require('puppeteer');
@@ -170,6 +170,19 @@ describe('embedded function tests - used for input validation before passed to f
         let value = isValidNameOrSurname('');
         expect(value).to.equal(false);
     });
+    it('(1) check it is a valid sprint point allocation - must return true', () => {
+        let value = isValidSprintPoints(1);
+        expect(value).to.equal(true);
+    });
+
+    it('() check it is a valid sprint point allocation - must return false', () => {
+        let value = isValidSprintPoints();
+        expect(value).to.equal(false);
+    });
+    it('(12) check it is a valid sprint point allocation - must return false', () => {
+        let value = isValidSprintPoints(12);
+        expect(value).to.equal(false);
+    });
 
 });
 describe('end to end tests - used to check business logic with javascript and firebase', () => {
@@ -184,6 +197,7 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.goto(
             'https://scrum-manager-91e13.web.app'
         );
+        var temp=false;
         //log in process
         await page.click('#loginBtn');
         await page.click('#login-email');
@@ -268,6 +282,7 @@ describe('end to end tests - used to check business logic with javascript and fi
         // var temp=tempHtml.includes("timothywalters")
         // console.info(`${temp}`);
         await browser.close();
+
     }, 200000);
 
     it('sprint 7 end to end website functionality - sign up conditions check', async () => {
@@ -303,6 +318,52 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.$eval('#signup-confirmpassword', el => el.value = '12345678');
 
         await browser.close();
+    }, 200000);
+
+    it('sprint 7 end to end website functionality - sprint points', async () => {
+        const browser = await puppeteer.launch({
+            headless: true, //must be set to true for circleci to work!
+            slowMo: 25,
+            args: ['--window-size=1440,900']
+        });
+        const page = await browser.newPage();
+        await page.goto(
+            'https://scrum-manager-91e13.web.app'
+        );
+        var temp=false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
+
+        //enter a project
+        await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+        await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+
+        //wait...
+        await page.waitFor(5000);
+
+        //enter a create sprint with points
+        await page.waitForSelector('#sprintContainer > div > a');
+        await page.click('#sprintContainer > div > a');
+
+        //wait...
+        await page.waitFor(2500);
+
+        
+        // const bodyHandle = await page.$('body');
+        // const html = await page.evaluate(body => body.innerText, bodyHandle);
+        // var tempHtml=html;
+        // var temp=tempHtml.includes("timothywalters")
+        // console.info(`${temp}`);
+        await browser.close();
+
     }, 200000);
 });
 
