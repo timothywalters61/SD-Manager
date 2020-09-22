@@ -50,10 +50,8 @@
                                 >Sprints</a
                             >
                         </li>
-                        <li><a href="#">Team</a></li>
-                        <li>
-                            <a href="Messaging.html" id="gc">Group Chat</a>
-                        </li>
+                        <li><a href="team.html">Team</a></li>
+
                         <li id="gitLink"><a>Git</a></li>
                     </ul>
                 </div>
@@ -69,18 +67,20 @@
                         </div>
                     </div>
 
-                    <div class="input">
-                        <input
-                            type="text"
-                            class="message-input"
-                            placeholder="Type in your message"
-                            id="message"
-                        />
+                    <form id="message-form">
+                        <div class="input">
+                            <input
+                                type="text"
+                                class="message-input"
+                                placeholder="Type in your message"
+                                id="message"
+                            />
 
-                        <button id="send" type="submit" onclick="Send()">
-                            Send
-                        </button>
-                    </div>
+                            <button id="send" type="submit" onclick="Send()">
+                                Send
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
