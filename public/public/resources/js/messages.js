@@ -8,7 +8,7 @@ const invites = localStorage.getItem('invites');
 const projectID = localStorage.getItem('docID');
 const projectName = localStorage.getItem('docName');
 const ref = db.collection('projects').doc(projectID).collection('messages');
-var username = '';
+const username = localStorage.getItem('username');
 
 auth.onAuthStateChanged((user) => {
     if (user) {
@@ -49,16 +49,53 @@ auth.onAuthStateChanged((user) => {
                     window.location.href = 'userHome.html';
                 }
             });
-        db.collection('users')
-            .doc(user.uid)
-            .get()
-            .then((snapshot) => {
-                if (snapshot.exists) {
-                    var data = snapshot.data();
-                    username = data.displayName;
-                    loadMessages(data.displayName);
-                }
-            });
+        // db.collection('users')
+        //     .doc(user.uid)
+        //     .get()
+        //     .then((snapshot) => {
+        //         if (snapshot.exists) {
+        //             var data = snapshot.data();
+        //             // username = data.displayName;
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.error(err);
+        //     });
+        loadMessages(username);
+        // console.log(username);
+        // console.log(ref.SnapshotOptions);
+
+        // Message form handler
+        let messageForm = document.querySelector('#message-form');
+        const saveMessage = (e) => {
+            e.preventDefault();
+            // Get message text
+            console.log('Getting data');
+            let message = messageForm['message'].value;
+            console.log(message);
+            // console.log('Timestamp:');
+            // console.log(db.Timestamp);
+            let data = {
+                message: message,
+                sender: username,
+                time: new Date(),
+            };
+            // console.log(ref);
+            // console.log(data.time);
+            ref.add(data)
+                .then((doc) => {
+                    // alert user of success
+                    console.log('Sent');
+                    console.log(doc);
+                    toast('Message sent');
+                })
+                .catch((err) => {
+                    console.log('Error');
+                    console.log(err);
+                    toastError('Error sending message: ' + err.message);
+                });
+        };
+        messageForm.addEventListener('submit', saveMessage);
     } else {
         // User is not logged in
         console.log('user logged out');
@@ -85,6 +122,7 @@ const createMessageInnerHtml = (sender, text) => {
 const createMessageDiv = (id, sender, sent, text) => {
     var div = document.createElement('div');
     div.setAttribute('id', id);
+    div.classList.add('message');
     if (sent) {
         div.classList.add('message-sent');
     } else {
@@ -110,7 +148,7 @@ const displayMessage = (id, sender, sent, text) => {
     if (!div) {
         div = createMessageDiv(id, sender, sent, text);
     }
-
+    chat.appendChild(div);
     setTimeout(() => {
         div.classList.add('visible');
     }, 1);
@@ -130,10 +168,11 @@ const loadMessages = (username) => {
         if (!query.empty) {
             query.forEach((doc) => {
                 var sent = false;
+                let data = doc.data();
                 if (data.sender == username) {
                     sent = true;
                 }
-                displayMessage(id, data.sender, sent, data.message);
+                displayMessage(doc.id, data.sender, sent, data.message);
             });
         } else {
             document.querySelector('#placeholder').classList.add('visible');
@@ -143,4 +182,18 @@ const loadMessages = (username) => {
     ref.orderBy('time', 'asc').limitToLast(20).onSnapshot(setMessage);
 };
 
-const saveMessage = () => {};
+//logout
+
+const logout = document.querySelector('#logout');
+logout.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    auth.signOut()
+        .then(() => {
+            //console.log("user has signed out");
+        })
+        .catch(function (error) {
+            console.log('user failed to sign out because of error: ', error);
+            alert(error.message);
+        });
+});
