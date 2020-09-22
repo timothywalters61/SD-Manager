@@ -1,6 +1,9 @@
+#gc {
+    color: #095CF5;
+}
+
 #group-chat {
-    width: 50%;
-    margin: auto;
+    width: 80%;
 }
 
 #message-container {
