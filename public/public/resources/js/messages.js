@@ -10,6 +10,7 @@ const projectName = localStorage.getItem('docName');
 const ref = db.collection('projects').doc(projectID).collection('messages');
 var username = '';
 
+
 auth.onAuthStateChanged((user) => {
     if (user) {
         // User is logged in
