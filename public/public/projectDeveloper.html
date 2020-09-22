@@ -12,13 +12,17 @@
 
     <div class="container">
         <div class="navigation">
-            <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
+            <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i>
+            </div>
 
             <div class="webPageTitle">
-                <li><a href="userHome.html"><img src="resources/images/SD-Manager.png"></a></li>
+                <li>
+                    <a href="userHome.html"><img src="resources/images/SD-Manager.png"></a>
+                </li>
             </div>
             <ul>
                 <li onclick="save(`projectDeveloper.html`)"><a href="Help.html">Help</a></li>
+                <li onclick="save(`projectDeveloper.html`)"><a href="Notifications.html" id="notifications">Notifications</a></li>
                 <li onclick="save(`projectDeveloper.html`)"><a href="userHome.html">Projects</a></li>
                 <li onclick="save(`projectDeveloper.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
                 <li onclick="save(`projectDeveloper.html`)"><a href="#" id="logout">Logout</a></li>
@@ -42,7 +46,8 @@
             </div>
 
             <div id="sprintContainer">
-                <div class="sprint-box"><a href="#"></a><span>No Sprints Started Yet</span></div>
+                <div class="sprint-box">
+                    <a href="#"></a><span>No Sprints Started Yet</span></div>
             </div>
 
         </div>
@@ -62,6 +67,8 @@
 
     <script type="text/javascript" src="resources/js/loggedInProjectDev.js"></script>
     <script type="text/javascript" src="resources/js/setUpSprint.js"></script>
+    <script type="text/javascript" src="resources/js/notifications.js"></script>
+
     <script type="text/javascript" src="resources/js/backBtns.js"></script>
 
 

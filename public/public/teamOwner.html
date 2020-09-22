@@ -1,36 +1,40 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="resources/css/style.css">
-  <link rel="stylesheet" href="resources/css/formStyle.css">
-  <link rel="stylesheet" href="resources/css/toastStyle.css">
-  <link rel="stylesheet" href="resources/css/teamStyle.css">
-  <link rel="stylesheet" href="resources/css/modal.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/formStyle.css">
+    <link rel="stylesheet" href="resources/css/toastStyle.css">
+    <link rel="stylesheet" href="resources/css/teamStyle.css">
+    <link rel="stylesheet" href="resources/css/modal.css">
 </head>
 
 <body>
 
-  <div class="container">
-    <div class="navigation">
-      <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i></div>
+    <div class="container">
+        <div class="navigation">
+            <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i>
+            </div>
 
-      <div class="webPageTitle">
-        <li><a href="userHome.html"><img src="resources/images/SD-Manager.png"></a></li>
-      </div>
-      <ul>
-        <li onclick="save(`teamOwner.html`)"><a href="Help.html">Help</a></li>
-        <li onclick="save(`teamOwner.html`)"><a href="userHome.html">Projects</a></li>
-        <li onclick="save(`teamOwner.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span>
+            <div class="webPageTitle">
+                <li>
+                    <a href="userHome.html"><img src="resources/images/SD-Manager.png"></a>
+                </li>
+            </div>
+            <ul>
+                <li onclick="save(`teamOwner.html`)"><a href="Help.html">Help</a></li>
+                <li onclick="save(`teamOwner.html`)"><a href="Notifications.html" id="notifications">Notifications</a></li>
+                <li onclick="save(`teamOwner.html`)"><a href="userHome.html">Projects</a></li>
+                <li onclick="save(`teamOwner.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span>
             Invites</a></li>
-        <li onclick="save(`teamOwner.html`)"><a href="#" id="logout">Logout</a></li>
-      </ul>
-    </div>
+                <li onclick="save(`teamOwner.html`)"><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </div>
 
-    <div id="contentContainer">
+        <div id="contentContainer">
 
-      <div id="PageHeading">
-        <p></p>
-      </div>
+            <div id="PageHeading">
+                <p></p>
+            </div>
 
       <div class="subNav">
         <ul>
@@ -43,42 +47,42 @@
         </ul>
       </div>
 
-      <div id="teamContainer">
-      </div>
+            <div id="teamContainer">
+            </div>
+
+        </div>
+
+        <div id="toast">Some text some message..</div>
 
     </div>
 
-    <div id="toast">Some text some message..</div>
-
-  </div>
-
-  <div class="hide" id="modal">
-    <h2>Add Developer</h2><a onclick="hideAddForm()">close</a>
-    <form id="add-form">
-      <div class="user-box">
-        <input type="text" id="add-email" name="" required="">
-        <label>Add Developer by Username</label>
-      </div>
-      <button id="addDev-button">
+    <div class="hide" id="modal">
+        <h2>Add Developer</h2><a onclick="hideAddForm()">close</a>
+        <form id="add-form">
+            <div class="user-box">
+                <input type="text" id="add-email" name="" required="">
+                <label>Add Developer by Username</label>
+            </div>
+            <button id="addDev-button">
         Add
       </button>
-    </form>
-  </div>
+        </form>
+    </div>
 
 
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
 
-  <!-- <script src="/__/firebase/init.js"></script> -->
+    <!-- <script src="/__/firebase/init.js"></script> -->
 
-  <script type="text/javascript" src="resources/js/loggedInTeamOwner.js"></script>
-  <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
-  <script type="text/javascript" src="resources/js/addDeveloper.js"></script>
-  <script type="text/javascript" src="resources/js/setUpTeam.js"></script>
-  <script type="text/javascript" src="resources/js/backBtns.js"></script>
+    <script type="text/javascript" src="resources/js/loggedInTeamOwner.js"></script>
+    <script type="text/javascript" src="resources/js/cssFunctions.js"></script>
+    <script type="text/javascript" src="resources/js/addDeveloper.js"></script>
+    <script type="text/javascript" src="resources/js/setUpTeam.js"></script>
+    <script type="text/javascript" src="resources/js/backBtns.js"></script>
 
 
 
