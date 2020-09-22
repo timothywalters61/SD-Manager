@@ -88,6 +88,7 @@ auth.onAuthStateChanged((user) => {
                     console.log('Sent');
                     console.log(doc);
                     toast('Message sent');
+                    messageForm.reset();
                 })
                 .catch((err) => {
                     console.log('Error');
