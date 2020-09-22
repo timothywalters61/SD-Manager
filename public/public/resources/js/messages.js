@@ -145,3 +145,17 @@ const loadMessages = (username) => {
 };
 
 const saveMessage = () => {};
+
+function profanityEmpty(input) {
+
+    var message = input;
+    if (message.indexOf("poes") != -1|| message.indexOf("naai") != -1 || message.indexOf("doos") != -1 || message.indexOf("fuck") != -1 || message.indexOf("pussy") != -1 || message.indexOf("bitch") != -1 || message.indexOf("shit") != -1) {
+        return false;
+    }
+    else if(message===(" ") || message===("")){
+        return false;
+    }
+    else {
+        return true
+    }
+}
