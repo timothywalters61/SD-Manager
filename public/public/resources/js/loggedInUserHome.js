@@ -18,6 +18,8 @@ auth.onAuthStateChanged((user) => {
         console.log('user logged in: ', user);
         //create user doc in database
 
+        localStorage.setItem('username', user.displayName);
+
         db.collection('users')
             .doc(user.uid)
             .get()
