@@ -20,20 +20,30 @@ html>
                 </li>
             </div>
             <ul>
-                <li onclick="save(`invites.html`)"><a href="Help.html">Help</a></li>
-                <li onclick="save(`invites.html`)"><a href="Notifications.html" id="notifications">Notifications</a></li>
-                <li onclick="save(`invites.html`)"><a href="userHome.html">Projects</a></li>
-                <li onclick="save(`invites.html`)"><a href="#" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
-                <li onclick="save(`invites.html`)"><a href="#" id="logout">Logout</a></li>
+                <li onclick=""><a href="Help.html">Help</a></li>
+                <li onclick=""><a href="Notifications.html" id="notifications">Notifications</a></li>
+                <li onclick=""><a href="userHome.html">Projects</a></li>
+                <li onclick=""><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
+                <li onclick=""><a href="#" id="logout">Logout</a></li>
             </ul>
         </div>
 
         <div id="Notifications">
-            <div class="notification">Assigned to task 2 of Sprint 3 in Project 3</div>
+            <div id="PageHeading">
+                <p>Notifications</p>
+            </div>
         </div>
 
     </div>
 
+
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
+
+    <script type="text/javascript" src="resources/js/getNotifs.js"></script>
 
 
 
