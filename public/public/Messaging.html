@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="resources/css/Messaging.css" />
         <link rel="stylesheet" href="resources/css/style.css" />
         <link rel="stylesheet" href="resources/css/modal.css" />
+        <link rel="stylesheet" href="resources/css/toastStyle.css" />
     </head>
     <body>
         <div class="container">
@@ -51,7 +52,7 @@
                             >
                         </li>
                         <li><a href="team.html">Team</a></li>
-
+                        <li><a href="Messaging.html">Group Chat</a></li>
                         <li id="gitLink"><a>Git</a></li>
                     </ul>
                 </div>
@@ -68,18 +69,14 @@
                     </div>
 
                     <form id="message-form">
-                        <div class="input">
-                            <input
-                                type="text"
-                                class="message-input"
-                                placeholder="Type in your message"
-                                id="message"
-                            />
-
-                            <button id="send" type="submit" onclick="Send()">
-                                Send
-                            </button>
-                        </div>
+                        <input
+                            type="text"
+                            class="message-input"
+                            placeholder="Type in your message"
+                            id="message"
+                            name="message"
+                        />
+                        <button id="send" type="submit">Send</button>
                     </form>
                 </div>
             </div>
@@ -95,10 +92,10 @@
         <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-functions.js"></script>
 
         <script type="text/javascript" src="resources/js/firebase.js"></script>
-        <script type="text/javascript" src="resources/js/messages.js"></script>
         <script
             type="text/javascript"
             src="resources/js/cssFunctions.js"
         ></script>
+        <script type="text/javascript" src="resources/js/messages.js"></script>
     </body>
 </html>
