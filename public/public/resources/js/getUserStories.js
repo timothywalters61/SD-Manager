@@ -120,7 +120,10 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             // btnTask.onmousedown= saveUserStoryID(`$id`); // function found in saveUserStory.js should save user story to localstorage and then go to task html
             btnTask.innerText = "View Tasks";
 
-
+            let btnDeleteUS = document.createElement('button'); // moves to task page
+            btnDeleteUS.className = "userStoryBtn";
+            btnDeleteUS.id = "btnDelete";
+            btnDeleteUS.innerText = "Delete"
 
             // for some reason its not going to this function
 
@@ -130,8 +133,11 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             // wholeDiv.appendChild(acc);
             // wholeDiv.appendChild(p);
             wholeDiv.append(btnTask);
+            wholeDiv.append(btnDeleteUS);
             btnTask.style.float = "right";
             btnTask.style.marginTop = "20px";
+            btnDeleteUS.style.float = "left";
+            btnDeleteUS.style.marginTop = "20px";
             // NS.appendChild(wholeDiv);
 
             wholeDiv.addEventListener('click',function(e) {
@@ -198,6 +204,25 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
         const story = stories[a];
         console.log(a);
         //console.log(story.parentElement.id);
+
+        deleteButton = story.querySelector("#btnDelete");
+        deleteButton.addEventListener('click' , function(){
+            let usName = story.querySelector(".userStoryName").innerText;
+            console.log("name" , usName, "lknkfd")
+            console.log("map" , userIDs);
+            let deleteID = userIDs.get(usName).id;
+            db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(deleteID).delete().then(function() {
+                console.log("Document successfully deleted!");
+                window.location.href = "dragDrop.html";
+
+
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+            });
+            console.log(deleteID);
+
+            
+        });
 
         story.addEventListener('dragstart', function(e) {
             console.log("dragstart", e);

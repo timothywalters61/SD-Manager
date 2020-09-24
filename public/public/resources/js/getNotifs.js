@@ -59,6 +59,7 @@ auth.onAuthStateChanged(user => {
                 btnDelete.id = "btnDeleteDiv";
                 btnDelete.innerText = "delete";
                 btnDelete.style.float = "right";
+                
 
                 /*btnDelete.style.margin = "0px";
                 btnDelete.style.backgroundColor = "blue";
