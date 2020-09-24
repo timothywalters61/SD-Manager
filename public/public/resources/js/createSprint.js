@@ -38,8 +38,9 @@ startSprint.addEventListener('submit', (e) => {
                     })
                     .then(() => {
                         startSprint.reset();
+                        console.log("baxjkd0sdf0");
                         addSprintNotif(sprintName);
-                        window.location.href = "dragDrop.html";
+                        //window.location.href = "dragDrop.html";
                     });
             })
             .catch((error) => {
@@ -69,8 +70,10 @@ startSprint.addEventListener('submit', (e) => {
                     })
                     .then(() => {
                         startSprint.reset();
+                        console.log("baxjkd0cs0");
+
                         addSprintNotif(sprintName);
-                        window.location.href = "dragDrop.html";
+                        //window.location.href = "dragDrop.html";
                     });
 
             })
@@ -96,8 +99,9 @@ startSprint.addEventListener('submit', (e) => {
                 })
                 .then(() => {
                     startSprint.reset();
+                    console.log("baxjkd00");
                     addSprintNotif(sprintName);
-                    window.location.href = "dragDrop.html";
+                    //window.location.href = "dragDrop.html";
                 });
         })
         .catch((error) => {

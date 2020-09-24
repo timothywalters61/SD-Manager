@@ -27,43 +27,89 @@ function getNotifications(){
 }
 
 function addSprintNotif(sprintName){
-    let user = auth.currentUser; 
+    console.log("in");
     let notif = sprintName + " is a new sprint in project " + projectName;
-    console.log(notif)
+    let projTeam;
+    db.collection("projects").doc(projectID).get().then(function(doc){
+        
+        projTeam = doc.data().Team;
+        console.log(projTeam[0]);
 
-    db.collection("users").doc(user.uid).update({
-        notifications: firebase.firestore.FieldValue.arrayUnion(notif)
-    })
-    .then(() => {
-        console.log("sprint notif added");
-        //window.location.href = "projectOwner.html";
+        for(let i = 0 ; i < projTeam.length; i++){
+            db.collection("users").where("userEmail", "==" , projTeam[i]).get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    notifUser = doc.id;
+                    console.log(doc.id, " => ", doc.data());
+
+                    db.collection("users").doc(notifUser).update({
+                        notifications: firebase.firestore.FieldValue.arrayUnion(notif)
+                    })
+                    .then(() => {
+                        console.log("sprint notif added");
+                        window.location.href = "dragDrop.html";
+                    });
+                });
+            });
+        }
+
     });
 }
 
 function addStoryNotif(storyName){
-    let user = auth.currentUser; 
     let notif = storyName + " is a new user story in project " + projectName;
     console.log(notif)
+    let projTeam;
+    db.collection("projects").doc(projectID).get().then(function(doc){
+        
+        projTeam = doc.data().Team;
+        console.log(projTeam[0]);
 
-    db.collection("users").doc(user.uid).update({
-        notifications: firebase.firestore.FieldValue.arrayUnion(notif)
-    })
-    .then(() => {
-        console.log("story notif added");
-        //window.location.href = "projectOwner.html";
+        for(let i = 0 ; i < projTeam.length; i++){
+            db.collection("users").where("userEmail", "==" , projTeam[i]).get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    notifUser = doc.id;
+                    console.log(doc.id, " => ", doc.data());
+
+                    db.collection("users").doc(notifUser).update({
+                        notifications: firebase.firestore.FieldValue.arrayUnion(notif)
+                    })
+                    .then(() => {
+                        console.log("sprint notif added");
+                        //window.location.href = "projectOwner.html";
+                    });
+                });
+            });
+        }
+
     });
 }
 
 function addTaskNotif(taskName){
     let user = auth.currentUser; 
     let notif = taskName + " is a new task in project " + projectName;
-    console.log(notif)
+    let projTeam;
+    db.collection("projects").doc(projectID).get().then(function(doc){
+        
+        projTeam = doc.data().Team;
+        console.log(projTeam[0]);
 
-    db.collection("users").doc(user.uid).update({
-        notifications: firebase.firestore.FieldValue.arrayUnion(notif)
-    })
-    .then(() => {
-        console.log("task notif added");
-        //window.location.href = "projectOwner.html";
+        for(let i = 0 ; i < projTeam.length; i++){
+            db.collection("users").where("userEmail", "==" , projTeam[i]).get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    notifUser = doc.id;
+                    console.log(doc.id, " => ", doc.data());
+
+                    db.collection("users").doc(notifUser).update({
+                        notifications: firebase.firestore.FieldValue.arrayUnion(notif)
+                    })
+                    .then(() => {
+                        console.log("sprint notif added");
+                        //window.location.href = "projectOwner.html";
+                    });
+                });
+            });
+        }
+
     });
+  
 }

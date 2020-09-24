@@ -46,7 +46,7 @@ addStory.addEventListener('submit', (e) => {
                 }).then(() => {
                     addStory.reset();
                     addSprintNotif(title);
-                    window.location.reload(true);
+                    //window.location.reload(true);
                 });
         }).then((doc => {
             db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).update({
