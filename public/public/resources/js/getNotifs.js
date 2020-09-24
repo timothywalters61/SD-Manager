@@ -57,8 +57,15 @@ auth.onAuthStateChanged(user => {
                 nDiv.appendChild(btnDelete)
                 btnDelete.className = "deleteBtn";
                 btnDelete.id = "btnDeleteDiv";
-                btnDelete.innerText = "delete";
+                btnDelete.innerText = "Delete";
                 btnDelete.style.float = "right";
+                btnDelete.addEventListener('click', function(){
+                    db.collection("users").doc(user.uid).update({
+                        notifications: firebase.firestore.FieldValue.arrayRemove(notifs[i])
+                    }).then(function(){
+                        window.location.href = "Notifications.html";
+                    })
+                });
                 
 
                 /*btnDelete.style.margin = "0px";
