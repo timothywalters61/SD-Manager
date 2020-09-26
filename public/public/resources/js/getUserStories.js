@@ -95,12 +95,15 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
             let des = document.createElement('p');
             des.className = "description";
             des.innerText = description;
+            des.hidden = true;
             let acc = document.createElement('p');
             acc.className = "acceptance";
             acc.innerText = acceptance;
+            acc.hidden = true;
             let p = document.createElement('p');
             p.className = "points";
             p.innerText = points;
+            p.hidden = true;
 
             // TASK BUTTON
              //let btnTask = document.createElement('button');
@@ -129,9 +132,9 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
             //<button class="userStoryBtn" onclick="saveUserStoryID('${doc.id}')">View Tasks</button>
             wholeDiv.appendChild(n);
-            // wholeDiv.appendChild(des);
-            // wholeDiv.appendChild(acc);
-            // wholeDiv.appendChild(p);
+             wholeDiv.appendChild(des);
+             wholeDiv.appendChild(acc);
+             wholeDiv.appendChild(p);
             wholeDiv.append(btnTask);
             wholeDiv.append(btnDeleteUS);
             btnTask.style.float = "right";
@@ -245,7 +248,7 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
 
                 story.style.display = 'block';
                 dragStory=null;
-            },10000);
+            },0);
         });
 
 
