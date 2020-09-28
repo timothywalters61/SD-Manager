@@ -199,185 +199,285 @@ describe('embedded function tests - used for input validation before passed to f
     });
 
 });
-// describe('end to end tests - used to check business logic with javascript and firebase', () => {
+describe('end to end tests - used to check business logic with javascript and firebase', () => {
 
-//     it('sprint 7 end to end website functionality', async () => {
-//         const browser = await puppeteer.launch({
-//             headless: true, //must be set to true for circleci to work!
-//             slowMo: 25,
-//             args: ['--window-size=1440,900']
-//         });
-//         const page = await browser.newPage();
-//         await page.goto(
-//             'https://scrum-manager-91e13.web.app'
-//         );
-//         var temp=false;
-//         //log in process
-//         await page.click('#loginBtn');
-//         await page.click('#login-email');
-//         await page.type('#login-email', 'timothywalters@gmail.com');
-//         await page.click('#login-password');
-//         await page.type('#login-password', '12345678');
-//         await page.click('#login-button');
-//         //await page.waitFor(5000);
+    // it('sprint 7 end to end website functionality', async () => {
+    //     const browser = await puppeteer.launch({
+    //         headless: true, //must be set to true for circleci to work!
+    //         slowMo: 25,
+    //         args: ['--window-size=1440,900']
+    //     });
+    //     const page = await browser.newPage();
+    //     await page.goto(
+    //         'https://scrum-manager-91e13.web.app'
+    //     );
+    //     var temp=false;
+    //     //log in process
+    //     await page.click('#loginBtn');
+    //     await page.click('#login-email');
+    //     await page.type('#login-email', 'timothywalters@gmail.com');
+    //     await page.click('#login-password');
+    //     await page.type('#login-password', '12345678');
+    //     await page.click('#login-button');
+    //     //await page.waitFor(5000);
 
-//         //enter a project
-//         await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
-//         await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
-//         await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
-//         await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+    //     //enter a project
+    //     await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+    //     await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+    //     await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+    //     await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
 
-//         //wait...
-//         await page.waitFor(5000);
+    //     //wait...
+    //     await page.waitFor(5000);
 
-//         //enter a sprint
-//         await page.waitForSelector('#sprintContainer > div > a');
-//         await page.click('#sprintContainer > div > a');
+    //     //enter a sprint
+    //     await page.waitForSelector('#sprintContainer > div > a');
+    //     await page.click('#sprintContainer > div > a');
 
-//         //wait...
-//         await page.waitFor(2500);
+    //     //wait...
+    //     await page.waitFor(2500);
 
-//         //enter a user story
-//         await page.waitForSelector('#In\\ Progress > div > button:nth-child(5)');
-//         await page.click('#In\\ Progress > div > button:nth-child(5)');
+    //     //enter a user story
+    //     await page.waitForSelector('#In\\ Progress > div > button:nth-child(5)');
+    //     await page.click('#In\\ Progress > div > button:nth-child(5)');
 
-//         //wait...
-//         await page.waitFor(2500);
+    //     //wait...
+    //     await page.waitFor(2500);
 
-//         //move task
-//         const example = await page.$('#InProgress > div.tasks > p.userStoryName');
-//         await page.mouse.move(126, 19);
-//         await page.mouse.down();
-//         await page.mouse.move(126, 19);
-//         await page.mouse.up();
+    //     //move task
+    //     const example = await page.$('#InProgress > div.tasks > p.userStoryName');
+    //     await page.mouse.move(126, 19);
+    //     await page.mouse.down();
+    //     await page.mouse.move(126, 19);
+    //     await page.mouse.up();
 
-//         //update a task
-//         await page.waitForSelector('.cat-container > #InProgress > #ip-tasks #btnEdit');
-//         await page.click('.cat-container > #InProgress > #ip-tasks #btnEdit');
+    //     //update a task
+    //     await page.waitForSelector('.cat-container > #InProgress > #ip-tasks #btnEdit');
+    //     await page.click('.cat-container > #InProgress > #ip-tasks #btnEdit');
 
-//         await page.waitForSelector('#editTaskTitle');
-//         await page.$eval('#editTaskTitle', el => el.value = 'task-puppeteer');
-//         // await page.type('#editTaskTitle', 'task-puppeteer');
+    //     await page.waitForSelector('#editTaskTitle');
+    //     await page.$eval('#editTaskTitle', el => el.value = 'task-puppeteer');
+    //     // await page.type('#editTaskTitle', 'task-puppeteer');
 
-//         await page.waitForSelector('#editTask-assign-to');
-//         await page.click('#editTask-assign-to');
+    //     await page.waitForSelector('#editTask-assign-to');
+    //     await page.click('#editTask-assign-to');
 
-//         await page.select('#editTask-assign-to', 'timothywalters1');
+    //     await page.select('#editTask-assign-to', 'timothywalters1');
 
-//         await page.waitForSelector('body #editTask #createTask-button');
-//         await page.click('body #editTask #createTask-button');
+    //     await page.waitForSelector('body #editTask #createTask-button');
+    //     await page.click('body #editTask #createTask-button');
 
-//         //wait...
-//         await page.waitFor(2500);
+    //     //wait...
+    //     await page.waitFor(2500);
 
-//         //go back
-//         await page.waitForSelector('body > .container > .navigation > .backBtn > img');
-//         await page.click('body > .container > .navigation > .backBtn > img');
+    //     //go back
+    //     await page.waitForSelector('body > .container > .navigation > .backBtn > img');
+    //     await page.click('body > .container > .navigation > .backBtn > img');
 
-//         //go to team
-//         await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(3) > a')
-//         await page.click('#contentContainer > .subNav > ul > li:nth-child(3) > a')
+    //     //go to team
+    //     await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(3) > a')
+    //     await page.click('#contentContainer > .subNav > ul > li:nth-child(3) > a')
 
-//         //add existing team member
-//         await page.waitForSelector('.subNav #Btn')
-//         await page.click('.subNav #Btn')
+    //     //add existing team member
+    //     await page.waitForSelector('.subNav #Btn')
+    //     await page.click('.subNav #Btn')
 
-//         await page.waitForSelector('.user-box #add-email')
-//         await page.click('.user-box #add-email')
-//         await page.type('.user-box #add-email', 'help');
+    //     await page.waitForSelector('.user-box #add-email')
+    //     await page.click('.user-box #add-email')
+    //     await page.type('.user-box #add-email', 'help');
 
-//         //close team member assignment
-//         await page.waitForSelector('#modal > a')
-//         await page.click('#modal > a')
+    //     //close team member assignment
+    //     await page.waitForSelector('#modal > a')
+    //     await page.click('#modal > a')
 
-//         // const bodyHandle = await page.$('body');
-//         // const html = await page.evaluate(body => body.innerText, bodyHandle);
-//         // var tempHtml=html;
-//         // var temp=tempHtml.includes("timothywalters")
-//         // console.info(`${temp}`);
-//         await browser.close();
+    //     // const bodyHandle = await page.$('body');
+    //     // const html = await page.evaluate(body => body.innerText, bodyHandle);
+    //     // var tempHtml=html;
+    //     // var temp=tempHtml.includes("timothywalters")
+    //     // console.info(`${temp}`);
+    //     await browser.close();
 
-//     }, 200000);
+    // }, 200000);
 
-//     it('sprint 7 end to end website functionality - sign up conditions check', async () => {
-//         const browser = await puppeteer.launch({
-//             headless: true, //must be set to true for circleci to work!
-//             slowMo: 25,
-//             args: ['--window-size=1440,900']
-//         });
-//         const page = await browser.newPage();
-//         await page.goto(
-//             'https://scrum-manager-91e13.web.app'
-//         );
-//         //sign up process
-//         await page.waitForSelector('#signUpBtn');
-//         await page.click('#signUpBtn');
+    // it('sprint 7 end to end website functionality - sign up conditions check', async () => {
+    //     const browser = await puppeteer.launch({
+    //         headless: true, //must be set to true for circleci to work!
+    //         slowMo: 25,
+    //         args: ['--window-size=1440,900']
+    //     });
+    //     const page = await browser.newPage();
+    //     await page.goto(
+    //         'https://scrum-manager-91e13.web.app'
+    //     );
+    //     //sign up process
+    //     await page.waitForSelector('#signUpBtn');
+    //     await page.click('#signUpBtn');
 
-//         await page.waitForSelector('#signup-email');
-//         await page.$eval('#signup-email', el => el.value = 'timothywalters@gmail.com');
+    //     await page.waitForSelector('#signup-email');
+    //     await page.$eval('#signup-email', el => el.value = 'timothywalters@gmail.com');
 
-//         await page.waitForSelector('#signup-username');
-//         await page.$eval('#signup-username', el => el.value = 'timothywalters');
+    //     await page.waitForSelector('#signup-username');
+    //     await page.$eval('#signup-username', el => el.value = 'timothywalters');
 
-//         await page.waitForSelector('#signup-firstname');
-//         await page.$eval('#signup-firstname', el => el.value = 'Timothy');
+    //     await page.waitForSelector('#signup-firstname');
+    //     await page.$eval('#signup-firstname', el => el.value = 'Timothy');
 
-//         await page.waitForSelector('#signup-lastname');
-//         await page.$eval('#signup-lastname', el => el.value = 'Walters');
+    //     await page.waitForSelector('#signup-lastname');
+    //     await page.$eval('#signup-lastname', el => el.value = 'Walters');
 
-//         await page.waitForSelector('#signup-password');
-//         await page.$eval('#signup-password', el => el.value = '12345678');
+    //     await page.waitForSelector('#signup-password');
+    //     await page.$eval('#signup-password', el => el.value = '12345678');
 
-//         await page.waitForSelector('#signup-confirmpassword');
-//         await page.$eval('#signup-confirmpassword', el => el.value = '12345678');
+    //     await page.waitForSelector('#signup-confirmpassword');
+    //     await page.$eval('#signup-confirmpassword', el => el.value = '12345678');
 
-//         await browser.close();
-//     }, 200000);
+    //     await browser.close();
+    // }, 200000);
 
-//     it('sprint 7 end to end website functionality - sprint points', async () => {
-//         const browser = await puppeteer.launch({
-//             headless: true, //must be set to true for circleci to work!
-//             slowMo: 25,
-//             args: ['--window-size=1440,900']
-//         });
-//         const page = await browser.newPage();
-//         await page.goto(
-//             'https://scrum-manager-91e13.web.app'
-//         );
-//         var temp=false;
-//         //log in process
-//         await page.click('#loginBtn');
-//         await page.click('#login-email');
-//         await page.type('#login-email', 'timothywalters@gmail.com');
-//         await page.click('#login-password');
-//         await page.type('#login-password', '12345678');
-//         await page.click('#login-button');
-//         //await page.waitFor(5000);
+    // it('sprint 7 end to end website functionality - sprint points', async () => {
+    //     const browser = await puppeteer.launch({
+    //         headless: true, //must be set to true for circleci to work!
+    //         slowMo: 25,
+    //         args: ['--window-size=1440,900']
+    //     });
+    //     const page = await browser.newPage();
+    //     await page.goto(
+    //         'https://scrum-manager-91e13.web.app'
+    //     );
+    //     var temp=false;
+    //     //log in process
+    //     await page.click('#loginBtn');
+    //     await page.click('#login-email');
+    //     await page.type('#login-email', 'timothywalters@gmail.com');
+    //     await page.click('#login-password');
+    //     await page.type('#login-password', '12345678');
+    //     await page.click('#login-button');
+    //     //await page.waitFor(5000);
 
-//         //enter a project
-//         await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
-//         await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
-//         await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
-//         await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+    //     //enter a project
+    //     await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+    //     await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+    //     await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+    //     await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
 
-//         //wait...
-//         await page.waitFor(5000);
+    //     //wait...
+    //     await page.waitFor(5000);
 
-//         //enter a create sprint with points
-//         await page.waitForSelector('#sprintContainer > div > a');
-//         await page.click('#sprintContainer > div > a');
+    //     //enter a create sprint with points
+    //     await page.waitForSelector('#sprintContainer > div > a');
+    //     await page.click('#sprintContainer > div > a');
 
-//         //wait...
-//         await page.waitFor(2500);
+    //     //wait...
+    //     await page.waitFor(2500);
 
-        
-//         // const bodyHandle = await page.$('body');
-//         // const html = await page.evaluate(body => body.innerText, bodyHandle);
-//         // var tempHtml=html;
-//         // var temp=tempHtml.includes("timothywalters")
-//         // console.info(`${temp}`);
-//         await browser.close();
 
-//     }, 200000);
-// });
+    //     // const bodyHandle = await page.$('body');
+    //     // const html = await page.evaluate(body => body.innerText, bodyHandle);
+    //     // var tempHtml=html;
+    //     // var temp=tempHtml.includes("timothywalters")
+    //     // console.info(`${temp}`);
+    //     await browser.close();
+
+    // }, 200000);
+
+    it('sprint 8 end to end website functionality - messaging', async () => {
+        const browser = await puppeteer.launch({
+            headless: true, //must be set to true for circleci to work!
+            slowMo: 25,
+            args: ['--window-size=1440,900']
+        });
+        const page = await browser.newPage();
+        await page.goto(
+            'https://scrum-manager-91e13.web.app'
+        );
+        var temp = false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
+
+        //enter a project
+        await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
+        await page.click('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+
+        //enter messaing feature
+        await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(4) > a')
+        await page.click('#contentContainer > .subNav > ul > li:nth-child(4) > a')
+
+        //send message
+        await page.waitForSelector('.container > #contentContainer > #group-chat #message')
+        await page.click('.container > #contentContainer > #group-chat #message')
+        await page.type('.container > #contentContainer > #group-chat #message', 'hello guys');
+        await page.click('".container > #contentContainer > #group-chat #send');
+
+        //wait...
+        await page.waitFor(1000);
+
+        //check if message is there
+        const bodyHandle = await page.$('body');
+        const html = await page.evaluate(body => body.innerText, bodyHandle);
+        var tempHtml=html;
+        var temp=tempHtml.includes("hello");
+        expect(temp).to.equal(true);
+        // const bodyHandle = await page.$('body');
+        // const html = await page.evaluate(body => body.innerText, bodyHandle);
+        // var tempHtml=html;
+        // var temp=tempHtml.includes("timothywalters")
+        // console.info(`${temp}`);
+        await browser.close();
+
+    }, 200000);
+
+    it('sprint 8 end to end website functionality - notifications', async () => {
+        const browser = await puppeteer.launch({
+            headless: true, //must be set to true for circleci to work!
+            slowMo: 25,
+            args: ['--window-size=1440,900']
+        });
+        const page = await browser.newPage();
+        await page.goto(
+            'https://scrum-manager-91e13.web.app'
+        );
+        var temp = false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
+
+        //enter a project
+        await page.waitForSelector('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+        await page.click('body > .container > #projectContainer > #i9xC13fgN7u4hHiBfSdd > a');
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject');
+
+        //wait...
+        await page.waitFor(5000);
+
+        //enter a create sprint with points
+        await page.waitForSelector('#sprintContainer > div > a');
+        await page.click('#sprintContainer > div > a');
+
+        //wait...
+        await page.waitFor(2500);
+
+
+        // const bodyHandle = await page.$('body');
+        // const html = await page.evaluate(body => body.innerText, bodyHandle);
+        // var tempHtml=html;
+        // var temp=tempHtml.includes("timothywalters")
+        // console.info(`${temp}`);
+        await browser.close();
+
+    }, 200000);
+});
 

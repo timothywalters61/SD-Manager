@@ -45,7 +45,7 @@ addStory.addEventListener('submit', (e) => {
                     status: status
                 }).then(() => {
                     addStory.reset();
-                    addSprintNotif(title);
+                    addStoryNotif(title);
                     //window.location.reload(true);
                 });
         }).then((doc => {
