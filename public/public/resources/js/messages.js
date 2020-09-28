@@ -10,6 +10,21 @@ const projectName = localStorage.getItem('docName');
 const ref = db.collection('projects').doc(projectID).collection('messages');
 const username = localStorage.getItem('username');
 
+function isValidMessagingInput(input){
+    if (input.includes(" poes") || input.includes(" naai") || input.includes(" doos") || input.includes(" fuck") || input.includes(" pussy") || input.includes(" bitch") || input.includes(" shit")) {
+        return false;
+    }
+    else if (input.includes("poes") || input.includes("naai") || input.includes("doos") || input.includes("fuck") || input.includes("pussy") || input.includes("bitch") || input.includes("shit")) {
+        return false;
+    }
+    else if(input==(" ") || input==("")){
+        return false;
+    }
+    else {
+        return true
+    }
+}
+
 auth.onAuthStateChanged((user) => {
     if (user) {
         // User is logged in
@@ -19,10 +34,10 @@ auth.onAuthStateChanged((user) => {
         let heading = `<p>Project: ${projectName}</p>`;
         projectTitle.innerHTML = heading;
 
-        // Invite badge setup
-        const inviteBadge = document.querySelector('#inviteBadge');
-        let html = `<span class="badge">${invites}</span> Invites`;
-        inviteBadge.innerHTML = html;
+        // // Invite badge setup
+        // const inviteBadge = document.querySelector('#inviteBadge');
+        // let html = `<span class="badge">${invites}</span> Invites`;
+        // inviteBadge.innerHTML = html;
 
         db.collection('projects')
             .doc(projectID)
@@ -80,6 +95,9 @@ auth.onAuthStateChanged((user) => {
                 sender: username,
                 time: new Date(),
             };
+            if(isValidMessagingInput(data.message)==true){
+
+            
             // console.log(ref);
             // console.log(data.time);
             ref.add(data)
@@ -95,8 +113,26 @@ auth.onAuthStateChanged((user) => {
                     console.log(err);
                     toastError('Error sending message: ' + err.message);
                 });
+            }
+            else{
+                toast('No curse words allowed in the chat!');
+            }
         };
         messageForm.addEventListener('submit', saveMessage);
+
+        db.collection('Invites')
+        .where('inviteToID', '==', user.uid)
+        .onSnapshot(function (snapshot) {
+            if (snapshot.docs != 0) {
+                let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
+                inviteBadge.innerHTML = html;
+                localStorage.setItem('invites', snapshot.docs.length);
+            } else {
+                console.log('invites do not exist');
+                let html2 = '<span class="badge">0</span> Invites';
+                inviteBadge.innerHTML = html2;
+            }
+        });
     } else {
         // User is not logged in
         console.log('user logged out');
