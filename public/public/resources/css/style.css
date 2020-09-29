@@ -4,6 +4,10 @@
     font-family: sans-serif;
 }
 
+.dark-mode {
+    filter: invert(100%) hue-rotate(180deg);
+}
+
 @keyframes createBtnAnimation {
     from {
         color: white;
@@ -304,7 +308,5 @@ body {
     cursor: pointer;
     animation-name: createBtnAnimation;
     animation-duration: 10s;
-    animation-fill-mode: both;
-}
     animation-fill-mode: both;
 }

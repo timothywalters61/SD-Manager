@@ -70,13 +70,13 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="489" y="212" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601390535967">
+      <screen x="72" y="27" width="1368" height="873" />
+    </state>
+    <state x="489" y="212" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/72.27.1368.873@72.27.1368.873" timestamp="1601390535967" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1600415352432">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1600415352432" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1592152393725">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1592152393725" />
   </component>
 </project>
