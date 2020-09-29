@@ -189,7 +189,7 @@ describe('embedded function tests - used for input validation before passed to f
         expect(value).to.equal(false);
     });
 
-    it('(Hi) check it is a valid massaging input - must return false', () => {
+    it('(Hi) check it is a valid massaging input - must return true', () => {
         let value = isValidMessagingInput('Hi');
         expect(value).to.equal(true);
     });
