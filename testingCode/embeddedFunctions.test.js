@@ -394,49 +394,38 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.goto(
             'https://scrum-manager-91e13.web.app'
         );
-        // var temp = false;
-        // //log in process
-        // await page.click('#loginBtn');
-        // await page.click('#login-email');
-        // await page.type('#login-email', 'timothywalters@gmail.com');
-        // await page.click('#login-password');
-        // await page.type('#login-password', '12345678');
-        // await page.click('#login-button');
-        // //await page.waitFor(5000);
+        var temp = false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
 
-        // //wait...
-        // await page.waitFor(5000);
+        //wait...
+        await page.waitFor(5000);
 
-        // //enter a project
-        // //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
-        // await page.click('#zrGohKSweQZUNI2CnANM > a')
-        // await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
-        // await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+        //enter a project
+        //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
+        await page.click('#zrGohKSweQZUNI2CnANM > a')
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
-        // //enter messaing feature
-        // await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(4) > a')
-        // await page.click('#contentContainer > .subNav > ul > li:nth-child(4) > a')
+        //enter messaing feature
+        await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(4) > a')
+        await page.click('#contentContainer > .subNav > ul > li:nth-child(4) > a')
 
-        // // //send message
-        // // await page.waitForSelector('.container > #contentContainer > #group-chat #message')
-        // // await page.click('.container > #contentContainer > #group-chat #message')
-        // // await page.type('.container > #contentContainer > #group-chat #message', 'hello');
-        // // await page.click('".container > #contentContainer > #group-chat #send');
+        // //send message
+        // await page.waitForSelector('.container > #contentContainer > #group-chat #message')
+        // await page.click('.container > #contentContainer > #group-chat #message')
+        // await page.type('.container > #contentContainer > #group-chat #message', 'hello');
+        // await page.click('".container > #contentContainer > #group-chat #send');
 
-        // //wait...
-        // await page.waitFor(1000);
+        //wait...
+        await page.waitFor(1000);
 
-        // //check if message is there
-        // const bodyHandle = await page.$('body');
-        // const html = await page.evaluate(body => body.innerText, bodyHandle);
-        // var tempHtml = html;
-        // var temp = tempHtml.includes("hello");
-        // expect(temp).to.equal(true);
-        // // const bodyHandle = await page.$('body');
-        // // const html = await page.evaluate(body => body.innerText, bodyHandle);
-        // // var tempHtml=html;
-        // // var temp=tempHtml.includes("timothywalters")
-        // // console.info(`${temp}`);
         await browser.close();
 
     }, 200000);
@@ -451,49 +440,49 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.goto(
             'https://scrum-manager-91e13.web.app'
         );
-        // var temp = false;
-        // //log in process
-        // await page.click('#loginBtn');
-        // await page.click('#login-email');
-        // await page.type('#login-email', 'timothywalters@gmail.com');
-        // await page.click('#login-password');
-        // await page.type('#login-password', '12345678');
-        // await page.click('#login-button');
-        // //await page.waitFor(5000);
+        var temp = false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
 
-        // //wait...
-        // await page.waitFor(5000);
+        //wait...
+        await page.waitFor(5000);
 
-        // //enter a project
-        // //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
-        // await page.click('#zrGohKSweQZUNI2CnANM > a')
-        // await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
-        // await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+        //enter a project
+        //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
+        await page.click('#zrGohKSweQZUNI2CnANM > a')
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
-        // //enter messaing feature
-        // await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(4) > a')
-        // await page.click('#contentContainer > .subNav > ul > li:nth-child(4) > a')
+        //enter messaing feature
+        await page.waitForSelector('#contentContainer > .subNav > ul > li:nth-child(4) > a')
+        await page.click('#contentContainer > .subNav > ul > li:nth-child(4) > a')
 
-        // // //send message
-        // // await page.waitForSelector('.container > #contentContainer > #group-chat #message')
-        // // await page.click('.container > #contentContainer > #group-chat #message')
-        // // await page.type('.container > #contentContainer > #group-chat #message', 'hello');
-        // // await page.click('".container > #contentContainer > #group-chat #send');
+        // //send message
+        // await page.waitForSelector('.container > #contentContainer > #group-chat #message')
+        // await page.click('.container > #contentContainer > #group-chat #message')
+        // await page.type('.container > #contentContainer > #group-chat #message', 'hello');
+        // await page.click('".container > #contentContainer > #group-chat #send');
 
-        // //wait...
-        // await page.waitFor(1000);
+        //wait...
+        await page.waitFor(1000);
 
-        // //check if message is there
+        //check if message is there
+        const bodyHandle = await page.$('body');
+        const html = await page.evaluate(body => body.innerText, bodyHandle);
+        var tempHtml = html;
+        var temp = tempHtml.includes("hello");
+        expect(temp).to.equal(true);
         // const bodyHandle = await page.$('body');
         // const html = await page.evaluate(body => body.innerText, bodyHandle);
-        // var tempHtml = html;
-        // var temp = tempHtml.includes("hello");
-        // expect(temp).to.equal(true);
-        // // const bodyHandle = await page.$('body');
-        // // const html = await page.evaluate(body => body.innerText, bodyHandle);
-        // // var tempHtml=html;
-        // // var temp=tempHtml.includes("timothywalters")
-        // // console.info(`${temp}`);
+        // var tempHtml=html;
+        // var temp=tempHtml.includes("timothywalters")
+        // console.info(`${temp}`);
         await browser.close();
 
     }, 200000);
@@ -508,27 +497,27 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.goto(
             'https://scrum-manager-91e13.web.app'
         );
-        // var temp = false;
-        // //log in process
-        // await page.click('#loginBtn');
-        // await page.click('#login-email');
-        // await page.type('#login-email', 'timothywalters@gmail.com');
-        // await page.click('#login-password');
-        // await page.type('#login-password', '12345678');
-        // await page.click('#login-button');
-        // //await page.waitFor(5000);
+        var temp = false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
 
-        // //wait...
-        // await page.waitFor(2500);
+        //wait...
+        await page.waitFor(2500);
 
-        // //enter a project
-        // //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
-        // await page.click('#zrGohKSweQZUNI2CnANM > a')
-        // await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
-        // await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+        //enter a project
+        //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
+        await page.click('#zrGohKSweQZUNI2CnANM > a')
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
-        // //wait...
-        // await page.waitFor(2500);
+        //wait...
+        await page.waitFor(2500);
 
         // //create a sprint
         // await page.waitForSelector('.container > #contentContainer #Btn')
@@ -598,32 +587,32 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.goto(
             'https://scrum-manager-91e13.web.app'
         );
-        // var temp = false;
-        // //log in process
-        // await page.click('#loginBtn');
-        // await page.click('#login-email');
-        // await page.type('#login-email', 'timothywalters@gmail.com');
-        // await page.click('#login-password');
-        // await page.type('#login-password', '12345678');
-        // await page.click('#login-button');
-        // //await page.waitFor(5000);
+        var temp = false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
 
-        // //enter notifications
-        // await page.waitForSelector('.container #notifications')
-        // await page.click('.container #notifications')
+        //enter notifications
+        await page.waitForSelector('.container #notifications')
+        await page.click('.container #notifications')
 
-        // //wait...
-        // await page.waitFor(2500);
+        //wait...
+        await page.waitFor(2500);
 
 
-        // const bodyHandle = await page.$('body');
-        // const html = await page.evaluate(body => body.innerText, bodyHandle);
-        // var tempHtml = html;
-        // var temp1 = tempHtml.includes("hello is a new task in project testing")
-        // var temp2 = tempHtml.includes("hello is a new sprint in project testing")
-        // var temp3 = tempHtml.includes("testing is a new user story in project testing")
-        // expect("" + temp1 + temp2 + temp3).to.equal("truetruetrue");
-        // //console.info(`${temp}`);
+        const bodyHandle = await page.$('body');
+        const html = await page.evaluate(body => body.innerText, bodyHandle);
+        var tempHtml = html;
+        var temp1 = tempHtml.includes("hello is a new task in project testing")
+        var temp2 = tempHtml.includes("hello is a new sprint in project testing")
+        var temp3 = tempHtml.includes("testing is a new user story in project testing")
+        expect("" + temp1 + temp2 + temp3).to.equal("truetruetrue");
+        //console.info(`${temp}`);
         await browser.close();
 
     }, 200000);
