@@ -74,8 +74,8 @@ function addStoryNotif(storyName){
                         notifications: firebase.firestore.FieldValue.arrayUnion(notif)
                     })
                     .then(() => {
-                        console.log("sprint notif added");
-                        //window.location.href = "projectOwner.html";
+                        console.log("story notif added");
+                        window.location.href = "dragDrop.html";
                     });
                 });
             });
@@ -103,8 +103,8 @@ function addTaskNotif(taskName){
                         notifications: firebase.firestore.FieldValue.arrayUnion(notif)
                     })
                     .then(() => {
-                        console.log("sprint notif added");
-                        //window.location.href = "projectOwner.html";
+                        console.log("task notif added");
+                        window.location.href = "Task.html";
                     });
                 });
             });
