@@ -142,9 +142,10 @@ db.collection("projects").doc(projectID)
             gitP = document.createElement('p');
             gitP.className = "Title";
             gitP.innerText = "Github Link: ";
-            gitL = document.createElement('p');
+            gitL = document.createElement('a');
             gitL.className = "githubLink";
             gitL.innerText = github;
+            gitL.href=github;
             gitEdit = document.createElement('button');
             gitEdit.className = "gitEdit";
             gitEdit.id = "gitBtn";
