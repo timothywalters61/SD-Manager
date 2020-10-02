@@ -29,6 +29,16 @@ auth.onAuthStateChanged((user) => {
     if (user) {
         // User is logged in
 
+        db.collection("users").doc(user.uid).get().then(function(doc) {
+            let notifs = doc.data().notifications;
+            console.log(notifs.length);
+    
+            let notifBadge = document.getElementById('notifications');
+            notifBadge.innerText = notifs.length +" Notifications";
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+
         // Project title setup
         const projectTitle = document.querySelector('#PageHeading');
         let heading = `<p>Project: ${projectName}</p>`;
