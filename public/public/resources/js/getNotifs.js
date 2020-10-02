@@ -43,7 +43,7 @@ auth.onAuthStateChanged(user => {
             notifBadge.innerText = notifs.length +" Notifications";
             console.log(notifBadge);
 
-            const notifDiv = document.getElementById("Notifications");
+            const notifDiv = document.getElementById("Notifications1");
 
 
             for (let i = notifs.length - 1; i >= 0; i--) {
@@ -53,7 +53,7 @@ auth.onAuthStateChanged(user => {
 
                 nDiv.innerText = notifs[i];
                 notifDiv.appendChild(nDiv);
-                //nDiv.style.padding = "5px";
+                nDiv.style.padding = "20px";
                 nDiv.style.margin = "10px";
                 nDiv.style.backgroundColor = "white";
                 nDiv.style.borderRadius = "10px";
