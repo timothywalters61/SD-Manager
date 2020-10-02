@@ -38,6 +38,11 @@ auth.onAuthStateChanged(user => {
             console.log(notifs);
             localStorage.setItem("notifications", notifs);
 
+            console.log(notifs.length +" Notifications");
+            let notifBadge = document.getElementById('notifications');
+            notifBadge.innerText = notifs.length +" Notifications";
+            console.log(notifBadge);
+
             const notifDiv = document.getElementById("Notifications");
 
 
@@ -77,6 +82,8 @@ auth.onAuthStateChanged(user => {
 
 
             }
+
+           
 
         }).catch(function(error) {
             console.log("Error getting document:", error);
