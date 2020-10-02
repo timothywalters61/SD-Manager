@@ -28,7 +28,7 @@ function getNotifications(){
 
 function addSprintNotif(sprintName){
     console.log("in");
-    let notif = sprintName + " is a new sprint in project " + projectName;
+    let notif = sprintName + " is a new sprint in project " + projectName + "#s";
     let projTeam;
     db.collection("projects").doc(projectID).get().then(function(doc){
         
@@ -56,7 +56,7 @@ function addSprintNotif(sprintName){
 }
 
 function addStoryNotif(storyName){
-    let notif = storyName + " is a new user story in project " + projectName;
+    let notif = storyName + " is a new user story in project " + projectName + "#u";
     console.log(notif)
     let projTeam;
     db.collection("projects").doc(projectID).get().then(function(doc){
@@ -86,7 +86,7 @@ function addStoryNotif(storyName){
 
 function addTaskNotif(taskName){
     let user = auth.currentUser; 
-    let notif = taskName + " is a new task in project " + projectName;
+    let notif = taskName + " is a new task in project " + projectName + "#t";
     let projTeam;
     db.collection("projects").doc(projectID).get().then(function(doc){
         

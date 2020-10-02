@@ -48,10 +48,28 @@ auth.onAuthStateChanged(user => {
 
             for (let i = notifs.length - 1; i >= 0; i--) {
                 console.log(notifs[i]);
+                let type = notifs[i].split("#")
+                console.log(type[0],">>>>",type[1]);
+
+                if( type[1] == "s"){
+                    console.log("its a sprint");
+                    let separ = type[0].split("is a new sprint in");
+                    console.log(separ[0]+">>>"+separ[1]);
+                }
+                else if(type[1] == "u"){
+                    console.log("its a user story");
+                    let separ = type[0].split("is a new user story in");
+                    console.log(separ[0]+">>>"+separ[1]);
+                } 
+                else if (type[1] == "t"){
+                    console.log("its a task");
+                    let separ = type[0].split("is a new task in");
+                    console.log(separ[0]+">>>"+separ[1]);
+                }
 
                 let nDiv = document.createElement("div");
 
-                nDiv.innerText = notifs[i];
+                nDiv.innerText = type[0];
                 notifDiv.appendChild(nDiv);
                 nDiv.style.padding = "20px";
                 nDiv.style.margin = "10px";
