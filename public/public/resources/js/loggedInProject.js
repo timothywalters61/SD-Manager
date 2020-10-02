@@ -67,6 +67,18 @@ auth.onAuthStateChanged(user => {
                 }
             });
 
+        
+        
+        db.collection("users").doc(user.uid).get().then(function(doc) {
+            let notifs = doc.data().notifications;
+            console.log(notifs.length);
+                
+            let notifBadge = document.getElementById('notifications');
+            notifBadge.innerText = notifs.length +" Notifications";
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+        
         //set up invite badge
 
         const inviteBadge = document.querySelector("#inviteBadge");
