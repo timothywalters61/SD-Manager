@@ -41,7 +41,7 @@ auth.onAuthStateChanged(user => {
             const notifDiv = document.getElementById("Notifications");
 
 
-            for (let i = 0; i < notifs.length; i++) {
+            for (let i = notifs.length - 1; i >= 0; i--) {
                 console.log(notifs[i]);
 
                 let nDiv = document.createElement("div");
