@@ -31,3 +31,19 @@
 #PageHeading{
     margin-bottom: 30px;
 }
+
+#notifType {
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#notifName {
+    font-weight: bold;
+    color: aqua;
+}
+
+#notifProj {
+    font-weight: bold;
+    color: aqua;
+}
