@@ -22,8 +22,14 @@ body {
     width: 100%;
 }
 
+/*#NotStarted {*/
+/*    border: solid red;*/
+/*    border-radius: 10px;*/
+/*}*/
+
 .cat-container .categories {
     border: solid #095CF5;
+   // border: solid red;
     border-radius: 10px;
     text-align: center;
     display: flex;
