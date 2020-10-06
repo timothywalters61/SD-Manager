@@ -32,12 +32,15 @@ auth.onAuthStateChanged(user => {
         const inviteBadge = document.querySelector("#inviteBadge");
         const inviteContainer = document.querySelector("#inviteContainer");
 
+        loadedInvites = JSON.parse(localStorage.getItem("invites"));
+        console.log("loaded" , loadedInvites);
+
         db.collection("Invites").where("inviteToID", "==", user.uid)
             .onSnapshot(function (snapshot) {
                 if (snapshot.docs != 0) {
                     let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
                     inviteBadge.innerHTML = html;
-                    setUpInvites(snapshot.docs);
+                    //setUpInvites(snapshot.docs);
                 } else {
                     console.log("invites do not exist");
                     let html2 = '<span class="badge">0</span> Invites';
