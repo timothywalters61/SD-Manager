@@ -69,7 +69,7 @@ auth.onAuthStateChanged(user => {
 
         
         
-        db.collection("users").doc(user.uid).get().then(function(doc) {
+        /*db.collection("users").doc(user.uid).get().then(function(doc) {
             let notifs = doc.data().notifications;
             console.log(notifs.length);
                 
@@ -77,6 +77,14 @@ auth.onAuthStateChanged(user => {
             notifBadge.innerText = notifs.length +" Notifications";
         }).catch(function(error) {
             console.log("Error getting document:", error);
+        });*/
+
+        db.collection("users").doc(user.uid).onSnapshot(function(doc) {
+            let notifs = doc.data().notifications;
+            console.log(notifs);
+
+            let notifBadge = document.getElementById('notifications');
+            notifBadge.innerText = notifs.length +" Notifications";
         });
         
         //set up invite badge
