@@ -69,3 +69,17 @@
     background-color: #095cf5;
     float: right;
 }
+
+.message-text {
+    margin: 10px 0;
+}
+
+.message-sender {
+    font-size: 0.825rem;
+    font-weight: 600;
+}
+
+.message-time {
+    font-size: 0.825rem;
+    font-weight: 300;
+}
