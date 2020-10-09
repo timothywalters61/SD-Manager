@@ -75,6 +75,8 @@
     border-color: #095cf5;
     background-color: #095cf5;
     float: right;
+    margin-top: 15px;
+    padding: 10px;
 }
 
 .message-text {
