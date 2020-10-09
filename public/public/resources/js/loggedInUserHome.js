@@ -61,7 +61,7 @@ auth.onAuthStateChanged((user) => {
                 }
             });
 
-        db.collection("users").doc(user.uid).get().then(function(doc) {
+        /*db.collection("users").doc(user.uid).get().then(function(doc) {
             let notifs = doc.data().notifications;
             console.log(notifs.length);
 
@@ -69,15 +69,32 @@ auth.onAuthStateChanged((user) => {
             notifBadge.innerText = notifs.length +" Notifications";
         }).catch(function(error) {
             console.log("Error getting document:", error);
+        });*/
+
+        db.collection("users").doc(user.uid).onSnapshot(function(doc) {
+            let notifs = doc.data().notifications;
+            console.log(notifs);
+
+            let notifBadge = document.getElementById('notifications');
+            notifBadge.innerText = notifs.length +" Notifications";
         });
 
         //set up invite badge
 
         const inviteBadge = document.querySelector('#inviteBadge');
+        let invitesArray = [];
 
         db.collection('Invites')
             .where('inviteToID', '==', user.uid)
             .onSnapshot(function (snapshot) {
+                console.log("testing...");
+                //console.log(snapshot.docs[0].data());
+
+                for(let i = 0; i < snapshot.docs.length; i++){
+                    invitesArray.push(snapshot.docs[i].data());
+                }
+                console.log(JSON.stringify(invitesArray));
+                localStorage.setItem("invites", JSON.stringify(invitesArray));
                 if (snapshot.docs != 0) {
                     let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
                     inviteBadge.innerHTML = html;
@@ -87,7 +104,12 @@ auth.onAuthStateChanged((user) => {
                     let html2 = '<span class="badge">0</span> Invites';
                     inviteBadge.innerHTML = html2;
                 }
+
+                console.log("invites");
+                console.log(invitesArray);
             });
+
+        
     } else {
         console.log('user logged out');
         window.location.href = 'index.html';

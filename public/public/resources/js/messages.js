@@ -189,6 +189,7 @@ const createMessageInnerHtml = (sender, text, time) => {
 const createMessageDiv = (id, sender, sent, text, time) => {
     var div = document.createElement('div');
     div.setAttribute('id', id);
+
     div.classList.add('message');
     if (sent) {
         div.classList.add('message-sent');
@@ -233,6 +234,7 @@ const displayMessage = (id, sender, sent, text, time) => {
     var div = document.querySelector('#' + id);
     // console.log(div);
     let chat = document.querySelector('#message-container');
+
     if (!div) {
         div = createMessageDiv(id, sender, sent, text, time);
     }

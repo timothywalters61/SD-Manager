@@ -384,7 +384,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     // }, 200000);
 
-    it('sprint 8 end to end website functionality - populate messages', async () => {
+    it('populate messages', async () => {
         const browser = await puppeteer.launch({
             headless: true, //must be set to true for circleci to work!
             slowMo: 25,
@@ -409,7 +409,8 @@ describe('end to end tests - used to check business logic with javascript and fi
 
         //enter a project
         //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
-        await page.click('#zrGohKSweQZUNI2CnANM > a')
+        await page.waitForSelector('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
+        await page.click('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
         await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
         await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
@@ -430,7 +431,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     }, 200000);
 
-    it('sprint 8 end to end website functionality - check messages', async () => {
+    it('check messages', async () => {
         const browser = await puppeteer.launch({
             headless: true, //must be set to true for circleci to work!
             slowMo: 25,
@@ -487,7 +488,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     }, 200000);
 
-    it('sprint 8 end to end website functionality - populate notifications', async () => {
+    it('populate notifications', async () => {
         const browser = await puppeteer.launch({
             headless: true, //must be set to true for circleci to work!
             slowMo: 25,
@@ -512,7 +513,8 @@ describe('end to end tests - used to check business logic with javascript and fi
 
         //enter a project
         //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
-        await page.click('#zrGohKSweQZUNI2CnANM > a')
+        await page.waitForSelector('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
+        await page.click('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
         await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
         await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
@@ -577,7 +579,7 @@ describe('end to end tests - used to check business logic with javascript and fi
 
     }, 200000);
 
-    it('sprint 8 end to end website functionality - check notifications', async () => {
+    it('check notifications', async () => {
         const browser = await puppeteer.launch({
             headless: true, //must be set to true for circleci to work!
             slowMo: 25,
@@ -612,6 +614,95 @@ describe('end to end tests - used to check business logic with javascript and fi
         var temp2 = tempHtml.includes("hello is a new sprint in project testing")
         var temp3 = tempHtml.includes("testing is a new user story in project testing")
         expect("" + temp1 + temp2 + temp3).to.equal("truetruetrue");
+        //console.info(`${temp}`);
+        await browser.close();
+
+    }, 200000);
+
+    it('check back button', async () => {
+        const browser = await puppeteer.launch({
+            headless: true, //must be set to true for circleci to work!
+            slowMo: 25,
+            args: ['--window-size=1440,900']
+        });
+        const page = await browser.newPage();
+        await page.goto(
+            'https://scrum-manager-91e13.web.app'
+        );
+        var temp = false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
+
+        //wait...
+        await page.waitFor(2500);
+
+        //enter notifications
+        await page.waitForSelector('.container #notifications')
+        await page.click('.container #notifications')
+
+        //wait...
+        await page.waitFor(2500);
+
+        //go back a page
+        await page.waitForSelector('body > .container > .navigation > .backBtn > img')
+        await page.click('body > .container > .navigation > .backBtn > img')
+
+        //wait...
+        await page.waitFor(2500);
+
+        const bodyHandle = await page.$('body');
+        const html = await page.evaluate(body => body.innerText, bodyHandle);
+        var tempHtml = html;
+        var temp1 = tempHtml.includes("Create New Project")
+        expect("" + temp1).to.equal("true");
+        //console.info(`${temp}`);
+        await browser.close();
+
+    }, 200000);
+
+    it('check sprint points', async () => {
+        const browser = await puppeteer.launch({
+            headless: true, //must be set to true for circleci to work!
+            slowMo: 25,
+            args: ['--window-size=1440,900']
+        });
+        const page = await browser.newPage();
+        await page.goto(
+            'https://scrum-manager-91e13.web.app'
+        );
+        var temp = false;
+        //log in process
+        await page.click('#loginBtn');
+        await page.click('#login-email');
+        await page.type('#login-email', 'timothywalters@gmail.com');
+        await page.click('#login-password');
+        await page.type('#login-password', '12345678');
+        await page.click('#login-button');
+        //await page.waitFor(5000);
+
+        //wait...
+        await page.waitFor(2500);
+
+        //enter a project
+        await page.waitForSelector('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
+        await page.click('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
+        await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+        await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
+
+        //wait...
+        await page.waitFor(2500);
+
+        const bodyHandle = await page.$('body');
+        const html = await page.evaluate(body => body.innerText, bodyHandle);
+        var tempHtml = html;
+        var temp1 = tempHtml.includes("10 points")
+        expect("" + temp1).to.equal("true");
         //console.info(`${temp}`);
         await browser.close();
 

@@ -38,6 +38,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -63,11 +64,15 @@
       <workItem from="1597392809850" duration="270000" />
       <workItem from="1597395762543" duration="309000" />
       <workItem from="1600409556632" duration="4157000" />
+      <workItem from="1601392722048" duration="723000" />
+      <workItem from="1601627949413" duration="4723000" />
+      <workItem from="1601839795308" duration="8185000" />
+      <workItem from="1601896018419" duration="1748000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="489" y="212" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601390535967">
@@ -78,5 +83,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1600415352432" />
+    <state x="419" y="214" width="672" height="678" key="search.everywhere.popup" timestamp="1601839855592">
+      <screen x="72" y="27" width="1368" height="873" />
+    </state>
+    <state x="419" y="214" width="672" height="678" key="search.everywhere.popup/72.27.1368.873@72.27.1368.873" timestamp="1601839855592" />
   </component>
 </project>

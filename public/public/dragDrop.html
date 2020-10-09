@@ -16,9 +16,7 @@
 
 <body>
 
-
-
-    <div class="container">
+<div class="container">
         <div class="navigation">
             <div class="backBtn" onclick="history.back()"><img src="resources/images/back.png"></i>
             </div>
@@ -32,6 +30,7 @@
                 <li onclick="save(`dragDrop.html`)"><a href="Notifications.html" id="notifications">Notifications</a></li>
                 <li onclick="save(`dragDrop.html`)"><a href="userHome.html">Projects</a></li>
                 <li onclick="save(`dragDrop.html`)"><a href="invites.html" id="inviteBadge"><span class="badge">0</span> Invites</a></li>
+                <li><a onclick="darkmode()">Invert</a></li>
                 <li onclick="save(`dragDrop.html`)"><a href="#" id="logout">Logout</a></li>
             </ul>
         </div>
@@ -70,7 +69,7 @@
                             <h2 id="NS">Not Started</h2>
                         </div>
 
-                        <div class="categories" id="In Progress">
+                        <div class="categories" id="In-Progress">
                             <h2 id="IP">In Progress</h2>
                         </div>
 

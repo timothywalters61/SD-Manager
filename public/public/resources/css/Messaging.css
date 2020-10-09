@@ -37,19 +37,23 @@
     float: right;
     background-color: #095cf5;
     color: white;
+    margin-top: 10px;
+    padding: 15px;
 }
 
 .message-received {
     float: left;
     background-color: #dddddd;
     margin-left: 10px;
+    margin-top: 10px;
+    padding: 15px;
 }
 
 .input {
     width: 100%;
     display: inline-block;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
 }
 
 .message-input {
@@ -57,6 +61,9 @@
     opacity: 80%;
     width: 85%;
     border-radius: 10px;
+    height: 30%;
+    margin-top: 15px;
+    padding: 10px;
 }
 
 #send {
@@ -82,4 +89,11 @@
 .message-time {
     font-size: 0.825rem;
     font-weight: 300;
+    margin-top: 14px;
+    padding: 10px;
+}
+.sender {
+   font-weight: bold;
+   margin-bottom: 3px;
+   font-size: 14px;
 }

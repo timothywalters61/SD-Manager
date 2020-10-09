@@ -306,13 +306,14 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
               
                 let newStatus = 0;
                 let parentID = dragStory.parentElement.id;
+                console.log("parent id   " + parentID);
 
                 if(parentID == "NotStarted"){
                    // console.log(parentID,"1");
                     newStatus = 1;
                     //console.log("Amount of stories in Not Started ",NS.childElementCount-1);
                 }
-                else if(parentID == "In Progress"){
+                else if(parentID == "In-Progress"){
                    // console.log(parentID,"2");
 
                     newStatus = 2;
@@ -333,13 +334,17 @@ db.collection("projects").doc(projectID).collection("sprints").doc(currentSprint
                 console.log("user id \n",test);
                 console.log("id ", test.id);
 
-                db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(test.id)
+                /*db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(test.id)
                 .set({
                     SprintID: currentSprintID,
                     name : name,
                     description: des,
                     acceptance: acc,
                     points: points,
+                    status: newStatus
+                });*/
+
+                db.collection("projects").doc(projectID).collection("sprints").doc(currentSprintID).collection("backlog").doc(test.id).update({
                     status: newStatus
                 });
 

@@ -31,3 +31,28 @@
 #PageHeading{
     margin-bottom: 30px;
 }
+
+#notifType {
+    margin-left: 5px;
+    color: black;
+    float: left;
+    position: relative;
+    top : -6px;
+}
+
+#notifName {
+    font-weight: bold;
+    color: black;
+    float: left;
+    position: relative;
+    top : -6px;    
+}
+
+#notifProj {
+    font-weight: bold;
+    margin-left: 5px;
+    color: black;
+    float: left;
+    position: relative;
+    top : -6px;
+}

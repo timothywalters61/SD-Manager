@@ -8,6 +8,10 @@
     filter: invert(100%) hue-rotate(180deg);
 }
 
+.natural {
+    filter: invert(100%) hue-rotate(180deg);
+}
+
 @keyframes createBtnAnimation {
     from {
         color: white;
@@ -43,9 +47,9 @@
 }
 
 body {
-    background-image: url("../images/testWallpapera3.jpg");
+    background-image: url("../images/image.jpg");
+    /*filter: invert(100%) hue-rotate(180deg);*/
 }
-
 .container {
     min-height: 100%;
     width: 100%;
