@@ -35,46 +35,101 @@ auth.onAuthStateChanged(user => {
         db.collection("users").doc(user.uid).get().then(function(doc) {
 
             let notifs = doc.data().notifications;
-            console.log(notifs);
+            //console.log(notifs);
             localStorage.setItem("notifications", notifs);
 
-            console.log(notifs.length +" Notifications");
+            //console.log(notifs.length +" Notifications");
             let notifBadge = document.getElementById('notifications');
             notifBadge.innerText = notifs.length +" Notifications";
-            console.log(notifBadge);
+            //console.log(notifBadge);
 
             const notifDiv = document.getElementById("Notifications1");
 
 
             for (let i = notifs.length - 1; i >= 0; i--) {
-                console.log(notifs[i]);
-                let type = notifs[i].split("#")
-                console.log(type[0],">>>>",type[1]);
-
-                if( type[1] == "s"){
-                    console.log("its a sprint");
-                    let separ = type[0].split("is a new sprint in");
-                    console.log(separ[0]+">>>"+separ[1]);
-                }
-                else if(type[1] == "u"){
-                    console.log("its a user story");
-                    let separ = type[0].split("is a new user story in");
-                    console.log(separ[0]+">>>"+separ[1]);
-                } 
-                else if (type[1] == "t"){
-                    console.log("its a task");
-                    let separ = type[0].split("is a new task in");
-                    console.log(separ[0]+">>>"+separ[1]);
-                }
 
                 let nDiv = document.createElement("div");
 
-                nDiv.innerText = type[0];
+                console.log(i);
+                let type = notifs[i].split("#")
+                //console.log(type[0],">>>>",type[1]);
+
+                if( type[1] == "s"){
+                    console.log("its a sprint");
+                    let separ = type[0].split("is a new sprint in project");
+                    console.log(separ[0]+">>>"+separ[1]);
+
+                    let notifName = document.createElement("div");
+                    notifName.id = "notifName";
+                    notifName.innerText = separ[0];
+
+                    let notifType = document.createElement("div");
+                    notifType.id = "notifType";
+                    notifType.innerText = "is a new sprint in project";
+
+                    let notifProj = document.createElement("div");
+                    notifProj.id = "notifProj";
+                    notifProj.innerText = separ[1];
+
+                    nDiv.appendChild(notifName);
+                    nDiv.appendChild(notifType);
+                    nDiv.appendChild(notifProj);
+
+                }
+                else if(type[1] == "u"){
+                    console.log("its a user story");
+                    let separ = type[0].split("is a new user story in project");
+                    console.log(separ[0]+">>>"+separ[1]);
+                
+                    let notifName = document.createElement("div");
+                    notifName.id = "notifName";
+                    notifName.innerText = separ[0];
+
+                    let notifType = document.createElement("div");
+                    notifType.id = "notifType";
+                    notifType.innerText = "is a new user story in project";
+
+                    let notifProj = document.createElement("div");
+                    notifProj.id = "notifProj";
+                    notifProj.innerText = separ[1];
+
+                    nDiv.appendChild(notifName);
+                    nDiv.appendChild(notifType);
+                    nDiv.appendChild(notifProj);
+
+                } 
+                else if (type[1] == "t"){
+                    console.log("its a task");
+                    let separ = type[0].split("is a new task in project");
+                    console.log(separ[0]+">>>"+separ[1]);
+                
+                    let notifName = document.createElement("div");
+                    notifName.id = "notifName";
+                    notifName.innerText = separ[0];
+
+                    let notifType = document.createElement("div");
+                    notifType.id = "notifType";
+                    notifType.innerText = "is a new task in project";
+
+                    let notifProj = document.createElement("div");
+                    notifProj.id = "notifProj";
+                    notifProj.innerText = separ[1];
+
+                    nDiv.appendChild(notifName);
+                    nDiv.appendChild(notifType);
+                    nDiv.appendChild(notifProj);
+
+                }
+
+                
+
+                //nDiv.innerText = type[0];
                 notifDiv.appendChild(nDiv);
-                nDiv.style.padding = "20px";
+                nDiv.style.padding = "30px";
                 nDiv.style.margin = "10px";
                 nDiv.style.backgroundColor = "white";
                 nDiv.style.borderRadius = "10px";
+
 
                 let btnDelete = document.createElement("button");
                 nDiv.appendChild(btnDelete)
@@ -82,6 +137,8 @@ auth.onAuthStateChanged(user => {
                 btnDelete.id = "btnDeleteDiv";
                 btnDelete.innerText = "Delete";
                 btnDelete.style.float = "right";
+                btnDelete.style.position = "relative";
+                btnDelete.style.top = "-6px";
                 btnDelete.addEventListener('click', function(){
                     db.collection("users").doc(user.uid).update({
                         notifications: firebase.firestore.FieldValue.arrayRemove(notifs[i])

@@ -42,15 +42,19 @@ auth.onAuthStateChanged((user) => {
     if (user) {
         // User is logged in
 
-        db.collection("users").doc(user.uid).get().then(function(doc) {
-            let notifs = doc.data().notifications;
-            console.log(notifs.length);
-    
-            let notifBadge = document.getElementById('notifications');
-            notifBadge.innerText = notifs.length +" Notifications";
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
+        db.collection('users')
+            .doc(user.uid)
+            .get()
+            .then(function (doc) {
+                let notifs = doc.data().notifications;
+                console.log(notifs.length);
+
+                let notifBadge = document.getElementById('notifications');
+                notifBadge.innerText = notifs.length + ' Notifications';
+            })
+            .catch(function (error) {
+                console.log('Error getting document:', error);
+            });
 
         // Project title setup
         const projectTitle = document.querySelector('#PageHeading');
@@ -162,10 +166,15 @@ auth.onAuthStateChanged((user) => {
 
 /**
  * Returns text that will be used as the innerHTML of a message div
+ * @param {String} sender
  * @param {String} text
+ * @param {Date} time
  */
-const createMessageInnerHtml = (sender, text,time) => {
-    var div = `<div class="sender">${sender}</div><div class="message-text">${text}</div><div class = "time">${time}</div>`;
+const createMessageInnerHtml = (sender, text, time) => {
+    console.log(time);
+    time = time.toDate().toString();
+    time = formatTimeStamp(time);
+    var div = `<div class="message-sender">${sender}</div><div class="message-text">${text}</div><div class="message-time">${time}</div>`;
     return div;
 };
 
@@ -175,8 +184,9 @@ const createMessageInnerHtml = (sender, text,time) => {
  * @param {String} sender
  * @param {String} sent
  * @param {String} text
+ * @param {Date} time
  */
-const createMessageDiv = (id, sender, sent, text,time) => {
+const createMessageDiv = (id, sender, sent, text, time) => {
     var div = document.createElement('div');
     div.setAttribute('id', id);
 
@@ -186,8 +196,27 @@ const createMessageDiv = (id, sender, sent, text,time) => {
     } else {
         div.classList.add('message-received');
     }
-    div.innerHTML = createMessageInnerHtml(sender, text,time);
+    div.innerHTML = createMessageInnerHtml(sender, text, time);
     return div;
+};
+
+const formatTimeStamp = (time) => {
+    console.log(time);
+    var timeStamp = time.split(' ');
+    let timeString = '';
+    const lim = 5;
+    for (let i = 0; i < lim; i++) {
+        if (i === 4) {
+            timeStamp[i] = timeStamp[i].slice(0, 5);
+            console.log(timeString[i]);
+        } else {
+        }
+        timeString += timeStamp[i];
+        if (i + 1 < lim) {
+            timeString += ' ';
+        }
+    }
+    return timeString;
 };
 
 /**
@@ -196,17 +225,18 @@ const createMessageDiv = (id, sender, sent, text,time) => {
  * @param {String} sender
  * @param {String} sent
  * @param {String} text
+ * @param {Date} time
  */
-const displayMessage = (id, sender, sent, text,time) => {
+const displayMessage = (id, sender, sent, text, time) => {
     if (id != 'placeholder') {
         document.querySelector('#placeholder').classList.remove('visible');
     }
     var div = document.querySelector('#' + id);
     // console.log(div);
     let chat = document.querySelector('#message-container');
-    
+
     if (!div) {
-        div = createMessageDiv(id, sender, sent, text,time);
+        div = createMessageDiv(id, sender, sent, text, time);
     }
     chat.appendChild(div);
     setTimeout(() => {
@@ -232,7 +262,13 @@ const loadMessages = (username) => {
                 if (data.sender == username) {
                     sent = true;
                 }
-                displayMessage(doc.id, data.sender, sent, data.message,data.time);
+                displayMessage(
+                    doc.id,
+                    data.sender,
+                    sent,
+                    data.message,
+                    data.time
+                );
             });
         } else {
             document.querySelector('#placeholder').classList.add('visible');

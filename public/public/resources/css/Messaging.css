@@ -75,8 +75,23 @@
     border-color: #095cf5;
     background-color: #095cf5;
     float: right;
-    margin-top: 14px;
+    margin-top: 15px;
     padding: 10px;
+}
+
+.message-text {
+    margin: 10px 0;
+}
+
+.message-sender {
+    font-size: 0.825rem;
+    font-weight: 600;
+}
+
+.message-time {
+    font-size: 0.825rem;
+    font-weight: 300;
+    margin-top: 14px;
 }
 .sender {
    font-weight: bold;
