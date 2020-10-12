@@ -233,6 +233,7 @@ const displayMessage = (id, sender, sent, text, time) => {
     }
     //var div = document.querySelector('#' + id);
     var div;
+    //if(document.querySelector('#' + id))
     // console.log(div);
     let chat = document.querySelector('#message-container');
 
