@@ -2,7 +2,6 @@
 
 const projectBox = document.querySelector("#projectContainer");
 const projectCon = document.getElementById('projectContainer');
-var btt = document.getElementById('createProject');
 
 const setUpProjects = (data) => {
     let html = '';
@@ -26,12 +25,12 @@ const setUpProjects = (data) => {
 
     projectBox.innerHTML = html;
 
-    setTimeout(() => {
-        btt.classList.add('visible');
-    }, 0.5);
+    // setTimeout(() => {
+    //     btt.classList.add('visible');
+    // }, 0.5);
 
     setTimeout(() => {
-        projectCon.classList.add('visible');
+        projectCon.classList.add("visible");
     }, 0.5);
 }
 
