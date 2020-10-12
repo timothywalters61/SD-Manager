@@ -2,7 +2,6 @@
 
 const projectBox = document.querySelector("#projectContainer");
 const projectCon = document.getElementById('projectContainer');
-var btt = document.getElementById('createProject');
 
 const setUpProjects = (data) => {
     let html = '';
@@ -26,12 +25,12 @@ const setUpProjects = (data) => {
 
     projectBox.innerHTML = html;
 
-    setTimeout(() => {
-        btt.classList.add('visible');
-    }, 0.5);
+    // setTimeout(() => {
+    //     btt.classList.add('visible');
+    // }, 0.5);
 
     setTimeout(() => {
-        projectCon.classList.add('visible');
+        projectCon.classList.add("visible");
     }, 0.5);
 }
 
@@ -49,11 +48,11 @@ const saveDocID = (data, data1, data2) => {
             icon: "info",
             buttons: { //declaring the buttons in the alert dialog
                 cancel: true,
-                deleteProject: {
+               /* deleteProject: {
                     text: "Delete Project",
                     value: "delete",
                     dangerMode: true
-                },
+                },*/
                 openProject: {
                     text: "Open Project",
                     value: "open"
@@ -78,7 +77,7 @@ const saveDocID = (data, data1, data2) => {
                     }
                     break;
 
-                case "delete":
+                /*case "delete":
                     //TODO: send project id (data) so that it gets deleted, then after getting response, you can then remove project from the fontend
                     //below is the code that removes the project on front-end
                     let project = document.getElementById(data);
@@ -87,7 +86,7 @@ const saveDocID = (data, data1, data2) => {
                         text: "Project deleted",
                         icon: "success"
                     })
-                    break;
+                    break;*/
             }
         });
 

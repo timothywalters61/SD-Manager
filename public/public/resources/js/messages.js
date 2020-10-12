@@ -231,7 +231,9 @@ const displayMessage = (id, sender, sent, text, time) => {
     if (id != 'placeholder') {
         document.querySelector('#placeholder').classList.remove('visible');
     }
-    var div = document.querySelector('#' + id);
+    //var div = document.querySelector('#' + id);
+    var div;
+    //if(document.querySelector('#' + id))
     // console.log(div);
     let chat = document.querySelector('#message-container');
 

@@ -106,11 +106,6 @@
     font-size: 15px;
     border: none;
     font-weight: 500;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-#createProject.visible {
     opacity: 1;
 }
 
