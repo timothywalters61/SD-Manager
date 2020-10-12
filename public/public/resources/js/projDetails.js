@@ -192,7 +192,7 @@ deleteProj.addEventListener('click', function () {
             console.error("Error removing document: ", error);
         });
     } else {
-        //toast("You are not the owner of this project");
+        toast("You are not the owner of this project!");
         console.log("you're not the owner");
     }
 });
