@@ -185,6 +185,7 @@ deleteProj.addEventListener('click', function () {
         console.log("delete");
         db.collection("projects").doc(projectID).delete().then(function () {
             console.log("Document successfully deleted!");
+            toast("Project successfully deleted!");
             window.location.href = "userHome.html";
 
 
@@ -204,7 +205,7 @@ leaveProj.addEventListener('click', function () {
         db.collection("projects").doc(projectID).delete().then(function () {
             console.log("Document successfully deleted!");
             window.location.href = "userHome.html";
-
+            toast("Project successfully deleted!");
 
         }).catch(function (error) {
             console.error("Error removing document: ", error);
@@ -222,7 +223,7 @@ leaveProj.addEventListener('click', function () {
         }).then(function () {
             window.location.href = "userHome.html";
         });
-
+        toast("You have successfully been removed");
     }
 
 
