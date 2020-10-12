@@ -229,12 +229,9 @@ const formatTimeStamp = (time) => {
  */
 const displayMessage = (id, sender, sent, text, time) => {
     if (id != 'placeholder') {
-        document.querySelector('#placeholder').classList.remove('visible');
+        document.querySelector('#placeholder').classList.add('disp-none');
     }
-    //var div = document.querySelector('#' + id);
     var div;
-    //if(document.querySelector('#' + id))
-    // console.log(div);
     let chat = document.querySelector('#message-container');
 
     if (!div) {
