@@ -76,7 +76,7 @@ auth.onAuthStateChanged((user) => {
 
         db.collection("users").doc(user.uid).onSnapshot(function(doc) {
             let notifs = doc.data().notifications;
-            console.log(notifs);
+            console.log("hello:" + notifs);
 
             let notifBadge = document.getElementById('notifications');
             notifBadge.innerText = notifs.length +" Notifications";
@@ -92,7 +92,7 @@ auth.onAuthStateChanged((user) => {
             .where('inviteToID', '==', user.uid)
             .onSnapshot(function (snapshot) {
                 console.log("testing...");
-                console.log("id " +snapshot.docs[0].id);
+                //console.log("id " +snapshot.docs[0].id);
 
                 for(let i = 0; i < snapshot.docs.length; i++){
                     invitesArray.push(snapshot.docs[i].data());
