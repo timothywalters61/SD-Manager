@@ -231,7 +231,8 @@ const displayMessage = (id, sender, sent, text, time) => {
     if (id != 'placeholder') {
         document.querySelector('#placeholder').classList.add('disp-none');
     }
-    var div;
+    //var div = document.querySelector('#' + id);
+    var div=document.querySelector("[id='"+id+"']");
     let chat = document.querySelector('#message-container');
 
     if (!div) {
