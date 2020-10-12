@@ -56,3 +56,11 @@
     position: relative;
     top : -6px;
 }
+
+#notifications {
+    color: #095CF5;
+}
+
+#proj {
+    color: black;
+}
