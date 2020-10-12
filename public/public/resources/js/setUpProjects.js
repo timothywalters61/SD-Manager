@@ -1,6 +1,8 @@
 //populate project dropdown
 
 const projectBox = document.querySelector("#projectContainer");
+const projectCon = document.getElementById('projectContainer');
+var btt = document.getElementById('createProject');
 
 const setUpProjects = (data) => {
     let html = '';
@@ -21,8 +23,22 @@ const setUpProjects = (data) => {
         `;
         html = html + li;
     });
+
     projectBox.innerHTML = html;
+
+    setTimeout(() => {
+        btt.classList.add('visible');
+    }, 0.5);
+
+    setTimeout(() => {
+        projectCon.classList.add('visible');
+    }, 0.5);
 }
+
+
+
+
+
 
 const saveDocID = (data, data1, data2) => {
     //I'M NEW

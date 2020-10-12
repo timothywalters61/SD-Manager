@@ -43,6 +43,12 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#projectContainer.visible {
+    opacity: 1;
 }
 
 #projectContainer div{
@@ -55,6 +61,8 @@
     display: inline-flex;
     position: relative;
     align-items: center;
+    /*opacity: 0;*/
+    /*transition: opacity 1s ease-in-out;*/
 }
 
 #projectContainer div a{
@@ -98,6 +106,12 @@
     font-size: 15px;
     border: none;
     font-weight: 500;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#createProject.visible {
+    opacity: 1;
 }
 
 #createProject:hover{

@@ -125,12 +125,14 @@ auth.onAuthStateChanged(user => {
                 btnDeleteUS.id = "btnDelete";
                 btnDeleteUS.innerText = "Delete"
                 btnDeleteUS.style.float = "right";
+                btnDeleteUS.style.marginLeft="30px";
 
                 let btnEditUS = document.createElement('button'); // moves to task page
                 btnEditUS.className = "userStoryBtn";
                 btnEditUS.id = "btnEdit";
                 btnEditUS.innerText = "Edit"
                 btnEditUS.style.float = "left";
+                btnEditUS.style.marginRight="30px";
 
 
                 wholeDiv.appendChild(n);
