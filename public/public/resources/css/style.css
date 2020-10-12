@@ -314,3 +314,11 @@ body {
     animation-duration: 10s;
     animation-fill-mode: both;
 }
+
+#leave:hover{
+    cursor: pointer;
+}
+
+#delete:hover{
+    cursor: pointer;
+}
