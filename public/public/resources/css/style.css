@@ -149,6 +149,10 @@ body {
     width: 49.6%;
 }
 
+.disp-none {
+    display: none;
+}
+
 .frontPageHeading {
     font-size: 40px;
     color: #095CF5;
