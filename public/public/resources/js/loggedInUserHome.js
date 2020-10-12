@@ -13,6 +13,9 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+let stringInv;
+
+
 auth.onAuthStateChanged((user) => {
     if (user) {
         console.log('user logged in: ', user);
@@ -83,22 +86,29 @@ auth.onAuthStateChanged((user) => {
 
         const inviteBadge = document.querySelector('#inviteBadge');
         let invitesArray = [];
+        let invitesId = [];
 
         db.collection('Invites')
             .where('inviteToID', '==', user.uid)
             .onSnapshot(function (snapshot) {
                 console.log("testing...");
-                //console.log(snapshot.docs[0].data());
+                console.log("id " +snapshot.docs[0].id);
 
                 for(let i = 0; i < snapshot.docs.length; i++){
                     invitesArray.push(snapshot.docs[i].data());
+                    invitesId.push(snapshot.docs[i].id);
                 }
-                console.log(JSON.stringify(invitesArray));
-                localStorage.setItem("invites", JSON.stringify(invitesArray));
+                
+                stringInv = JSON.stringify(invitesArray);
+                saveInvites(stringInv);
+
+                stringInvID = JSON.stringify(invitesId);
+                saveInvitesID(stringInvID);
+
                 if (snapshot.docs != 0) {
                     let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
                     inviteBadge.innerHTML = html;
-                    localStorage.setItem('invites', snapshot.docs.length);
+                    localStorage.setItem('invitesNum', snapshot.docs.length);
                 } else {
                     console.log('invites do not exist');
                     let html2 = '<span class="badge">0</span> Invites';
@@ -106,7 +116,7 @@ auth.onAuthStateChanged((user) => {
                 }
 
                 console.log("invites");
-                console.log(invitesArray);
+                console.log(stringInv);
             });
 
         
@@ -115,6 +125,7 @@ auth.onAuthStateChanged((user) => {
         window.location.href = 'index.html';
     }
 });
+
 
 //logout
 
@@ -131,3 +142,14 @@ logout.addEventListener('click', (e) => {
             alert(error.message);
         });
 });
+
+
+function saveInvites (data) {
+    console.log("in");
+    localStorage.setItem("invitesTesting", data);
+}
+
+function saveInvitesID (data) {
+    console.log("in");
+    localStorage.setItem("invitesID", data);
+}

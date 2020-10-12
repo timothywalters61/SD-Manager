@@ -66,9 +66,29 @@ auth.onAuthStateChanged(user => {
         //set up invite badge
 
         const inviteBadge = document.querySelector("#inviteBadge");
+        let numinvites = localStorage.getItem("invitesNum");
+        let html = `<span class="badge">${numinvites}</span> Invites`;
+        inviteBadge.innerHTML = html;
+
+        let invitesArray = [];
+        let invitesId = [];
 
         db.collection("Invites").where("inviteToID", "==", user.uid)
             .onSnapshot(function (snapshot) {
+                if(numinvites != snapshot.docs.length){
+
+                    for(let i = 0; i < snapshot.docs.length; i++){
+                        invitesArray.push(snapshot.docs[i].data());
+                        invitesId.push(snapshot.docs[i].id);
+                    }
+                    
+                    stringInv = JSON.stringify(invitesArray);
+                    saveInvites(stringInv);
+    
+                    stringInvID = JSON.stringify(invitesId);
+                    saveInvitesID(stringInvID);
+    
+                }
                 if (snapshot.docs != 0) {
                     let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
                     inviteBadge.innerHTML = html;
@@ -99,3 +119,14 @@ logout.addEventListener("click", (e) => {
             alert(error.message);
         });
 });
+
+
+function saveInvites (data) {
+    console.log("in");
+    localStorage.setItem("invitesTesting", data);
+}
+
+function saveInvitesID (data) {
+    console.log("in");
+    localStorage.setItem("invitesID", data);
+}

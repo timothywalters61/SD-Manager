@@ -13,6 +13,37 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+
+const inviteContainer = document.querySelector("#inviteContainer");
+const inviteBadge = document.querySelector("#inviteBadge");
+
+loadedInvites = JSON.parse(localStorage.getItem("invitesTesting"));
+console.log("loaded" , loadedInvites);
+
+loadedInvitesID = JSON.parse(localStorage.getItem("invitesID"));
+console.log("loaded" , loadedInvitesID);
+
+let html = `<span class="badge">${loadedInvites.length}</span> Invites`;
+inviteBadge.innerHTML = html;
+
+let html2 = '';
+
+for(let j = 0; j < loadedInvites.length; j++){
+    
+    const inviteFrom = loadedInvites[j].inviteFromEmail;
+    const project = loadedInvites[j].projectID;
+    const projectName =loadedInvites[j].projectName;
+    const docID = loadedInvitesID[j];
+    const li = `<div class="invites">${inviteFrom} has invited you to join their team and help develop <p> ${projectName}</p> <button type="button" class="acceptInviteButtons" onclick="acceptInvite('${project}','${docID}')">Accept</button><button type="button" class="declineInviteButtons" onclick="declineInvite('${docID}')">Decline</button></div>`;
+    console.log(inviteFrom);
+    console.log(project);
+
+    console.log(projectName);
+
+    html2 = html2 + li;
+}
+inviteContainer.innerHTML = html2;
+
 auth.onAuthStateChanged(user => {
     if (user) {
         console.log("user logged in: ", user);
@@ -29,18 +60,14 @@ auth.onAuthStateChanged(user => {
         });
         //set up invites
 
-        const inviteBadge = document.querySelector("#inviteBadge");
-        const inviteContainer = document.querySelector("#inviteContainer");
+        
 
-        loadedInvites = JSON.parse(localStorage.getItem("invites"));
-        console.log("loaded" , loadedInvites);
+        
 
         db.collection("Invites").where("inviteToID", "==", user.uid)
             .onSnapshot(function (snapshot) {
-                if (snapshot.docs != 0) {
-                    let html = `<span class="badge">${snapshot.docs.length}</span> Invites`;
-                    inviteBadge.innerHTML = html;
-                    //setUpInvites(snapshot.docs);
+                if (snapshot.docs != loadedInvites.length) {
+                    setUpInvites(snapshot.docs);
                 } else {
                     console.log("invites do not exist");
                     let html2 = '<span class="badge">0</span> Invites';

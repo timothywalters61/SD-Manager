@@ -17,6 +17,9 @@ const db = firebase.firestore();
 const projectID = localStorage.getItem("docID");
 const ownerID = localStorage.getItem("ownerID");
 const projectName = localStorage.getItem("docName");
+console.log("from local " + localStorage.getItem("invites"));
+
+console.log("from local " + localStorage.getItem("invitesTesting"));
 
 auth.onAuthStateChanged(user => {
     if (user) {
