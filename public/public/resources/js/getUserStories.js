@@ -68,7 +68,7 @@ auth.onAuthStateChanged(user => {
 
 
 const NS = document.getElementById("NotStarted");
-const IP= document.getElementById("In Progress");
+const IP= document.getElementById("In-Progress");
 const C = document.getElementById("Completed");
 
 
