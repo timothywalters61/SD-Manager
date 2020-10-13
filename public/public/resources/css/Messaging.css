@@ -33,6 +33,10 @@
     opacity: 1;
 }
 
+#GC {
+    color: #095CF5;
+}
+
 .message-sent {
     float: right;
     background-color: #095cf5;
