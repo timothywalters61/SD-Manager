@@ -408,9 +408,8 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.waitFor(5000);
 
         //enter a project
-        //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
-        await page.waitForSelector('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
-        await page.click('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
+        //await page.waitForSelector('body > .container > #projectContainer > #xScw7MWpuZMfMtiV8Lv4 > a')
+        await page.click('body > .container > #projectContainer > #xScw7MWpuZMfMtiV8Lv4 > a')
         await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
         await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
@@ -455,8 +454,7 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.waitFor(5000);
 
         //enter a project
-        //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
-        await page.click('#zrGohKSweQZUNI2CnANM > a')
+        await page.click('body > .container > #projectContainer > #xScw7MWpuZMfMtiV8Lv4 > a')
         await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
         await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
@@ -471,7 +469,7 @@ describe('end to end tests - used to check business logic with javascript and fi
         // await page.click('".container > #contentContainer > #group-chat #send');
 
         //wait...
-        await page.waitFor(1000);
+        await page.waitFor(2500);
 
         //check if message is there
         const bodyHandle = await page.$('body');
@@ -509,12 +507,11 @@ describe('end to end tests - used to check business logic with javascript and fi
         //await page.waitFor(5000);
 
         //wait...
-        await page.waitFor(2500);
+        await page.waitFor(5000);
 
         //enter a project
         //await page.waitForSelector('body > .container > #projectContainer > #zTUjt1TCP4F8SSE8bUXK > a')
-        await page.waitForSelector('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
-        await page.click('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
+        await page.click('body > .container > #projectContainer > #xScw7MWpuZMfMtiV8Lv4 > a')
         await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
         await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
@@ -597,7 +594,9 @@ describe('end to end tests - used to check business logic with javascript and fi
         await page.click('#login-password');
         await page.type('#login-password', '12345678');
         await page.click('#login-button');
-        //await page.waitFor(5000);
+        
+        //wait...
+        await page.waitFor(2500);
 
         //enter notifications
         await page.waitForSelector('.container #notifications')
@@ -610,9 +609,9 @@ describe('end to end tests - used to check business logic with javascript and fi
         const bodyHandle = await page.$('body');
         const html = await page.evaluate(body => body.innerText, bodyHandle);
         var tempHtml = html;
-        var temp1 = tempHtml.includes("hello is a new task in project testing")
-        var temp2 = tempHtml.includes("hello is a new sprint in project testing")
-        var temp3 = tempHtml.includes("testing is a new user story in project testing")
+        var temp1 = tempHtml.includes("hello\nis a new task in project\nproject 1")
+        var temp2 = tempHtml.includes("testing\nis a new user story in project\nproject 1")
+        var temp3 = tempHtml.includes("testing\nis a new user story in project\nproject 1")
         expect("" + temp1 + temp2 + temp3).to.equal("truetruetrue");
         //console.info(`${temp}`);
         await browser.close();
@@ -687,11 +686,10 @@ describe('end to end tests - used to check business logic with javascript and fi
         //await page.waitFor(5000);
 
         //wait...
-        await page.waitFor(2500);
+        await page.waitFor(3500);
 
         //enter a project
-        await page.waitForSelector('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
-        await page.click('body > .container > #projectContainer > #zrGohKSweQZUNI2CnANM > a')
+        await page.click('body > .container > #projectContainer > #xScw7MWpuZMfMtiV8Lv4 > a')
         await page.waitForSelector('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
         await page.click('.swal-overlay > .swal-modal > .swal-footer > .swal-button-container > .swal-button--openProject')
 
